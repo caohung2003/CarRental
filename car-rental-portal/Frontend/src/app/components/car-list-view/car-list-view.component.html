@@ -1,0 +1,132 @@
+<link rel="stylesheet" href="../../../assets/css/slideshow.css">
+<div class = "car-view">
+  <div class="img" style="padding: 20px;padding-left: 0px;width: 40%">
+    <div class="slideshow-container">
+      <!-- Full-width imagess with number and caption text -->
+      <div style="width:100%;height: 100%" class="mySlides{{1}}">
+        <div style="display: none" class="numbertext">1 / 4</div>
+        <img style=" border: 1px solid black; border-radius: 10px; object-fit: cover" height="200px"
+             class="card-img-top"
+             src="assets/images/car/bugatti1.jpg" alt="Card images cap"></div>
+
+      <div style="width:100%;height: 100%" class="mySlides{{1}} hide">
+        <div style="display: none" class="numbertext">2 / 4</div>
+        <img style=" border: 1px solid black; border-radius: 10px; object-fit: cover" height="200px"
+             class="card-img-top"
+             src="assets/images/car/left-buga.jpg" alt="Card images cap">
+      </div>
+
+      <div style="width:100%;height: 100%" class="mySlides{{1}} hide">
+        <div style="display: none" class="numbertext">3 / 4</div>
+        <img style=" border: 1px solid black; border-radius: 10px; object-fit: cover" height="200px"
+             class="card-img-top"
+             src="assets/images/car/back-buga.jpg" alt="Card images cap"/></div>
+      <div style="width:100%;height: 100%" class="mySlides{{1}} hide">
+        <div style="display: none" class="numbertext">4 / 4</div>
+        <img style=" border: 1px solid black; border-radius: 10px; object-fit: cover" height="200px"
+             class="card-img-top"
+             src="assets/images/car/left-buga.jpg" alt="Card images cap"></div>
+      <!-- Next and previous buttons -->
+      <a class="prev" style="top: 55%; color:white"
+         (click)="plusSlides(-1, 1, 'prev')">&#10094;</a>
+      <a class="next" style="top: 55%;color:white" (click)="plusSlides(1,1,'next')">&#10095;</a>
+    </div>
+  </div>
+  <div style="margin-top: 10px; display: flex; width: 100%; flex-direction: column">
+    <div style="display: flex; justify-content: space-between; align-items: center">
+      <div style="cursor: pointer;margin-bottom:10px; font-size: 20px; font-weight: bold"
+           class="ttle">Bugatti Chiron
+        <svg style="margin-left: 3px; margin-bottom: 3px" width="24"
+             height="24" viewBox="0 0 24 24"
+             fill="none"
+             xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M8.65372 3.63C9.89372 3.29813 11.2114 3 12 3C12.7886 3 14.1063 3.29813 15.3463 3.63C16.6149 3.9675 17.8937 4.36687 18.6457 4.60875C18.9601 4.71096 19.2389 4.8984 19.4499 5.14954C19.661 5.40068 19.7958 5.70533 19.8389 6.0285C20.52 11.0651 18.9394 14.7979 17.0217 17.2672C16.2085 18.3236 15.2388 19.2538 14.1451 20.0269C13.767 20.2944 13.3663 20.5296 12.9474 20.73C12.6274 20.8785 12.2834 21 12 21C11.7166 21 11.3737 20.8785 11.0526 20.73C10.6337 20.5296 10.233 20.2944 9.85486 20.0269C8.76118 19.2538 7.79153 18.3236 6.97829 17.2672C5.06058 14.7979 3.48001 11.0651 4.16115 6.0285C4.20422 5.70533 4.33903 5.40068 4.55008 5.14954C4.76114 4.8984 5.03988 4.71096 5.35429 4.60875C6.44594 4.25641 7.54607 3.93007 8.65372 3.63Z"
+            stroke="#5FCF86" stroke-width="1.5">
+          </path>
+          <path d="M11.3333 12.6668L9.5 10.8335"
+                stroke="#5FCF86" stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"></path>
+          <path d="M14.9997 9L11.333 12.6667"
+                stroke="#5FCF86" stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"></path>
+        </svg>
+      </div>
+
+      <div>
+        <button
+          style="background-color: #01d28e; color:white; margin-top:10px;margin-left:20px; margin-right:20px;border-radius: 10px; border: 1px solid black; padding: 10px; font-weight: 500 !important;"
+          class="btn btn-primary">View detail
+        </button>
+      </div>
+    </div>
+    <div style="display: flex; justify-content: space-between">
+      <div style="display: flex">
+        <div
+          style="cursor:pointer; padding: 3px; text-align: center; margin-right: 7px; background-color: #dff5e7; font-size: 14px;  border: 1px transparent black; border-radius: 10px; width: 100px">
+          Automation
+        </div>
+
+        <div
+          style="cursor:pointer;padding: 3px; text-align: center; margin-right: 7px; background-color: #fce0d3; font-size: 14px;  border: 1px transparent black; border-radius: 10px; width: 50px">
+          Gas
+        </div>
+
+        <div
+          style="cursor:pointer;padding: 3px; text-align: center; background-color: #eef7ff; font-size: 14px;  border: 1px transparent black; border-radius: 10px; width: 75px">
+          6 seats
+        </div>
+      </div>
+      <div style="font-size: 14px;margin-top: 10px;margin-right: 20px">
+        ~ 1200 km
+      </div>
+    </div>
+    <div style="display: flex;align-items: center;margin-top: 15px">
+      <div><img style="width: 20px" src="../../../assets/images/icon/location.png"/></div>
+      <div
+        style="font-size: 16px; margin-left: 8px; margin-top: 7px"><span
+      >Thành phố Hà Nội, Quận Đống Đa</span>
+      </div>
+    </div>
+
+    <div style="display: flex; justify-content: space-between;margin-top: 20px; ">
+      <div style=" font-size: 16px;">
+        <img style="margin-bottom: 5px;width: 15px;margin-right: 5px"
+             src="../../../assets/images/icon/star.png" data-toggle="tooltip"
+             data-placement="top"
+             title="Rating"/>5
+      </div>
+      <div>
+        <img style="margin-bottom: 5px;width: 15px;margin-right: 5px"
+             src="../../../assets/images/icon/fuel.png" data-toggle="tooltip"
+             data-placement="top"
+             title="Consumption"/><span style="color:sandybrown">100
+      l</span><span
+        style="font-size: 10px">/100km</span>
+      </div>
+      <div>
+        <img style="margin-bottom: 5px;width: 15px;margin-right: 5px"
+             src="../../../assets/images/icon/speedometer.png" data-toggle="tooltip"
+             data-placement="top"
+             title="Km"/><span
+        style="color:sandybrown">100km</span><span
+        style="font-size: 10px">/day</span>
+      </div>
+      <div>
+        <i style="margin-bottom: 5px;width: 15px;margin-right: 8px; color: #01d28e" class="
+fas fa-solid fa-car-side"></i>
+        <span
+          style="font-size: 16px;margin-right: 20px; margin-left: 3px">50
+        rides</span>
+      </div>
+    </div>
+
+    <div style="margin-top: 10px">
+
+      <span style="color: #5fcf86; font-size: 20px">2700K</span>/day
+    </div>
+
+  </div>
+</div>

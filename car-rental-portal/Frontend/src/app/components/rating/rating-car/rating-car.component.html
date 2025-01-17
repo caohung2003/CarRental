@@ -1,0 +1,234 @@
+<div class="wrap-svg" style="display: flex; align-items: center; margin-right: 5px;">
+
+  <button id="bt{{index}}" type="button" (click)="toggleRate()" [attr.id]="'btnModal' + index"
+    class="btn rate btn-primary">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="16" height="16"
+      style="color: orange; margin-right: 3px" viewBox="0 0 1024 1024" class="icon">
+      <path
+        d="M908.1 353.1l-253.9-36.9L540.7 86.1c-3.1-6.3-8.2-11.4-14.5-14.5-15.8-7.8-35-1.3-42.9 14.5L369.8 316.2l-253.9 36.9c-7 1-13.4 4.3-18.3 9.3a32.05 32.05 0 0 0 .6 45.3l183.7 179.1-43.4 252.9a31.95 31.95 0 0 0 46.4 33.7L512 754l227.1 119.4c6.2 3.3 13.4 4.4 20.3 3.2 17.4-3 29.1-19.5 26.1-36.9l-43.4-252.9 183.7-179.1c5-4.9 8.3-11.3 9.3-18.3 2.7-17.5-9.5-33.7-27-36.3z" />
+    </svg>
+    Rate your trip
+  </button>
+</div>
+<c-modal alignment="center" id="top-up" [visible]="visibleRate" (visibleChange)="handleRateChange($event)">
+  <c-modal-header>
+    <h5 cModalTitle>Feedback</h5>
+  </c-modal-header>
+  <form #rateForm="ngForm" class="tw-text-black">
+    <c-modal-body>
+      <div class="car-detail" style="margin-bottom: 15px; cursor: pointer; "
+        (click)="redirect('/car/detail/'+booking.carId)">
+        <div style="margin-right: 10px;">
+          <div class="item-car row">
+            <div class="row">
+              <div class="img-car col-md-4">
+                <div class="fix-img">
+                  <img loading="lazy" src="{{image}}" alt="Đây là ảnh đấy">
+                  <!-- <img src="assets/images/car/bugatti1.jpg" /> -->
+                </div>
+              </div>
+              <div class="desc-car col-md-8">
+                <div class="desc-name">
+                  <p>{{name}}</p>
+                </div>
+                <div class="desc-address-price desc-info">
+                  <div class="address">
+                    <div class="wrap-svg" style="display: flex; align-items: center;">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M6.86 4.81V2.75" stroke="#767676" stroke-width="1.5" stroke-linecap="round"
+                          stroke-linejoin="round"></path>
+                        <path d="M17.14 4.81V2.75" stroke="#767676" stroke-width="1.5" stroke-linecap="round"
+                          stroke-linejoin="round"></path>
+                        <path
+                          d="M18.05 3.78003H5.95C4.18 3.78003 2.75 5.21003 2.75 6.98003V18.06C2.75 19.83 4.18 21.26 5.95 21.26H18.06C19.83 21.26 21.26 19.83 21.26 18.06V6.98003C21.25 5.21003 19.82 3.78003 18.05 3.78003Z"
+                          stroke="#767676" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        </path>
+                        <path d="M2.75 7.8999H21.25" stroke="#767676" stroke-width="1.5" stroke-linecap="round"
+                          stroke-linejoin="round"></path>
+                        <path
+                          d="M18 12C18.5523 12 19 11.5523 19 11C19 10.4477 18.5523 10 18 10C17.4477 10 17 10.4477 17 11C17 11.5523 17.4477 12 18 12Z"
+                          fill="#767676"></path>
+                        <path
+                          d="M14 12C14.5523 12 15 11.5523 15 11C15 10.4477 14.5523 10 14 10C13.4477 10 13 10.4477 13 11C13 11.5523 13.4477 12 14 12Z"
+                          fill="#767676"></path>
+                        <path
+                          d="M10 12C10.5523 12 11 11.5523 11 11C11 10.4477 10.5523 10 10 10C9.44772 10 9 10.4477 9 11C9 11.5523 9.44772 12 10 12Z"
+                          fill="#767676"></path>
+                        <path
+                          d="M6 12C6.55228 12 7 11.5523 7 11C7 10.4477 6.55228 10 6 10C5.44772 10 5 10.4477 5 11C5 11.5523 5.44772 12 6 12Z"
+                          fill="#767676"></path>
+                        <path
+                          d="M18 15.49C18.5523 15.49 19 15.0423 19 14.49C19 13.9377 18.5523 13.49 18 13.49C17.4477 13.49 17 13.9377 17 14.49C17 15.0423 17.4477 15.49 18 15.49Z"
+                          fill="#767676"></path>
+                        <path
+                          d="M14 15.49C14.5523 15.49 15 15.0423 15 14.49C15 13.9377 14.5523 13.49 14 13.49C13.4477 13.49 13 13.9377 13 14.49C13 15.0423 13.4477 15.49 14 15.49Z"
+                          fill="#767676"></path>
+                        <path
+                          d="M10 15.49C10.5523 15.49 11 15.0423 11 14.49C11 13.9377 10.5523 13.49 10 13.49C9.44772 13.49 9 13.9377 9 14.49C9 15.0423 9.44772 15.49 10 15.49Z"
+                          fill="#767676"></path>
+                        <path
+                          d="M6 15.49C6.55228 15.49 7 15.0423 7 14.49C7 13.9377 6.55228 13.49 6 13.49C5.44772 13.49 5 13.9377 5 14.49C5 15.0423 5.44772 15.49 6 15.49Z"
+                          fill="#767676"></path>
+                        <path
+                          d="M14 18.97C14.5523 18.97 15 18.5223 15 17.97C15 17.4177 14.5523 16.97 14 16.97C13.4477 16.97 13 17.4177 13 17.97C13 18.5223 13.4477 18.97 14 18.97Z"
+                          fill="#767676"></path>
+                        <path
+                          d="M10 18.97C10.5523 18.97 11 18.5223 11 17.97C11 17.4177 10.5523 16.97 10 16.97C9.44772 16.97 9 17.4177 9 17.97C9 18.5223 9.44772 18.97 10 18.97Z"
+                          fill="#767676"></path>
+                        <path
+                          d="M6 18.97C6.55228 18.97 7 18.5223 7 17.97C7 17.4177 6.55228 16.97 6 16.97C5.44772 16.97 5 17.4177 5 17.97C5 18.5223 5.44772 18.97 6 18.97Z"
+                          fill="#767676"></path>
+                      </svg>
+                      <span style="font-size: 12px;margin-left: 5px;">{{pick + " to " + drop}}</span>
+                    </div>
+                  </div>
+
+                </div>
+                <div class="desc-address" style="margin-top: 6px;">
+                  <div class="wrap-price">
+                    <div class="price">Total: <span class="price-special">{{price}}</span>VND</div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="line-page"></div>
+      <div class="car-detail" *ngFor="let rating of ratings" style="margin-bottom: 15px; cursor: pointer;">
+        <div style="margin-right: 10px;">
+
+          <div class="item-car row">
+            <div class="row">
+
+              <div class="img-car col-md-4"
+                style="display: flex; justify-content: center; margin-top: 10px; margin-bottom: 10px">
+                <div class="avatar avatar--m">
+                  <img loading="lazy"
+                         [src]=" rating.senderAvatar"
+                         alt="Đây là ảnh đấy">
+                </div>
+              </div>
+              <div class="desc-car col-md-8" style="margin-top: 10px">
+                <div class="desc-name" style="display: flex;justify-content: space-between; height: 10px">
+                  <div>
+                    <p>
+                      {{rating.senderFirstName + ' ' + rating.senderLastName}}
+                      <span  *ngIf="rating.isRenterFeedback"> (Renter)</span>
+                      <span  *ngIf="!rating.isRenterFeedback"> (Car Owner)</span>
+                    </p>
+                  </div>
+                  <div style="font-size: 14px; margin-top: 2px">{{convertDateTime(rating.dateTime)}}</div>
+                </div>
+                <div style="margin-top: 6px;">
+                  <div class="star-ratings" title="5 Stars"
+                    style="position: relative; box-sizing: border-box; display: inline-block;">
+                    <svg class="star-grad"
+                      style="position: absolute; z-index: 0; width: 0px; height: 0px; visibility: hidden;">
+                      <defs>
+                        <linearGradient id="starGrad078528009180899" x1="0%" y1="0%" x2="100%" y2="0%">
+                          <stop offset="0%" class="stop-color-first"
+                            style="stop-color: rgb(255, 198, 52); stop-opacity: 1;">
+                          </stop>
+                          <stop offset="0%" class="stop-color-first"
+                            style="stop-color: rgb(255, 198, 52); stop-opacity: 1;">
+                          </stop>
+                          <stop offset="0%" class="stop-color-final"
+                            style="stop-color: rgb(203, 211, 227); stop-opacity: 1;">
+                          </stop>
+                          <stop offset="100%" class="stop-color-final"
+                            style="stop-color: rgb(203, 211, 227); stop-opacity: 1;">
+                          </stop>
+                        </linearGradient>
+                      </defs>
+                    </svg>
+                    <div class="star-container" *ngFor="let i of createArray(rating.stars)"
+                      style="position: relative; display: inline-block; vertical-align: middle; padding-right: 1px;">
+                      <svg viewBox="0 0 51 48" class="widget-svg"
+                        style="width: 17px; height: 17px; transition: transform 0.2s ease-in-out 0s;">
+                        <path class="star" d="m25,1 6,17h18l-14,11 5,17-15-10-15,10 5-17-14-11h18z"
+                          style="fill: rgb(255, 198, 52); transition: fill 0.2s ease-in-out 0s;">
+                        </path>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+
+                <div style="margin-bottom: 10px;height: 35px;">
+
+                  <p>{{rating.comment}}</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="line-page"></div>
+      <div class="label-rating" style = "margin-left: 5px; font-size: 16px;">Rate:</div>
+      <div class="container">
+        <div class="container__items">
+          <input type="radio" (click)="fillStar('s5')" [attr.name]="'star' + index" [attr.id]="'st5' + index">
+          <label [attr.for]="'st5' + index">
+            <div class="star-stroke">
+              <div class="star-fill"></div>
+            </div>
+            <div class="label-description" data-content="Excellent"></div>
+          </label>
+          <input type="radio" (click)="fillStar('s4')" [attr.name]="'star' + index" [attr.id]="'st4' + index">
+          <label [attr.for]="'st4' + index">
+            <div class="star-stroke">
+              <div class="star-fill"></div>
+            </div>
+            <div class="label-description" data-content="Good"></div>
+          </label>
+          <input type="radio" (click)="fillStar('s3')" [attr.name]="'star' + index" [attr.id]="'st3' + index">
+          <label [attr.for]="'st3' + index">
+            <div class="star-stroke">
+              <div class="star-fill"></div>
+            </div>
+            <div class="label-description" data-content="OK"></div>
+          </label>
+          <input type="radio" (click)="fillStar('s2')" [attr.name]="'star' + index" [attr.id]="'st2' + index">
+          <label [attr.for]="'st2' + index">
+            <div class="star-stroke">
+              <div class="star-fill"></div>
+            </div>
+            <div class="label-description" data-content="Bad"></div>
+          </label>
+          <input type="radio" (click)="fillStar('s1')" [attr.name]="'star' + index" [attr.id]="'st1' + index">
+          <label [attr.for]="'st1' + index">
+            <div class="star-stroke">
+              <div class="star-fill"></div>
+            </div>
+
+            <div class="label-description" data-content="Terrible"></div>
+          </label>
+        </div>
+      </div>
+      <div class="comment-field" style = "margin-left: 5px; font-size: 16px;">
+        <div class="form-outline">
+          <label class="form-label" for="textAreaExample">Comment:</label>
+          <textarea maxlength="100" [required]="true" [(ngModel)]="comment" name="comment" class="form-control"
+            id="textAreaExample" rows="4"></textarea>
+        </div>
+      </div>
+    </c-modal-body>
+  </form>
+  <c-modal-footer>
+    <button cButton color="secondary" (click)="toggleRate()"
+      style="border: none !important; background-color: transparent !important; color: black !important;">
+
+      Close
+    </button>
+
+    <button (click)="sendFeedback(rateForm.value)" cButton style="border-radius: 0.25rem" type="submit"
+      data-bs-dismiss="modal"
+      class="tw-flex tw-items-center tw-inline-block tw-rounded tw-bg-black tw-px-3 tw-py-1 tw-text-sm tw-font-medium tw-text-white tw-transition hover:tw-scale-110 hover:tw-shadow-xl focus:tw-outline-none focus:tw-ring "
+      href="#" style="background-color: black !important">
+      <span style="margin-right: 3px">Send</span>
+
+    </button>
+  </c-modal-footer>
+</c-modal>

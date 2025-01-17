@@ -1,0 +1,325 @@
+<div class="tw-p-8 tw-bg-white tw-rounded-xl tw-flex tw-justify-center">
+  <div class="tw-w-full">
+    <div
+      class="tw-items-center tw-justify-between tw-pb-4 tw-space-y-3 md:tw-flex-row md:tw-space-y-0 md:tw-space-x-4 tw-w-full">
+      <div
+        class="label-input tw-items-stretch tw-justify-end tw-flex-shrink-0 tw-w-full tw-space-y-2 md:tw-w-auto md:tw-flex-row md:tw-space-y-0 md:tw-items-center md:tw-space-x-3">
+        <div class="tw-flex tw-justify-between">
+          <h5 class="tw-text-xl tw-font-semibold dark:tw-text-white">
+            Renter's infomation
+          </h5>
+
+          <label *ngIf="statusBooking === 'PENDING' && allowEditting"
+            class="tw-flex tw-items-center tw-cursor-pointer tw-mt-0 tw-justify-end">
+            <input type="checkbox" value="" class="tw-sr-only tw-peer" [(ngModel)]="isEditing"
+              (ngModelChange)="toggleEditMode($event)" />
+
+            <span
+              class="{{!isEditing?'tw-text-gray-500':'tw-text-gray-900'}} tw-ms-3 tw-text-sm tw-font-medium dark:tw-text-gray-300">Edit
+              Mode</span>
+            <div
+              class="tw-relative tw-ml-2 tw-pt-0.5 tw-w-11 tw-h-6 tw-bg-gray-200 peer-focus:tw-outline-none peer-focus:tw-ring-4 peer-focus:tw-ring-blue-300 dark:peer-focus:tw-ring-blue-800 tw-rounded-full tw-peer dark:tw-bg-gray-700 peer-checked:after:tw-translate-x-full rtl:peer-checked:after:-tw-translate-x-full peer-checked:after:tw-border-white after:tw-content-[''] after:tw-absolute after:tw-top-[2px] after:tw-start-[4px] after:tw-bg-white after:tw-border-gray-300 after:tw-border after:tw-rounded-full after:tw-h-5 after:tw-w-5 after:tw-transition-all dark:tw-border-gray-600 peer-checked:tw-bg-blue-600">
+            </div>
+          </label>
+        </div>
+        <hr class="tw-h-px !tw-mx-0 !tw-my-3 tw-bg-gray-400 tw-border-0 dark:tw-bg-gray-700">
+        <form class=" tw-w-full !tw-ml-0" #f="ngForm">
+          <div class="tw-p-0">
+            <div class=" form-group tw-w-full">
+              <label class="label-input">Full name<span class="required-asterisk">*</span></label>
+              <div class="row tw-mb-5 tw-my-4">
+
+                <div class="col tw-relative tw-z-0 tw-w-full ">
+                  <input type="text" placeholder=" " required
+                    class="tw-block tw-px-2.5 tw-pb-2.5 tw-pt-4 tw-w-full tw-text-sm tw-text-gray-900 tw-bg-transparent tw-rounded-lg tw-border-1 tw-border-gray-300 tw-appearance-none dark:tw-text-white dark:tw-border-gray-600 dark:tw-focus focus:tw-outline-none focus:tw-ring-0 focus:tw-border-blue-600 tw-peer"
+                    required [(ngModel)]="this.bookingInfo.renterInfo.firstName" [disabled]="!isEditing"
+                    name="renterFirstName" placeholder=" " ngModel #renterFirstNameControl="ngModel" />
+                  <label for="name"
+                    class="tw-absolute tw-text-sm tw-text-gray-500 dark:tw-text-gray-400 tw-duration-300 tw-transform -tw-translate-y-4 tw-scale-75 tw-top-2 tw-z-10 tw-origin-[0] tw-bg-white dark:tw-bg-gray-900 tw-px-2 peer-focus:tw-px-2 tw-mx-4 peer-focus:tw-mx-4 peer-focus:tw-text-blue-600 peer-focus:tw-dark peer-placeholder-shown:tw-scale-100 peer-placeholder-shown:-tw-translate-y-1/2 peer-placeholder-shown:tw-top-1/2 peer-focus:tw-top-2 peer-focus:tw-scale-75 peer-focus:-tw-translate-y-4 rtl:tw-peer-focus rtl:tw-peer-focus tw-start-1">First
+                    name</label>
+                </div>
+                <div class="col tw-relative tw-z-0 tw-w-full">
+                  <input type="text" placeholder=" " required
+                    class="tw-block tw-px-2.5 tw-pb-2.5 tw-pt-4 tw-w-full tw-text-sm tw-text-gray-900 tw-bg-transparent tw-rounded-lg tw-border-1 tw-border-gray-300 tw-appearance-none dark:tw-text-white dark:tw-border-gray-600 dark:tw-focus focus:tw-outline-none focus:tw-ring-0 focus:tw-border-blue-600 tw-peer"
+                    required [(ngModel)]="this.bookingInfo.renterInfo.lastName" [disabled]="!isEditing"
+                    name="renterLastName" placeholder=" " ngModel #renterLastNameControl="ngModel">
+                  <label for="name"
+                    class="tw-absolute tw-text-sm tw-text-gray-500 dark:tw-text-gray-400 tw-duration-300 tw-transform -tw-translate-y-4 tw-scale-75 tw-top-2 tw-z-10 tw-origin-[0] tw-bg-white dark:tw-bg-gray-900 tw-px-2 peer-focus:tw-px-2 tw-mx-4 peer-focus:tw-mx-4 peer-focus:tw-text-blue-600 peer-focus:tw-dark peer-placeholder-shown:tw-scale-100 peer-placeholder-shown:-tw-translate-y-1/2 peer-placeholder-shown:tw-top-1/2 peer-focus:tw-top-2 peer-focus:tw-scale-75 peer-focus:-tw-translate-y-4 rtl:tw-peer-focus rtl:tw-peer-focus tw-start-1">Last
+                    name</label>
+                </div>
+                <span *ngIf="
+                                  (renterLastNameControl.touched || renterFirstNameControl.touched) &&
+                                  (renterFirstNameControl.value === '' ||
+                                    renterLastNameControl.value === '')
+                                " class="error-msg" id="error-renterFirstName">Please fill all the name
+                  fields</span>
+              </div>
+
+              <div class="tw-mb-5 tw-my-4">
+                <div class=" tw-relative tw-z-0 tw-w-full">
+                  <input type="tel" placeholder=" " id="phoneNumber" required
+                    class="tw-block tw-px-2.5 tw-pb-2.5 tw-pt-4 tw-w-full tw-text-sm tw-text-gray-900 tw-bg-transparent tw-rounded-lg tw-border-1 tw-border-gray-300 tw-appearance-none dark:tw-text-white dark:tw-border-gray-600 dark:tw-focus focus:tw-outline-none focus:tw-ring-0 focus:tw-border-blue-600 tw-peer"
+                    required [(ngModel)]="this.bookingInfo.renterInfo.phoneNumber" [disabled]="!isEditing"
+                    name="renterPhoneNumber" ngModel #renterPhoneNumberControl="ngModel" pattern="^\d{10,11}$"/>
+                  <label for="phoneNumber"
+                    class="tw-absolute tw-text-sm tw-text-gray-500 dark:tw-text-gray-400 tw-duration-300 tw-transform -tw-translate-y-4 tw-scale-75 tw-top-2 tw-z-10 tw-origin-[0] tw-bg-white dark:tw-bg-gray-900 tw-px-2 peer-focus:tw-px-2 peer-focus:tw-text-blue-600 peer-focus:tw-dark peer-placeholder-shown:tw-scale-100 peer-placeholder-shown:-tw-translate-y-1/2 peer-placeholder-shown:tw-top-1/2 peer-focus:tw-top-2 peer-focus:tw-scale-75 peer-focus:-tw-translate-y-4 rtl:tw-peer-focus rtl:tw-peer-focus tw-start-1">
+                    Phone Number<span class="required-asterisk">*</span></label>
+                  <span *ngIf="
+                  renterPhoneNumberControl.value!==''&&
+                  renterPhoneNumberControl.invalid
+                " class="error-msg" id="error-renterPhoneNumber">Please enter the right phone number
+                  </span>
+
+                </div>
+                <span *ngIf="
+                              renterPhoneNumberControl.touched &&
+                              renterPhoneNumberControl.value === ''
+                            " class="error-msg" id="error-renterFirstName">Please enter phone
+                  number<br /></span>
+              </div>
+
+              <div class="tw-mb-5 tw-my-4">
+                <div class=" tw-relative tw-z-0 tw-w-full">
+                  <input type="text" placeholder=" " id="nationalId" required
+                    [(ngModel)]="this.bookingInfo.renterInfo.nationalId" [disabled]="!isEditing"
+                    #renterNationalIdControl="ngModel"
+                    class="tw-block tw-px-2.5 tw-pb-2.5 tw-pt-4 tw-w-full tw-text-sm tw-text-gray-900 tw-bg-transparent tw-rounded-lg tw-border-1 tw-border-gray-300 tw-appearance-none dark:tw-text-white dark:tw-border-gray-600 dark:tw-focus focus:tw-outline-none focus:tw-ring-0 focus:tw-border-blue-600 tw-peer"
+                    required name="renterNationalId" />
+                  <label for="nationalId"
+                    class="tw-absolute tw-text-sm tw-text-gray-500 dark:tw-text-gray-400 tw-duration-300 tw-transform -tw-translate-y-4 tw-scale-75 tw-top-2 tw-z-10 tw-origin-[0] tw-bg-white dark:tw-bg-gray-900 tw-px-2 peer-focus:tw-px-2 peer-focus:tw-text-blue-600 peer-focus:tw-dark peer-placeholder-shown:tw-scale-100 peer-placeholder-shown:-tw-translate-y-1/2 peer-placeholder-shown:tw-top-1/2 peer-focus:tw-top-2 peer-focus:tw-scale-75 peer-focus:-tw-translate-y-4 rtl:tw-peer-focus rtl:tw-peer-focus tw-start-1">
+                    National Id No.<span class="required-asterisk">*</span></label>
+                </div>
+                <span *ngIf="
+                                    renterPhoneNumberControl.touched &&
+                                    renterPhoneNumberControl.value === ''
+                                  " class="error-msg" id="error-renterFirstName">Please enter National
+                  Id<br /></span>
+              </div>
+            </div>
+            <div class="form-group">
+
+              <div class="tw-mb-5 tw-my-4">
+                <app-date-picker class="tw-w-full" [defaultDate]="convertToString(renterDobDateStruct)" name="renterDob"
+                  id="renterDob" (result)="handleResultRenter($event)" [title]="'Date of Birth'"
+                  [disable]="!isEditing"></app-date-picker>
+                <span *ngIf="!checkValidDob(renterDobDateStruct)" class="error-msg" id="error-renterFirstName">Please
+                  enter
+                  exactly your date of
+                  birth<br /></span>
+              </div>
+
+              <div class=" tw-my-4">
+                <div class=" tw-relative tw-z-0 tw-w-full">
+                  <input type="text" placeholder=" " id="renterEmail" required
+                    [(ngModel)]="this.bookingInfo.renterInfo.email" [disabled]="!isEditing"
+                    class="tw-block tw-px-2.5 tw-pb-2.5 tw-pt-4 tw-w-full tw-text-sm tw-text-gray-900 tw-bg-transparent tw-rounded-lg tw-border-1 tw-border-gray-300 tw-appearance-none dark:tw-text-white dark:tw-border-gray-600 dark:tw-focus focus:tw-outline-none focus:tw-ring-0 focus:tw-border-blue-600 tw-peer"
+                    required name="renterEmail" ngModel #renterEmailController="ngModel" />
+                  <label for="email"
+                    class="tw-absolute tw-text-sm tw-text-gray-500 dark:tw-text-gray-400 tw-duration-300 tw-transform -tw-translate-y-4 tw-scale-75 tw-top-2 tw-z-10 tw-origin-[0] tw-bg-white dark:tw-bg-gray-900 tw-px-2 peer-focus:tw-px-2 peer-focus:tw-text-blue-600 peer-focus:tw-dark peer-placeholder-shown:tw-scale-100 peer-placeholder-shown:-tw-translate-y-1/2 peer-placeholder-shown:tw-top-1/2 peer-focus:tw-top-2 peer-focus:tw-scale-75 peer-focus:-tw-translate-y-4 rtl:tw-peer-focus rtl:tw-peer-focus tw-start-1">
+                    Email address<span class="required-asterisk">*</span></label>
+                </div>
+                <span class="error-msg" *ngIf="renterEmailController.invalid && renterEmailController.touched">
+                  Please enter the right email<br />
+                </span>
+                <span class="error-msg" *ngIf="
+                              renterEmailController.touched && renterEmailController.value === ''
+                            ">
+                  Please enter email<br />
+                </span>
+              </div>
+
+              <label for="license" class="form-label my-0 label-input">Driving license<span
+                  class="required-asterisk">*</span></label>
+              <input type="file"
+                class="tw-block tw-mt-3 tw-w-full tw-text-sm tw-text-gray-900 tw-border tw-border-gray-300 tw-rounded-lg tw-cursor-pointer tw-bg-gray-50 dark:tw-text-gray-400 focus:tw-outline-none dark:tw-bg-gray-700 dark:tw-border-gray-600 dark:tw-placeholder-gray-400"
+                id="license" name="renterDrivingLicense" (change)="changeRenterUploadFile($event)" [hidden]="!isEditing"
+                #renterLicenseControl />
+              <img *ngIf="this.renterLicenseImg" class="tw-w-full tw-h-auto tw-my-2 tw-rounded-lg tw-object-cover"
+                [src]="this.renterLicenseImg" alt="renterLicenseImg" />
+
+              <span class="error-msg" *ngIf="!this.bookingInfo.renterInfo.drivingLicense">Please insert
+                driving
+                license!<br /></span>
+            </div>
+          </div>
+
+          <h4 class="tw-my-4 ">Address:<span class="required-asterisk">*</span></h4>
+          <div class="form-group">
+            <div class="tw-grid tw-grid-cols-3 tw-gap-2 tw-w-full tw-mb-4">
+              <div class="tw-flex tw-col-span-1 tw-items-center">
+                <label
+                  class="input-group-text input-group-text-fixed-size tw-h-10 tw-rounded-none tw-rounded-tl-lg tw-rounded-bl-lg"
+                  for="renterCity">City</label>
+                <select #citySelectionControl name="renterCity" id="renterCity"
+                  [(ngModel)]="this.bookingInfo.renterInfo.city" [disabled]="!isEditing"
+                  (change)="loadDistricts(citySelectionControl)"
+                  class="tw-w-full tw-flex-grow tw-bg-gray-50 tw-border tw-border-gray-300 tw-text-gray-900 tw-text-sm tw-rounded-lg focus:tw-ring-blue-500 focus:tw-border-blue-500 tw-block tw-p-2.5 dark:tw-bg-gray-700 dark:tw-border-gray-600 dark:tw-placeholder-gray-400 dark:tw-text-white dark:tw-focus dark:tw-focus tw-rounded-tl-none tw-rounded-bl-none">
+                  <option [value]="0" disabled selected>Choose a city</option>
+                  <option [value]="city.code" *ngFor="let city of cities">
+                    {{ city.name }}
+                  </option>
+                </select>
+              </div>
+
+              <div class="tw-flex tw-col-span-1 tw-items-center">
+                <label
+                  class="input-group-text input-group-text-fixed-size tw-h-10 tw-rounded-none tw-rounded-tl-lg tw-rounded-bl-lg"
+                  for="renterDistrict">District</label>
+                <select name="renterDistrict" id="renterDistrict" #districtSelectionControl
+                  (change)="loadWards(citySelectionControl, districtSelectionControl)"
+                  [(ngModel)]="this.bookingInfo.renterInfo.district"
+                  [disabled]="citySelectionControl.value === '0'|| citySelectionControl.value === ''||!isEditing"
+                  class="tw-w-full tw-h-10 tw-flex-grow tw-bg-gray-50 tw-border tw-border-gray-300 tw-text-gray-900 tw-text-sm tw-rounded-lg focus:tw-ring-blue-500 focus:tw-border-blue-500 tw-block tw-p-2.5 dark:tw-bg-gray-700 dark:tw-border-gray-600 dark:tw-placeholder-gray-400 dark:tw-text-white dark:tw-focus dark:tw-focus tw-rounded-tl-none tw-rounded-bl-none">
+                  <option [value]="0" disabled selected>Choose city first</option>
+                  <option [value]="district.code" *ngFor="let district of districts">
+                    {{ district.name }}
+                  </option>
+                </select>
+              </div>
+
+              <div class="tw-flex tw-col-span-1 tw-items-center">
+                <label
+                  class="input-group-text input-group-text-fixed-size tw-h-10 tw-rounded-none tw-rounded-tl-lg tw-rounded-bl-lg"
+                  for="renterWard">Ward</label>
+                <select name="renterWard" class="form-select tw-flex-grow" id="renterWard" #wardSelectionControl
+                  [disabled]="
+                                  districtSelectionControl.value === '' || districtSelectionControl.value === '0'
+                                  || citySelectionControl.value === '0'|| citySelectionControl.value === '' || !isEditing"
+                  (change)="saveWard(wardSelectionControl)" [(ngModel)]="address.wardId"
+                  class="tw-w-full tw-bg-gray-50 tw-border tw-border-gray-300 tw-text-gray-900 tw-text-sm tw-rounded-lg focus:tw-ring-blue-500 focus:tw-border-blue-500 tw-block tw-p-2.5 dark:tw-bg-gray-700 dark:tw-border-gray-600 dark:tw-placeholder-gray-400 dark:tw-text-white dark:tw-focus dark:tw-focus tw-rounded-tl-none tw-rounded-bl-none">
+                  <option [value]="0" disabled selected>Choose city and district first</option>
+                  <option [value]="ward.id" *ngFor="let ward of wards">
+                    {{ ward.name }}
+                  </option>
+                </select>
+              </div>
+            </div>
+
+            <div class="tw-mb-4">
+              <div class="col tw-relative tw-z-0 tw-w-full">
+                <input [disabled]="
+                                citySelectionControl.value === '0' ||
+                                wardSelectionControl.value === '0' ||
+                                districtSelectionControl.value === '0'|| !isEditing
+                              " type="text" name="renterStreet" id="renterStreet"
+                  [(ngModel)]="this.bookingInfo.renterInfo.street" #renterStreetControl="ngModel"
+                  class="tw-block tw-px-2.5 tw-pb-2.5 tw-pt-4 tw-w-full tw-text-sm tw-text-gray-900 tw-bg-transparent tw-rounded-lg tw-border-1 tw-border-gray-300 tw-appearance-none dark:tw-text-white dark:tw-border-gray-600 dark:tw-focus focus:tw-outline-none focus:tw-ring-0 focus:tw-border-blue-600 tw-peer" />
+                <label for="renterStreet"
+                  class="tw-absolute tw-text-sm tw-text-gray-500 dark:tw-text-gray-400 tw-duration-300 tw-transform -tw-translate-y-4 tw-scale-75 tw-top-2 tw-z-10 tw-origin-[0] tw-bg-white dark:tw-bg-gray-900 tw-px-2 peer-focus:tw-px-2 tw-mx-4 peer-focus:tw-mx-4 peer-focus:tw-text-blue-600 peer-focus:tw-dark peer-placeholder-shown:tw-scale-100 peer-placeholder-shown:-tw-translate-y-1/2 peer-placeholder-shown:tw-top-1/2 peer-focus:tw-top-2 peer-focus:tw-scale-75 peer-focus:-tw-translate-y-4 rtl:tw-peer-focus rtl:tw-peer-focus tw-start-1">
+                  Street</label>
+              </div>
+            </div>
+
+          </div>
+          <div class="tw-my-4 tw-gray-900 tw-text-xl">Driver's infomation:</div>
+          <div class="form-check tw-my-4 tw-pl-0 tw-flex !tw-items-center">
+            <input type="checkbox" id="isDifferent" [checked]="driverIsDifferent"
+              class="tw-flex tw-contents-center !tw-items-center tw-mr-2 tw-rounded" [disabled]="!isEditing"
+              (change)="onCheckboxChange()" #isDifferentCheckBox />
+            <label for="isDifferent" class="form-check-label">Different than Renter's infomation</label>
+          </div>
+          <div class="row p-0" [hidden]="!driverIsDifferent">
+            <div class=" form-group">
+              <label for="fullDriverName" class="label-input tw-mb-4">Full name<span
+                  class="required-asterisk">*</span></label>
+              <div class="row tw-mb-5">
+
+                <div class="col tw-relative tw-z-0 tw-w-64 ">
+                  <input type="text" placeholder=" " id="driverFirstName"
+                    [(ngModel)]="this.bookingInfo.driverInfo.firstName" name="driverFirstName"
+                    [disabled]="!driverIsDifferent || !isEditing" #driverFirstNameControl="ngModel"
+                    class="tw-block tw-px-2.5 tw-pb-2.5 tw-pt-4 tw-w-full tw-text-sm tw-text-gray-900 tw-bg-transparent tw-rounded-lg tw-border-1 tw-border-gray-300 tw-appearance-none dark:tw-text-white dark:tw-border-gray-600 dark:tw-focus focus:tw-outline-none focus:tw-ring-0 focus:tw-border-blue-600 tw-peer" />
+                  <label for="driverFirstName"
+                    class="tw-absolute tw-text-sm tw-text-gray-500 dark:tw-text-gray-400 tw-duration-300 tw-transform -tw-translate-y-4 tw-scale-75 tw-top-2 tw-z-10 tw-origin-[0] tw-bg-white dark:tw-bg-gray-900 tw-px-2 peer-focus:tw-px-2 tw-mx-4 peer-focus:tw-mx-4 peer-focus:tw-text-blue-600 peer-focus:tw-dark peer-placeholder-shown:tw-scale-100 peer-placeholder-shown:-tw-translate-y-1/2 peer-placeholder-shown:tw-top-1/2 peer-focus:tw-top-2 peer-focus:tw-scale-75 peer-focus:-tw-translate-y-4 rtl:tw-peer-focus rtl:tw-peer-focus tw-start-1">
+                    First name</label>
+                </div>
+                <div class="col tw-relative tw-z-0 tw-w-64">
+                  <input type="text" placeholder=" " id="driverLastName"
+                    [(ngModel)]="this.bookingInfo.driverInfo.lastName" name="driverLastName"
+                    [disabled]="!driverIsDifferent || !isEditing" #driverLastNameControl="ngModel"
+                    class="tw-block tw-px-2.5 tw-pb-2.5 tw-pt-4 tw-w-full tw-text-sm tw-text-gray-900 tw-bg-transparent tw-rounded-lg tw-border-1 tw-border-gray-300 tw-appearance-none dark:tw-text-white dark:tw-border-gray-600 dark:tw-focus focus:tw-outline-none focus:tw-ring-0 focus:tw-border-blue-600 tw-peer" />
+                  <label for="driverLastName"
+                    class="tw-absolute tw-text-sm tw-text-gray-500 dark:tw-text-gray-400 tw-duration-300 tw-transform -tw-translate-y-4 tw-scale-75 tw-top-2 tw-z-10 tw-origin-[0] tw-bg-white dark:tw-bg-gray-900 tw-px-2 peer-focus:tw-px-2 tw-mx-4 peer-focus:tw-mx-4 peer-focus:tw-text-blue-600 peer-focus:tw-dark peer-placeholder-shown:tw-scale-100 peer-placeholder-shown:-tw-translate-y-1/2 peer-placeholder-shown:tw-top-1/2 peer-focus:tw-top-2 peer-focus:tw-scale-75 peer-focus:-tw-translate-y-4 rtl:tw-peer-focus rtl:tw-peer-focus tw-start-1">
+                    Last name</label>
+                </div>
+              </div>
+
+              <div class="tw-my-4">
+                <div class="col tw-relative tw-z-0 tw-w-full">
+                  <input type="tel" placeholder=" " id="DriverPhoneNumber"
+                    class="tw-block tw-px-2.5 tw-pb-2.5 tw-pt-4 tw-w-full tw-text-sm tw-text-gray-900 tw-bg-transparent tw-rounded-lg tw-border-1 tw-border-gray-300 tw-appearance-none dark:tw-text-white dark:tw-border-gray-600 dark:tw-focus focus:tw-outline-none focus:tw-ring-0 focus:tw-border-blue-600 tw-peer"
+                    name="driverPhoneNumber" [(ngModel)]="this.bookingInfo.driverInfo.phoneNumber"
+                    [disabled]="!driverIsDifferent || !isEditing" #driverPhoneNumberControl="ngModel" pattern="\d{10,11}$"/>
+                  <label for="DriverPhoneNumber"
+                    class="tw-absolute tw-text-sm tw-text-gray-500 dark:tw-text-gray-400 tw-duration-300 tw-transform -tw-translate-y-4 tw-scale-75 tw-top-2 tw-z-10 tw-origin-[0] tw-bg-white dark:tw-bg-gray-900 tw-px-2 peer-focus:tw-px-2 peer-focus:tw-text-blue-600 peer-focus:tw-dark peer-placeholder-shown:tw-scale-100 peer-placeholder-shown:-tw-translate-y-1/2 peer-placeholder-shown:tw-top-1/2 peer-focus:tw-top-2 peer-focus:tw-scale-75 peer-focus:-tw-translate-y-4 rtl:tw-peer-focus rtl:tw-peer-focus tw-start-1">
+                    Phone Number<span class="required-asterisk">*</span></label>
+                    <span *ngIf="
+                    driverPhoneNumberControl.value!==''&&
+                    driverPhoneNumberControl.invalid
+                  " class="error-msg" id="error-renterPhoneNumber">Please enter the right phone number
+                  </span>
+                </div>
+
+              </div>
+
+              <div class="tw-my-4">
+                <div class="col tw-relative tw-z-0 tw-w-full">
+                  <input type="text" placeholder=" " id="driverNationalId"
+                    class="tw-block tw-px-2.5 tw-pb-2.5 tw-pt-4 tw-w-full tw-text-sm tw-text-gray-900 tw-bg-transparent tw-rounded-lg tw-border-1 tw-border-gray-300 tw-appearance-none dark:tw-text-white dark:tw-border-gray-600 dark:tw-focus focus:tw-outline-none focus:tw-ring-0 focus:tw-border-blue-600 tw-peer"
+                    name="driverNationalId" [(ngModel)]="this.bookingInfo.driverInfo.nationalId"
+                    [disabled]="!driverIsDifferent || !isEditing" #driverNationalIdControl="ngModel" />
+                  <label for="driverNationalId"
+                    class="tw-absolute tw-text-sm tw-text-gray-500 dark:tw-text-gray-400 tw-duration-300 tw-transform -tw-translate-y-4 tw-scale-75 tw-top-2 tw-z-10 tw-origin-[0] tw-bg-white dark:tw-bg-gray-900 tw-px-2 peer-focus:tw-px-2 peer-focus:tw-text-blue-600 peer-focus:tw-dark peer-placeholder-shown:tw-scale-100 peer-placeholder-shown:-tw-translate-y-1/2 peer-placeholder-shown:tw-top-1/2 peer-focus:tw-top-2 peer-focus:tw-scale-75 peer-focus:-tw-translate-y-4 rtl:tw-peer-focus rtl:tw-peer-focus tw-start-1">
+                    National Id No.<span class="required-asterisk">*</span></label>
+                </div>
+              </div>
+            </div>
+
+            <div class=" form-group">
+              <div class="tw-mb-5 tw-my-4">
+                <app-date-picker class="tw-w-full" [defaultDate]="convertToString(driverDobDateStruct)" name="driverDob"
+                  id="driverDob" (result)="handleResultDriver($event)" [title]="'Date of Birth'"
+                  [disable]="!isEditing"></app-date-picker>
+              </div>
+
+              <div class="tw-my-4">
+                <div class="col tw-relative tw-z-0 tw-w-full">
+                  <input type="text" placeholder=" " id="driverEmail"
+                    class="tw-block tw-px-2.5 tw-pb-2.5 tw-pt-4 tw-w-full tw-text-sm tw-text-gray-900 tw-bg-transparent tw-rounded-lg tw-border-1 tw-border-gray-300 tw-appearance-none dark:tw-text-white dark:tw-border-gray-600 dark:tw-focus focus:tw-outline-none focus:tw-ring-0 focus:tw-border-blue-600 tw-peer"
+                    email id="driverEmail" name="driverEmail" [(ngModel)]="this.bookingInfo.driverInfo.email"
+                    [required]="driverIsDifferent" [disabled]="!driverIsDifferent || !isEditing" />
+                  <label for="driverEmail"
+                    class="tw-absolute tw-text-sm tw-text-gray-500 dark:tw-text-gray-400 tw-duration-300 tw-transform -tw-translate-y-4 tw-scale-75 tw-top-2 tw-z-10 tw-origin-[0] tw-bg-white dark:tw-bg-gray-900 tw-px-2 peer-focus:tw-px-2 peer-focus:tw-text-blue-600 peer-focus:tw-dark peer-placeholder-shown:tw-scale-100 peer-placeholder-shown:-tw-translate-y-1/2 peer-placeholder-shown:tw-top-1/2 peer-focus:tw-top-2 peer-focus:tw-scale-75 peer-focus:-tw-translate-y-4 rtl:tw-peer-focus rtl:tw-peer-focus tw-start-1">
+                    Email address<span class="required-asterisk">*</span></label>
+                </div>
+              </div>
+
+              <label for="driverLicense" class="form-label my-0 label-input tw-my-0">Driving license<span
+                  class="required-asterisk">*</span></label>
+              <input type="file"
+                class="tw-my-3 tw-block tw-w-full tw-text-sm tw-text-gray-900 tw-border tw-border-gray-300 tw-rounded-lg tw-cursor-pointer tw-bg-gray-50 dark:tw-text-gray-400 focus:tw-outline-none dark:tw-bg-gray-700 dark:tw-border-gray-600 dark:tw-placeholder-gray-400"
+                [required]="driverIsDifferent" [disabled]="!driverIsDifferent" id="driverLicense" name="driverLicense"
+                (change)="changeDriverUploadFile($event)" [hidden]="!isEditing" />
+              <img *ngIf="this.driverLicenseImg" class="tw-w-full tw-h-auto tw-my-2 tw-rounded-lg tw-object-cover"
+                [src]="this.driverLicenseImg" alt="driverLicenseImg" />
+              <span class="error-msg" *ngIf="!this.bookingInfo.driverInfo.drivingLicense">Please insert driving
+                license!<br /></span>
+            </div>
+          </div>
+
+          <div class="tw-flex tw-justify-end" [hidden]="!isEditing">
+            <button type="button" class="btn btn-default tw-mr-3" (click)="cancelEdit()">
+              Cancel
+            </button>
+            <button [disabled]="f.invalid" class="btn btn-primary tw-px-1.5 tw-py-1 tw-rounded-lg" (click)="onSubmit()">Confirm</button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+    <div>
+      <div class="tw-grid tw-grid-cols-3 lg:tw-grid-cols-3 md:tw-grid-cols-2 sm:tw-grid-cols-1 tw-gap-4 w-full">
+      </div>
+    </div>
+  </div>
+</div>

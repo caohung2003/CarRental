@@ -1,0 +1,97 @@
+/*@tailwind base;*/
+/*@tailwind components;*/
+/*@tailwind utilities;*/
+
+button{
+  border: 1px solid black;
+  padding: 10px;
+  /* border-radius: 0.25rem; */
+  background-color: black;
+  color: white;
+
+}
+
+
+.az-10{
+  background-color: black;
+  color: white !important;
+  font-weight: bold;
+}
+
+#topnav {
+  position: fixed;
+  inset-inline-start: 0px;
+  inset-inline-end: 0px;
+  top: 0;
+  z-index: 999;
+}
+
+.menu-option a {
+  width: fit-content;
+}
+
+.menu-option:hover a {
+  width: 100%;
+}
+
+.menu-option li {
+  width: fit-content;
+}
+
+.menu-option:hover li {
+  width: 100%;
+}
+
+.menu-option .list {
+  width: fit-content;
+}
+
+.menu-option:hover .list {
+  width: 100%;
+}
+
+.menu-option svg {
+  margin-right: 0;
+}
+
+.menu-option:hover svg {
+  margin-right: 0.75rem;
+}
+
+.account-text {
+  /* display: none; */
+  display: none;
+  /* Revert to using display: none; */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s, visibility 0.5s;
+}
+
+@media (max-width: 767px) {
+  .account-text {
+      opacity: 1;
+      visibility: visible;
+      display: block;
+  }
+
+  .menu-option svg {
+      margin-right: 0.75rem;
+  }
+
+  .menu-option a {
+      width: 100%;
+  }
+  
+  .menu-option li {
+      width: 100%;
+  }
+}
+
+
+.menu-option:hover .account-text {
+  /* display: block; */
+  /* Use display: block; on hover */
+  opacity: 1;
+  visibility: visible;
+  display: block;
+}

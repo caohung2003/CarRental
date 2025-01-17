@@ -1,0 +1,268 @@
+<app-header id="topnav" class="header tw-sticky tw-top-0"></app-header>
+
+<div style="min-height: 500px;"
+  class="tw-pb-4 tw-flex tw-items-center tw-justify-center tw-w-full tw-h-fit tw-bg-gray-200">
+  <div class="tw-w-full tw-pl-10 tw-pr-10">
+    <div class="tw-grid tw-grid-cols-1 md:tw-grid-cols-12 tw-transition-[grid-template-columns]
+    md:tw-grid-cols-[120px_1fr] md:[&:has(>*:first-child:hover)]:tw-grid-cols-[250px_1fr]">
+      <div style="margin-top: 5rem"
+        class="menu-option tw-top-20 lg:tw-sticky tw-flex tw-flex-col tw-justify-between tw-rounded-xl md:tw-rounded-e-none tw-border-e tw-bg-white tw-p-8">
+        <ul style="top: 5rem" class="tw-sticky list-option tw-space-y-2">
+          <li>
+            <a [routerLink]="['/myprofile']"
+              class="{{url == '/myprofile'?'tw-text-white tw-bg-gray-800':'tw-text-gray-600'}} tw-flex tw-font-medium tw-p-2 tw-rounded-lg hover:tw-text-white hover:tw-bg-gray-800">
+              <svg class="tw-mr-3" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M11.76 10.86C13.3782 10.86 14.69 9.54819 14.69 7.93C14.69 6.31181 13.3782 5 11.76 5C10.1418 5 8.83 6.31181 8.83 7.93C8.83 9.54819 10.1418 10.86 11.76 10.86Z"
+                  stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                </path>
+                <path
+                  d="M5.84 19.0001V17.3301C5.84 15.3801 7.42 13.8101 9.36 13.8101H14.63C16.58 13.8101 18.15 15.3901 18.15 17.3301V19.0001"
+                  stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                </path>
+              </svg>
+              <span class="account-text tw-truncate">Account</span>
+            </a>
+          </li>
+          <hr class="tw-h-px tw-my-8 tw-bg-gray-200 tw-border-0 dark:tw-bg-gray-700">
+          <li>
+            <a [routerLink]="['/my-car']"
+              class="{{url == '/my-car'?'tw-text-white tw-bg-gray-800':'tw-text-gray-600'}} tw-flex tw-font-medium tw-p-2 tw-rounded-lg hover:tw-text-white hover:tw-bg-gray-800">
+              <svg class="tw-mr-3" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M17.14 21.2H6.85999C5.71999 21.2 4.79999 20.28 4.79999 19.14V4.74994C4.79999 3.60994 5.71999 2.68994 6.85999 2.68994H17.14C18.28 2.68994 19.2 3.60994 19.2 4.74994V19.14C19.19 20.28 18.27 21.2 17.14 21.2Z"
+                  stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                </path>
+                <path d="M7.89001 6.85999H8.92001" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                  stroke-linejoin="round"></path>
+                <path d="M12 6.85999H16.11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                  stroke-linejoin="round"></path>
+                <path d="M7.89001 12H8.92001" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                  stroke-linejoin="round"></path>
+                <path d="M12 12H16.11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                  stroke-linejoin="round"></path>
+                <path d="M7.89001 17.14H8.92001" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                  stroke-linejoin="round"></path>
+                <path d="M12 17.14H16.11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                  stroke-linejoin="round"></path>
+              </svg>
+              <span class="account-text tw-truncate">My Car</span>
+            </a>
+          </li>
+          <li>
+            <a [routerLink]="['/car-booking']"
+              class="{{url == '/car-booking'?'tw-text-white tw-bg-gray-800':'tw-text-gray-600'}} tw-flex tw-font-medium tw-p-2 tw-rounded-lg hover:tw-text-white hover:tw-bg-gray-800">
+              <svg class="tw-mr-3" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M6.50023 8.86914H4.80023C3.66023 8.86914 2.74023 9.78914 2.74023 10.9291V18.1191C2.74023 19.2591 3.66023 20.1791 4.80023 20.1791H19.1902C20.3302 20.1791 21.2502 19.2591 21.2502 18.1191V10.9291"
+                  stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                </path>
+                <path d="M16.1095 8.86914H10.2695" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                  stroke-linejoin="round"></path>
+                <path
+                  d="M16.1094 16.0605H19.1894C20.3294 16.0605 21.2494 16.9805 21.2494 18.1205C21.2494 19.2605 20.3294 20.1805 19.1894 20.1805H16.1094"
+                  stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                </path>
+                <path d="M16.1094 5.7793H19.1894C20.3294 5.7793 21.2494 6.6993 21.2494 7.8393" stroke="currentColor"
+                  stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                </path>
+                <path d="M21.25 18.1198V7.83984" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                  stroke-linejoin="round"></path>
+                <path d="M16.1094 5.7793V16.0593" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                  stroke-linejoin="round"></path>
+                <path
+                  d="M2.75 14.0098H6.86C7.43 14.0098 7.89 14.3998 7.89 14.8898C7.89 15.3798 8.35 15.7698 8.92 15.7698H9.95C10.52 15.7698 10.98 16.1598 10.98 16.6498V17.5298V20.1698"
+                  stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                </path>
+                <path
+                  d="M8.40007 3.83008C6.98007 3.83008 5.83008 4.98008 5.83008 6.40008C5.83008 8.16008 8.13007 10.7401 8.23007 10.8501C8.32007 10.9501 8.48008 10.9501 8.57008 10.8501C8.67008 10.7401 10.9701 8.16008 10.9701 6.40008C10.9701 4.98008 9.82007 3.83008 8.40007 3.83008Z"
+                  stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                </path>
+                <path
+                  d="M8.39977 7.37961C8.8913 7.37961 9.28976 6.98114 9.28976 6.48961C9.28976 5.99808 8.8913 5.59961 8.39977 5.59961C7.90823 5.59961 7.50977 5.99808 7.50977 6.48961C7.50977 6.98114 7.90823 7.37961 8.39977 7.37961Z"
+                  fill="currentColor"></path>
+              </svg>
+              <span class="account-text tw-truncate">My Car Bookings</span>
+            </a>
+          </li>
+          <hr class="tw-h-px tw-my-8 tw-bg-gray-200 tw-border-0 dark:tw-bg-gray-700">
+          <li>
+            <a [routerLink]="['/mybooking']"
+              class="{{url == '/mybooking'?'tw-text-white tw-bg-gray-800':'tw-text-gray-600'}} tw-flex tw-font-medium tw-p-2 tw-rounded-lg hover:tw-text-white hover:tw-bg-gray-800">
+              <svg class="tw-mr-3" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M6.50023 8.86914H4.80023C3.66023 8.86914 2.74023 9.78914 2.74023 10.9291V18.1191C2.74023 19.2591 3.66023 20.1791 4.80023 20.1791H19.1902C20.3302 20.1791 21.2502 19.2591 21.2502 18.1191V10.9291"
+                  stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                </path>
+                <path d="M16.1095 8.86914H10.2695" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                  stroke-linejoin="round"></path>
+                <path
+                  d="M16.1094 16.0605H19.1894C20.3294 16.0605 21.2494 16.9805 21.2494 18.1205C21.2494 19.2605 20.3294 20.1805 19.1894 20.1805H16.1094"
+                  stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                </path>
+                <path d="M16.1094 5.7793H19.1894C20.3294 5.7793 21.2494 6.6993 21.2494 7.8393" stroke="currentColor"
+                  stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                </path>
+                <path d="M21.25 18.1198V7.83984" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                  stroke-linejoin="round"></path>
+                <path d="M16.1094 5.7793V16.0593" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                  stroke-linejoin="round"></path>
+                <path
+                  d="M2.75 14.0098H6.86C7.43 14.0098 7.89 14.3998 7.89 14.8898C7.89 15.3798 8.35 15.7698 8.92 15.7698H9.95C10.52 15.7698 10.98 16.1598 10.98 16.6498V17.5298V20.1698"
+                  stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                </path>
+                <path
+                  d="M8.40007 3.83008C6.98007 3.83008 5.83008 4.98008 5.83008 6.40008C5.83008 8.16008 8.13007 10.7401 8.23007 10.8501C8.32007 10.9501 8.48008 10.9501 8.57008 10.8501C8.67008 10.7401 10.9701 8.16008 10.9701 6.40008C10.9701 4.98008 9.82007 3.83008 8.40007 3.83008Z"
+                  stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                </path>
+                <path
+                  d="M8.39977 7.37961C8.8913 7.37961 9.28976 6.98114 9.28976 6.48961C9.28976 5.99808 8.8913 5.59961 8.39977 5.59961C7.90823 5.59961 7.50977 5.99808 7.50977 6.48961C7.50977 6.98114 7.90823 7.37961 8.39977 7.37961Z"
+                  fill="currentColor"></path>
+              </svg>
+              <span class="account-text tw-truncate">My Bookings</span>
+            </a>
+          </li>
+          <li>
+            <a [routerLink]="['/mywallet']"
+              class="{{url == '/mywallet'?'tw-text-white tw-bg-gray-800':'tw-text-gray-600'}} tw-flex tw-font-medium tw-p-2 tw-rounded-lg hover:tw-text-white hover:tw-bg-gray-800">
+              <svg class="tw-mr-3" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" />
+                <path
+                  d="M17 8v-3a1 1 0 0 0 -1 -1h-10a2 2 0 0 0 0 4h12a1 1 0 0 1 1 1v3m0 4v3a1 1 0 0 1 -1 1h-12a2 2 0 0 1 -2 -2v-12" />
+                <path d="M20 12v4h-4a2 2 0 0 1 0 -4h4" />
+              </svg>
+              <span class="account-text tw-truncate">My Wallet</span>
+            </a>
+          </li>
+          <li>
+            <a href = "/feedback-report"
+              class="{{url == '/feedback-report'?'tw-text-white tw-bg-gray-800':'tw-text-gray-600'}} tw-flex tw-font-medium tw-p-2 tw-rounded-lg hover:tw-text-white hover:tw-bg-gray-800">
+              <svg class="tw-mr-3"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <path d="M6 4h11a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-11a1 1 0 0 1 -1 -1v-14a1 1 0 0 1 1 -1m3 0v18" />  <line x1="13" y1="8" x2="15" y2="8" />  <line x1="13" y1="12" x2="15" y2="12" /></svg>
+
+              <span class="account-text tw-truncate">My Feedback Report</span>
+            </a>
+          </li>
+          <hr class="tw-h-1 tw-my-8 tw-bg-gray-200 tw-border-0 dark:tw-bg-gray-700">
+          <li class="tw-mt-20">
+            <a (click)="logout()"
+              class="tw-flex tw-font-medium tw-text-gray-600 tw-p-2 tw-rounded-lg hover:tw-text-white hover:tw-bg-gray-800">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="tw-mr-3" width="24" height="24">
+                <path strokeLinecap="round" strokeLinejoin="round"
+                  d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15m3 0l3-3m0 0l-3-3m3 3H9" />
+              </svg>
+              <span class="account-text tw-truncate">Logout</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div style="margin-top: 5rem" class="tw-top-20 tw-overflow-x-hidden tw-grid-cols-12">
+        <div
+          class="tw-px-8 tw-py-3 tw-bg-white tw-rounded-xl tw-min-h-full md:tw-rounded-s-none tw-flex flex-column tw-justify-center">
+          <div
+            class="tw-w-full tw-justify-between tw-flex tw-items-center tw-text-base tw-mb-3 tw-font-medium  tw-text-gray-500 tw-border-b tw-border-gray-200 tw-dark:text-gray-400 tw-dark:border-gray-700">
+            <ul class="tw-flex tw-flex-wrap tw--mb-px">
+              <li class="me-2">
+                <a *ngIf="activeTab == 'Pending'"
+                  style="border-bottom: 3px solid black; color: black; font-weight: bold"
+                  class="tw-cursor-pointer tw-inline-flex tw-items-center tw-justify-center p-4 tw-text-blue-600 tw-border-b-2 tw-border-blue-600 tw-rounded-t-lg tw-active dark:text-blue-500 dark:border-blue-500 group">
+                  Pending
+                </a>
+                <a *ngIf="activeTab != 'Pending'" (click)="changeActiveTab('Pending')"
+                  class="tw-cursor-pointer tw-inline-block p-4 tw-border-b-2 tw-border-transparent tw-rounded-t-lg tw-hover:text-gray-600 tw-hover:border-gray-300 tw-dark:hover:text-gray-300">
+                  Pending
+                </a>
+              </li>
+              <li class="me-2">
+                <a *ngIf="activeTab == 'Inprogress'"
+                  style="border-bottom: 3px solid black; color: black; font-weight: bold"
+                  class="tw-cursor-pointer tw-inline-flex tw-items-center tw-justify-center p-4 tw-text-blue-600 tw-border-b-2 tw-border-blue-600 tw-rounded-t-lg tw-active dark:text-blue-500 dark:border-blue-500 group">
+                  In progress
+                </a>
+                <a *ngIf="activeTab != 'Inprogress'" (click)="changeActiveTab('Inprogress')"
+                  class="tw-cursor-pointer tw-inline-block p-4 tw-border-b-2 tw-border-transparent tw-rounded-t-lg tw-hover:text-gray-600 tw-hover:border-gray-300 tw-dark:hover:text-gray-300">
+                  In progress
+                </a>
+              </li>
+              <li class="me-2">
+                <a *ngIf="activeTab == 'Completed'"
+                  style="border-bottom: 3px solid black; color: black; font-weight: bold"
+                  class="tw-cursor-pointer tw-inline-flex tw-items-center tw-justify-center p-4 tw-text-blue-600 tw-border-b-2 tw-border-blue-600 tw-rounded-t-lg tw-active dark:text-blue-500 dark:border-blue-500 group">
+                  Completed
+                </a>
+                <a *ngIf="activeTab != 'Completed'" (click)="changeActiveTab('Completed')"
+                  class="tw-cursor-pointer tw-inline-block p-4 tw-border-b-2 tw-border-transparent tw-rounded-t-lg tw-hover:text-gray-600 tw-hover:border-gray-300 tw-dark:hover:text-gray-300">
+                  Completed
+                </a>
+              </li>
+            </ul>
+            <div class="tw-end-0">
+
+              <button (click)="show()" id="dropdownDefaultButtonCar" data-dropdown-toggle="dropdownCar"
+                class="tw-w-fit tw-text-white tw-bg-black  focus:tw-ring-4 focus:tw-outline-none focus:tw-ring-blue-300 tw-font-medium tw-rounded-lg tw-text-sm tw-px-5 tw-py-2.5 tw-text-center tw-inline-flex tw-items-center dark:tw-bg-blue-600 dark:hover:tw-bg-blue-700 dark:focus:ring-blue-800"
+                type="button">
+                <span id="nmeCar">Choose a car</span>
+                <svg class="tw-w-2.5 tw-ml-2 tw-h-2.5 tw-ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                  fill="none" viewBox="0 0 10 6">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="m1 1 4 4 4-4" />
+                </svg>
+              </button>
+
+              <!-- Dropdown menu -->
+              <div (scroll)="scroll()" id="dropdownCar"
+                style="height: 187px; overflow-y: scroll; position: absolute; inset: 0px auto auto -120px; margin: 0px; transform: translate3d(1280.8px, 159.2px, 0px)"
+                class=" tw-z-10 tw-hidden tw-bg-white tw-divide-y tw-divide-gray-100 tw-rounded-lg tw-shadow tw-w-50 dark:bg-gray-700">
+                <ul class="tw-py-2 tw-text-sm tw-text-gray-700 dark:text-gray-200"
+                  aria-labelledby="dropdownDefaultButtonCar">
+                  <li id="0" class="hover:tw-bg-black hover:tw-text-white active:tw-bg-black active:tw-text-white"
+                    style="cursor: pointer" (click)="filterCar(0, 'All')">
+                    <div style="display: flex; align-items: center">
+                      <div style="margin-bottom: 18px; margin-left: 5px">
+                      </div>
+                      <div>
+                        <span style="margin-left: 37px"
+                          class="tw-block tw-mb-5 tw-px-4 tw-py-2 dark:hover:bg-gray-600">All</span>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="hover:tw-bg-black hover:tw-text-white active:tw-bg-black active:tw-text-white"
+                    [id]="car.id" style="cursor: pointer" (click)="filterCar(car.id, car.name)"
+                    *ngFor="let car of cars">
+                    <div style="display: flex; align-items: center">
+                      <div style="margin-bottom: 18px; margin-left: 5px">
+                        <img style="width: 35px; height: 28px;  object-fit: cover; border-radius: 50px"
+                          [src]="car.image" />
+
+                      </div>
+                      <div>
+                        <span [id]="'nmeCar' + car.id"
+                          class="tw-block tw-mb-5 tw-px-4 tw-py-2 dark:hover:bg-gray-600">{{car.name}}</span>
+                      </div>
+                    </div>
+                  </li>
+                  <li id="spinner" *ngIf="page < totalPages - 1" style="margin-left: 20px">
+                    <mat-spinner diameter="20"></mat-spinner>
+
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <app-pending-booking class="tw-mb-1" [carId]="carId" *ngIf="activeTab == 'Pending'"></app-pending-booking>
+          <app-in-progress-booking class="tw-mb-1" [carId]="carId"
+            *ngIf="activeTab == 'Inprogress'"></app-in-progress-booking>
+          <app-completed-booking class="tw-mb-1" [carId]="carId"
+            *ngIf="activeTab == 'Completed'"></app-completed-booking>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>RentalCar Return Car</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.5;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        p {
+            margin-bottom: 10px;
+        }
+
+        a.button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+
+        em {
+            font-style: italic;
+        }
+
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <div style="background-color:#f1f1f1">
+        <div style="background:#01d28e;background-color:#01d28e;Margin:0px auto;max-width:600px">
+            <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation"
+                   style="background:#01d28e;background-color:#01d28e;width:100%">
+                <tbody>
+                <tr>
+                    <td style="direction:ltr;font-size:0px;text-align:center;vertical-align:top">
+                        <div class="m_-3754145298633594894mj-column-per-100"
+                             style="font-size:13px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%">
+                            <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
+                                <tbody>
+                                <tr>
+                                    <td style="vertical-align:top;padding:0">
+                                        <table border="0" cellpadding="0" cellspacing="0" role="presentation"
+                                               width="100%">
+                                            <tbody>
+                                            <tr>
+                                                <td align="left"
+                                                    style="font-size:0px;padding:21px 0 20px 16px;word-break:break-word">
+                                                    <table border="0" cellpadding="0" cellspacing="0"
+                                                           role="presentation"
+                                                           style="border-collapse:collapse;border-spacing:0px">
+                                                        <tbody>
+                                                        <tr>
+                                                            <td style="width:96px">
+                                                                <img src="https://drive.usercontent.google.com/download?id=1JUnIAkxnzfqBFKv2JrUdFA_XRTHRz2tc&export=view"
+                                                                     style="border:0;display:block;outline:none;text-decoration:none;height:50px"
+                                                                     class="CToWUd" data-bit="iit">
+                                                            </td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div style="background:#02003b;background-color:#02003b;Margin:0px auto;max-width:600px">
+            <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation"
+                   style="background:#02003b;background-color:#02003b;width:100%">
+                <tbody>
+                <tr>
+                    <td style="direction:ltr;font-size:0px;padding:0 32px;text-align:center;vertical-align:top">
+                        <div class="m_-3754145298633594894mj-column-per-100"
+                             style="font-size:13px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%">
+                            <table border="0" cellpadding="0" cellspacing="0" role="presentation"
+                                   style="vertical-align:top" width="100%">
+                                <tbody>
+                                <tr>
+                                    <td align="left" style="font-size:0px;padding:16px 0;word-break:break-word">
+                                        <div style="font-family:Poppins ExtraBold,sans-serif;font-size:20px;font-weight:800;letter-spacing:0.64px;line-height:32px;text-align:left;color:#ffffff">
+                                            Your booking has been cancelled
+                                        </div>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div style="background:#ffffff;background-color:#ffffff;Margin:0px auto;max-width:600px">
+            <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation"
+                   style="background:#ffffff;background-color:#ffffff;width:100%">
+                <tbody>
+                <tr>
+                    <td style="direction:ltr;font-size:0px;padding:32px;text-align:center;vertical-align:top">
+                        <div class="m_-3754145298633594894mj-column-per-100"
+                             style="font-size:13px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%">
+                            <table border="0" cellpadding="0" cellspacing="0" role="presentation"
+                                   style="vertical-align:top" width="100%">
+                                <tbody>
+                                <tr>
+                                    <td align="left"
+                                        style="font-size:0px;padding:0;padding-bottom:18px;word-break:break-word">
+                                        <div style="font-family:IBM Plex Sans,sans-serif;font-size:17px;font-weight:800;letter-spacing:0.64px;line-height:32px;text-align:left;color:#02003b">
+                                            We regret to inform you that your booking with CarRental has been cancelled.
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="left" style="font-size:0px;padding:0 0 15px;word-break:break-word">
+                                        <div style="font-family:IBM Plex Sans,sans-serif;font-size:16px;line-height:24px;text-align:left;color:#203048">
+                                            <div style="font-size:16px;line-height:24px;color:#203048">
+                                                <div style="margin-bottom:0;width:48%;float:left;border-right:2px solid rgba(32,48,72,0.4);margin-right:18px">
+                                                    <h5 style="margin:0;color:rgba(32,48,72,0.4);font-size:12px;font-weight:600;line-height:18px">
+                                                        CUSTOMER</h5>
+                                                    <div th:text="${fullName}"></div>
+                                                </div>
+                                                <div style="margin-bottom:0;width:48%;float:left">
+                                                    <h5 style="margin:0;color:rgba(32,48,72,0.4);font-size:12px;font-weight:600;line-height:18px">
+                                                        CAR</h5>
+                                                    <div th:text="${booking.getCar().getBrandModel().getBrand().getName()} +' '+ ${booking.getCar().getBrandModel().getName()}"></div>
+                                                </div>
+                                                <div style="clear:both">&nbsp;</div>
+                                                <div style="margin-bottom:32px;width:100%">
+                                                    <h5 style="margin:0;color:rgba(32,48,72,0.4);font-size:12px;font-weight:600;line-height:18px">
+                                                        PICK UP LOCATION</h5>
+                                                    <div th:text="${booking.getRenterLocation()}"></div>
+                                                </div>
+                                                <!-- <div style="margin-bottom:32px;width:100%">
+                                                    <h5 style="margin:0;color:rgba(32,48,72,0.4);font-size:12px;font-weight:600;line-height:18px">
+                                                        PICK UP TIME</h5>
+                                                    <div th:text="${booking.pickUpDateTime}"></div>
+                                                </div>
+
+                                                <div style="margin-bottom:32px;width:100%">
+                                                    <h5 style="margin:0;color:rgba(32,48,72,0.4);font-size:12px;font-weight:600;line-height:18px">
+                                                        DROP OFF TIME</h5>
+                                                    <div th:text="${booking.returnDateTime}"></div>
+                                                </div> -->
+                                                <div style="width:100%;margin-bottom:0">
+                                                    <h5 style="margin:0;color:rgba(32,48,72,0.4);font-size:12px;font-weight:600;line-height:18px">
+                                                        BOOKING ID</h5>
+                                                    <div th:text="${booking.getId()}"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div style="background:#ffffff;background-color:#ffffff;Margin:0px auto;max-width:600px">
+            <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation"
+                   style="background:#ffffff;background-color:#ffffff;width:100%">
+                <tbody>
+                <tr>
+                    <td style="direction:ltr;font-size:0px;padding:0 32px;text-align:center;vertical-align:top">
+                        <div class="m_-3754145298633594894mj-column-per-100"
+                             style="font-size:13px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%">
+                            <table border="0" cellpadding="0" cellspacing="0" role="presentation"
+                                   style="vertical-align:top" width="100%">
+                                <tbody>
+                                <tr>
+                                    <td align="left"
+                                        style="font-size:0px;padding:0 0 15px;padding-bottom:18px;word-break:break-word">
+                                        <div style="font-family:Poppins ExtraBold,sans-serif;font-size:20px;font-weight:800;letter-spacing:0.64px;line-height:32px;text-align:left;color:#02003b">
+                                            Message
+                                            <div th:text="${booking.getRenterMessage()}"></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div style="background:#02003b;background-color:#02003b;Margin:0px auto;max-width:600px">
+            <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation"
+                   style="background:#02003b;background-color:#02003b;width:100%">
+                <tbody>
+                <tr>
+                    <td style="direction:ltr;font-size:0px;padding:24px 32px;text-align:center;vertical-align:top">
+                        <div class="m_-3754145298633594894mj-column-per-100"
+                             style="font-size:13px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%">
+                            <table border="0" cellpadding="0" cellspacing="0" role="presentation"
+                                   style="vertical-align:top" width="100%">
+                                <tbody>
+                                <tr>
+                                    <td align="left" style="font-size:0px;padding:0;word-break:break-word">
+
+                                        <div style="font-family:IBM Plex Sans,sans-serif;font-size:13px;font-weight:600;line-height:28px;text-align:left;color:white"
+                                             th:text="${booking.getPaymentType()}">
+                                            Please contact us if you have any questions or concerns regarding this cancellation.
+                                        </div>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div style="font-family:IBM Plex Sans,sans-serif;font-size:13px;font-weight:600;line-height:28px;text-align:left;color:white">
+                                            Thank you for using our car rental service!
+                                        </div>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div style="background:#01d28e;background-color:#01d28e;Margin:0px auto;max-width:600px">
+
+            <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation"
+                   style="background:#01d28e;background-color:#01d28e;width:100%">
+                <tbody>
+                <tr>
+                    <td style="direction:ltr;font-size:0px;padding:24px;text-align:center;vertical-align:top">
+                        <div class="m_-3754145298633594894mj-column-per-100"
+                             style="font-size:13px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%">
+                            <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
+                                <tbody>
+                                <tr>
+                                    <td style="vertical-align:top;padding:0">
+                                        <table border="0" cellpadding="0" cellspacing="0" role="presentation"
+                                               width="100%">
+                                            <tbody>
+                                            <tr>
+                                                <td align="center"
+                                                    style="font-size:0px;padding:0;word-break:break-word">
+                                                    <div style="font-family:IBM Plex Sans,sans-serif;font-size:12px;line-height:18px;text-align:center;color:#02003b">
+                                                        Contact Us
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td align="center"
+                                                    style="font-size:0px;padding:0;word-break:break-word">
+                                                    <div style="font-family:IBM Plex Sans,sans-serif;font-size:12px;line-height:18px;text-align:center;color:#02003b">
+                                                        © CarRental 2024 | CarRental Company
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td align="center"
+                                                    style="font-size:0px;padding:0;word-break:break-word">
+
+                                                    <div style="font-family:IBM Plex Sans,sans-serif;font-size:12px;line-height:18px;text-align:center;color:#02003b">
+                                                        FA, Hoà Lạc, Thạch Thất, Hà Nội
+                                                    </div>
+                                                    <div style="font-family:IBM Plex Sans,sans-serif;font-size:12px;line-height:18px;text-align:center;color:#02003b">
+                                                        Email: info@fpt.com
+                                                    </div>
+
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td align="center"
+                                                    style="font-size:0px;padding:0 0 12px;word-break:break-word">
+                                                    <div style="font-family:Ubuntu,Helvetica,Arial,sans-serif;font-size:13px;line-height:1;text-align:center;color:#000000;margin-top:5px;">
+                                                        <a style="color:#000" href="#" target="_blank">Term and
+                                                            Conditions</a> |
+                                                        <a style="color:#000" href="#" target="_blank">Privacy & Cookies
+                                                            Policy</a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="yj6qo"></div>
+            <div class="adL">
+            </div>
+        </div>
+        <div class="adL">
+        </div>
+    </div>
+</div>
+</body>
+</html>

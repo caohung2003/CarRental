@@ -1,0 +1,239 @@
+/* :host {
+  display: block; 
+  background-color: #e5e5e5; 
+  min-height: 100vh; 
+} */
+
+form {
+  width: 100%;
+}
+
+.bg-primary {
+  background: #2b9ae9 !important;
+}
+.fullscreen-overlay {
+  display: none;
+  overflow-y: hidden;
+  position: fixed; /* Giữ nguyên vị trí trong khi cuộn trang */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color:white; /* Màu nền với độ mờ 50% */
+}
+
+/* Các thiết lập khác cho nội dung của div */
+.fullscreen-overlay p {
+  font-size: 24px;
+}
+.btn.btn-primary {
+  background: #2b9ae9 !important;
+  border: 1px solid #2b9ae9 !important;
+  color: #fff !important;
+}
+
+.btn.btn-secondary {
+  background: #01d28e !important;
+  border: 1px solid #01d28e !important;
+  color: #fff !important;
+}
+
+.car-container {
+  display: flex;
+  overflow-x: auto;
+  width: 100%;
+  white-space: nowrap;
+}
+
+.car-item {
+  flex: 0 0 auto;
+  width: 300px;
+  /* Set your desired width */
+  margin-right: 10px;
+  /* Adjust as needed for spacing between items */
+}
+
+.no-gutters {
+  margin: 50px 50px;
+}
+
+.row {
+  justify-content: center;
+}
+
+
+/* .counter-wrap {
+  margin-bottom: 20px;
+} */
+
+
+.image-container {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px; 
+  height: 500px;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-bottom: 1px solid #ddd;
+  max-width: 100%;
+}
+
+
+.text-img {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px;
+  text-align: left;
+  color: #f6f6f6;
+}
+
+
+
+span {
+  font-size: 14px;
+}
+
+
+.search-form {
+  color: white;
+  font-weight: bold;
+  background-color: white !important;
+  padding: 10px;
+  padding-top: 35px;
+  padding-bottom: 1px;
+  max-width: 33%;
+  margin-right: 10px;
+  z-index: 0 !important;
+}
+.lslt:disabled{
+  background-color: #2b9ae9 !important;
+  opacity: 50%;
+  color: white !important;
+}
+.pickloc {
+  width: 100%;
+}
+
+.middle h2 {
+  color: white;
+}
+
+.location {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.txt {
+  font-size: 15px;
+}
+
+.frmTitle {
+  font-size: 15px;
+}
+
+.lslt {
+  font-size: 14px;
+  border-radius: 10px;
+  padding: 7px;
+  width: 100%;
+  margin-bottom: 10px;
+  background: transparent;
+  color: white;
+  border-color: white;
+}
+
+.inpRoad input {
+  border-radius: 10px;
+  width: 70%;
+  padding: 5px;
+  padding-left: 20px;
+  margin-bottom: 20px;
+}
+
+#road1 {
+  background-color: white;
+  color: white !important;
+  width: 100%;
+  border-radius: 10px;
+  border-color: white !important;
+}
+
+.pickdrop {
+  display: flex;
+  justify-content: space-between;
+}
+
+.outpickdrop {
+  display: flex;
+}
+
+.outloc {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.date-input {
+  width: 100%;
+  border-radius: 10px;
+  border-color: white !important;
+}
+
+#road1::placeholder {
+  color: white;
+  font-size: 14px;
+}
+
+#road2::placeholder {
+  color: white;
+  font-size: 14px;
+}
+
+select option {
+  background-color: #ffffff;
+  color: black;
+}
+
+.form-control {
+  font-size: 14px !important;
+}
+
+.green-text {
+  color: #008000;
+  font-style: italic;
+}
+
+.hero-wrap {
+  margin-top: 0 !important;
+}
+
+/* Add custom scrollbar style */
+.city-container {
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.counter-wrap {
+  transition: transform 0.5s ease;
+  display: inline-block;
+}
+
+.image-container {
+  flex: 0 0 auto;
+  width: 300px; /* Adjust the width as needed */
+  display: inline-block;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+
+/* Add styles for navigation buttons */

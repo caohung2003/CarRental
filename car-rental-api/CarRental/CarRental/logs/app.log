@@ -1,0 +1,48 @@
+2024-04-12T11:30:18,501 INFO  [background-preinit] o.h.v.i.u.Version: HV000001: Hibernate Validator 8.0.1.Final
+2024-04-12T11:30:18,534 INFO  [restartedMain] o.s.b.StartupInfoLogger: Starting CarRentalApplication using Java 17.0.8.1 with PID 16408 (C:\ProjectBase\Project\car-rental-api\CarRental\target\classes started by acer in C:\ProjectBase\Project\car-rental-api\CarRental)
+2024-04-12T11:30:18,537 DEBUG [restartedMain] o.s.b.StartupInfoLogger: Running with Spring Boot v3.2.2, Spring v6.1.3
+2024-04-12T11:30:18,539 INFO  [restartedMain] o.s.b.SpringApplication: The following 1 profile is active: "local"
+2024-04-12T11:30:18,587 INFO  [restartedMain] o.s.b.l.DeferredLog: Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-04-12T11:30:18,588 INFO  [restartedMain] o.s.b.l.DeferredLog: For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-04-12T11:30:19,777 INFO  [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate: Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-04-12T11:30:19,951 INFO  [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate: Finished Spring Data repository scanning in 162 ms. Found 17 JPA repository interfaces.
+2024-04-12T11:30:20,990 INFO  [restartedMain] o.s.b.w.e.t.TomcatWebServer: Tomcat initialized with port 8080 (http)
+2024-04-12T11:30:21,003 INFO  [restartedMain] o.a.j.l.DirectJDKLog: Initializing ProtocolHandler ["http-nio-8080"]
+2024-04-12T11:30:21,008 INFO  [restartedMain] o.a.j.l.DirectJDKLog: Starting service [Tomcat]
+2024-04-12T11:30:21,009 INFO  [restartedMain] o.a.j.l.DirectJDKLog: Starting Servlet engine: [Apache Tomcat/10.1.18]
+2024-04-12T11:30:21,079 INFO  [restartedMain] o.a.j.l.DirectJDKLog: Initializing Spring embedded WebApplicationContext
+2024-04-12T11:30:21,080 INFO  [restartedMain] o.s.b.w.s.c.ServletWebServerApplicationContext: Root WebApplicationContext: initialization completed in 2490 ms
+2024-04-12T11:30:21,442 INFO  [restartedMain] o.h.j.i.u.LogHelper: HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-04-12T11:30:21,519 INFO  [restartedMain] o.h.Version: HHH000412: Hibernate ORM core version 6.4.1.Final
+2024-04-12T11:30:21,562 INFO  [restartedMain] o.h.c.i.RegionFactoryInitiator: HHH000026: Second-level cache disabled
+2024-04-12T11:30:21,812 INFO  [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo: No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-04-12T11:30:21,853 INFO  [restartedMain] c.z.h.HikariDataSource: HikariPool-1 - Starting...
+2024-04-12T11:30:22,177 INFO  [restartedMain] c.z.h.p.HikariPool: HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7294ccb6
+2024-04-12T11:30:22,179 INFO  [restartedMain] c.z.h.HikariDataSource: HikariPool-1 - Start completed.
+2024-04-12T11:30:22,220 WARN  [restartedMain] o.h.e.j.d.i.DialectFactoryImpl: HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-04-12T11:30:22,222 WARN  [restartedMain] o.h.e.j.d.i.DialectFactoryImpl: HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2024-04-12T11:30:23,688 INFO  [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator: HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-04-12T11:30:23,902 INFO  [restartedMain] o.s.o.j.AbstractEntityManagerFactoryBean: Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-04-12T11:30:24,557 DEBUG [restartedMain] o.s.w.f.GenericFilterBean: Filter 'jwtAuthenticationFilter' configured for use
+2024-04-12T11:30:24,696 INFO  [restartedMain] o.s.d.j.r.q.QueryEnhancerFactory: Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-04-12T11:30:27,477 WARN  [restartedMain] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration: spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-04-12T11:30:27,898 INFO  [restartedMain] o.s.b.a.e.w.EndpointLinksResolver: Exposing 1 endpoint(s) beneath base path '/actuator'
+2024-04-12T11:30:27,987 INFO  [restartedMain] o.s.s.w.DefaultSecurityFilterChain: Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@682853cc, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5bf3cb77, org.springframework.security.web.context.SecurityContextHolderFilter@3f6fd814, org.springframework.security.web.header.HeaderWriterFilter@3a203d20, org.springframework.web.filter.CorsFilter@6f3c90c4, org.springframework.security.web.authentication.logout.LogoutFilter@6de14923, CarRental.config.JwtAuthenticationFilter@73c5cee3, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@33391000, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@58d7b4ad, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@16ca336d, org.springframework.security.web.session.SessionManagementFilter@1f800bfe, org.springframework.security.web.access.ExceptionTranslationFilter@14b861ec, org.springframework.security.web.access.intercept.AuthorizationFilter@22b7a0ef]
+2024-04-12T11:30:28,429 INFO  [restartedMain] o.s.b.d.a.OptionalLiveReloadServer: LiveReload server is running on port 35729
+2024-04-12T11:30:28,517 INFO  [restartedMain] o.a.j.l.DirectJDKLog: Starting ProtocolHandler ["http-nio-8080"]
+2024-04-12T11:30:28,547 INFO  [restartedMain] o.s.b.w.e.t.TomcatWebServer: Tomcat started on port 8080 (http) with context path ''
+2024-04-12T11:30:28,578 INFO  [restartedMain] o.s.b.StartupInfoLogger: Started CarRentalApplication in 10.424 seconds (process running for 11.327)
+2024-04-12T11:30:41,163 INFO  [http-nio-8080-exec-1] o.a.j.l.DirectJDKLog: Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-04-12T11:30:41,164 INFO  [http-nio-8080-exec-1] o.s.w.s.FrameworkServlet: Initializing Servlet 'dispatcherServlet'
+2024-04-12T11:30:41,168 INFO  [http-nio-8080-exec-1] o.s.w.s.FrameworkServlet: Completed initialization in 3 ms
+2024-04-12T11:30:42,729 INFO  [http-nio-8080-exec-4] C.s.s.i.S3ServiceImpl: Downloaded file from S3 bucket: car-rental-dev, key: avatar_image_2.jpeg
+2024-04-12T11:30:44,306 INFO  [http-nio-8080-exec-3] C.s.s.i.S3ServiceImpl: Downloaded file from S3 bucket: car-rental-dev, key: avatar_image_2.jpeg
+2024-04-12T11:31:03,070 INFO  [http-nio-8080-exec-9] C.u.m.c.CarDetailMapper: CarRental.models.car.CarDetail@7912aa18
+2024-04-12T11:31:03,086 INFO  [http-nio-8080-exec-9] C.u.m.c.CarDetailMapper: CarRental.models.car.CarDetail@901ec0
+2024-04-12T11:31:03,099 INFO  [http-nio-8080-exec-9] C.u.m.c.CarDetailMapper: CarRental.models.car.CarDetail@7c1aa75a
+2024-04-12T11:31:03,119 INFO  [http-nio-8080-exec-9] C.u.m.c.CarDetailMapper: CarRental.models.car.CarDetail@359aaac1
+2024-04-12T11:31:03,130 INFO  [http-nio-8080-exec-9] C.u.m.c.CarDetailMapper: CarRental.models.car.CarDetail@358eda14
+2024-04-12T11:31:03,142 INFO  [http-nio-8080-exec-9] C.u.m.c.CarDetailMapper: CarRental.models.car.CarDetail@261e42c0
+2024-04-12T11:31:03,822 INFO  [http-nio-8080-exec-6] C.s.s.i.S3ServiceImpl: Downloaded file from S3 bucket: car-rental-dev, key: avatar_image_2.jpeg
+2024-04-12T11:31:03,822 INFO  [http-nio-8080-exec-5] C.s.s.i.S3ServiceImpl: Downloaded file from S3 bucket: car-rental-dev, key: front_image_149.jpeg
+2024-04-12T11:43:31,088 WARN  [HikariPool-1 housekeeper] c.z.h.p.HikariPool$HouseKeeper: HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=6m38s794ms652µs800ns).

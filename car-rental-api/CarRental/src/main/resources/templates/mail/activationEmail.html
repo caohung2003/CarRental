@@ -1,0 +1,58 @@
+  <!doctype html>
+  <html xmlns:th="http://www.thymeleaf.org" lang="en">
+    <head>
+      <title>RentalCar account activation</title>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <style>
+        body {
+          font-family: Arial, sans-serif;
+          line-height: 1.5;
+          margin: 0;
+          padding: 0;
+        }
+        
+        .container {
+          max-width: 600px;
+          margin: 0 auto;
+          padding: 20px;
+        }
+        
+        h1 {
+          font-size: 24px;
+          font-weight: bold;
+          margin-bottom: 20px;
+        }
+        
+        p {
+          margin-bottom: 10px;
+        }
+        
+        a.button {
+          display: inline-block;
+          padding: 10px 20px;
+          background-color: #007bff;
+          color: #fff;
+          text-decoration: none;
+          border-radius: 4px;
+        }
+        
+        em {
+          font-style: italic;
+        }
+      </style>
+    </head>
+    <body>
+      <div class="container">
+        <h1>RentalCar activation</h1>
+        <p>Dear <span th:text="${user.firstName}"></span>,</p>
+        <p>Your RentalCar account has been created, please click on the button below to activate it:</p>
+        <p>
+          <a th:with="url=(@{|${baseUrl}/account/activate?key=${user.activationKey}|})" th:href="${url}" class="button">Activate Account</a>
+        </p>
+        <p>
+          Regards, <br />
+          <em>JCarRental.</em>
+        </p>
+      </div>
+    </body>
+  </html>

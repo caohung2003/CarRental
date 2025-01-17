@@ -1,0 +1,226 @@
+<div class="tw-min-h-fit" *ngIf="!isLoading">
+  <nav class="tw-bg-gray-800">
+    <div class="tw-mx-auto tw-max-w-7xl tw-px-4 sm:tw-px-6 lg:tw-px-8">
+      <div class="tw-flex tw-h-16 tw-items-center tw-justify-between">
+        <div class="tw-flex tw-items-center">
+          <a [routerLink]="['/home']" class="tw-flex-shrink-0">
+            <img class="tw-h-8 tw-w-auto" src="assets/images/logo/logo3.png" alt="Car Rental">
+          </a>
+          <div class="tw-hidden md:tw-block">
+            <div class="tw-ml-10 tw-flex tw-items-baseline tw-space-x-4">
+              <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+
+              <div id="mycar-header" *ngIf="isUserLoggedIn && role == 'USER'"
+                class="{{currentPage == '/mycar' ? 'tw-bg-gray-900 tw-text-white' : 'tw-text-gray-300 hover:tw-bg-gray-700 hover:tw-text-white'}} tw-text-gray-300 tw-relative hover:tw-bg-gray-700 hover:tw-text-white tw-rounded-md tw-px-3 tw-py-2 tw-text-sm tw-font-medium">
+                <a style="font-size: 14px" [routerLink]="['/my-car']">My car</a>
+
+              </div>
+              <div id="mycar-header" *ngIf="isUserLoggedIn && role == 'ADMIN'"
+                class="{{currentPage == '/car-manage' ? 'tw-bg-gray-900 tw-text-white' : 'tw-text-gray-300 hover:tw-bg-gray-700 hover:tw-text-white'}} tw-text-gray-300 tw-relative hover:tw-bg-gray-700 hover:tw-text-white tw-rounded-md tw-px-3 tw-py-2 tw-text-sm tw-font-medium">
+                <a style="font-size: 14px" href="/car-manage">Car management</a>
+
+              </div>
+              <a href="/mybooking" *ngIf="isUserLoggedIn && role == 'USER' "
+                class="{{currentPage == '/mybooking' ? 'tw-bg-gray-900 tw-text-white' : 'tw-text-gray-300 hover:tw-bg-gray-700 hover:tw-text-white'}} tw-text-gray-300 tw-relative hover:tw-bg-gray-700 hover:tw-text-white tw-rounded-md tw-px-3 tw-py-2 tw-text-sm tw-font-medium">
+                My booking</a>
+            </div>
+          </div>
+        </div>
+        <div class="tw-hidden md:tw-block">
+          <div class="tw-ml-4 tw-flex tw-items-center md:tw-ml-6" *ngIf="isUserLoggedIn">
+            <!-- <button type="tw-button"
+              class="tw-relative tw-rounded-full tw-bg-gray-800 tw-p-1 tw-text-gray-400 hover:tw-text-white focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-white focus:tw-ring-offset-2 focus:tw-ring-offset-gray-800">
+              <span class="tw-absolute -tw-inset-1.5"></span>
+              <span class="tw-sr-only">View notifications</span>
+              <div
+                class="tw-absolute tw-bottom-auto tw-left-auto tw-right-2 tw-top-2 tw-z-10 tw-inline-block -tw-translate-y-1/2 tw-translate-x-2/4 tw-rotate-0 tw-skew-x-0 tw-skew-y-0 tw-scale-x-100 tw-scale-y-100 tw-rounded-full tw-bg-red-600 tw-p-1.5 tw-text-xs">
+              </div>
+              <svg class="tw-h-6 tw-w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" />
+              </svg>
+            </button> -->
+
+            <!-- Profile dropdown -->
+            <div class="tw-relative tw-ml-3">
+              <div>
+                <button type="button" #profile (click)="dropProfile()"
+                  class="tw-relative tw-flex tw-max-w-xs tw-items-center tw-rounded-full tw-bg-gray-700 tw-text-sm focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-white focus:tw-ring-offset-2 focus:tw-ring-offset-gray-800"
+                  id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+                  <span class="tw-absolute -tw-inset-1.5"></span>
+                  <span class="tw-sr-only">Open user menu</span>
+                  <img class="tw-h-8 tw-w-8 tw-rounded-full tw-object-cover"
+                    src="{{user.avatar?user.avatar:'../../../assets/images/avatar/avatar1.png'}}"
+                    alt="{{name != '' ? name : user.firstName + ' ' + user.lastName}}">
+                  <p class="tw-mx-2 tw-text-white">{{name != '' ? name : user.firstName + ' ' + user.lastName}}</p>
+                </button>
+              </div>
+
+              <!--
+              Dropdown menu, show/hide based on menu state.
+
+              Entering: "transition ease-out duration-100"
+                  From: "transform opacity-0 scale-95"
+                  To: "transform opacity-100 scale-100"
+              Leaving: "transition ease-in duration-75"
+                  From: "transform opacity-100 scale-100"
+                  To: "transform opacity-0 scale-95"
+              -->
+              <div #profileDropdown
+                class="tw-hidden tw-transition tw-ease-in tw-duration-75 tw-transform tw-opacity-0 tw-scale-95 tw-absolute tw-right-0 tw-z-10 tw-mt-2 tw-w-48 tw-origin-top-right tw-rounded-md tw-bg-white tw-py-1 tw-shadow-lg tw-ring-1 tw-ring-black tw-ring-opacity-5 focus:tw-outline-none"
+                role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
+                <!-- Active: "bg-gray-100", Not Active: "" -->
+                <a [routerLink]="['/myprofile']" *ngIf="role == 'USER'"
+                  class="{{currentPage == '/myprofile' ? 'bg-gray-100' : ''}} tw-block tw-px-4 tw-py-2 tw-text-sm tw-text-gray-700"
+                  role="menuitem" tabindex="-1" id="user-menu-item-0">Profile</a>
+                <a *ngIf="role == 'USER'" [routerLink]="['/mywallet']"
+                  class="{{currentPage == '/mywallet' ? 'bg-gray-100' : ''}} tw-block tw-px-4 tw-py-2 tw-text-sm tw-text-gray-700"
+                  role="menuitem" tabindex="-1" id="user-menu-item-1">My Wallet</a>
+                <a (click)="logout()" href="/login" class="tw-block tw-px-4 tw-py-2 tw-text-sm tw-text-gray-700"
+                  role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="tw-ml-4 tw-flex tw-items-center md:tw-ml-6" *ngIf="!isUserLoggedIn">
+            <a href="/login"
+              class="tw-text-gray-300 hover:tw-bg-gray-700 hover:tw-text-white tw-rounded-md tw-px-3 tw-py-2 tw-text-sm tw-font-medium"
+              aria-current="page">
+              Sign in
+            </a>
+            <a [routerLink]="['/register']"
+              class="tw-text-gray-300 hover:tw-bg-gray-700 hover:tw-text-white tw-rounded-md tw-px-3 tw-py-2 tw-text-sm tw-font-medium"
+              aria-current="page">
+              Sign up
+            </a>
+          </div>
+        </div>
+        <div class="-tw-mr-2 tw-flex md:tw-hidden">
+          <!-- Mobile menu button -->
+          <button type="button" (click)="menuMobile()"
+            class="tw-relative tw-inline-flex tw-items-center tw-justify-center tw-rounded-md tw-bg-gray-800 tw-p-2 tw-text-gray-400 hover:tw-bg-gray-700 hover:tw-text-white focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-white focus:tw-ring-offset-2 focus:tw-ring-offset-gray-800"
+            aria-controls="mobile-menu" aria-expanded="false">
+            <span class="tw-absolute -tw-inset-0.5"></span>
+            <span class="tw-sr-only">Open main menu</span>
+            <!-- Menu open: "hidden", Menu closed: "block" -->
+            <svg #openMenu class="tw-block tw-h-6 tw-w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+              stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+            </svg>
+            <!-- Menu open: "block", Menu closed: "hidden" -->
+            <svg #closeMenu class="tw-hidden tw-h-6 tw-w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+              stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile menu, show/hide based on menu state. -->
+    <div class="md:tw-hidden mobile-menu" id="mobile-menu" #mobileMenu>
+      <div class="tw-space-y-1 tw-px-2 tw-pb-3 tw-pt-2 sm:tw-px-3">
+        <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+        <a style="font-size: 14px" [routerLink]="['/home']"
+          class="{{currentPage == '/home' ? 'tw-bg-gray-900 tw-text-white' : 'tw-text-gray-300 hover:tw-bg-gray-700 hover:tw-text-white'}} tw-block tw-rounded-md tw-px-3 tw-py-2 tw-text-base tw-font-medium"
+          aria-current="page">
+          Home
+        </a>
+        <div (click)="showMycar()"
+          class="tw-flex tw-justify-between tw-text-gray-300 hover:tw-bg-gray-700 hover:tw-text-white tw-block tw-rounded-md tw-px-3 tw-py-2 tw-text-base tw-font-medium tw-cursor-pointer">
+          My car
+        </div>
+        <div class="hidden" #mycar_content>
+          <a [routerLink]="['/mycar']"
+            class="{{currentPage == '/mycar' ? 'tw-bg-gray-900 tw-text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white'}} tw-block tw-rounded-md tw-px-7 tw-py-2 tw-text-base tw-font-medium tw-cursor-pointer">
+            List of Cars
+          </a>
+          <a [routerLink]="['/mycar']"
+            class="{{currentPage == '/mycar' ? 'tw-bg-gray-900 tw-text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white'}} tw-block tw-rounded-md tw-px-7 tw-py-2 tw-text-base tw-font-medium tw-cursor-pointer">
+            Requests
+          </a>
+        </div>
+        <a href="/mybooking"
+          class="{{currentPage == '/mybooking' ? 'tw-bg-gray-900 tw-text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white'}} tw-block tw-rounded-md tw-px-3 tw-py-2 tw-text-base tw-font-medium">
+          My booking
+        </a>
+      </div>
+      <div class="tw-border-t tw-border-gray-700 tw-pb-3 tw-pt-4" *ngIf="isUserLoggedIn">
+        <div class="tw-flex tw-items-center px-5">
+          <div class="tw-flex-shrink-0">
+            <img class="tw-h-10 tw-w-10 tw-rounded-full tw-object-cover"
+              src="{{user.avatar?user.avatar:'../../../assets/images/avatar/avatar1.png'}}" alt="">
+          </div>
+          <div class="tw-ml-3">
+            <div class="tw-text-base tw-font-medium tw-leading-none tw-text-white">
+              {{name != '' ? name : user.firstName + ' ' + user.lastName}}
+            </div>
+            <div class="tw-text-sm tw-font-medium tw-leading-none tw-text-gray-400">
+              {{user.email ? user.email : 'Undefined'}}
+            </div>
+          </div>
+          <button type="button"
+            class="tw-relative tw-ml-auto tw-flex-shrink-0 tw-rounded-full tw-bg-gray-800 tw-p-1 tw-text-gray-400 hover:tw-text-white focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-white focus:tw-ring-offset-2 focus:tw-ring-offset-gray-800">
+            <span class="tw-absolute -tw-inset-1.5"></span>
+            <span class="tw-sr-only">View notifications</span>
+            <div
+              class="absolute bottom-auto left-auto right-1 top-1 z-10 inline-block -translate-y-1/2 translate-x-2/4 rotate-0 skew-x-0 skew-y-0 scale-x-100 scale-y-100 rounded-full bg-red-600 p-1.5 text-xs">
+            </div>
+            <svg class="tw-h-6 tw-w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+              aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" />
+            </svg>
+          </button>
+        </div>
+        <div class="tw-mt-3 tw-space-y-1 tw-px-2">
+          <a [routerLink]="['/myprofile']"
+            class="tw-block tw-rounded-md tw-px-3 tw-py-2 tw-text-base tw-font-medium tw-text-gray-400 hover:tw-bg-gray-700 hover:tw-text-white">
+            Profile
+          </a>
+          <a [routerLink]="['/mywallet']"
+            class="tw-block tw-rounded-md tw-px-3 tw-py-2 tw-text-base tw-font-medium tw-text-gray-400 hover:tw-bg-gray-700 hover:tw-text-white">
+            My Wallet
+          </a>
+          <a (click)="logout()"
+            class="tw-block tw-rounded-md tw-px-3 tw-py-2 tw-text-base tw-font-medium tw-text-gray-400 hover:tw-bg-gray-700 hover:tw-text-white">
+            Sign out
+          </a>
+        </div>
+      </div>
+      <div class="tw-border-t tw-border-gray-700 tw-pb-3 tw-pt-4" *ngIf="!isUserLoggedIn">
+        <div class="tw-space-y-1 tw-px-2">
+          <a [routerLink]="['/login']"
+            class="tw-block tw-rounded-md tw-px-3 tw-py-2 tw-text-base tw-font-medium tw-text-gray-400 hover:tw-bg-gray-700 hover:tw-text-white">
+            Sign in
+          </a>
+          <a [routerLink]="['/register']"
+            class="tw-block tw-rounded-md tw-px-3 tw-py-2 tw-text-base tw-font-medium tw-text-gray-400 hover:tw-bg-gray-700 hover:tw-text-white">
+            Sign up
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</div>
+<div class="tw-min-h-fit" *ngIf="isLoading">
+  <nav style="height: 64px;" class="tw-bg-gray-800 tw-flex tw-justify-center">
+    <!-- loading overlay -->
+    <div class="tw-absolute tw-text-white tw-z-10 tw-h-full tw-w-full tw-flex tw-items-center tw-justify-center">
+      <div class="tw-flex tw-items-center">
+        <span class="tw-text-lg tw-mr-4">Loading</span>
+        <!-- loading icon -->
+        <svg class="tw-animate-spin tw-h-5 tw-w-5 tw-text-white" xmlns="http://www.w3.org/2000/svg" fill="none"
+          viewBox="0 0 24 24">
+          <circle class="tw-opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+          <path class="tw-opacity-75" fill="currentColor"
+            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+          </path>
+        </svg>
+        <!-- end loading icon -->
+      </div>
+    </div>
+    <!-- end loading overlay -->
+  </nav>
+</div>

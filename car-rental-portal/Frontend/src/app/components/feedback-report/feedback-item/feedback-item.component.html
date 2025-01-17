@@ -1,0 +1,97 @@
+<div class="car-detail" style="margin-bottom: 15px; cursor: pointer;">
+    <div style="margin-right: 10px;">
+
+        <div class="item-car row">
+            <div class="row">
+
+                <div class="img-car col-md-2"
+                    style="display: flex; margin-top: 10px; margin-bottom: 10px; justify-content: center;">
+                    <div class="avatar avatar--m">
+                        <!-- <img src="assets/images/avatar/avatar1.png" /> -->
+                        <img loading="lazy" [src]="rating.senderAvatar == null || rating.senderAvatar == undefined || rating.senderAvatar == '' ? ('assets/images/avatar/avatar1.png') : rating.senderAvatar" alt="as">
+                    </div>
+                </div>
+                <div class="desc-car col-md-10" style="margin-top: 10px; margin-bottom: 15px;">
+                    <div class="desc-name" style="display: flex;justify-content: space-between; height: 10px">
+                        <div>
+                            <p class="tw-text-black">
+                                {{rating.senderFirstName + ' ' + rating.senderLastName}} <span
+                                    *ngIf="rating.isRenterFeedback">&nbsp;(Renter)</span> <span
+                                    *ngIf="!rating.isRenterFeedback">&nbsp;(Car owner)</span>
+                            </p>
+                       
+                        </div>
+                        <div class="tw-text-black" style="font-size: 14px; margin-top: 2px">
+                            <div class="tw-flex tw-justify-end">
+                                {{convertDateTime(rating.dateTime)}}
+                            </div>
+                            <div class="tw-flex tw-justify-end">
+                                Booking No: <a (click)="toggleBookingDetail(rating.bookingId)">&nbsp;{{rating.bookingId}}</a>
+                            </div>
+                            <div class="tw-flex tw-justify-end">
+                                <button *ngIf="type == 'Sent' && rating.canFixed && !checkDateExpired(rating.dateTime)"
+                                    [id]="'btnEdit' + i" type="button" (click)="editMode(i)"
+                                    class="tw-bg-black hover:tw-scale-110 tw-text-white tw-mt-2 tw-px-4 tw-rounded-lg tw-py-1 tw-text-center">Edit</button>
+                            </div>
+                            <div class="tw-flex tw-justify-end">
+                                <button [id]="'btnCancel' + i" type="button" (click)="cancelEditMode(i)"
+                                    class="tw-hidden tw-bg-black hover:tw-scale-110 tw-text-white tw-mt-2 tw-px-4 tw-rounded-lg tw-py-1 tw-text-center">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="margin-top: 6px; width: 80%;">
+                        <div class="star-ratings" title="5 Stars"
+                            style="position: relative; box-sizing: border-box; display: inline-block;">
+                            <svg class="star-grad"
+                                style="position: absolute; z-index: 0; width: 0px; height: 0px; visibility: hidden;">
+                                <defs>
+                                    <linearGradient id="starGrad078528009180899" x1="0%" y1="0%" x2="100%" y2="0%">
+                                        <stop offset="0%" class="stop-color-first"
+                                            style="stop-color: rgb(255, 198, 52); stop-opacity: 1;">
+                                        </stop>
+                                        <stop offset="0%" class="stop-color-first"
+                                            style="stop-color: rgb(255, 198, 52); stop-opacity: 1;">
+                                        </stop>
+                                        <stop offset="0%" class="stop-color-final"
+                                            style="stop-color: rgb(203, 211, 227); stop-opacity: 1;">
+                                        </stop>
+                                        <stop offset="100%" class="stop-color-final"
+                                            style="stop-color: rgb(203, 211, 227); stop-opacity: 1;">
+                                        </stop>
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                            <div class="star-container" *ngFor="let index of arr; let j = index"
+                                style="position: relative; display: inline-block; vertical-align: middle; padding-right: 1px;">
+                                <svg viewBox="0 0 51 48" (click)="isEditing ? changeStars(j + '') : ''"
+                                    class="widget-svg"
+                                    style="width: 17px; height: 17px; transition: transform 0.2s ease-in-out 0s;">
+                                    <path *ngIf="index  <= stars" [id]="'star' + j + i" class="star"
+                                        d="m25,1 6,17h18l-14,11 5,17-15-10-15,10 5-17-14-11h18z"
+                                        style="fill: rgb(255, 198, 52); transition: fill 0.2s ease-in-out 0s;">
+                                    </path>
+                                    <path *ngIf="index  > stars" [id]="'star' + j + i" class="star"
+                                        d="m25,1 6,17h18l-14,11 5,17-15-10-15,10 5-17-14-11h18z"
+                                        style="fill: gray; transition: fill 0.2s ease-in-out 0s;">
+                                    </path>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="tw-text-black" style="width: 80%; margin-bottom: 20px;height: 35px;">
+
+                        <p [id]="'p' + i" class="tw-w-1/2">{{rating.comment}}</p>
+                        <form #rateForm = ngForm>
+                            <textarea [id]="'textarea' + i" [(ngModel)] = "comment" name = "comment" class="tw-hidden tw-w-full tw-rounded-lg"
+                                [value]="rating.comment">
+                        </textarea>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

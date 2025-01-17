@@ -1,0 +1,56 @@
+/*@tailwind base;*/
+/*@tailwind components;*/
+/*@tailwind utilities;*/
+
+#topnav {
+    position: fixed;
+    inset-inline-start: 0px;
+    inset-inline-end: 0px;
+    top: 0;
+    z-index: 999;
+}
+
+.dark [role=tab].active, .dark [role=tab].active:hover, [role=tab].active, [role=tab].active:hover {
+    border-color: rgb(31 41 55);
+    color: rgb(31 41 55);
+}
+
+.opacity-0{
+  opacity: 0;
+}
+
+.opacity-100{
+  opacity: 100;
+}
+
+.visible{
+  visibility: visible;
+}
+
+.invisible{
+  visibility: hidden;
+}
+
+#calendar{
+  display: none;
+}
+
+.hover-calendar:hover #calendar{
+  display: block;
+}
+
+button{
+  border: 1px solid black;
+  padding: 10px;
+  /* border-radius: 0.25rem; */
+  background-color: black;
+  color: white;
+
+}
+
+
+.az-10{
+  background-color: black;
+  color: white !important;
+  font-weight: bold;
+}

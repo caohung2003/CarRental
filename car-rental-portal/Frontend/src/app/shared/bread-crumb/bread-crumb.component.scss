@@ -1,0 +1,68 @@
+.background-banner {
+  background-image: url("/assets/images/banner-booking1.jpg");
+  background-size: cover;
+  background-position: center top;
+  height: 25em;
+  position: relative;
+}
+
+ol {
+  margin: 0;
+  font-size: 20px;
+}
+
+.breadcrumb-item button {
+  padding: 0 5px;
+  margin-top: -2px;
+}
+
+.breadcrumb-item a {
+  min-width: 25px;
+  display: inline-block;
+  line-height: 1em;
+  text-decoration: none;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  color: black;
+  font-weight: 400;
+  font-size: inherit;
+  margin-left: 10px;
+}
+
+.active {
+  color: var(--background-color); 
+}
+
+
+
+.breadcrumb-controls {
+  right: 10px;
+  position: absolute;
+}
+
+.btn {
+  font-size: 18px;
+  font-family: 'Source Sans Pro', sans-serif;
+  padding: 6px 18px;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #ffffff;
+  border: 1px solid #007bff;
+  margin-top: 30px;
+}
+
+.breadcrumb-item {
+  position: relative; /* Đặt phần tử breadcrumb-item là relative */
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+  color: black;
+  font-family: FontAwesome;
+  content: "\f054";
+  font-size: 13px;
+  position: absolute; /* Đặt biểu tượng là absolute */
+  top: 50%; /* Dịch chuyển lên trên một nửa chiều cao của phần tử cha */
+  transform: translateY(-50%); /* Dịch chuyển lên trên một nửa chiều cao của chính nó */
+  left: 5px; /* Đặt vị trí cụ thể cho biểu tượng, điều chỉnh nếu cần thiết */
+}
+
+

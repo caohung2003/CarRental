@@ -1,0 +1,67 @@
+<link rel="stylesheet" href="../../../../assets/css/login/assets.css">
+<link rel="stylesheet" href="../../../../assets/css/login/typography.css">
+<link rel="stylesheet" href="../../../../assets/css/login/style.css">
+<link class="skin" rel="stylesheet" type="text/css" href="../../../../assets/css/color/color-1.css">
+
+<div class="page-wraper">
+    <div id="loading-icon-bx"></div>
+    <div class="account-form font-defalt">
+        <div class="account-head" style="background-image:url(../../../assets/images/about.jpg); z-index: 1000;">
+            <a href="/home" class="!tw-flex tw-justify-center"><img width="200" src="../../../assets/images/logo/logo3.png" alt=""></a>
+        </div>
+        <div class="account-form-inner">
+            <div class="account-container">
+                <div class="heading-bx left">
+                    <h2 class="title-head font-defalt" style="border-left: 7px solid #007bff;">Sign in to your <span>Account</span></h2>
+                    <p>Don't have an account? <a [routerLink]="['/register']" style="text-decoration: none; color: #007bff;">Create one here</a></p>
+                </div>
+                <form class="contact-bx" name="loginform" [formGroup]="form" (ngSubmit)="submit()">
+                    <div class="row placeani">
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <label for="email">Your Email <span style="color: red;">*</span></label>
+                                    <input #emailInput type="email" name="email" id="email" formControlName="email"
+                                        required="" class="form-control" maxlength="60" (focus)="clearMessage()">
+                                    <span #emailMsg class="error-msg" style="color: red;" id="error-email"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <div class="input-group" style="position: relative;">
+                                    <label for="password">Your Password <span style="color: red;">*</span></label>
+                                    <input #pwdInput name="password" id="password" type="password"
+                                        formControlName="password" class="form-control" required="" (focus)="clearMessage()">
+                                    <span #pwdMsg class="error-msg" style="color: red;" id="error-password"></span>
+                                    <i class="fas fa-eye" id="togglePassword"
+                                        style="position: absolute; top: 25%; right: 0; cursor: pointer; z-index: 200;"
+                                        (click)="reveal('#togglePassword', '#password')"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="checkbox-list form-group">
+                                <div class="custom-control custom-checkbox checkbox-st1 content"
+                                    style="padding-left: 0;">
+                                    <div class="checkbox">
+                                        <input type="checkbox" formControlName="rememberMe" id="remember-me">
+                                        <label for="remember-me" style="margin-bottom: 0;">Remember me</label>
+                                    </div>
+                                    <div class="pass-link">
+                                        <forgot-password-dialog></forgot-password-dialog>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 m-b30">
+                            <button name="submit" type="submit" value="Submit" class="btn btn-primary py-2 px-5">
+                                Sign in
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

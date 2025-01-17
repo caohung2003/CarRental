@@ -1,0 +1,73 @@
+<form #basicForm=ngForm>
+  <!--      style="margin-left: 25%; margin-right: 25%; margin-top: 20px; margin-bottom: 20px !important;"-->
+
+
+  <div class="tw-grid tw-gap-6 tw-mb-6 md:tw-grid-cols-2">
+    <div>
+      <h2 style="margin-top: 10px">Base price: <span *ngIf="mode != 'view'" class="required-asterisk">*</span>
+      </h2>
+      <p class="p-normal">This price will be added for each day your car is rented</p>
+      <div class="tw-mb-6 tw-w-full tw-flex tw-items-center">
+        <input style="margin-bottom: 20px; font-weight: 300; width: 90%" [type]="'number'" [(ngModel)]="basePrice" id="basePrice"
+               name="basePrice" [readOnly]="mode == 'view'" [min]="'500000'" [step]="'50000'"
+               [max]="'100000000'"
+               placeholder="100000"
+               class="{{mode == 'view' ? 'tw-bg-gray-200' : 'tw-bg-gray-50'}} tw-border tw-border-gray-300 tw-text-gray-900 tw-text-sm tw-rounded-lg focus:tw-ring-blue-500 focus:tw-border-blue-500 tw-blocktw-p-2.5 dark:tw-bg-gray-700 dark:tw-border-gray-600 dark:tw-placeholder-gray-400 dark:tw-text-white dark:focus:tw-ring-blue-500 dark:focus:tw-border-blue-500"
+               required/> <span style="margin-bottom: 15px;
+    margin-left: 10px;">VND/day</span>
+      </div>
+    </div>
+    <div>
+      <h2 style="margin-top: 10px">Required deposit: </h2>
+      <p class="p-normal">This deposit will be minus by the total price after each booking</p>
+      <div class="tw-mb-6  tw-w-full tw-flex tw-items-center">
+        <input style="margin-bottom: 20px; font-weight: 300; width: 90%; height: 37.6px" [type]="'number'" [(ngModel)]="deposit" id="deposit"
+               name="deposit" [readOnly]="mode == 'view'"
+               [min]="'0'" [max]="'15000000'" placeholder="24" [step]="'50000'"
+               class="{{mode == 'view' ? 'tw-bg-gray-200' : 'tw-bg-gray-50'}} tw-border tw-border-gray-300 tw-text-gray-900 tw-text-sm tw-rounded-lg focus:tw-ring-blue-500 focus:tw-border-blue-500 tw-block  tw-p-2.5 dark:tw-bg-gray-700 dark:tw-border-gray-600 dark:tw-placeholder-gray-400 dark:tw-text-white dark:focus:tw-ring-blue-500 dark:focus:tw-border-blue-500"
+               required/> <span style="margin-bottom: 15px;
+    margin-left: 10px;">VND</span>
+      </div>
+    </div>
+    <div>
+      <h2 style="margin-top: -17px">Calculate price method: <span *ngIf="mode != 'view'" class="required-asterisk">*</span>
+      </h2>
+      <p class="p-normal">This is how a day is counted in your booking (after 12 hours or just passed new day)</p>
+      <div class="tw-mb-6">
+        <select style="font-weight: 300" [disabled]="mode == 'view'" #model name="chooseModel" id="chooseModel"
+                class="{{mode == 'view' ? 'tw-bg-gray-200' : 'tw-bg-gray-50'}} tw-border tw-border-gray-300 tw-text-gray-900 tw-text-sm tw-rounded-lg focus:tw-ring-blue-500 focus:tw-border-blue-500 tw-block tw-w-full tw-p-2.5 dark:tw-bg-gray-700 dark:tw-border-gray-600 dark:tw-placeholder-gray-400 dark:tw-text-white dark:focus:tw-ring-blue-500 dark:focus:tw-border-blue-500">
+          <!-- <option [value]="'BONUS_HALF_DAY'" >Bonus half day</option>-->
+          <option [value]="'NOT_BONUS_HALF_DAY'">Not bonus half day</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <h2 style="margin-top: 10px">Terms:
+  </h2>
+  <p class="p-normal">Terms that you want renter must agree with: </p>
+  <div class="tw-grid tw-gap-4 tw-mb-4 md:tw-grid-cols-3">
+    <div *ngFor="let term of terms" class="tw-flex tw-w-full tw-items-center tw-mb-4">
+      <input [disabled]="mode == 'view'" [id]="term.id" *ngIf="pickTerms != undefined && pickTerms.includes(term.id)" [checked] = "true" [name]="term.id" type="checkbox"
+             class="{{mode != 'view' ? 'tw-cursor-pointer' : ''}} tw-w-4 tw-h-4 tw-text-blue-600 tw-bg-gray-100 tw-border-gray-300 tw-rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+      <input [disabled]="mode == 'view'" [id]="term.id" *ngIf="pickTerms != undefined && !pickTerms.includes(term.id)" [name]="term.id" type="checkbox"
+             class="{{mode != 'view' ? 'tw-cursor-pointer' : ''}} tw-w-4 tw-h-4 tw-text-blue-600 tw-bg-gray-100 tw-border-gray-300 tw-rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+      <input [disabled]="mode == 'view'" [id]="term.id" *ngIf="pickTerms == undefined" [name]="term.id" type="checkbox"
+             class="{{mode != 'view' ? 'tw-cursor-pointer' : ''}} tw-w-4 tw-h-4 tw-text-blue-600 tw-bg-gray-100 tw-border-gray-300 tw-rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+      <label [for]="term.id"
+             class="{{mode != 'view' ? 'tw-cursor-pointer' : ''}} tw-ms-2 tw-text-sm tw-font-medium tw-text-gray-900 dark:text-gray-300">{{term.name}}</label>
+    </div>
+  </div>
+
+  <div style="display: flex; justify-content: space-between; margin-bottom: 20px; margin-top: 10px">
+    <button (click)="previousStep()" style="margin-right: 20px; cursor: pointer" type="submit"
+            class="btn-prev hover:tw-scale-110 tw-cursor-pointer tw-text-white tw-bg-blue-700 tw-w-1/5 hover:tw-bg-blue-800 focus:tw-ring-4 focus:tw-outline-none focus:tw-ring-blue-300 tw-font-medium tw-rounded-lg tw-text-sm tw-px-5 tw-py-2.5 tw-text-center dark:tw-bg-blue-600 dark:hover:tw-bg-blue-700 dark:focus:tw-ring-blue-800">
+      Previous
+    </button>
+    <button type="submit" (click)="submit()"
+            class="btn-next hover:tw-scale-110 tw-right-full tw-text-white tw-bg-blue-700 tw-w-1/5 hover:tw-bg-blue-800 focus:tw-ring-4 focus:tw-outline-none focus:tw-ring-blue-300 tw-font-medium tw-rounded-lg tw-text-sm = tw-px-5 tw-py-2.5 tw-text-center dark:tw-bg-blue-600 dark:hover:tw-bg-blue-700 dark:focus:tw-ring-blue-800">
+      Next
+    </button>
+  </div>
+
+</form>
+

@@ -1,0 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+a {
+  text-decoration: none;
+  font-size: 12px;
+  min-width: 10px !important;
+  /* padding-right: 10px;
+  margin-right: 3px; */
+  position: relative;
+  z-index: 50;
+}
+
+.mobile-menu {
+    display: none;
+}
+
+.show-md {
+    display: block;
+}
+
+@media (min-width: 768px) {
+    .show-md {
+        display: none;
+    }
+}
+
+#mycar-header:hover #mycar-dropdown {
+    display: block;
+}
+
+.hidden {
+    display: none;
+    -webkit-transition: display 0.5s linear;
+    -moz-transition: display 0.5s linear;
+    -ms-transition: display 0.5s linear;
+    -o-transition: display 0.5s linear;
+    transition: display 0.5s linear;
+}
+
+.hidden.open {
+    display: block;
+    -webkit-transition: display 0.5s linear;
+    -moz-transition: display 0.5s linear;
+    -ms-transition: display 0.5s linear;
+    -o-transition: display 0.5s linear;
+    transition: display 0.5s linear;
+}
+
+#mycar-dropdown::before {
+    position: absolute;
+    top: -13px;
+    left: 0;
+    width: 60%;
+    min-height: 15px;
+    content: "";
+    display: block;
+}

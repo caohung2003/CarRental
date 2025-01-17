@@ -1,0 +1,403 @@
+<app-header id="topnav" class="header tw-sticky tw-top-0"></app-header>
+<div style="min-height: 500px;"
+  class="tw-pb-4 tw-flex tw-items-center tw-justify-center tw-w-full tw-h-fit tw-bg-gray-200">
+  <div class="tw-w-full tw-pl-10 tw-pr-10">
+    <div class="tw-grid tw-grid-cols-1 md:tw-grid-cols-12 tw-transition-[grid-template-columns]
+    md:tw-grid-cols-[120px_1fr] md:[&:has(>*:first-child:hover)]:tw-grid-cols-[250px_1fr]">
+      <div style="margin-top: 5rem"
+        class="menu-option tw-top-20 lg:tw-sticky tw-flex tw-flex-col tw-justify-between tw-rounded-xl md:tw-rounded-e-none tw-border-e tw-bg-white tw-p-8">
+        <ul style="top: 5rem" class="tw-sticky list-option tw-space-y-2">
+          <li>
+            <a [routerLink]="['/myprofile']"
+              class="{{url == '/myprofile'?'tw-text-white tw-bg-gray-800':'tw-text-gray-600'}} tw-flex tw-font-medium tw-p-2 tw-rounded-lg hover:tw-text-white hover:tw-bg-gray-800">
+              <svg class="tw-mr-3" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M11.76 10.86C13.3782 10.86 14.69 9.54819 14.69 7.93C14.69 6.31181 13.3782 5 11.76 5C10.1418 5 8.83 6.31181 8.83 7.93C8.83 9.54819 10.1418 10.86 11.76 10.86Z"
+                  stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                </path>
+                <path
+                  d="M5.84 19.0001V17.3301C5.84 15.3801 7.42 13.8101 9.36 13.8101H14.63C16.58 13.8101 18.15 15.3901 18.15 17.3301V19.0001"
+                  stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                </path>
+              </svg>
+
+              <span class="account-text tw-truncate">Account</span>
+            </a>
+          </li>
+          <hr class="tw-h-px tw-my-8 tw-bg-gray-200 tw-border-0 dark:tw-bg-gray-700">
+          <li>
+            <a [routerLink]="['/my-car']"
+              class="{{url == '/my-car'?'tw-text-white tw-bg-gray-800':'tw-text-gray-600'}} tw-flex tw-font-medium tw-p-2 tw-rounded-lg hover:tw-text-white hover:tw-bg-gray-800">
+              <svg class="tw-mr-3" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M17.14 21.2H6.85999C5.71999 21.2 4.79999 20.28 4.79999 19.14V4.74994C4.79999 3.60994 5.71999 2.68994 6.85999 2.68994H17.14C18.28 2.68994 19.2 3.60994 19.2 4.74994V19.14C19.19 20.28 18.27 21.2 17.14 21.2Z"
+                  stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                </path>
+                <path d="M7.89001 6.85999H8.92001" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                  stroke-linejoin="round"></path>
+                <path d="M12 6.85999H16.11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                  stroke-linejoin="round"></path>
+                <path d="M7.89001 12H8.92001" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                  stroke-linejoin="round"></path>
+                <path d="M12 12H16.11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                  stroke-linejoin="round"></path>
+                <path d="M7.89001 17.14H8.92001" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                  stroke-linejoin="round"></path>
+                <path d="M12 17.14H16.11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                  stroke-linejoin="round"></path>
+              </svg>
+              <span class="account-text tw-truncate">My Car</span>
+            </a>
+          </li>
+          <li>
+            <a [routerLink]="['/car-booking']"
+              class="{{url == '/car-booking'?'tw-text-white tw-bg-gray-800':'tw-text-gray-600'}} tw-flex tw-font-medium tw-p-2 tw-rounded-lg hover:tw-text-white hover:tw-bg-gray-800">
+              <svg class="tw-mr-3" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M6.50023 8.86914H4.80023C3.66023 8.86914 2.74023 9.78914 2.74023 10.9291V18.1191C2.74023 19.2591 3.66023 20.1791 4.80023 20.1791H19.1902C20.3302 20.1791 21.2502 19.2591 21.2502 18.1191V10.9291"
+                  stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                </path>
+                <path d="M16.1095 8.86914H10.2695" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                  stroke-linejoin="round"></path>
+                <path
+                  d="M16.1094 16.0605H19.1894C20.3294 16.0605 21.2494 16.9805 21.2494 18.1205C21.2494 19.2605 20.3294 20.1805 19.1894 20.1805H16.1094"
+                  stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                </path>
+                <path d="M16.1094 5.7793H19.1894C20.3294 5.7793 21.2494 6.6993 21.2494 7.8393" stroke="currentColor"
+                  stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                </path>
+                <path d="M21.25 18.1198V7.83984" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                  stroke-linejoin="round"></path>
+                <path d="M16.1094 5.7793V16.0593" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                  stroke-linejoin="round"></path>
+                <path
+                  d="M2.75 14.0098H6.86C7.43 14.0098 7.89 14.3998 7.89 14.8898C7.89 15.3798 8.35 15.7698 8.92 15.7698H9.95C10.52 15.7698 10.98 16.1598 10.98 16.6498V17.5298V20.1698"
+                  stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                </path>
+                <path
+                  d="M8.40007 3.83008C6.98007 3.83008 5.83008 4.98008 5.83008 6.40008C5.83008 8.16008 8.13007 10.7401 8.23007 10.8501C8.32007 10.9501 8.48008 10.9501 8.57008 10.8501C8.67008 10.7401 10.9701 8.16008 10.9701 6.40008C10.9701 4.98008 9.82007 3.83008 8.40007 3.83008Z"
+                  stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                </path>
+                <path
+                  d="M8.39977 7.37961C8.8913 7.37961 9.28976 6.98114 9.28976 6.48961C9.28976 5.99808 8.8913 5.59961 8.39977 5.59961C7.90823 5.59961 7.50977 5.99808 7.50977 6.48961C7.50977 6.98114 7.90823 7.37961 8.39977 7.37961Z"
+                  fill="currentColor"></path>
+              </svg>
+              <span class="account-text tw-truncate">My Car Bookings</span>
+            </a>
+          </li>
+          <hr class="tw-h-px tw-my-8 tw-bg-gray-200 tw-border-0 dark:tw-bg-gray-700">
+          <li>
+            <a [routerLink]="['/mybooking']"
+              class="{{url == '/mybooking'?'tw-text-white tw-bg-gray-800':'tw-text-gray-600'}} tw-flex tw-font-medium tw-p-2 tw-rounded-lg hover:tw-text-white hover:tw-bg-gray-800">
+              <svg class="tw-mr-3" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M6.50023 8.86914H4.80023C3.66023 8.86914 2.74023 9.78914 2.74023 10.9291V18.1191C2.74023 19.2591 3.66023 20.1791 4.80023 20.1791H19.1902C20.3302 20.1791 21.2502 19.2591 21.2502 18.1191V10.9291"
+                  stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                </path>
+                <path d="M16.1095 8.86914H10.2695" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                  stroke-linejoin="round"></path>
+                <path
+                  d="M16.1094 16.0605H19.1894C20.3294 16.0605 21.2494 16.9805 21.2494 18.1205C21.2494 19.2605 20.3294 20.1805 19.1894 20.1805H16.1094"
+                  stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                </path>
+                <path d="M16.1094 5.7793H19.1894C20.3294 5.7793 21.2494 6.6993 21.2494 7.8393" stroke="currentColor"
+                  stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                </path>
+                <path d="M21.25 18.1198V7.83984" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                  stroke-linejoin="round"></path>
+                <path d="M16.1094 5.7793V16.0593" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                  stroke-linejoin="round"></path>
+                <path
+                  d="M2.75 14.0098H6.86C7.43 14.0098 7.89 14.3998 7.89 14.8898C7.89 15.3798 8.35 15.7698 8.92 15.7698H9.95C10.52 15.7698 10.98 16.1598 10.98 16.6498V17.5298V20.1698"
+                  stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                </path>
+                <path
+                  d="M8.40007 3.83008C6.98007 3.83008 5.83008 4.98008 5.83008 6.40008C5.83008 8.16008 8.13007 10.7401 8.23007 10.8501C8.32007 10.9501 8.48008 10.9501 8.57008 10.8501C8.67008 10.7401 10.9701 8.16008 10.9701 6.40008C10.9701 4.98008 9.82007 3.83008 8.40007 3.83008Z"
+                  stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                </path>
+                <path
+                  d="M8.39977 7.37961C8.8913 7.37961 9.28976 6.98114 9.28976 6.48961C9.28976 5.99808 8.8913 5.59961 8.39977 5.59961C7.90823 5.59961 7.50977 5.99808 7.50977 6.48961C7.50977 6.98114 7.90823 7.37961 8.39977 7.37961Z"
+                  fill="currentColor"></path>
+              </svg>
+              <span class="account-text tw-truncate">My Bookings</span>
+            </a>
+          </li>
+          <li>
+            <a [routerLink]="['/mywallet']"
+              class="{{url == '/mywallet'?'tw-text-white tw-bg-gray-800':'tw-text-gray-600'}} tw-flex tw-font-medium tw-p-2 tw-rounded-lg hover:tw-text-white hover:tw-bg-gray-800">
+              <svg class="tw-mr-3" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" />
+                <path
+                  d="M17 8v-3a1 1 0 0 0 -1 -1h-10a2 2 0 0 0 0 4h12a1 1 0 0 1 1 1v3m0 4v3a1 1 0 0 1 -1 1h-12a2 2 0 0 1 -2 -2v-12" />
+                <path d="M20 12v4h-4a2 2 0 0 1 0 -4h4" />
+              </svg>
+              <span class="account-text tw-truncate">My Wallet</span>
+            </a>
+          </li>
+          <li>
+            <a href = "/feedback-report"
+              class="{{url == '/mywallet'?'tw-text-white tw-bg-gray-800':'tw-text-gray-600'}} tw-flex tw-font-medium tw-p-2 tw-rounded-lg hover:tw-text-white hover:tw-bg-gray-800">
+              <svg class="tw-mr-3"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <path d="M6 4h11a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-11a1 1 0 0 1 -1 -1v-14a1 1 0 0 1 1 -1m3 0v18" />  <line x1="13" y1="8" x2="15" y2="8" />  <line x1="13" y1="12" x2="15" y2="12" /></svg>
+
+              <span class="account-text tw-truncate">My Feedback Report</span>
+            </a>
+          </li>
+          <hr class="tw-h-1 tw-my-8 tw-bg-gray-200 tw-border-0 dark:tw-bg-gray-700">
+          <li class="tw-mt-20">
+            <a (click)="logout()"
+              class="tw-flex tw-font-medium tw-text-gray-600 tw-p-2 tw-rounded-lg hover:tw-text-white hover:tw-bg-gray-800">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="tw-mr-3" width="24" height="24">
+                <path strokeLinecap="round" strokeLinejoin="round"
+                  d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15m3 0l3-3m0 0l-3-3m3 3H9" />
+              </svg>
+              <span class="account-text tw-truncate">Logout</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div style="margin-top: 5rem" class="tw-top-20 tw-overflow-x-hidden tw-grid-cols-12">
+
+        <div
+          class="tw-min-h-full tw-px-8 tw-py-3 tw-bg-white tw-rounded-xl md:tw-rounded-s-none tw-flex flex-column tw-justify-center">
+          <div class="tw-w-full">
+
+            <div
+              class="tw-flex tw-flex-col tw-items-center tw-justify-between tw-p-4 tw-space-y-3 md:tw-flex-row md:tw-space-y-0 md:tw-space-x-4">
+              <span
+                class="tw-flex tw-cursor-pointer tw-items-center tw-inline-block tw-rounded tw-bg-sky-600 tw-px-4 tw-py-2 tw-text-sm tw-font-medium tw-text-white tw-transition hover:tw-scale-110 hover:tw-shadow-xl focus:tw-outline-none focus:tw-ring active:tw-bg-indigo-500"
+                (click)="newTab()" style="background-color: black">
+
+                Add new car
+              </span>
+
+              <p class="tw-w-full md:tw-w-1/2">
+                {{totalElements}} results
+              </p>
+              <div
+                class="tw-flex tw-flex-col tw-items-stretch tw-justify-end tw-flex-shrink-0 tw-w-full tw-space-y-2 md:tw-w-auto md:tw-flex-row md:tw-space-y-0 md:tw-items-center md:tw-space-x-3">
+                <div class="tw-flex tw-items-center tw-w-full tw-space-x-3 md:tw-w-auto">
+                  <button id="actionsDropdownButton" data-dropdown-toggle="actionsDropdown"
+                    class="tw-flex tw-items-center tw-rounded tw-justify-center tw-w-full tw-px-4 tw-py-2  tw-text-sm tw-font-medium tw-text-white tw-bg-white border tw-border-gray-200 tw-rounded-lg md:tw-w-auto focus:tw-outline-none hover:tw-scale-110 focus:tw-z-10 focus:tw-ring-4 focus:tw-ring-gray-200 dark:focus:tw-ring-gray-700 dark:tw-bg-gray-800 dark:tw-text-gray-400 dark:tw-border-gray-600 dark:hover:tw-text-white dark:hover:tw-bg-gray-700"
+                    type="button">
+                    <svg class="tw-w-5 tw-h-5 -tw-ml-1 tw-mr-1.5" width="24" height="24" viewBox="0 0 24 24"
+                      stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                      <path stroke="none" d="M0 0h24v24H0z" />
+                      <path d="M3 9l4-4l4 4m-4 -4v14" />
+                      <path d="M21 15l-4 4l-4-4m4 4v-14" />
+                    </svg>
+                    Sort
+                  </button>
+                  <div id="actionsDropdown"
+                    class="tw-hidden tw-ml-10 tw-mr-10 tw-z-10 tw-bg-white tw-divide-y tw-divide-gray-100 tw-rounded tw-shadow tw-w-44 dark:tw-bg-gray-700 dark:tw-divide-gray-600">
+                    <ul class="tw-py-1 tw-text-sm tw-text-gray-700 dark:tw-text-gray-200"
+                      aria-labelledby="actionsDropdownButton">
+                      <li>
+                        <div (click)="srt('rating')"
+                          class="tw-cursor-pointer tw-flex tw-px-4 tw-py-2 hover:tw-bg-gray-100 dark:hover:tw-bg-gray-600 dark:hover:tw-text-white">
+                          <div>
+                            <img style="width: 20px; margin-right: 3px" id="sortratingimg" src="" />
+                          </div>
+                          <div>
+                            Rating
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <div (click)="srt('rides')"
+                          class="tw-cursor-pointer tw-flex tw-px-4 tw-py-2 hover:tw-bg-gray-100 dark:hover:tw-bg-gray-600 dark:hover:tw-text-white">
+                          <div>
+                            <img style="width: 20px; margin-right: 3px" id="sortridesimg" src="" />
+                          </div>
+                          <div>
+                            Rides
+                          </div>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                  <button id="dropdownRadioHelperButton" data-dropdown-toggle="dropdownRadioHelper"
+                    class="tw-flex tw-items-center tw-rounded tw-justify-center tw-w-full tw-px-4 tw-py-2  tw-text-sm tw-font-medium tw-text-white tw-bg-white border tw-border-gray-200 tw-rounded-lg md:tw-w-auto focus:tw-outline-none hover:tw-scale-110 focus:tw-z-10 focus:tw-ring-4 focus:tw-ring-gray-200 dark:focus:tw-ring-gray-700 dark:tw-bg-gray-800 dark:tw-text-gray-400 dark:tw-border-gray-600 dark:hover:tw-text-white dark:hover:tw-bg-gray-700"
+                    type="button">
+                    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
+                      class="tw-w-4 tw-h-4 tw-mr-2 tw-text-gray-400" viewbox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd"
+                        d="M3 3a1 1 0 011-1h12a1 1 0 011 1v3a1 1 0 01-.293.707L12 11.414V15a1 1 0 01-.293.707l-2 2A1 1 0 018 17v-5.586L3.293 6.707A1 1 0 013 6V3z"
+                        clip-rule="evenodd" />
+                    </svg>
+                    Status
+                  </button>
+
+
+                  <!-- Dropdown menu -->
+                  <div id="dropdownRadioHelper"
+                    class="tw-z-10 tw-hidden tw-bg-white tw-divide-y tw-divide-gray-100 tw-rounded-lg tw-shadow tw-w-60 dark:tw-bg-gray-700 dark:tw-divide-gray-600">
+                    <ul class="tw-p-3 tw-space-y-1 tw-text-sm tw-text-gray-700 dark:tw-text-gray-200"
+                      aria-labelledby="dropdownRadioHelperButton">
+                      <li>
+                        <div class="tw-flex tw-p-2 tw-rounded hover:tw-bg-gray-100 dark:hover:tw-bg-gray-600">
+                          <div class="tw-flex tw-items-center tw-h-5">
+                            <input id="helper-radio-3" name="helper-radio" type="radio" value=""
+                              class="tw-w-4 tw-h-4 tw-text-blue-600 tw-bg-gray-100 tw-border-gray-300 focus:tw-ring-blue-500 dark:focus:tw-ring-blue-600 dark:tw-ring-offset-gray-700 dark:focus:tw-ring-offset-gray-700 focus:tw-ring-2 dark:tw-bg-gray-600 dark:tw-border-gray-500">
+                          </div>
+                          <div (click)="filter('ALL')" class="tw-ms-2 tw-text-sm">
+                            <label for="helper-radio-3" class="tw-font-medium tw-text-gray-900 dark:tw-text-gray-300">
+                              <div>All</div>
+                            </label>
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="tw-flex tw-p-2 tw-rounded hover:tw-bg-gray-100 dark:hover:tw-bg-gray-600">
+                          <div class="tw-flex tw-items-center tw-h-5">
+                            <input id="helper-radio-4" name="helper-radio" type="radio" value=""
+                              class="tw-w-4 tw-h-4 tw-text-blue-600 tw-bg-gray-100 tw-border-gray-300 focus:tw-ring-blue-500 dark:focus:tw-ring-blue-600 dark:tw-ring-offset-gray-700 dark:focus:tw-ring-offset-gray-700 focus:tw-ring-2 dark:tw-bg-gray-600 dark:tw-border-gray-500">
+                          </div>
+                          <div (click)="filter('AVAILABLE')" class="tw-ms-2 tw-text-sm">
+                            <label for="helper-radio-4" class="tw-font-medium tw-text-gray-900 dark:tw-text-gray-300">
+                              <div class="tw-text-green-400">Available</div>
+                            </label>
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="tw-flex tw-p-2 tw-rounded hover:tw-bg-gray-100 dark:hover:tw-bg-gray-600">
+                          <div class="tw-flex tw-items-center tw-h-5">
+                            <input id="helper-radio-5" name="helper-radio" type="radio" value=""
+                              class="tw-w-4 tw-h-4 tw-text-blue-600 tw-bg-gray-100 tw-border-gray-300 focus:tw-ring-blue-500 dark:focus:tw-ring-blue-600 dark:tw-ring-offset-gray-700 dark:focus:tw-ring-offset-gray-700 focus:tw-ring-2 dark:tw-bg-gray-600 dark:tw-border-gray-500">
+                          </div>
+                          <div (click)="filter('DECLINED')" class="tw-ms-2 tw-text-sm">
+                            <label for="helper-radio-5" class="tw-font-medium tw-text-gray-900 dark:tw-text-gray-300">
+                              <div class="tw-text-red-600">Declined</div>
+                            </label>
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="tw-flex tw-p-2 tw-rounded hover:tw-bg-gray-100 dark:hover:tw-bg-gray-600">
+                          <div class="tw-flex tw-items-center tw-h-5">
+                            <input id="helper-radio-6" name="helper-radio" type="radio" value=""
+                              class="tw-w-4 tw-h-4 tw-text-blue-600 tw-bg-gray-100 tw-border-gray-300 focus:tw-ring-blue-500 dark:focus:tw-ring-blue-600 dark:tw-ring-offset-gray-700 dark:focus:tw-ring-offset-gray-700 focus:tw-ring-2 dark:tw-bg-gray-600 dark:tw-border-gray-500">
+                          </div>
+                          <div (click)="filter('IN_USE')" class="tw-ms-2 tw-text-sm">
+                            <label for="helper-radio-6" class="tw-font-medium tw-text-gray-900 dark:tw-text-gray-300">
+                              <div class="tw-text-orange-400">In use</div>
+                            </label>
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="tw-flex tw-p-2 tw-rounded hover:tw-bg-gray-100 dark:hover:tw-bg-gray-600">
+                          <div class="tw-flex tw-items-center tw-h-5">
+                            <input id="helper-radio-7" name="helper-radio" type="radio" value=""
+                              class="tw-w-4 tw-h-4 tw-text-blue-600 tw-bg-gray-100 tw-border-gray-300 focus:tw-ring-blue-500 dark:focus:tw-ring-blue-600 dark:tw-ring-offset-gray-700 dark:focus:tw-ring-offset-gray-700 focus:tw-ring-2 dark:tw-bg-gray-600 dark:tw-border-gray-500">
+                          </div>
+                          <div (click)="filter('WAIT_FOR_APPROVAL')" class="tw-ms-2 tw-text-sm">
+                            <label for="helper-radio-7" class="tw-font-medium tw-text-gray-900 dark:tw-text-gray-300">
+                              <div class="tw-text-gray-400">Wait for approval</div>
+                            </label>
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="tw-flex tw-p-2 tw-rounded hover:tw-bg-gray-100 dark:hover:tw-bg-gray-600">
+                          <div class="tw-flex tw-items-center tw-h-5">
+                            <input id="helper-radio-8" name="helper-radio" type="radio" value=""
+                              class="tw-w-4 tw-h-4 tw-text-blue-600 tw-bg-gray-100 tw-border-gray-300 focus:tw-ring-blue-500 dark:focus:tw-ring-blue-600 dark:tw-ring-offset-gray-700 dark:focus:tw-ring-offset-gray-700 focus:tw-ring-2 dark:tw-bg-gray-600 dark:tw-border-gray-500">
+                          </div>
+                          <div (click)="filter('STOPPED')" class="tw-ms-2 tw-text-sm">
+                            <label for="helper-radio-8" class="tw-font-medium tw-text-gray-900 dark:tw-text-gray-300">
+                              <div class="tw-text-red-400">Stopped</div>
+                            </label>
+                          </div>
+                        </div>
+                      </li>
+
+
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div *ngFor="let car of cars; let i = index"
+                class="tw-my-5 tw-shadow-xl tw-grid tw-grid-cols-1 tw-gap-6 w-full">
+                <app-car-item [car]="car" [index]="i"></app-car-item>
+
+              </div>
+            </div>
+            <div style="display: flex; justify-content: center" *ngIf="totalElements == 0">
+              <img src="assets/images/noitem.png" />
+            </div>
+            <div *ngIf="totalElements > 0"
+              class="tw-cursor-pointer tw-flex tw-flex-col tw-items-center tw-justify-between tw-p-4 tw-space-y-3 md:tw-flex-row md:tw-space-y-0 md:tw-space-x-4">
+              <nav style="margin-left: -17px" aria-label="Page navigation example">
+                <ul class="tw-flex tw-items-center tw--space-x-px tw-h-10 tw-text-base">
+                  <li>
+                    <a style="color: black !important;" *ngIf="page > 0" style="cursor: pointer"
+                      (click)="page - 1 >= 0 ? switchPage(page - 1): ''"
+                      class="tw-flex tw-items-center tw-justify-center tw-px-4 tw-h-10 tw-ms-0 tw-leading-tight tw-text-gray-500 tw-bg-white tw-border tw-border-e-0 tw-border-gray-300 tw-rounded-s-lg tw-hover:bg-gray-100 tw-hover:text-gray-700 tw-dark:bg-gray-800 tw-dark:border-gray-700 tw-dark:text-gray-400 tw-dark:hover:bg-gray-700 tw-dark:hover:text-white">
+                      <span class="tw-sr-only">Previous</span>
+                      <svg class="tw-w-3 tw-h-3 tw-rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                        fill="none" viewBox="0 0 6 10">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M5 1 1 5l4 4" />
+                      </svg>
+                    </a>
+                    <a style="color: black !important;" *ngIf="page == 0"
+                      class="tw-disabled tw-cursor-not-allowed tw-pointer tw-flex tw-items-center tw-justify-center tw-px-4 tw-h-10 tw-leading-tight tw-text-gray-500 tw-bg-white tw-border tw-border-gray-300 tw-rounded-s-lg tw-hover:bg-gray-100 tw-hover:text-gray-700 tw-dark:bg-gray-800 tw-dark:border-gray-700 tw-dark:text-gray-400 tw-dark:hover:bg-gray-700 tw-dark:hover:text-white">
+                      <span class="tw-cursor-not-allowed tw-sr-only">Previous</span>
+                      <svg class="tw-cursor-not-allowed tw-w-3 tw-h-3 tw-rtl:rotate-180" aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M5 1 1 5l4 4" />
+                      </svg>
+                    </a>
+                  </li>
+
+                  <li *ngFor="let p of pageArr">
+                    <a style="cursor: pointer" *ngIf="page == p - 1" aria-current="page"
+                      class="az-10 tw-flex tw-items-center tw-justify-center tw-px-4 tw-h-10 tw-leading-tight tw-text-blue-600 tw-border tw-border-blue-300 tw-bg-blue-50 hover:tw-bg-blue-100 hover:tw-text-blue-700 dark:tw-border-gray-700 dark:tw-bg-gray-700 dark:tw-text-white">{{p}}</a>
+                    <a style="cursor: pointer" (click)="switchPage(p - 1)" *ngIf="page != p - 1"
+                      class="tw-flex tw-items-center tw-justify-center tw-px-4 tw-h-10 tw-leading-tight tw-text-gray-500 tw-bg-white tw-border tw-border-gray-300 hover:tw-bg-gray-100 hover:tw-text-gray-700 dark:tw-bg-gray-800 dark:tw-border-gray-700 dark:tw-text-gray-400 dark:hover:tw-bg-gray-700 dark:hover:tw-text-white">{{p}}</a>
+                  </li>
+
+
+                  <li>
+                    <a style="color: black !important;" *ngIf="page != totalPages - 1"
+                      (click)="page + 1 <= totalPages - 1 ? switchPage(page + 1) : ''"
+                      class="tw-cursor-pointer tw-pointer tw-flex tw-items-center tw-justify-center tw-px-4 tw-h-10 tw-leading-tight tw-text-gray-500 tw-bg-white tw-border tw-border-gray-300 tw-rounded-e-lg hover:tw-bg-gray-100 hover:tw-text-gray-700 dark:tw-bg-gray-800 dark:tw-border-gray-700 dark:tw-text-gray-400 dark:hover:tw-bg-gray-700 dark:hover:tw-text-white">
+                      <span class="tw-sr-only">Next</span>
+                      <svg class="tw-w-3 tw-h-3 tw-rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                        fill="none" viewBox="0 0 6 10">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="m1 9 4-4-4-4" />
+                      </svg>
+                    </a>
+                    <a style="color: black !important;" *ngIf="page == totalPages - 1"
+                      class="tw-disabled tw-cursor-not-allowed tw-pointer tw-flex tw-items-center tw-justify-center tw-px-4 tw-h-10 tw-leading-tight tw-text-gray-500 tw-bg-white tw-border tw-border-gray-300 tw-rounded-e-lg hover:tw-bg-gray-100 hover:tw-text-gray-700 dark:tw-bg-gray-800 dark:tw-border-gray-700 dark:tw-text-gray-400 dark:hover:tw-bg-gray-700 dark:hover:tw-text-white">
+                      <span class="tw-cursor-not-allowed tw-sr-only">Next</span>
+                      <svg class="tw-cursor-not-allowed tw-w-3 tw-h-3 tw-rtl:rotate-180" aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="m1 9 4-4-4-4" />
+                      </svg>
+                    </a>
+                  </li>
+
+
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

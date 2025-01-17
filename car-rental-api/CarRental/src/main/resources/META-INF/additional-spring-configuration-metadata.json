@@ -1,0 +1,74 @@
+{
+  "properties": [
+    {
+      "name": "application.security.jwt.secret-key",
+      "type": "java.lang.String",
+      "description": "The secret key used for JWT authentication in the application"
+    },
+    {
+      "name": "application.security.jwt.expiration",
+      "type": "java.lang.String",
+      "description": "The expiration time for JWT tokens in the application"
+    },
+    {
+      "name": "application.security.jwt.refresh-token.expiration",
+      "type": "java.lang.String",
+      "description": "The expiration time for refresh tokens in the application"
+    },
+    {
+      "name": "spring.mail.base-url",
+      "type": "java.lang.String",
+      "description": "The base URL for sending emails in the application"
+    },
+    {
+      "name": "application.security.jwt.refresh-token.expiration-remember-me",
+      "type": "java.lang.String",
+      "description": "The expiration time for remember me refresh tokens in the application"
+    },
+    {
+      "name": "application.aws.region",
+      "type": "java.lang.String",
+      "description": "The AWS region used in the application"
+    },
+    {
+      "name": "application.aws.access-key",
+      "type": "java.lang.String",
+      "description": "The access key for AWS services in the application"
+    },
+    {
+      "name": "application.aws.secret-key",
+      "type": "java.lang.String",
+      "description": "The secret key for AWS services in the application"
+    },
+    {
+      "name": "application.aws.s3.buckets.dev",
+      "type": "java.lang.String",
+      "description": "The name of the development S3 bucket in AWS"
+    },
+    {
+      "name": "spring.mail.from",
+      "type": "java.lang.String",
+      "description": "The email address used as the 'from' address in outgoing emails"
+    },
+    {
+      "name": "application.url.base",
+      "type": "java.lang.String",
+      "description": "The base URL of the application"
+    },
+    {
+      "name": "application.custom.property1",
+      "type": "java.lang.String",
+      "description": "A meaningful description for 'application.custom.property1'"
+    },
+    {
+      "name": "application.custom.property2",
+      "type": "java.lang.String",
+      "description": "A meaningful description for 'application.custom.property2'"
+    },
+    {
+      "name": "application.custom.property3",
+      "type": "java.lang.String",
+      "description": "A meaningful description for 'application.custom.property3'"
+    }
+  ]
+}

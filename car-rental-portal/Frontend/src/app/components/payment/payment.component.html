@@ -1,0 +1,271 @@
+<app-header></app-header>
+<div class="tw-bg-neutral-200 tw-mx-auto tw-flex tw-justify-center">
+    <div
+        class="tw-p-10 tw-relative tw-inline-block tw-duration-300 tw-ease-in-out tw-transition-transform tw-transform tw-w-[1200px]">
+        <div class="tw-flex tw-justify-center tw-relative tw-shadow tw-p-8 tw-rounded-lg tw-bg-white">
+            <app-loading [hidden]="!isLoading"></app-loading>
+            <div [hidden]="isLoading" class="tw-grid tw-grid-cols-12 tw-divide-x tw-w-full tw-min-h-[600px]">
+                <div class="tw-col-span-5">
+                    <div class="tw-mb-8 tw-flex tw-justify-between">
+                        <h5 class="tw-text-xl tw-font-medium dark:tw-text-white">
+                            Choose payment method
+                        </h5>
+                    </div>
+                    <div>
+                        <ul
+                            class="tw-w-full tw-text-sm tw-font-medium tw-text-gray-900 tw-bg-white dark:tw-bg-gray-700 dark:tw-border-gray-600 dark:tw-text-white">
+                            <li class="tw-w-full tw-rounded-t-lg dark:tw-border-gray-600">
+                                <div class="tw-flex tw-ps-3">
+                                    <div class="tw-flex tw-items-center tw-h-5">
+                                        <input name="list-radio" id="option1" aria-describedby="helper-radio-text"
+                                            type="radio" value="" checked (click)="changeOpt(1)"
+                                            class="tw-w-4 tw-h-4 tw-text-blue-600 tw-bg-gray-100 tw-border-gray-300 focus:tw-ring-blue-500 dark:tw-focus dark:tw-ring-offset-gray-800 focus:tw-ring-2 dark:tw-bg-gray-700 dark:tw-border-gray-600">
+                                    </div>
+                                    <div class="tw-ms-2 tw-text-sm">
+                                        <label for="option1"
+                                            class="tw-font-medium tw-text-gray-900 dark:tw-text-gray-300">
+                                            My Wallet
+                                        </label>
+                                        <p id="helper-radio-text"
+                                            class="tw-text-xs tw-font-normal tw-text-gray-500 dark:tw-text-gray-300">
+                                            Available balances: <span
+                                                class="tw-font-bold tw-text-gray-800">{{balances.toLocaleString('vi-VN')}}</span> points
+                                        </p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="tw-w-full tw-rounded-t-lg dark:tw-border-gray-600">
+                                <div class="tw-flex tw-items-center tw-ps-3">
+                                    <input disabled id="option2" type="radio" value="" name="list-radio"
+                                        class="tw-cursor-not-allowed tw-w-4 tw-h-4 tw-text-blue-600 tw-bg-gray-100 tw-border-gray-300 focus:tw-ring-blue-500 dark:tw-focus dark:tw-ring-offset-gray-700 dark:tw-focus focus:tw-ring-2 dark:tw-bg-gray-600 dark:tw-border-gray-500">
+                                    <label for="option2"
+                                        class="tw-cursor-not-allowed tw-w-full tw-py-3 tw-ms-2 tw-mb-0 tw-text-sm tw-font-medium tw-text-gray-400 dark:tw-text-gray-500">
+                                        Credit/Bank Card
+                                    </label>
+                                </div>
+                            </li>
+                            <li class="tw-w-full tw-rounded-t-lg dark:tw-border-gray-600" *ngIf="type=='deposit'">
+                                <div class="tw-flex tw-items-center tw-ps-3">
+                                    <input id="option3" type="radio" value="" name="list-radio" (click)="changeOpt(3)"
+                                        class="tw-w-4 tw-h-4 tw-text-blue-600 tw-bg-gray-100 tw-border-gray-300 focus:tw-ring-blue-500 dark:tw-focus dark:tw-ring-offset-gray-700 dark:tw-focus focus:tw-ring-2 dark:tw-bg-gray-600 dark:tw-border-gray-500">
+                                    <label for="option3"
+                                        class="tw-w-full tw-py-3 tw-ms-2 tw-mb-0 tw-text-sm tw-font-medium tw-text-gray-900 dark:tw-text-gray-300">
+                                        Cash
+                                    </label>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div *ngIf="option==1">
+                        <div class="tw-m-8 md:tw-m-6 lg:tw-m-10">
+                            <div
+                                class="tw-w-full tw-h-auto tw-m-auto tw-bg-red-100 tw-rounded-xl tw-relative tw-text-white tw-shadow-xl tw-transition-transform tw-transform hover:tw-scale-110">
+                                <img class="tw-relative tw-object-cover tw-w-full tw-h-auto tw-rounded-xl"
+                                    src="../../../../assets/images/credit/credit_card.png">
+
+                                <div class="tw-w-full tw-px-8 tw-absolute tw-top-4">
+                                    <div class="tw-flex tw-justify-between tw-items-center">
+                                        <div class="tw-text-sm">
+                                            <p class="tw-font-light">
+                                                Name
+                                            </p>
+                                            <p class="tw-font-medium tw-tracking-widest tw-uppercase">
+                                                {{name}}
+                                            </p>
+                                        </div>
+                                        <img class="tw-w-20 tw-h-20"
+                                            src="../../../../assets/images/credit/mastercard-black-vector-logo.png" />
+                                    </div>
+                                    <div class="tw-pt-1">
+                                        <p class="tw-font-light">
+                                            Card Number
+                                        </p>
+                                        <p class="tw-font-medium tw-tracking-more-wider">
+                                            xxxx xxxx xxxx 8888
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tw-pl-8 tw-col-span-7 tw-flex tw-flex-col tw-justify-between">
+                    <div>
+                        <div class="tw-mb-8 tw-flex tw-justify-between">
+                            <h5 class="tw-text-xl tw-font-medium dark:tw-text-white">
+                                Information
+                            </h5>
+                        </div>
+                        <div *ngIf="option==1">
+                            <div *ngIf="amount > balances" class="tw-mb-4 tw-bg-red-100 tw-text-red-700 tw-px-4 tw-py-3"
+                                role="alert">
+                                <p class="tw-font-bold">System message</p>
+                                <p class="tw-text-sm">Your account balance is not enough to pay this transaction. <a><span (click)="topUp()" class = "tw-text-blue-600 tw-underline tw-cursor-pointer">Click here</span> to top up the remaining points into your wallet</a></p>
+                            </div>
+                            <div>
+                                <div class="tw-flex tw-flex-col tw-pb-6 tw-w-full dark:tw-bg-gray-800 tw-space-y-6">
+                                    <h3
+                                        class="tw-text-md dark:tw-text-white tw-font-medium tw-leading-5 tw-text-gray-800">
+                                        Transaction information
+                                    </h3>
+                                    <div
+                                        class="tw-flex tw-justify-center tw-items-center tw-w-full tw-space-y-4 tw-flex-col tw-border-gray-200 tw-border-b tw-pb-4">
+                                        <div class="tw-flex tw-justify-between tw-w-full">
+                                            <p class="tw-text-base dark:tw-text-white tw-leading-4 tw-text-gray-800">
+                                                Card number
+                                            </p>
+                                            <p class="tw-text-base dark:tw-text-gray-300 tw-leading-4 tw-text-gray-600">
+                                                xxxx xxxx xxxx 8888
+                                            </p>
+                                        </div>
+                                        <div class="tw-flex tw-justify-between tw-w-full">
+                                            <p class="tw-text-base dark:tw-text-white tw-leading-4 tw-text-gray-800">
+                                                Booking ID
+                                            </p>
+                                            <p class="tw-text-base dark:tw-text-gray-300 tw-leading-4 tw-text-gray-600">
+                                                {{bookingId}}
+                                            </p>
+                                        </div>
+                                        <div class="tw-flex tw-justify-between tw-items-center tw-w-full">
+                                            <p class="tw-text-base dark:tw-text-white tw-leading-4 tw-text-gray-800">
+                                                Content
+                                            </p>
+                                            <p class="tw-text-base dark:tw-text-gray-300 tw-leading-4 tw-text-gray-600">
+                                                {{msg}}
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <h3
+                                        class="tw-text-md dark:tw-text-white tw-font-medium tw-leading-5 tw-text-gray-800">
+                                        Transaction amount
+                                    </h3>
+                                    <div
+                                        class="tw-flex tw-justify-center tw-items-center tw-w-full tw-space-y-4 tw-flex-col tw-border-gray-200 tw-border-b tw-pb-4">
+                                        <div class="tw-flex tw-justify-between tw-w-full">
+                                            <p class="tw-text-base dark:tw-text-white tw-leading-4 tw-text-gray-800">
+                                                Amount
+                                            </p>
+                                            <p class="tw-text-base dark:tw-text-gray-300 tw-leading-4 tw-text-gray-600">
+                                                {{amount.toLocaleString('vi-VN')}} points
+                                            </p>
+                                        </div>
+                                        <div class="tw-flex tw-justify-between tw-items-center tw-w-full">
+                                            <p class="tw-text-base dark:tw-text-white tw-leading-4 tw-text-gray-800">
+                                                Fee
+                                            </p>
+                                            <p class="tw-text-base dark:tw-text-gray-300 tw-leading-4 tw-text-gray-600">
+                                                None
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="tw-flex tw-justify-between tw-items-center tw-w-full">
+                                        <p
+                                            class="tw-text-base dark:tw-text-white tw-font-semibold tw-leading-4 tw-text-gray-800">
+                                            Total</p>
+                                        <p
+                                            class="tw-text-base dark:tw-text-gray-300 tw-font-semibold tw-leading-4 tw-text-gray-600">
+                                            {{amount.toLocaleString('vi-VN')}} points
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div *ngIf="option==3">
+                            <p class="tw-mb-3text-gray-500 dark:tw-mb-3text-gray-400">
+                                By using the cash payment method on the website, please read the <span
+                                    onclick="document.getElementById('term').click()"
+                                    class="tw-underline tw-cursor-pointer tw-text-blue-600">terms of cash payment</span>
+                                carefully.
+                            </p>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="tw-flex tw-items-center" *ngIf="option==3">
+                            <input id="link-checkbox" type="checkbox" (change)="changeTerm()"
+                                class="tw-w-4 tw-h-4 tw-text-blue-600 tw-bg-gray-100 tw-border-gray-300 tw-rounded focus:tw-ring-blue-500 dark:tw-focus dark:tw-ring-offset-gray-800 focus:tw-ring-2 dark:tw-bg-gray-700 dark:tw-border-gray-600">
+                            <label for="link-checkbox"
+                                class="tw-mb-0 tw-ms-2 tw-text-sm tw-font-medium tw-text-gray-900 dark:tw-text-gray-300">
+                                I agree with the terms and conditions.
+                            </label>
+                        </div>
+                        <div class="tw-flex tw-justify-end">
+                            <button type="button" [disabled]="disable" (click)="submit()"
+                                class="{{disable?'tw-opacity-50 !tw-cursor-not-allowed':'hover:tw-bg-blue-700'}} tw-bg-blue-500 tw-text-white tw-font-bold tw-py-2 tw-px-4 tw-rounded-full">
+                                Submit
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<button id="term" type="button" data-modal-target="myModal" data-modal-toggle="myModal"
+    class="tw-hidden tw-opacity-0 tw-invisible">
+    term
+</button>
+<!-- Main modal -->
+<div id="myModal" data-modal-backdrop="static" tabindex="-1" aria-hidden="true"
+    class="tw-hidden tw-overflow-y-auto tw-overflow-x-hidden tw-fixed tw-top-0 tw-right-0 tw-left-0 tw-z-50 tw-justify-center tw-items-center tw-w-full md:tw-inset-0 tw-h-[calc(100%-1rem)] tw-max-h-full">
+    <div class="tw-relative tw-p-4 tw-w-full tw-max-w-2xl tw-max-h-full">
+        <!-- Modal content -->
+        <div class="tw-relative tw-bg-white tw-rounded-lg tw-shadow dark:tw-bg-gray-700">
+            <!-- Modal header -->
+            <div
+                class="tw-flex tw-items-center tw-justify-between tw-p-4 md:tw-p-5 tw-border-b tw-rounded-t dark:tw-border-gray-600">
+                <h3 class="tw-text-xl tw-font-semibold tw-text-gray-900 dark:tw-text-white">
+                    Terms of Cash payment
+                </h3>
+                <button type="button"
+                    class="tw-text-gray-400 tw-bg-transparent hover:tw-bg-gray-200 hover:tw-text-gray-900 tw-rounded-lg tw-text-sm tw-w-8 tw-h-8 tw-ms-auto tw-inline-flex tw-justify-center tw-items-center dark:tw-hover dark:tw-hover"
+                    data-modal-hide="myModal">
+                    <svg class="tw-w-3 tw-h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 14 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                    </svg>
+                    <span class="tw-sr-only">Close modal</span>
+                </button>
+            </div>
+            <!-- Modal body -->
+            <div class="tw-p-4 md:tw-p-5 tw-space-y-4">
+                <p class="tw-mb-3 tw-mb-3text-gray-500 dark:tw-mb-3text-gray-400">
+                    <span class="tw-font-bold">1. Payment Responsibility: </span>Customers and Hosts are
+                    entirely responsible for any cash payment transactions. The system does not take
+                    responsibility for verifying accuracy or resolving disputes related to these payment
+                    transactions.
+                </p>
+                <p class="tw-mb-3 tw-mb-3text-gray-500 dark:tw-mb-3text-gray-400">
+                    <span class="tw-font-bold">2. Payment Confirmation: </span>Confirming payments and
+                    managing
+                    related transaction information is the responsibility of Customers and Hosts. The
+                    website
+                    does not perform or store information regarding cash payment account details.
+                </p>
+                <p class="tw-mb-3 tw-mb-3text-gray-500 dark:tw-mb-3text-gray-400">
+                    <span class="tw-font-bold">3. Acceptance of Risks: </span>Using the cash payment method
+                    implies acceptance of all risks that may arise from direct financial transactions
+                    between
+                    Customers and Hosts. The system is not responsible for ensuring the safety and security
+                    of
+                    these transactions.
+                </p>
+                <p class="tw-mb-3text-gray-500 dark:tw-mb-3text-gray-400">
+                    <span class="tw-font-bold">4. Understanding and Acceptance of Terms: </span>By using the
+                    cash payment method on the website, Customers and Hosts are deemed to have understood
+                    and
+                    accepted the terms and conditions related to this payment method.
+                </p>
+            </div>
+            <!-- Modal footer -->
+            <div
+                class="tw-flex tw-justify-end tw-items-center tw-p-4 md:tw-p-5 tw-border-t tw-border-gray-200 tw-rounded-b dark:tw-border-gray-600">
+                <button data-modal-hide="myModal" type="button"
+                    class="tw-text-white tw-bg-blue-700 hover:tw-bg-blue-800 focus:tw-ring-4 focus:tw-outline-none focus:tw-ring-blue-300 tw-font-medium tw-rounded-lg tw-text-sm tw-px-5 tw-py-2.5 tw-text-center dark:tw-bg-blue-600 dark:tw-hover dark:tw-focus">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

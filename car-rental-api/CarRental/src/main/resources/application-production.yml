@@ -1,0 +1,61 @@
+server:
+  port: 8080
+spring:
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 20MB
+      max-request-size: 20MB
+  datasource:
+    # url: jdbc:mysql://localhost:3306/car_rental
+    # username: root
+    # password: haibang20042003
+
+    url: jdbc:mysql://103.174.213.139:3323/hn24_cpl_pjb_01_team01
+    username: hn24_cpl_pjb_01_team01
+    password: Hg12FGT27g!Fnq
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: sachtructuyen123@gmail.com
+    password: fuft xdir bnto agdr
+
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+    base-url: ${SPRING_MAIL_BASE_URL:http://localhost:4200}
+    from: Car_Rental
+  thymeleaf:
+    cache: true
+    mode: HTML
+
+application:
+  url:
+    base: ${APPLICATION_URL_BASE:http://localhost:8080}
+
+  security:
+    jwt:
+      secret-key: ${SECURITY_JWT_SECRET:}
+      expiration: 300000 # 5 minutes
+      refresh-token:
+        expiration: 86400000 #1 day
+        expiration-remember-me: 604800000 # 7 days
+
+  aws:
+    region: ap-southeast-1
+    access-key: ${AWS_ACCESS_KEY:}
+    secret-key: ${AWS_SECRET_KEY:}
+    s3:
+      buckets: 
+        dev: car-rental-dev

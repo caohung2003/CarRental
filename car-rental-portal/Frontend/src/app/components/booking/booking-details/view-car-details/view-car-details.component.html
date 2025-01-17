@@ -1,0 +1,113 @@
+<h5 class="tw-text-xl tw-font-semibold dark:tw-text-white">
+  Car Details
+</h5>
+<hr class="tw-h-px tw-my-3 tw-bg-gray-400 tw-border-0 dark:tw-bg-gray-700">
+<div class="tw-relative tw-mx-auto tw-w-full">
+  <div
+    class="tw-relative tw-inline-block tw-duration-300 tw-ease-in-out tw-transition-transform tw-transform tw-w-full">
+    <div class="tw-rounded-lg tw-bg-white">
+      <div class="tw-flex tw-justify-center tw-relative tw-rounded-lg tw-overflow-hidden tw-h-52">
+        <div class="tw-transition-transform tw-duration-500 tw-transform tw-ease-in-out tw-w-full">
+          <div class="tw-absolute tw-inset-0">
+            <!-- <app-carousel [images]="images">
+            </app-carousel> -->
+            <div id="default-carousel" class="tw-relative tw-w-full tw-h-full tw-object-center">
+              <!-- Carousel wrapper -->
+              <div class="tw-relative tw-w-full tw-min-h-full tw-overflow-hidden tw-rounded-lg">
+                <div class="tw-duration-700 tw-ease-in-out">
+                  <img src="{{images[0]}}"
+                    class="tw-absolute tw-block tw-w-full tw-h-full tw-object-cover -tw-translate-x-1/2 -tw-translate-y-1/2 tw-top-1/2 tw-left-1/2"
+                    alt="...">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tw-absolute tw-top-0 tw-left-0 tw-inline-flex tw-z-10 tw-mt-2 tw-ml-3">
+          <span
+            class="tw-px-3 tw-py-2 tw-rounded-lg tw-bg-red-500 tw-text-sm tw-font-medium tw-text-white tw-select-none">
+            {{this.carInfo.transmission.substring(0,1)+this.carInfo.transmission.toLocaleLowerCase().substring(1)}}
+          </span>
+          <span
+            class="tw-ml-3 tw-px-3 tw-py-2 tw-rounded-lg tw-bg-blue-500 tw-text-sm tw-font-medium tw-text-white tw-select-none">
+            {{this.carInfo.fuel.toString().substring(0,1)+this.carInfo.fuel.toString().toLocaleLowerCase().substring(1)}}
+          </span>
+          <span
+            class="tw-ml-3 tw-px-3 tw-py-2 tw-rounded-lg tw-bg-green-500 tw-text-sm tw-font-medium tw-text-white tw-select-none">
+            {{this.carInfo.noSeat}} Seats
+          </span>
+        </div>
+      </div>
+
+      <div class="tw-mt-4">
+        <h2 class="tw-font-medium tw-text-base md:tw-text-lg tw-text-gray-800 tw-line-clamp-1"
+          title="Lamborghini Urus S">
+          {{this.carInfo.brandModel.brand.name}} {{this.carInfo.brandModel.modelName.toString()}}
+        </h2>
+        <p class="tw-mt-2 tw-text-sm tw-text-gray-800 tw-line-clamp-1" title="Khu 2, Hoàng Cương, Thanh Ba, Phú Thọ">
+          {{this.carLocation}}
+        </p>
+      </div>
+      <hr class="tw-h-px tw-my-4 tw-mx-5 tw-bg-gray-400 tw-border-0 dark:tw-bg-gray-700">
+      <div>
+        <ul class="tw-flex tw-justify-between tw-items-center tw-list-none">
+          <li>
+            <span class="tw-text-gray-800">Price</span>
+            <p class="tw-text-lg tw-font-bold">{{this.carPriceStr}} VND <span class="tw-text-xs">/day</span> </p>
+          </li>
+
+          <li>
+            <span class="tw-text-gray-800">Rating</span>
+            <ul class="tw-text-lg tw-font-medium tw-flex tw-text-amber-400 tw-list-none">
+              <li class="tw-inline tw-mr-2 tw-flex tw-justify-between tw-items-center">
+                <svg class="tw-w-4 tw-h-4 tw-text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor" viewBox="0 0 22 20">
+                  <path
+                    d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                </svg>
+              </li>
+              <li class="tw-inline tw-mr-2 tw-flex tw-justify-between tw-items-center">
+                <p class="tw-text-sm tw-font-bold tw-text-gray-900 dark:tw-text-white">
+                  {{this.carInfo.rating}}
+                </p>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <hr class="tw-h-px tw-my-4 tw-mx-5 tw-bg-gray-400 tw-border-0 dark:tw-bg-gray-700">
+      <div class="tw-flex tw-justify-between tw-mt-3">
+        <div class="tw-flex tw-col-span-2 tw-items-center">
+          <div class="tw-relative">
+            <div class="tw-rounded-full tw-w-6 tw-h-6 md:tw-w-8 md:tw-h-8 tw-bg-gray-200">
+              <img class="tw-h-full tw-w-full tw-rounded-full tw-object-cover"
+                src="{{this.carInfo.profileDto.avatar}}" alt="">
+            </div>
+            <span
+              class="tw-absolute tw-top-0 tw-right-0 tw-inline-block tw-w-3 tw-h-3 tw-bg-primary-red tw-rounded-full">
+            </span>
+          </div>
+
+          <div class="tw-ml-2 tw-text-gray-800">
+
+            <div class="tw-text-base tw-font-medium tw-leading-none tw-text-gray-800">
+              {{this.carInfo.profileDto.firstName+' '+this.carInfo.profileDto.lastName}}
+            </div>
+            <div class="tw-mt-1 tw-text-sm tw-font-medium tw-leading-none tw-text-gray-400">
+              Tel: <a [href]="'tel:'+this.carInfo.profileDto.phone" target="_blank"><span class="tw-text-gray-600">{{this.carInfo.profileDto.phone}}</span></a>
+            </div>
+          </div>
+        </div>
+        <a href="/car/detail/{{this.carInfo.id}}"
+          class="tw-flex tw-items-center tw-font-medium tw-text-blue-600 dark:tw-text-blue-500 hover:tw-text-blue-800">
+          Read more
+          <svg class="tw-w-4 tw-h-4 tw-ms-2 rtl:tw-rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+            fill="none" viewBox="0 0 14 10">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M1 5h12m0 0L9 1m4 4L9 9" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

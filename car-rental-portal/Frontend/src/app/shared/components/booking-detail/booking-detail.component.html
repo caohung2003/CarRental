@@ -1,0 +1,581 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css">
+<app-header></app-header>
+<div class="tw-flex tw-justify-center tw-w-full tw-min-h-full tw-bg-neutral-200">
+  <div class="tw-w-full tw-pl-10 tw-pr-10">
+    <div class="tw-grid tw-grid-cols-12">
+      <div class="tw-h-fit tw-m-4 tw-relative tw-z-1 tw-col-span-12 md:tw-col-span-5">
+        <div class="tw-p-8 tw-bg-white tw-rounded-xl tw-flex tw-justify-center tw-items-center tw-mb-4">
+          <div class="tw-w-full tw-max-w-screen-xl tw-mx-auto">
+            <div class="tw-flex tw-justify-between">
+              <h5 class="tw-text-xl tw-font-semibold dark:tw-text-white">
+                Booking Details
+              </h5>
+              <div class="tw-flex tw-justify-start tw-items-end tw-text-gray-900">
+                <p>Total: </p>
+                <span class="tw-mx-1 tw-text-xl tw-text-green-400 tw-font-bold">3,000,000</span>
+                <span>VND</span>
+              </div>
+            </div>
+            <hr class="tw-h-px tw-my-3 tw-bg-gray-400 tw-border-0 dark:tw-bg-gray-700">
+            <ul class="tw-space-y-3 tw-font-medium">
+              <li class="tw-flex tw-items-start lg:tw-col-span-1">
+                <div class="tw-flex-shrink-0">
+                  <svg class="tw-w-5 tw-h-5 tw-text-sky-500" viewBox="0 0 24 24" stroke-width="2" fill="none"
+                    stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" />
+                    <line x1="18" y1="6" x2="18" y2="6.01" />
+                    <path d="M18 13l-3.5 -5a4 4 0 1 1 7 0l-3.5 5" />
+                    <polyline points="10.5 4.75 9 4 3 7 3 20 9 17 15 20 21 17 21 15" />
+                    <line x1="9" y1="4" x2="9" y2="17" />
+                    <line x1="15" y1="15" x2="15" y2="20" />
+                  </svg>
+                </div>
+                <p class="tw-ml-3 tw-leading-5 tw-text-gray-600">
+                  Location: Khu 2, Hoàng Cương, Thanh Ba, Phú Thọ
+                </p>
+              </li>
+              <li class="tw-flex tw-items-start tw-mt-5 lg:tw-col-span-1 lg:tw-mt-0 tw-flex tw-justify-between">
+                <div class="tw-flex">
+                  <div class="tw-flex-shrink-0">
+                    <svg class="tw-w-5 tw-h-5 tw-text-sky-500" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                      <line x1="16" y1="2" x2="16" y2="6" />
+                      <line x1="8" y1="2" x2="8" y2="6" />
+                      <line x1="3" y1="10" x2="21" y2="10" />
+                    </svg>
+                  </div>
+                  <div class="tw-ml-3 tw-leading-5 tw-text-gray-600">
+                    Time: <span class="tw-text-sky-600">20:20, 25/03/2024</span> to <span class="tw-text-sky-600">20:20,
+                      28/03/2024</span>
+                  </div>
+
+                </div>
+                <div>
+                  <div data-tooltip-target="tooltip-dark2">
+                    <span
+                      class="tooltip-trigger tw-bg-blue-100 tw-text-blue-800 tw-text-sm tw-font-medium tw-px-2.5 tw-py-0.5 tw-rounded-full dark:tw-bg-blue-900 dark:tw-text-blue-300">
+                      3 Days
+                    </span>
+                  </div>
+                  <div id="tooltip-dark2" role="tooltip" style="text-justify: inter-word;"
+                    class="tw-text-justify tw-absolute tw-z-30 tw-invisible tw-inline-block tw-px-3 tw-py-2 tw-text-sm tw-font-medium tw-text-white tw-bg-gray-800 tw-rounded-lg tw-shadow-sm tw-opacity-0 tw-tooltip dark:tw-bg-gray-700">
+                    Car rental price is calculated by day. If you rent a car for less than 24 hours,
+                    it will be counted as 1 day
+                    <div class="tooltip-arrow" data-popper-arrow></div>
+                  </div>
+                </div>
+              </li>
+              <li class="tw-flex tw-items-start tw-mt-5 lg:tw-col-span-1 lg:tw-mt-0 tw-flex tw-justify-between">
+                <div class="tw-flex">
+                  <div class="tw-flex-shrink-0">
+                    <svg class="tw-w-5 tw-h-5 tw-text-sky-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </div>
+                  <p class="tw-ml-3 tw-leading-5 tw-text-gray-600">
+                    Deposit: <span>1,500,000</span> VND
+                  </p>
+                </div>
+                <div>
+                  <div data-tooltip-target="tooltip-dark"
+                    class="tw-text-white focus:tw-ring-4 focus:tw-ring-blue-300 tw-font-medium tw-rounded-full tw-text-sm tw-text-center dark:tw-bg-blue-600 dark:hover:tw-bg-blue-700 dark:focus:tw-ring-blue-800">
+                    <svg class="tw-h-5 tw-w-5 tw-text-gray-400 hover:tw-text-gray-500" width="24" height="24"
+                      viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+                      stroke-linejoin="round">
+                      <path stroke="none" d="M0 0h24v24H0z" />
+                      <circle cx="12" cy="12" r="9" />
+                      <line x1="12" y1="17" x2="12" y2="17.01" />
+                      <path d="M12 13.5a1.5 1.5 0 0 1 1 -1.5a2.6 2.6 0 1 0 -3 -4" />
+                    </svg>
+                  </div>
+                  <div id="tooltip-dark" role="tooltip" style="text-justify: inter-word;"
+                    class="tw-text-justify tw-absolute tw-z-10 tw-invisible tw-inline-block tw-px-3 tw-py-2 tw-text-sm tw-font-medium tw-text-white tw-bg-gray-800 tw-rounded-lg tw-shadow-sm tw-opacity-0 tw-tooltip dark:tw-bg-gray-700">
+                    You will leave collateral (cash/transfer or motorbike with original sticker) to
+                    the vehicle owner when completing procedures to receive the vehicle. The car
+                    owner will return the collateral when youreturn the car in its original
+                    condition when receiving the car
+                    <div class="tooltip-arrow" data-popper-arrow></div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="tw-p-8 tw-bg-white tw-rounded-xl tw-flex tw-flex-col tw-justify-center tw-mb-4">
+          <h5 class="tw-text-xl tw-font-semibold dark:tw-text-white">
+            Car Details
+          </h5>
+          <hr class="tw-h-px tw-my-3 tw-bg-gray-400 tw-border-0 dark:tw-bg-gray-700">
+          <div class="tw-relative tw-mx-auto tw-w-full">
+            <div
+              class="tw-relative tw-inline-block tw-duration-300 tw-ease-in-out tw-transition-transform tw-transform tw-w-full">
+              <div class="tw-rounded-lg tw-bg-white">
+                <div class="tw-flex tw-justify-center tw-relative tw-rounded-lg tw-overflow-hidden tw-h-52">
+                  <div class="tw-transition-transform tw-duration-500 tw-transform tw-ease-in-out tw-w-full">
+                    <div class="tw-absolute tw-inset-0">
+                      <div id="default-carousel" class="tw-relative tw-w-auto tw-h-full tw-object-center">
+                        <div class="tw-relative tw-w-full tw-min-h-full tw-overflow-hidden tw-rounded-lg">
+                          <div class="tw-duration-700 tw-ease-in-out">
+                            <img
+                              src="https://www.automoblog.net/wp-content/uploads/2022/09/Lamborghini-Urus-S-3.jpg.webp"
+                              class="tw-absolute tw-block tw-w-full tw-h-full tw-object-cover -tw-translate-x-1/2 -tw-translate-y-1/2 tw-top-1/2 tw-left-1/2"
+                              alt="...">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="tw-absolute tw-top-0 tw-left-0 tw-inline-flex tw-z-10 tw-mt-2 tw-ml-3">
+                    <span
+                      class="tw-px-3 tw-py-2 tw-rounded-lg tw-bg-red-500 tw-text-sm tw-font-medium tw-text-white tw-select-none">
+                      Automation
+                    </span>
+                    <span
+                      class="tw-ml-3 tw-px-3 tw-py-2 tw-rounded-lg tw-bg-blue-500 tw-text-sm tw-font-medium tw-text-white tw-select-none">
+                      Diesel
+                    </span>
+                    <span
+                      class="tw-ml-3 tw-px-3 tw-py-2 tw-rounded-lg tw-bg-green-500 tw-text-sm tw-font-medium tw-text-white tw-select-none">
+                      6 Seats
+                    </span>
+                  </div>
+                </div>
+
+                <div class="tw-mt-4">
+                  <h2 class="tw-font-medium tw-text-base md:tw-text-lg tw-text-gray-800 tw-line-clamp-1"
+                    title="Lamborghini Urus S">
+                    Lamborghini Urus S
+                  </h2>
+                  <p class="tw-mt-2 tw-text-sm tw-text-gray-800 tw-line-clamp-1"
+                    title="Khu 2, Hoàng Cương, Thanh Ba, Phú Thọ">
+                    Khu 2, Hoàng Cương, Thanh Ba, Phú Thọ
+                  </p>
+                </div>
+                <hr class="tw-h-px tw-my-4 tw-mx-5 tw-bg-gray-400 tw-border-0 dark:tw-bg-gray-700">
+                <div>
+                  <ul class="tw-flex tw-justify-between tw-items-center tw-list-none">
+                    <li>
+                      <span class="tw-text-gray-800">Price</span>
+                      <p class="tw-text-lg tw-font-bold">2,100,000 VND <span class="tw-text-xs">/day</span> </p>
+                    </li>
+
+                    <li>
+                      <span class="tw-text-gray-800">Rating</span>
+                      <ul class="tw-text-lg tw-font-medium tw-flex tw-text-amber-400 tw-list-none">
+                        <li class="tw-inline tw-mr-2 tw-flex tw-justify-between tw-items-center">
+                          <svg class="tw-w-4 tw-h-4 tw-text-yellow-300" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+                            <path
+                              d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                          </svg>
+                        </li>
+                        <li class="tw-inline tw-mr-2 tw-flex tw-justify-between tw-items-center">
+                          <p class="tw-text-sm tw-font-bold tw-text-gray-900 dark:tw-text-white">
+                            4.95
+                          </p>
+                        </li>
+                        <li class="tw-inline tw-flex tw-justify-between tw-items-center">
+                          <div
+                            class="tw-text-sm tw-font-medium tw-text-gray-900 hover:tw-no-underline dark:tw-text-white">
+                            73 reviews
+                          </div>
+                        </li>
+                        <!-- <li class="tw-inline"><i class="mdi mdi-star"></i></li>
+                                            <li class="tw-inline"><i class="mdi mdi-star"></i></li>
+                                            <li class="tw-inline tw-text-gray-600 dark:tw-text-white">5.0(30)</li> -->
+                      </ul>
+                    </li>
+                  </ul>
+                </div>
+                <hr class="tw-h-px tw-my-4 tw-mx-5 tw-bg-gray-400 tw-border-0 dark:tw-bg-gray-700">
+                <div class="tw-flex tw-justify-between tw-mt-3">
+                  <div class="tw-flex tw-col-span-2 tw-items-center">
+                    <div class="tw-relative">
+                      <div class="tw-rounded-full tw-w-6 tw-h-6 md:tw-w-8 md:tw-h-8 tw-bg-gray-200">
+                        <img class="tw-h-full tw-w-full tw-rounded-full tw-object-cover"
+                          src="https://th.bing.com/th/id/OIP.V8AXG6eNLssQ-yiV5FrqqAHaFj?rs=1&pid=ImgDetMain" alt="">
+                      </div>
+                      <span
+                        class="tw-absolute tw-top-0 tw-right-0 tw-inline-block tw-w-3 tw-h-3 tw-bg-primary-red tw-rounded-full">
+                      </span>
+                    </div>
+
+                    <div class="tw-ml-2 tw-text-gray-800">
+
+                      <div class="tw-text-base tw-font-medium tw-leading-none tw-text-gray-800">
+                        Duy Phong
+                      </div>
+                      <div class="tw-mt-1 tw-text-sm tw-font-medium tw-leading-none tw-text-gray-400">
+                        Tel: <a [href]="'tel:0999.666.888'" target="_blank"><span
+                            class="tw-text-gray-600">0999.666.888</span></a>
+                      </div>
+                    </div>
+                  </div>
+                  <a href="#"
+                    class="tw-flex tw-items-center tw-font-medium tw-text-blue-600 dark:tw-text-blue-500 hover:tw-text-blue-800">
+                    Read more
+                    <svg class="tw-w-4 tw-h-4 tw-ms-2 rtl:tw-rotate-180" aria-hidden="true"
+                      xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M1 5h12m0 0L9 1m4 4L9 9" />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="tw-mt-0 md:tw-mt-4 tw-m-4 tw-grid-cols-12 tw-col-span-12 md:tw-col-span-7">
+        <div class="tw-p-8 tw-bg-white tw-rounded-xl tw-flex tw-justify-center">
+          <div class="tw-w-full">
+        <div
+          class="tw-items-center tw-justify-between tw-pb-4 tw-space-y-3 md:tw-flex-row md:tw-space-y-0 md:tw-space-x-4 tw-w-full">
+          <div
+            class="label-input tw-items-stretch tw-justify-end tw-flex-shrink-0 tw-w-full tw-space-y-2 md:tw-w-auto md:tw-flex-row md:tw-space-y-0 md:tw-items-center md:tw-space-x-3">
+            <div class="tw-flex tw-justify-between">
+              <h5 class="tw-text-xl tw-font-semibold dark:tw-text-white">
+                Renter's infomation
+              </h5>
+
+              <label class="tw-flex tw-items-center tw-cursor-pointer tw-mt-0 tw-justify-end">
+                <input type="checkbox" value="" class="tw-sr-only tw-peer" [(ngModel)]="isEditing" />
+                <span
+                  class="{{!isEditing?'tw-text-gray-500':'tw-text-gray-900'}} tw-ms-3 tw-text-sm tw-font-medium dark:tw-text-gray-300">Edit
+                  Mode</span>
+                <div
+                  class="tw-relative tw-ml-2 tw-pt-0.5 tw-w-11 tw-h-6 tw-bg-gray-200 peer-focus:tw-outline-none peer-focus:tw-ring-4 peer-focus:tw-ring-blue-300 dark:peer-focus:tw-ring-blue-800 tw-rounded-full tw-peer dark:tw-bg-gray-700 peer-checked:after:tw-translate-x-full rtl:peer-checked:after:-tw-translate-x-full peer-checked:after:tw-border-white after:tw-content-[''] after:tw-absolute after:tw-top-[2px] after:tw-start-[4px] after:tw-bg-white after:tw-border-gray-300 after:tw-border after:tw-rounded-full after:tw-h-5 after:tw-w-5 after:tw-transition-all dark:tw-border-gray-600 peer-checked:tw-bg-blue-600">
+                </div>
+              </label>
+            </div>
+            <hr class="tw-h-px !tw-mx-0 !tw-my-3 tw-bg-gray-400 tw-border-0 dark:tw-bg-gray-700">
+            <form class=" tw-w-full !tw-ml-0">
+              <div class="tw-p-0">
+                <div class=" form-group tw-w-full">
+                  <label class="label-input">Full name<span class="required-asterisk">*</span></label>
+                  <div class="row tw-mb-5 tw-my-4">
+
+                    <div class="col tw-relative tw-z-0 tw-w-full ">
+                      <input type="text" placeholder=" " required
+                        class="tw-block tw-px-2.5 tw-pb-2.5 tw-pt-4 tw-w-full tw-text-sm tw-text-gray-900 tw-bg-transparent tw-rounded-lg tw-border-1 tw-border-gray-300 tw-appearance-none dark:tw-text-white dark:tw-border-gray-600 dark:tw-focus focus:tw-outline-none focus:tw-ring-0 focus:tw-border-blue-600 tw-peer"
+                        required [(ngModel)]="this.bookingInfo.renterInfo.firstName" [disabled]="!isEditing"
+                        name="renterFirstName" placeholder=" " ngModel #renterFirstNameControl="ngModel" />
+                      <label for="name"
+                        class="tw-absolute tw-text-sm tw-text-gray-500 dark:tw-text-gray-400 tw-duration-300 tw-transform -tw-translate-y-4 tw-scale-75 tw-top-2 tw-z-10 tw-origin-[0] tw-bg-white dark:tw-bg-gray-900 tw-px-2 peer-focus:tw-px-2 tw-mx-4 peer-focus:tw-mx-4 peer-focus:tw-text-blue-600 peer-focus:tw-dark peer-placeholder-shown:tw-scale-100 peer-placeholder-shown:-tw-translate-y-1/2 peer-placeholder-shown:tw-top-1/2 peer-focus:tw-top-2 peer-focus:tw-scale-75 peer-focus:-tw-translate-y-4 rtl:tw-peer-focus rtl:tw-peer-focus tw-start-1">First
+                        name</label>
+                    </div>
+                    <div class="col tw-relative tw-z-0 tw-w-full">
+                      <input type="text" placeholder=" " required
+                        class="tw-block tw-px-2.5 tw-pb-2.5 tw-pt-4 tw-w-full tw-text-sm tw-text-gray-900 tw-bg-transparent tw-rounded-lg tw-border-1 tw-border-gray-300 tw-appearance-none dark:tw-text-white dark:tw-border-gray-600 dark:tw-focus focus:tw-outline-none focus:tw-ring-0 focus:tw-border-blue-600 tw-peer"
+                        required [(ngModel)]="this.bookingInfo.renterInfo.lastName" [disabled]="!isEditing"
+                        name="renterLastName" placeholder=" " ngModel #renterLastNameControl="ngModel">
+                      <label for="name"
+                        class="tw-absolute tw-text-sm tw-text-gray-500 dark:tw-text-gray-400 tw-duration-300 tw-transform -tw-translate-y-4 tw-scale-75 tw-top-2 tw-z-10 tw-origin-[0] tw-bg-white dark:tw-bg-gray-900 tw-px-2 peer-focus:tw-px-2 tw-mx-4 peer-focus:tw-mx-4 peer-focus:tw-text-blue-600 peer-focus:tw-dark peer-placeholder-shown:tw-scale-100 peer-placeholder-shown:-tw-translate-y-1/2 peer-placeholder-shown:tw-top-1/2 peer-focus:tw-top-2 peer-focus:tw-scale-75 peer-focus:-tw-translate-y-4 rtl:tw-peer-focus rtl:tw-peer-focus tw-start-1">Last
+                        name</label>
+                    </div>
+                    <span *ngIf="
+                                          (renterLastNameControl.touched || renterFirstNameControl.touched) &&
+                                          (renterFirstNameControl.value === '' ||
+                                            renterLastNameControl.value === '')
+                                        " class="error-msg" id="error-renterFirstName">Please fill all the name
+                      fields</span>
+                  </div>
+
+                  <div class="tw-mb-5 tw-my-4">
+                    <div class=" tw-relative tw-z-0 tw-w-full">
+                      <input type="tel" placeholder=" " id="phoneNumber" required
+                        class="tw-block tw-px-2.5 tw-pb-2.5 tw-pt-4 tw-w-full tw-text-sm tw-text-gray-900 tw-bg-transparent tw-rounded-lg tw-border-1 tw-border-gray-300 tw-appearance-none dark:tw-text-white dark:tw-border-gray-600 dark:tw-focus focus:tw-outline-none focus:tw-ring-0 focus:tw-border-blue-600 tw-peer"
+                        required [(ngModel)]="this.bookingInfo.renterInfo.phoneNumber" [disabled]="!isEditing"
+                        name="renterPhoneNumber" ngModel #renterPhoneNumberControl="ngModel" />
+                      <label for="phoneNumber"
+                        class="tw-absolute tw-text-sm tw-text-gray-500 dark:tw-text-gray-400 tw-duration-300 tw-transform -tw-translate-y-4 tw-scale-75 tw-top-2 tw-z-10 tw-origin-[0] tw-bg-white dark:tw-bg-gray-900 tw-px-2 peer-focus:tw-px-2 peer-focus:tw-text-blue-600 peer-focus:tw-dark peer-placeholder-shown:tw-scale-100 peer-placeholder-shown:-tw-translate-y-1/2 peer-placeholder-shown:tw-top-1/2 peer-focus:tw-top-2 peer-focus:tw-scale-75 peer-focus:-tw-translate-y-4 rtl:tw-peer-focus rtl:tw-peer-focus tw-start-1">
+                        Phone Number<span class="required-asterisk">*</span></label>
+
+                    </div>
+                    <span *ngIf="
+                                      renterPhoneNumberControl.touched &&
+                                      renterPhoneNumberControl.value === ''
+                                    " class="error-msg" id="error-renterFirstName">Please enter phone
+                      number<br /></span>
+                  </div>
+
+                  <div class="tw-mb-5 tw-my-4">
+                    <div class=" tw-relative tw-z-0 tw-w-full">
+                      <input type="text" placeholder=" " id="nationalId" required
+                        [(ngModel)]="this.bookingInfo.renterInfo.nationalId" [disabled]="!isEditing"
+                        #renterNationalIdControl="ngModel"
+                        class="tw-block tw-px-2.5 tw-pb-2.5 tw-pt-4 tw-w-full tw-text-sm tw-text-gray-900 tw-bg-transparent tw-rounded-lg tw-border-1 tw-border-gray-300 tw-appearance-none dark:tw-text-white dark:tw-border-gray-600 dark:tw-focus focus:tw-outline-none focus:tw-ring-0 focus:tw-border-blue-600 tw-peer"
+                        required name="renterNationalId" />
+                      <label for="nationalId"
+                        class="tw-absolute tw-text-sm tw-text-gray-500 dark:tw-text-gray-400 tw-duration-300 tw-transform -tw-translate-y-4 tw-scale-75 tw-top-2 tw-z-10 tw-origin-[0] tw-bg-white dark:tw-bg-gray-900 tw-px-2 peer-focus:tw-px-2 peer-focus:tw-text-blue-600 peer-focus:tw-dark peer-placeholder-shown:tw-scale-100 peer-placeholder-shown:-tw-translate-y-1/2 peer-placeholder-shown:tw-top-1/2 peer-focus:tw-top-2 peer-focus:tw-scale-75 peer-focus:-tw-translate-y-4 rtl:tw-peer-focus rtl:tw-peer-focus tw-start-1">
+                        National Id No.<span class="required-asterisk">*</span></label>
+                    </div>
+                    <span *ngIf="
+                                            renterPhoneNumberControl.touched &&
+                                            renterPhoneNumberControl.value === ''
+                                          " class="error-msg" id="error-renterFirstName">Please enter National
+                      Id<br /></span>
+                  </div>
+                </div>
+                <div class="form-group">
+
+                  <div class="tw-mb-5 tw-my-4">
+                    <label for="renterDob" class="label-input tw-mb-5 tw-gray-700">Date of birth<span
+                        class="required-asterisk">*</span>
+                    </label>
+                    <div class="input-group">
+                      <input class="form-control tw-px-2.5 tw-pb-2.5 tw-pt-2.5 tw-gray-500" placeholder="dd-mm-yyyy"
+                        id="renterDob" ngbDatepicker #renterDob="ngbDatepicker" style="
+                              max-height: 47.33px;
+                              border: 1px solid #d1d5db;
+                              font-size: 0.875rem;
+                              border-top-left-radius: 0.5rem;
+                              border-bottom-left-radius: 0.5rem;
+                            " [(ngModel)]="renterDobDateStruct" [minDate]="dateTimePickerConst.minDate"
+                        [maxDate]="dateTimePickerConst.maxDate" name="renterDob" [disabled]="!isEditing" />
+                      <button class="btn btn-outline-secondary tw-w-10 " (click)="renterDob.toggle()" type="button"
+                        style="color: white; background-color: #1f2937" [disabled]="!isEditing">
+                        <svg class="tw-w-6 tw-h-6 tw-align-middle tw-justify-center tw-ml-auto tw-mr-auto" fill="none"
+                          viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+                      </button>
+                    </div>
+                    <span *ngIf="!renterDobDateStruct" class="error-msg" id="error-renterFirstName">Please enter
+                      your date of
+                      birth<br /></span>
+                  </div>
+
+                  <div class=" tw-my-4">
+                    <div class=" tw-relative tw-z-0 tw-w-full">
+                      <input type="text" placeholder=" " id="renterEmail" required
+                        [(ngModel)]="this.bookingInfo.renterInfo.email" [disabled]="!isEditing"
+                        class="tw-block tw-px-2.5 tw-pb-2.5 tw-pt-4 tw-w-full tw-text-sm tw-text-gray-900 tw-bg-transparent tw-rounded-lg tw-border-1 tw-border-gray-300 tw-appearance-none dark:tw-text-white dark:tw-border-gray-600 dark:tw-focus focus:tw-outline-none focus:tw-ring-0 focus:tw-border-blue-600 tw-peer"
+                        required name="renterEmail" ngModel #renterEmailController="ngModel" />
+                      <label for="email"
+                        class="tw-absolute tw-text-sm tw-text-gray-500 dark:tw-text-gray-400 tw-duration-300 tw-transform -tw-translate-y-4 tw-scale-75 tw-top-2 tw-z-10 tw-origin-[0] tw-bg-white dark:tw-bg-gray-900 tw-px-2 peer-focus:tw-px-2 peer-focus:tw-text-blue-600 peer-focus:tw-dark peer-placeholder-shown:tw-scale-100 peer-placeholder-shown:-tw-translate-y-1/2 peer-placeholder-shown:tw-top-1/2 peer-focus:tw-top-2 peer-focus:tw-scale-75 peer-focus:-tw-translate-y-4 rtl:tw-peer-focus rtl:tw-peer-focus tw-start-1">
+                        Email address<span class="required-asterisk">*</span></label>
+                    </div>
+                    <span class="error-msg" *ngIf="renterEmailController.invalid && renterEmailController.touched">
+                      Please enter the right email<br />
+                    </span>
+                    <span class="error-msg" *ngIf="
+                                      renterEmailController.touched && renterEmailController.value === ''
+                                    ">
+                      Please enter email<br />
+                    </span>
+                  </div>
+
+                  <label for="license" class="form-label my-0 label-input">Driving license<span
+                      class="required-asterisk">*</span></label>
+                  <input type="file"
+                    class="tw-block tw-mt-3 tw-w-full tw-text-sm tw-text-gray-900 tw-border tw-border-gray-300 tw-rounded-lg tw-cursor-pointer tw-bg-gray-50 dark:tw-text-gray-400 focus:tw-outline-none dark:tw-bg-gray-700 dark:tw-border-gray-600 dark:tw-placeholder-gray-400"
+                    id="license" name="renterDrivingLicense" (change)="changeRenterUploadFile($event)"
+                    [disabled]="!isEditing" #renterLicenseControl />
+                  <img *ngIf="this.renterLicenseImg" class="tw-w-full tw-h-auto tw-my-2 tw-rounded-lg tw-object-cover"
+                    [src]="this.renterLicenseImg"/>
+
+                  <span class="error-msg" *ngIf="!this.bookingInfo.renterInfo.drivingLicense">Please insert
+                    driving
+                    license!<br /></span>
+                </div>
+              </div>
+
+              <h4 class="tw-my-4 ">Address:<span class="required-asterisk">*</span></h4>
+              <div class="form-group">
+                <div class="tw-grid tw-grid-cols-3 tw-gap-2 tw-w-full tw-mb-4">
+                  <div class="tw-flex tw-col-span-1 tw-items-center">
+                    <label
+                      class="input-group-text input-group-text-fixed-size tw-h-10 tw-rounded-none tw-rounded-tl-lg tw-rounded-bl-lg"
+                      for="renterCity">City</label>
+                    <select #citySelectionControl name="renterCity" id="renterCity" [(ngModel)]="address.cityCode"
+                      [disabled]="!isEditing" (change)="loadDistricts(citySelectionControl)"
+                      class="tw-w-full tw-flex-grow tw-bg-gray-50 tw-border tw-border-gray-300 tw-text-gray-900 tw-text-sm tw-rounded-lg focus:tw-ring-blue-500 focus:tw-border-blue-500 tw-block tw-p-2.5 dark:tw-bg-gray-700 dark:tw-border-gray-600 dark:tw-placeholder-gray-400 dark:tw-text-white dark:tw-focus dark:tw-focus tw-rounded-tl-none tw-rounded-bl-none">
+                      <option [value]="0" disabled selected>All city</option>
+                      <option [value]="city.code" *ngFor="let city of cities">
+                        {{ city.name }}
+                      </option>
+                    </select>
+                  </div>
+
+                  <div class="tw-flex tw-col-span-1 tw-items-center">
+                    <label
+                      class="input-group-text input-group-text-fixed-size tw-h-10 tw-rounded-none tw-rounded-tl-lg tw-rounded-bl-lg"
+                      for="renterDistrict">District</label>
+                    <select name="renterDistrict" id="renterDistrict" #districtSelectionControl
+                      (change)="loadWards(citySelectionControl, districtSelectionControl)"
+                      [(ngModel)]="address.districtCode" [disabled]="citySelectionControl.value === '0'||!isEditing"
+                      class="tw-w-full tw-h-10 tw-flex-grow tw-bg-gray-50 tw-border tw-border-gray-300 tw-text-gray-900 tw-text-sm tw-rounded-lg focus:tw-ring-blue-500 focus:tw-border-blue-500 tw-block tw-p-2.5 dark:tw-bg-gray-700 dark:tw-border-gray-600 dark:tw-placeholder-gray-400 dark:tw-text-white dark:tw-focus dark:tw-focus tw-rounded-tl-none tw-rounded-bl-none">
+                      <option [value]="0" selected>All District</option>
+                      <option [value]="district.code" *ngFor="let district of districts">
+                        {{ district.name }}
+                      </option>
+                    </select>
+                  </div>
+
+                  <div class="tw-flex tw-col-span-1 tw-items-center">
+                    <label
+                      class="input-group-text input-group-text-fixed-size tw-h-10 tw-rounded-none tw-rounded-tl-lg tw-rounded-bl-lg"
+                      for="renterWard">Ward</label>
+                    <select name="renterWard" class="form-select tw-flex-grow" id="renterWard" #wardSelectionControl
+                      [disabled]="
+                                          districtSelectionControl.value === '0' ||
+                                          citySelectionControl.value === '0' || !isEditing"
+                      (change)="saveWard(wardSelectionControl)" [(ngModel)]="address.wardId"
+                      class="tw-w-full tw-bg-gray-50 tw-border tw-border-gray-300 tw-text-gray-900 tw-text-sm tw-rounded-lg focus:tw-ring-blue-500 focus:tw-border-blue-500 tw-block tw-p-2.5 dark:tw-bg-gray-700 dark:tw-border-gray-600 dark:tw-placeholder-gray-400 dark:tw-text-white dark:tw-focus dark:tw-focus tw-rounded-tl-none tw-rounded-bl-none">
+                      <option [value]="0" selected>All ward</option>
+                      <option [value]="ward.id" *ngFor="let ward of wards">
+                        {{ ward.name }}
+                      </option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="tw-mb-4">
+                  <div class="col tw-relative tw-z-0 tw-w-full">
+                    <input [disabled]="
+                                        citySelectionControl.value === '0' ||
+                                        wardSelectionControl.value === '0' ||
+                                        districtSelectionControl.value === '0'|| !isEditing
+                                      " type="text" name="renterStreet" id="renterStreet"
+                      [(ngModel)]="this.bookingInfo.renterInfo.street" #renterStreetControl="ngModel"
+                      class="tw-block tw-px-2.5 tw-pb-2.5 tw-pt-4 tw-w-full tw-text-sm tw-text-gray-900 tw-bg-transparent tw-rounded-lg tw-border-1 tw-border-gray-300 tw-appearance-none dark:tw-text-white dark:tw-border-gray-600 dark:tw-focus focus:tw-outline-none focus:tw-ring-0 focus:tw-border-blue-600 tw-peer" />
+                    <label for="renterStreet"
+                      class="tw-absolute tw-text-sm tw-text-gray-500 dark:tw-text-gray-400 tw-duration-300 tw-transform -tw-translate-y-4 tw-scale-75 tw-top-2 tw-z-10 tw-origin-[0] tw-bg-white dark:tw-bg-gray-900 tw-px-2 peer-focus:tw-px-2 tw-mx-4 peer-focus:tw-mx-4 peer-focus:tw-text-blue-600 peer-focus:tw-dark peer-placeholder-shown:tw-scale-100 peer-placeholder-shown:-tw-translate-y-1/2 peer-placeholder-shown:tw-top-1/2 peer-focus:tw-top-2 peer-focus:tw-scale-75 peer-focus:-tw-translate-y-4 rtl:tw-peer-focus rtl:tw-peer-focus tw-start-1">
+                      Street</label>
+                  </div>
+                </div>
+
+              </div>
+              <div class="tw-my-4 tw-gray-900 tw-text-xl">Driver's infomation:</div>
+              <div class="form-check tw-my-4 tw-pl-0 tw-flex !tw-items-center">
+                <input type="checkbox" id="isDifferent"
+                  class="tw-flex tw-contents-center !tw-items-center tw-mr-2 tw-rounded" [disabled]="!isEditing"
+                  (change)="onCheckboxChange()" #isDifferentCheckBox />
+                <label for="isDifferent" class="form-check-label">Different than Renter's infomation</label>
+              </div>
+              <div class="row p-0" [hidden]="!driverIsDifferent">
+                <div class=" form-group">
+                  <label for="fullDriverName" class="label-input tw-mb-4">Full name<span
+                      class="required-asterisk">*</span></label>
+                  <div class="row tw-mb-5">
+
+                    <div class="col tw-relative tw-z-0 tw-w-64 ">
+                      <input type="text" placeholder=" " id="driverFirstName"
+                        [(ngModel)]="this.bookingInfo.driverInfo.firstName" name="driverFirstName"
+                        [disabled]="!driverIsDifferent || !isEditing" #driverFirstNameControl="ngModel"
+                        class="tw-block tw-px-2.5 tw-pb-2.5 tw-pt-4 tw-w-full tw-text-sm tw-text-gray-900 tw-bg-transparent tw-rounded-lg tw-border-1 tw-border-gray-300 tw-appearance-none dark:tw-text-white dark:tw-border-gray-600 dark:tw-focus focus:tw-outline-none focus:tw-ring-0 focus:tw-border-blue-600 tw-peer" />
+                      <label for="driverFirstName"
+                        class="tw-absolute tw-text-sm tw-text-gray-500 dark:tw-text-gray-400 tw-duration-300 tw-transform -tw-translate-y-4 tw-scale-75 tw-top-2 tw-z-10 tw-origin-[0] tw-bg-white dark:tw-bg-gray-900 tw-px-2 peer-focus:tw-px-2 tw-mx-4 peer-focus:tw-mx-4 peer-focus:tw-text-blue-600 peer-focus:tw-dark peer-placeholder-shown:tw-scale-100 peer-placeholder-shown:-tw-translate-y-1/2 peer-placeholder-shown:tw-top-1/2 peer-focus:tw-top-2 peer-focus:tw-scale-75 peer-focus:-tw-translate-y-4 rtl:tw-peer-focus rtl:tw-peer-focus tw-start-1">
+                        First name</label>
+                    </div>
+                    <div class="col tw-relative tw-z-0 tw-w-64">
+                      <input type="text" placeholder=" " id="driverLastName"
+                        [(ngModel)]="this.bookingInfo.driverInfo.lastName" name="driverLastName"
+                        [disabled]="!driverIsDifferent || !isEditing" #driverLastNameControl="ngModel"
+                        class="tw-block tw-px-2.5 tw-pb-2.5 tw-pt-4 tw-w-full tw-text-sm tw-text-gray-900 tw-bg-transparent tw-rounded-lg tw-border-1 tw-border-gray-300 tw-appearance-none dark:tw-text-white dark:tw-border-gray-600 dark:tw-focus focus:tw-outline-none focus:tw-ring-0 focus:tw-border-blue-600 tw-peer" />
+                      <label for="driverLastName"
+                        class="tw-absolute tw-text-sm tw-text-gray-500 dark:tw-text-gray-400 tw-duration-300 tw-transform -tw-translate-y-4 tw-scale-75 tw-top-2 tw-z-10 tw-origin-[0] tw-bg-white dark:tw-bg-gray-900 tw-px-2 peer-focus:tw-px-2 tw-mx-4 peer-focus:tw-mx-4 peer-focus:tw-text-blue-600 peer-focus:tw-dark peer-placeholder-shown:tw-scale-100 peer-placeholder-shown:-tw-translate-y-1/2 peer-placeholder-shown:tw-top-1/2 peer-focus:tw-top-2 peer-focus:tw-scale-75 peer-focus:-tw-translate-y-4 rtl:tw-peer-focus rtl:tw-peer-focus tw-start-1">
+                        Last name</label>
+                    </div>
+                  </div>
+
+                  <div class="tw-my-4">
+                    <div class="col tw-relative tw-z-0 tw-w-full">
+                      <input type="tel" placeholder=" " id="DriverPhoneNumber"
+                        class="tw-block tw-px-2.5 tw-pb-2.5 tw-pt-4 tw-w-full tw-text-sm tw-text-gray-900 tw-bg-transparent tw-rounded-lg tw-border-1 tw-border-gray-300 tw-appearance-none dark:tw-text-white dark:tw-border-gray-600 dark:tw-focus focus:tw-outline-none focus:tw-ring-0 focus:tw-border-blue-600 tw-peer"
+                        name="driverPhoneNumber" [(ngModel)]="this.bookingInfo.driverInfo.phoneNumber"
+                        [disabled]="!driverIsDifferent || !isEditing" #driverPhoneNumberControl="ngModel" />
+                      <label for="DriverPhoneNumber"
+                        class="tw-absolute tw-text-sm tw-text-gray-500 dark:tw-text-gray-400 tw-duration-300 tw-transform -tw-translate-y-4 tw-scale-75 tw-top-2 tw-z-10 tw-origin-[0] tw-bg-white dark:tw-bg-gray-900 tw-px-2 peer-focus:tw-px-2 peer-focus:tw-text-blue-600 peer-focus:tw-dark peer-placeholder-shown:tw-scale-100 peer-placeholder-shown:-tw-translate-y-1/2 peer-placeholder-shown:tw-top-1/2 peer-focus:tw-top-2 peer-focus:tw-scale-75 peer-focus:-tw-translate-y-4 rtl:tw-peer-focus rtl:tw-peer-focus tw-start-1">
+                        Phone Number<span class="required-asterisk">*</span></label>
+
+                    </div>
+
+                  </div>
+
+                  <div class="tw-my-4">
+                    <div class="col tw-relative tw-z-0 tw-w-full">
+                      <input type="text" placeholder=" " id="driverNationalId"
+                        class="tw-block tw-px-2.5 tw-pb-2.5 tw-pt-4 tw-w-full tw-text-sm tw-text-gray-900 tw-bg-transparent tw-rounded-lg tw-border-1 tw-border-gray-300 tw-appearance-none dark:tw-text-white dark:tw-border-gray-600 dark:tw-focus focus:tw-outline-none focus:tw-ring-0 focus:tw-border-blue-600 tw-peer"
+                        name="driverNationalId" [(ngModel)]="this.bookingInfo.driverInfo.nationalId"
+                        [disabled]="!driverIsDifferent || !isEditing" #driverNationalIdControl="ngModel" />
+                      <label for="driverNationalId"
+                        class="tw-absolute tw-text-sm tw-text-gray-500 dark:tw-text-gray-400 tw-duration-300 tw-transform -tw-translate-y-4 tw-scale-75 tw-top-2 tw-z-10 tw-origin-[0] tw-bg-white dark:tw-bg-gray-900 tw-px-2 peer-focus:tw-px-2 peer-focus:tw-text-blue-600 peer-focus:tw-dark peer-placeholder-shown:tw-scale-100 peer-placeholder-shown:-tw-translate-y-1/2 peer-placeholder-shown:tw-top-1/2 peer-focus:tw-top-2 peer-focus:tw-scale-75 peer-focus:-tw-translate-y-4 rtl:tw-peer-focus rtl:tw-peer-focus tw-start-1">
+                        National Id No.<span class="required-asterisk">*</span></label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class=" form-group">
+                  <div class="tw-my-4">
+                    <label for="driverDob" class="label-input">Date of birth<span class="required-asterisk">*</span>
+                    </label>
+                    <div class="input-group">
+                      <input class="form-control" placeholder="dd-mm-yyyy" id="driverDob" ngbDatepicker
+                        #driverDob="ngbDatepicker" style="
+                              max-height: 47.33px;
+                              font-size: 0.875rem;
+                              border-top-left-radius: 0.5rem;
+                              border-bottom-left-radius: 0.5rem;
+                            " [(ngModel)]="driverDobDateStruct" [minDate]="dateTimePickerConst.minDate"
+                        [maxDate]="dateTimePickerConst.maxDate" [disabled]="!driverIsDifferent || !isEditing"
+                        name="driverDob" />
+                      <button class="btn btn-outline-secondary tw-w-10" (click)="driverDob.toggle()" type="button"
+                        style="color: white; background-color: #1f2937">
+                        <svg class="h-3 w-3 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+
+                  <div class="tw-my-4">
+                    <div class="col tw-relative tw-z-0 tw-w-full">
+                      <input type="text" placeholder=" " id="driverEmail"
+                        class="tw-block tw-px-2.5 tw-pb-2.5 tw-pt-4 tw-w-full tw-text-sm tw-text-gray-900 tw-bg-transparent tw-rounded-lg tw-border-1 tw-border-gray-300 tw-appearance-none dark:tw-text-white dark:tw-border-gray-600 dark:tw-focus focus:tw-outline-none focus:tw-ring-0 focus:tw-border-blue-600 tw-peer"
+                        email id="driverEmail" name="driverEmail" [(ngModel)]="this.bookingInfo.driverInfo.email"
+                        [required]="driverIsDifferent" [disabled]="!driverIsDifferent || !isEditing" />
+                      <label for="driverEmail"
+                        class="tw-absolute tw-text-sm tw-text-gray-500 dark:tw-text-gray-400 tw-duration-300 tw-transform -tw-translate-y-4 tw-scale-75 tw-top-2 tw-z-10 tw-origin-[0] tw-bg-white dark:tw-bg-gray-900 tw-px-2 peer-focus:tw-px-2 peer-focus:tw-text-blue-600 peer-focus:tw-dark peer-placeholder-shown:tw-scale-100 peer-placeholder-shown:-tw-translate-y-1/2 peer-placeholder-shown:tw-top-1/2 peer-focus:tw-top-2 peer-focus:tw-scale-75 peer-focus:-tw-translate-y-4 rtl:tw-peer-focus rtl:tw-peer-focus tw-start-1">
+                        Email address<span class="required-asterisk">*</span></label>
+                    </div>
+                  </div>
+
+                  <label for="driverLicense" class="form-label my-0 label-input tw-my-0">Driving license<span
+                      class="required-asterisk">*</span></label>
+                  <input type="file"
+                    class="tw-my-3 tw-block tw-w-full tw-text-sm tw-text-gray-900 tw-border tw-border-gray-300 tw-rounded-lg tw-cursor-pointer tw-bg-gray-50 dark:tw-text-gray-400 focus:tw-outline-none dark:tw-bg-gray-700 dark:tw-border-gray-600 dark:tw-placeholder-gray-400"
+                    [required]="driverIsDifferent" [disabled]="!driverIsDifferent || !isEditing" id="driverLicense"
+                    name="driverLicense" (change)="changeDriverUploadFile($event)" />
+                  <img *ngIf="this.driverLicenseImg" class="tw-w-full tw-h-auto tw-my-2 tw-rounded-lg tw-object-cover"
+                    [src]="this.driverLicenseImg" />
+                  <span class="error-msg" *ngIf="!this.bookingInfo.driverInfo.drivingLicense">Please insert driving
+                    license!<br /></span>
+                </div>
+              </div>
+
+              <div class="tw-flex tw-justify-end" [hidden]="!isEditing">
+                <button type="button" class="btn btn-default tw-mr-3">
+                  Cancel
+                </button>
+                <button class="btn btn-primary tw-px-1.5 tw-py-1 tw-rounded-lg">Confirm</button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div>
+          <div class="tw-grid tw-grid-cols-3 lg:tw-grid-cols-3 md:tw-grid-cols-2 sm:tw-grid-cols-1 tw-gap-4 w-full">
+          </div>
+        </div>
+      </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

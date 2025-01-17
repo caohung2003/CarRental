@@ -1,0 +1,281 @@
+<div class="tw-relative tw-mx-auto tw-w-full item-car">
+    <div
+        class="tw-relative tw-inline-block tw-duration-300 tw-ease-in-out tw-transition-transform tw-transform <!--hover:tw--translate-y-2--> tw-w-full">
+        <div class="tw-flex tw-relative tw-shadow tw-p-4 tw-rounded-lg tw-bg-white">
+
+            <div class="tw-absolute tw-top-4 tw-right-4 tw-inline-flex">
+                <div class="tw-relative tw-inline-block tw-text-left">
+                    <div>
+                        <button type="button" (click)="showOption()"
+                            class="tw-inline-flex tw-w-full tw-justify-center tw-rounded-full tw-bg-white tw-p-2 tw-text-sm tw-font-semibold tw-text-gray-900 hover:tw-bg-gray-50 hover:tw-scale-110"
+                            id="menu-button" aria-expanded="true" aria-haspopup="true">
+                            <svg class="tw-h-5 tw-w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="1" />
+                                <circle cx="12" cy="5" r="1" />
+                                <circle cx="12" cy="19" r="1" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div #option [ngClass]="{ '': isShow, 'tw-hidden': !isShow }" [attr.aria-checked]="isShow"
+                        class="tw-absolute tw-right-0 tw-z-10 tw-mt-2 tw-w-40 tw-origin-top-right tw-divide-y tw-divide-gray-100 tw-rounded-md tw-bg-white tw-shadow-lg tw-ring-1 tw-ring-black tw-ring-opacity-5 focus:tw-outline-none"
+                        role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+                        <div class="py-1" role="none">
+                            <a [routerLink]="['/my-bookings/'+booking.id]"
+                                class="tw-text-gray-700 tw-block tw-px-4 tw-py-2 tw-text-sm hover:tw-bg-gray-100 hover:tw-text-gray-900"
+                                role="menuitem" tabindex="-1" id="menu-item-2">View Detail</a>
+                            <a [routerLink]="['/car/detail/'+car.id]"
+                                class="tw-text-gray-700 tw-block tw-px-4 tw-py-2 tw-text-sm hover:tw-bg-gray-100 hover:tw-text-gray-900"
+                                role="menuitem" tabindex="-1" id="menu-item-3">View Car</a>
+                        </div>
+                        <div class="py-1" role="none"
+                            *ngIf="booking.status != 'COMPLETED' && booking.status != 'CANCELLED'">
+                            <a (click)="cancelBooking(booking.id, $event)"
+                                class="tw-cursor-pointer tw-text-red-600 tw-block tw-px-4 tw-py-2 tw-text-sm hover:tw-bg-gray-100"
+                                role="menuitem" tabindex="-1" id="menu-item-6">Cancel trip</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tw-flex tw-justify-center tw-relative tw-rounded-lg tw-overflow-hidden tw-h-52 tw-w-1/3">
+                <div
+                    class="tw-transition-transform tw-duration-500 tw-transform tw-ease-in-out hover:tw-scale-110 tw-w-full">
+                    <div class="tw-absolute tw-inset-0">
+                        <div id="default-carousel" class="tw-relative tw-w-full tw-h-full tw-object-center">
+                            <div class="tw-relative tw-w-full tw-min-h-full tw-overflow-hidden tw-rounded-lg">
+                                <div class="tw-duration-700 tw-ease-in-out">
+                                    <img src="{{car.images[0]}}"
+                                        class="tw-absolute tw-block tw-w-full tw-h-full tw-object-cover -tw-translate-x-1/2 -tw-translate-y-1/2 tw-top-1/2 tw-left-1/2"
+                                        alt="...">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tw-absolute tw-flex tw-justify-center tw-bottom-0 tw-mb-3 tw-left-0 tw-right-0 tw-z-40">
+                        <div
+                            class="tw-flex tw-bg-white tw-px-4 tw-py-1 tw-space-x-5 tw-rounded-lg tw-overflow-hidden tw-shadow">
+                            <p class="tw-flex tw-items-center tw-font-medium tw-text-gray-800">
+                                <svg class="tw-w-5 tw-h-5 tw-mr-2" viewBox="0 0 32 32" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M10.914 23.3289C10.9148 23.3284 10.9156 23.3279 10.9163 23.3274C10.9155 23.3279 10.9148 23.3284 10.914 23.3289ZM10.914 23.3289C10.914 23.3289 10.914 23.3289 10.914 23.3289L11.3128 23.9114M10.914 23.3289L11.3128 23.9114M11.3128 23.9114L10.9807 23.2882L20.6697 23.9458C20.6682 23.9484 20.6656 23.9496 20.6631 23.9479C20.655 23.9424 20.6343 23.9284 20.6014 23.9074C20.6014 23.9073 20.6014 23.9073 20.6013 23.9073C20.5141 23.8516 20.3413 23.7468 20.0921 23.6208C20.0919 23.6207 20.0918 23.6206 20.0917 23.6206C19.3397 23.2404 17.8926 22.6674 16.0003 22.6674C14.1715 22.6674 12.7584 23.2026 11.9869 23.5817L11.9929 23.5929M11.3128 23.9114L11.331 23.9456C11.3324 23.9483 11.3352 23.9495 11.3377 23.9478C11.3444 23.9432 11.3592 23.9332 11.3821 23.9184L11.9929 23.5929L11.9929 23.5929M11.9929 23.5929C11.9909 23.5892 11.9889 23.5855 11.9868 23.5818C11.6767 23.7342 11.4702 23.8614 11.3821 23.9184L11.9929 23.5929ZM10.6691 24.2983L10.6691 24.2983C10.7406 24.4324 10.8728 24.5792 11.0793 24.6538C11.3072 24.7361 11.5609 24.7039 11.7614 24.5667L11.7614 24.5667C11.7978 24.5418 13.4597 23.4174 16.0003 23.4174C18.5426 23.4174 20.205 24.5432 20.2393 24.5667L20.2393 24.5667C20.4389 24.7034 20.6938 24.7372 20.9245 24.6528C21.1293 24.5779 21.2557 24.4338 21.3233 24.3136L22.4886 22.2427L24.3242 23.0447L21.6934 28.584H9.99882L7.65051 23.0635L9.57427 22.2435L10.6691 24.2983ZM24.4348 22.8117L24.4345 22.8124L24.4348 22.8117Z"
+                                        stroke="#000000" stroke-width="1.5"></path>
+                                    <path
+                                        d="M12.75 4.66675C12.75 3.97639 13.3096 3.41675 14 3.41675H18C18.6904 3.41675 19.25 3.97639 19.25 4.66675V7.00008C19.25 7.13815 19.1381 7.25008 19 7.25008H13C12.8619 7.25008 12.75 7.13815 12.75 7.00008V4.66675Z"
+                                        stroke="#000000" stroke-width="1.5"></path>
+                                    <path
+                                        d="M9.33398 22.6668L9.90564 11.2336C9.95887 10.1692 10.8374 9.3335 11.9031 9.3335H20.0982C21.1639 9.3335 22.0424 10.1692 22.0957 11.2336L22.6673 22.6668"
+                                        stroke="#000000" stroke-width="1.5"></path>
+                                    <path d="M14.667 7.35815V9.8901" stroke="#000000" stroke-width="1.5"></path>
+                                    <path d="M17.334 7.35815V9.8901" stroke="#000000" stroke-width="1.5"></path>
+                                </svg>
+                                {{car.seats}}
+                            </p>
+
+                            <p class="tw-flex tw-items-center tw-font-medium tw-text-gray-800">
+                                <svg class="tw-w-5 tw-h-5 tw-mr-2" viewBox="0 0 32 32" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M25.9163 7.99992C25.9163 9.05846 25.0582 9.91659 23.9997 9.91659C22.9411 9.91659 22.083 9.05846 22.083 7.99992C22.083 6.94137 22.9411 6.08325 23.9997 6.08325C25.0582 6.08325 25.9163 6.94137 25.9163 7.99992Z"
+                                        stroke="#000000" stroke-width="1.5"></path>
+                                    <circle cx="23.9997" cy="23.9999" r="1.91667" stroke="#000000" stroke-width="1.5">
+                                    </circle>
+                                    <path
+                                        d="M17.9163 7.99992C17.9163 9.05846 17.0582 9.91659 15.9997 9.91659C14.9411 9.91659 14.083 9.05846 14.083 7.99992C14.083 6.94137 14.9411 6.08325 15.9997 6.08325C17.0582 6.08325 17.9163 6.94137 17.9163 7.99992Z"
+                                        stroke="#000000" stroke-width="1.5"></path>
+                                    <path
+                                        d="M17.9163 23.9999C17.9163 25.0585 17.0582 25.9166 15.9997 25.9166C14.9411 25.9166 14.083 25.0585 14.083 23.9999C14.083 22.9414 14.9411 22.0833 15.9997 22.0833C17.0582 22.0833 17.9163 22.9414 17.9163 23.9999Z"
+                                        stroke="#000000" stroke-width="1.5"></path>
+                                    <circle cx="7.99967" cy="7.99992" r="1.91667" stroke="#000000" stroke-width="1.5">
+                                    </circle>
+                                    <path
+                                        d="M10.1025 26.6666V21.3333H7.99837C7.59559 21.3333 7.25184 21.4053 6.96712 21.5494C6.68066 21.6918 6.46278 21.894 6.31348 22.1562C6.16244 22.4166 6.08691 22.723 6.08691 23.0754C6.08691 23.4296 6.1633 23.7343 6.31608 23.9895C6.46886 24.243 6.69021 24.4374 6.98014 24.5728C7.26834 24.7083 7.6173 24.776 8.02702 24.776H9.43587V23.8697H8.20931C7.99403 23.8697 7.81521 23.8402 7.67285 23.7812C7.53049 23.7221 7.42459 23.6336 7.35514 23.5155C7.28396 23.3975 7.24837 23.2508 7.24837 23.0754C7.24837 22.8984 7.28396 22.7491 7.35514 22.6275C7.42459 22.506 7.53136 22.414 7.67546 22.3515C7.81782 22.2872 7.9975 22.2551 8.21452 22.2551H8.97493V26.6666H10.1025ZM7.22233 24.2395L5.89681 26.6666H7.1416L8.43848 24.2395H7.22233Z"
+                                        fill="#000000"></path>
+                                    <path
+                                        d="M24 10.6665V15.9998M24 21.3332V15.9998M16 10.6665V21.3332M8 10.6665V15.4998C8 15.776 8.22386 15.9998 8.5 15.9998H24"
+                                        stroke="#000000" stroke-width="1.5" stroke-linecap="round"></path>
+                                </svg>
+                                {{car.transmission === 'AUTOMATION' ? 'AUTO' : 'MANUAL'}}
+                            </p>
+
+                            <p class="tw-flex tw-items-center tw-font-medium tw-text-gray-800">
+                                <svg class="tw-w-5 tw-h-5 tw-mr-2" viewBox="0 0 24 24" stroke-width="2"
+                                    stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" />
+                                    <path d="M15 10l-4 4l6 6l4 -16l-18 7l4 2l2 6l3 -4" />
+                                </svg>
+                                {{car.rides}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tw-flex tw-grid tw-gap-1 tw-w-2/3 tw-pt-0 tw-p-4 tw-text-lg">
+                <div class="tw-flex tw-w-full">
+                    <h2 class="tw-font-medium tw-text-base md:tw-text-lg tw-text-gray-800 tw-line-clamp-1 tw-mt-1"
+                        title="New York">
+                        {{car.name}}
+                    </h2>
+                    <span class="tw-flex tw-items-center tw-ml-1 tw-mt-1" *ngIf="car.insuranceStatus">
+                        <svg class="tw-inline-block tw-w-5 tw-h-5 xl:tw-w-4 xl:tw-h-4 tw-text-gray-800"
+                            xmlns="http://www.w3.org/2000/svg" fill="#7DDA58" viewBox="0 0 16 16">
+                            <path
+                                d="M5.338 1.59a61 61 0 0 0-2.837.856.48.48 0 0 0-.328.39c-.554 4.157.726 7.19 2.253 9.188a10.7 10.7 0 0 0 2.287 2.233c.346.244.652.42.893.533q.18.085.293.118a1 1 0 0 0 .101.025 1 1 0 0 0 .1-.025q.114-.034.294-.118c.24-.113.547-.29.893-.533a10.7 10.7 0 0 0 2.287-2.233c1.527-1.997 2.807-5.031 2.253-9.188a.48.48 0 0 0-.328-.39c-.651-.213-1.75-.56-2.837-.855C9.552 1.29 8.531 1.067 8 1.067c-.53 0-1.552.223-2.662.524zM5.072.56C6.157.265 7.31 0 8 0s1.843.265 2.928.56c1.11.3 2.229.655 2.887.87a1.54 1.54 0 0 1 1.044 1.262c.596 4.477-.787 7.795-2.465 9.99a11.8 11.8 0 0 1-2.517 2.453 7 7 0 0 1-1.048.625c-.28.132-.581.24-.829.24s-.548-.108-.829-.24a7 7 0 0 1-1.048-.625 11.8 11.8 0 0 1-2.517-2.453C1.928 10.487.545 7.169 1.141 2.692A1.54 1.54 0 0 1 2.185 1.43 63 63 0 0 1 5.072.56" />
+                            <path
+                                d="M10.854 5.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 7.793l2.646-2.647a.5.5 0 0 1 .708 0" />
+                        </svg>
+                    </span>
+                    <span
+                        class="tw-h-fit tw-ml-4 tw-mt-1 tw-bg-yellow-100 tw-text-yellow-800 tw-text-sm tw-font-medium tw-me-2 tw-px-2.5 tw-py-0.5 tw-rounded-full tw-dark:bg-yellow-900 tw-dark:text-yellow-300">
+                        <p class="tw-flex tw-items-center">
+                            {{car.license}}
+                        </p>
+                    </span>
+                </div>
+                <div class="tw-flex tw-w-full">
+                    <div class="tw-w-1/2">
+                        <!-- <p class="tw-mt-2 tw-text-sm tw-text-gray-800 tw-line-clamp-1"
+                          title="New York, NY 10004, United States">
+                          New York, NY 10004, United States
+                      </p> -->
+                        <span *ngIf="booking.status === 'CANCELLED'" class="tw-inline-flex tw-px-3 tw-py-2 tw-rounded-2xl tw-z-10 tw-bg-red-500 tw-text-sm
+                            tw-font-medium tw-text-white tw-select-none tw-uppercase">
+                            {{convert(booking.status)}}
+                        </span>
+                        <span *ngIf="booking.status === 'COMPLETED'" class="tw-inline-flex tw-px-3 tw-py-2 tw-rounded-2xl tw-z-10 tw-bg-green-400 tw-text-sm
+                            tw-font-medium tw-text-white tw-select-none tw-uppercase">
+                            {{convert(booking.status)}}
+                        </span>
+                        <span *ngIf="booking.status !== 'CANCELLED' && booking.status !== 'COMPLETED'" class="tw-inline-flex tw-px-3 tw-py-2 tw-rounded-2xl tw-z-10 tw-bg-gray-400 tw-text-sm
+                            tw-font-medium tw-text-white tw-select-none tw-uppercase">
+                            {{convert(booking.status)}}
+                        </span>
+                    </div>
+                    <div class="tw-w-1/2">
+                        <div class="tw-grid tw-grid-cols-2">
+                            <div class="tw-flex tw-items-center">
+                                <!-- <div class="tw-relative">
+                                  <div class="tw-rounded-full tw-w-6 tw-h-6 md:tw-w-8 md:tw-h-8 tw-bg-gray-200">
+                                  </div>
+                                  <span
+                                      class="tw-absolute tw-top-0 tw-right-0 tw-inline-block tw-w-3 tw-h-3 tw-bg-primary-red tw-rounded-full"></span>
+                              </div>
+
+                              <p class="tw-ml-2 tw-text-gray-800 tw-line-clamp-1">
+                                  John Doe
+                              </p> -->
+                            </div>
+
+                            <div class="tw-flex tw-justify-end tw-mt-1">
+                                <p
+                                    class="tw-text-green-400 tw-inline-block tw-font-semibold tw-text-primary tw-whitespace-nowrap tw-leading-tight tw-rounded-xl">
+                                    <span class="tw-text-2xl">
+                                        {{booking.total.toLocaleString('vi-VN')}}
+                                        <span class="tw-text-sm">
+                                            VND
+                                        </span>
+                                    </span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tw-flex tw-justify-between">
+                    <p
+                        class="tw-grid-cols-2 tw-inline-flex tw-flex-col xl:tw-flex-row xl:tw-items-center tw-text-gray-800">
+                        <svg class="tw-ml-1 tw-h-6 tw-w-6 tw-mr-1.5 tw-mt-1" width="24" height="24" viewBox="0 0 24 24"
+                            stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" />
+                            <circle cx="12" cy="11" r="3" />
+                            <path
+                                d="M17.657 16.657L13.414 20.9a1.998 1.998 0 0 1 -2.827 0l-4.244-4.243a8 8 0 1 1 11.314 0z" />
+                        </svg>
+                        <span class="tw-font-medium tw-mt-1">
+                            {{location}}
+                        </span>
+                    </p>
+                </div>
+                <div class="tw-flex tw-justify-between">
+                    <p
+                        class="tw-mt-1 tw-grid-cols-2 tw-inline-flex tw-flex-col xl:tw-flex-row xl:tw-items-center tw-text-gray-800">
+                        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="3"
+                            stroke-linecap="round" stroke-linejoin="round" class="tw-ml-1 tw-h-6 tw-w-6 tw-mr-1.5">
+                            <rect x="8" y="7" width="18" height="18" rx="2" ry="2"></rect>
+                            <line x1="21" y1="5" x2="21" y2="9"></line>
+                            <line x1="13" y1="5" x2="13" y2="9"></line>
+                            <line x1="8" y1="13" x2="26" y2="13"></line>
+                        </svg>
+                        <span class="tw-font-medium">{{formatDate(booking.pickUpDateTime)}}</span>
+                        &nbsp;to&nbsp;
+                        <span class="tw-font-medium">{{formatDate(booking.returnDateTime)}}</span>
+                    </p>
+                </div>
+                <div class="tw-flex tw-justify-between">
+                    <p
+                        class="tw-grid-cols-2 tw-inline-flex tw-flex-col xl:tw-flex-row xl:tw-items-center tw-text-gray-800">
+                        <svg class="tw-ml-1 tw-h-6 tw-w-6 tw-mr-1.5 tw-mt-1" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
+                            </path>
+                        </svg>
+                        <span class="tw-mt-1 tw-text-base">
+                            Deposit : <span
+                                class="tw-font-medium tw-text-gray-900 tw-text-lg">{{booking.deposit}}</span> VND
+                        </span>
+                    </p>
+                    <div>
+                        <button *ngIf="booking.status == 'PENDING_DEPOSIT'"
+                            (click)="redirect('/payment/deposit/'+booking.id)" type="button" class="tw-text-white tw-bg-[#1da1f2] hover:tw-bg-[#1da1f2]/90 focus:tw-ring-4 focus:tw-outline-none 
+                            focus:tw-ring-[#1da1f2]/50 tw-font-medium tw-rounded-lg tw-text-sm tw-px-4 tw-py-2 tw-text-center 
+                            tw-inline-flex tw-items-center dark:tw-focus">
+                            <svg class="tw-w-4 tw-h-4 tw-me-2" width="24" height="24" viewBox="0 0 24 24"
+                                stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" />
+                                <rect x="3" y="5" width="18" height="14" rx="3" />
+                                <line x1="3" y1="10" x2="21" y2="10" />
+                                <line x1="7" y1="15" x2="7.01" y2="15" />
+                                <line x1="11" y1="15" x2="13" y2="15" />
+                            </svg>
+                            Pay Deposit
+                        </button>
+                        <button *ngIf="booking.status == 'PENDING_PAYMENT'"
+                            (click)="redirect('/payment/pm/'+booking.id)" type="button" class="tw-text-white tw-bg-[#1da1f2] hover:tw-bg-[#1da1f2]/90 focus:tw-ring-4 focus:tw-outline-none 
+                            focus:tw-ring-[#1da1f2]/50 tw-font-medium tw-rounded-lg tw-text-sm tw-px-4 tw-py-2 tw-text-center 
+                            tw-inline-flex tw-items-center dark:tw-focus">
+                            <svg class="tw-w-4 tw-h-4 tw-me-2" width="24" height="24" viewBox="0 0 24 24"
+                                stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" />
+                                <rect x="3" y="5" width="18" height="14" rx="3" />
+                                <line x1="3" y1="10" x2="21" y2="10" />
+                                <line x1="7" y1="15" x2="7.01" y2="15" />
+                                <line x1="11" y1="15" x2="13" y2="15" />
+                            </svg>
+                            Payment
+                        </button>
+
+
+                        <button type="button" (click)="onButtonClick()"
+                            *ngIf="booking.status == 'COMPLETED' && (!checkDateExpired(booking.returnDateTime) || booking.isRating)"
+                            class="tw-text-white tw-bg-[#FF9119] hover:tw-bg-[#FF9119]/80 focus:tw-ring-4 focus:tw-outline-none focus:tw-ring-[#FF9119]/50 tw-font-medium tw-rounded-lg tw-text-sm tw-px-5 tw-py-2.5 tw-text-center tw-inline-flex tw-items-center dark:tw-hover dark:tw-focus">
+                            <svg class="tw-w-4 tw-h-4 tw-me-2 -tw-ms-1" xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path fill="#FF9119"
+                                    d="M12 6L13.6687 9.86694L18 10.2016L14.7 12.9262L15.7082 17L12 14.8169L8.2918 17L9.3 12.9262L6 10.2016L10.3313 9.86694L12 6Z"
+                                    stroke="#FF9119" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                            {{booking.isRating?'View rate':'Rating'}}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

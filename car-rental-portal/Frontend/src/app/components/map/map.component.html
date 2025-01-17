@@ -1,0 +1,65 @@
+<div id="map-location" style="height: 100%; width: 100%">
+  <div #map id="map">
+
+  </div>
+  <div id="search">
+    <div style="width: 30.3%">
+      <form style="background-color: transparent" class="example-form" (submit)="loadCenter(search)">
+        <mat-form-field style="padding: 0px" class="example-full-width">
+          <input type="text"
+                 placeholder="Search..."
+                 aria-label="Number"
+                 #search
+                 matInput
+                 ngModel=""
+                 (ngModelChange)="loadOption(search)"
+                 [formControl]="myControl"
+                 [matAutocomplete]="auto">
+          <mat-autocomplete #auto="matAutocomplete" style="overflow-y: hidden">
+            <div *ngFor="let option of filteredOptions | async; let i = index">
+              <mat-option [value]="option.location">
+                <span>{{option.location}}</span>
+              </mat-option>
+            </div>
+          </mat-autocomplete>
+        </mat-form-field>
+      </form>
+    </div>
+
+    <div>
+      <img (click)="closeMap()" width="40px" style="cursor: pointer" src="../../../assets/images/icon/x-mark.png"/>
+    </div>
+  </div>
+
+
+  <!--    <input #search ngModel (ngModelChange)="autocomplete(search.value)" style="cursor: pointer; background-color: white; padding: 8px; color: black; border-radius: 10px; margin-right: 10px; width: 100%" placeholder="Search"/>-->
+</div>
+<div id="location-info"
+     style="cursor: pointer;  padding: 8px; color: black; border: 1px solid black; border-radius: 10px; margin-right: 10px; width: 30%">
+  <div id="title">
+
+  </div>
+  <div id="address">
+    Location
+  </div>
+</div>
+<div class="btm">
+  <div style="display: none; flex-direction: row; justify-content :center; margin-bottom: 10px" #cardiv class = "cars">
+    <app-list-car-card style="width: 100%; padding: 10px;display: flex; justify-content :center" [cars]="cars">
+
+    </app-list-car-card>
+  </div>
+  <div id="btn">
+    <button (click)="chooseLocation('current')"
+            style="cursor: pointer; background-color: orangered; padding: 8px; color: white; border-radius: 10px; margin-right: 10px">
+      Choose current location
+    </button>
+    <button (click)="chooseLocation('marker')"
+            style="cursor: pointer; background-color: cornflowerblue; padding: 8px; color: white; border-radius: 10px">
+      Choose marker location
+    </button>
+  </div>
+</div>
+
+
+

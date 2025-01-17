@@ -1,0 +1,278 @@
+<form #basicForm=ngForm>
+  <!--      style="margin-left: 25%; margin-right: 25%; margin-top: 20px; margin-bottom: 20px !important;"-->
+
+  <h2>Mileage<span *ngIf="mode != 'view'" class="required-asterisk">*</span></h2>
+  <p class="p-normal">Please choose from 10 to 1000</p>
+  <input [readOnly]="mode == 'view'" style="margin-bottom: 20px; font-weight: 300" [type]="'number'" name="mileage"
+    [min]="'10'" [max]="'1000'" [(ngModel)]="mileage"
+    class="{{mode == 'view' ? 'tw-bg-gray-200' : 'tw-bg-gray-50'}} tw-border tw-border-gray-300 tw-text-gray-900 tw-text-sm tw-rounded-lg focus:tw-ring-blue-500 focus:tw-border-blue-500 tw-block tw-w-1/2 tw-p-2.5 dark:tw-bg-gray-700 dark:tw-border-gray-600 dark:tw-placeholder-gray-400 dark:tw-text-white dark:focus:tw-ring-blue-500 dark:focus:tw-border-blue-500"
+    placeholder="100" required />
+  <div class="tw-flex tw-justify-between">
+    <h2>Location<span *ngIf="mode != 'view'" class="required-asterisk">*</span></h2>
+    <svg (click)="mode != 'view' ? openMap() : ''"
+      class="tw-h-8 tw-w-8 {{mode == 'view' ? '' : 'tw-cursor-pointer'}} tw-text-black" fill="none" viewBox="0 0 24 24"
+      stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+        d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+    </svg>
+  </div>
+  <input style="margin-bottom: 20px; font-weight: 300" type="text" name="road" [(ngModel)]="road"
+    class="tw-bg-gray-200 tw-border tw-border-gray-300 tw-text-gray-900 tw-text-sm tw-rounded-lg focus:tw-ring-blue-500 focus:tw-border-blue-500 tw-block tw-w-full tw-p-2.5 dark:tw-bg-gray-700 dark:tw-border-gray-600 dark:tw-placeholder-gray-400 dark:tw-text-white dark:focus:tw-ring-blue-500 dark:focus:tw-border-blue-500"
+    placeholder="95 Phố Nguyễn Văn Tuyết, Phường Trung Liệt, Quận Đống Đa, Hà Nội, Việt Nam" [readonly]="true" />
+  <h2>Car Image <span *ngIf="mode != 'view'" class="required-asterisk">*</span></h2>
+  <div class="tw-grid tw-gap-6 tw-mb-6 md:tw-grid-cols-2">
+
+    <!--  <div class="tw-flex tw-flex-wrap tw-justify-between">-->
+    <div class="tw-mr-1 tw-w-full tw-mb-8 tw-items-center tw-justify-center">
+      <div style="margin-bottom: 5px">
+        Front<span *ngIf="mode != 'view'" class="required-asterisk">*</span>
+      </div>
+      <label for="file-front" style="height: 300px"
+        class="tw-flex tw-flex-col tw-items-center tw-justify-center tw-w-full  tw-border-2 tw-border-gray-300 tw-border-dashed tw-rounded-lg {{mode != 'view' ? 'tw-cursor-pointer' : ''}} tw-bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
+        <div class="tw-w-full tw-h-full tw-flex tw-flex-col tw-items-center tw-justify-center " >
+          <svg id="frontSvg" class="tw-w-8 tw-h-8 tw-mb-4 tw-text-gray-500 dark:text-gray-400" aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />
+          </svg>
+          <img id="front" class="tw-hidden" style="
+    border-radius: 10px; object-fit: cover; height: 100%;
+    width: 100%;" [src]="frontUrl" />
+          <p id="pFront" class="tw-mb-2 tw-text-sm tw-text-gray-500 dark:text-gray-400"><span
+              class="tw-font-semibold">Click to upload</span>
+            or drag and drop</p>
+          <p id="pFront1" class="tw-text-xs tw-text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX.
+            800x400px)</p>
+        </div>
+        <input #frontImg id="file-front" [disabled]="mode == 'view'" (change)="changeImage($event, 'front')"
+          name="front" type="file" class="tw-hidden" />
+      </label>
+    </div>
+    <div class=" tw-mb-8 tw-w-full tw-items-center tw-justify-center">
+      <div style="margin-bottom: 5px">
+        Back<span *ngIf="mode != 'view'" class="required-asterisk">*</span>
+      </div>
+      <label for="file-back" style = "height: 300px"
+        class="tw-flex tw-flex-col tw-items-center tw-justify-center tw-w-full  tw-border-2 tw-border-gray-300 tw-border-dashed tw-rounded-lg {{mode != 'view' ? 'tw-cursor-pointer' : ''}} tw-bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
+        <div class="tw-w-full tw-h-full tw-flex tw-flex-col tw-items-center tw-justify-center ">
+          <svg id="backSvg" class="tw-w-8 tw-h-8 tw-mb-4 tw-text-gray-500 dark:text-gray-400" aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />
+          </svg>
+          <img id="back" class="tw-hidden  " style="
+    border-radius: 10px; object-fit: cover; height: 100%;
+    width: 100%;" [src]="backUrl" />
+          <p id="pBack" class="tw-mb-2 tw-text-sm tw-text-gray-500 dark:text-gray-400"><span
+              class="tw-font-semibold">Click to upload</span>
+            or drag and drop</p>
+          <p id="pBack1" class="tw-text-xs tw-text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX.
+            800x400px)</p>
+        </div>
+        <input #backImg id="file-back" [disabled]="mode == 'view'" (change)="changeImage($event, 'back')" name="back"
+          type="file" class="tw-hidden" />
+      </label>
+    </div>
+    <div class="tw-items-center tw-w-full tw-justify-center">
+      <div style="margin-bottom: 5px">
+        Left<span *ngIf="mode != 'view'" class="required-asterisk">*</span>
+      </div>
+      <label for="file-left" style="height: 300px;"
+        class="tw-h-full tw-flex tw-flex-col tw-items-center tw-justify-center tw-w-full tw-border-2 tw-border-gray-300 tw-border-dashed tw-rounded-lg {{mode != 'view' ? 'tw-cursor-pointer' : ''}} tw-bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
+        <div class="tw-w-full tw-h-full tw-flex tw-flex-col tw-items-center tw-justify-center">
+          <svg id="leftSvg" class="tw-w-8 tw-h-8 tw-mb-4 tw-text-gray-500 dark:text-gray-400" aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />
+          </svg>
+          <img id="left" class="tw-hidden " style="
+    border-radius: 10px; object-fit: cover; height: 100%;
+    width: 100%;" [src]="leftUrl" />
+          <p id="pLeft" class="tw-mb-2 tw-text-sm tw-text-gray-500 dark:text-gray-400"><span
+              class="tw-font-semibold">Click to upload</span>
+            or drag and drop</p>
+          <p id="pLeft1" class="tw-text-xs tw-text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX.
+            800x400px)</p>
+        </div>
+        <input #leftImg id="file-left" [disabled]="mode == 'view'" (change)="changeImage($event, 'left')" name="left"
+          type="file" class="tw-hidden" />
+      </label>
+    </div>
+    <div class="tw-items-center tw-w-full tw-justify-center">
+      <div style="margin-bottom: 5px">
+        Right<span *ngIf="mode != 'view'" class="required-asterisk">*</span>
+      </div>
+      <label for="file-right" style = "height: 300px"
+        class="tw-flex tw-flex-col tw-items-center tw-justify-center tw-w-full  tw-border-2 tw-border-gray-300 tw-border-dashed tw-rounded-lg {{mode != 'view' ? 'tw-cursor-pointer' : ''}} tw-bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
+        <div class="tw-w-full tw-h-full tw-flex tw-flex-col tw-items-center tw-justify-center">
+          <svg id="rightSvg" class="tw-w-8 tw-h-8 tw-mb-4 tw-text-gray-500 dark:text-gray-400" aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />
+          </svg>
+          <img id="right" class="tw-hidden  " style="
+    border-radius: 10px; object-fit: cover; height: 100%;
+    width: 100%;" [src]="rightUrl" />
+          <p id="pRight" class="tw-mb-2 tw-text-sm tw-text-gray-500 dark:text-gray-400"><span
+              class="tw-font-semibold">Click to upload</span>
+            or drag and drop</p>
+          <p id="pRight1" class="tw-text-xs tw-text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX.
+            800x400px)</p>
+        </div>
+        <input #rightImg id="file-right" [disabled]="mode == 'view'" (change)="changeImage($event, 'right')"
+          name="right" type="file" class="tw-hidden" />
+      </label>
+    </div>
+  </div>
+
+  <h2>License Image <span *ngIf="mode != 'view'" class="required-asterisk">*</span></h2>
+
+  <!--regis-->
+  <div class="tw-grid tw-gap-6 tw-mb-6 md:tw-grid-cols-2">
+
+    <!--  <div class="tw-flex tw-flex-wrap tw-justify-between">-->
+    <div class="tw-mr-1 tw-w-full tw-mb-8 tw-items-center tw-justify-center">
+      <div style="margin-bottom: 5px">
+        Registration<span *ngIf="mode != 'view'" class="required-asterisk">*</span>
+      </div>
+      <label for="file-registration" style = "height: 300px;"
+        class="tw-flex tw-flex-col tw-items-center tw-justify-center tw-w-full tw-border-2 tw-border-gray-300 tw-border-dashed tw-rounded-lg {{mode != 'view' ? 'tw-cursor-pointer' : ''}} tw-bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
+        <div class="tw-w-full tw-h-full tw-flex tw-flex-col tw-items-center tw-justify-center ">
+          <svg id="registrationSvg" class="tw-w-8 tw-h-8 tw-mb-4 tw-text-gray-500 dark:text-gray-400" aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />
+          </svg>
+          <img id="registration" class="tw-hidden" style="
+    border-radius: 10px; object-fit: cover; height: 100%;
+    width: 100%;" [src]="registrationUrl" />
+          <p id="pRegistration" class="tw-mb-2 tw-text-sm tw-text-gray-500 dark:text-gray-400"><span
+              class="tw-font-semibold">Click to upload</span>
+            or drag and drop</p>
+          <p id="pRegistration1" class="tw-text-xs tw-text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX.
+            800x400px)</p>
+        </div>
+        <input #registrationImg id="file-registration" [disabled]="mode == 'view'"
+          (change)="changeImage($event, 'registration')" name="front" type="file" class="tw-hidden" />
+      </label>
+    </div>
+    <div class=" tw-mb-8 tw-w-full tw-items-center tw-justify-center">
+      <div style="margin-bottom: 5px">
+        Inspection<span *ngIf="mode != 'view'" class="required-asterisk">*</span>
+      </div>
+      <label for="file-inspection" style = "height: 300px"
+        class="tw-flex tw-flex-col tw-items-center tw-justify-center tw-w-full  tw-border-2 tw-border-gray-300 tw-border-dashed tw-rounded-lg {{mode != 'view' ? 'tw-cursor-pointer' : ''}} tw-bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
+        <div class="tw-w-full tw-h-full tw-flex tw-flex-col tw-items-center tw-justify-center">
+          <svg id="inspectionSvg" class="tw-w-8 tw-h-8 tw-mb-4 tw-text-gray-500 dark:text-gray-400" aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />
+          </svg>
+          <img id="inspection" class="tw-hidden  " style="
+    border-radius: 10px; object-fit: cover; height: 100%;
+    width: 100%;" [src]="inspectionUrl" />
+          <p id="pInspection" class="tw-mb-2 tw-text-sm tw-text-gray-500 dark:text-gray-400"><span
+              class="tw-font-semibold">Click to upload</span>
+            or drag and drop</p>
+          <p id="pInspection1" class="tw-text-xs tw-text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX.
+            800x400px)</p>
+        </div>
+        <input #inspectionImg id="file-inspection" [disabled]="mode == 'view'"
+          (change)="changeImage($event, 'inspection')" name="back" type="file" class="tw-hidden" />
+      </label>
+    </div>
+    <div class="tw-items-center tw-w-full tw-justify-center">
+      <div style="margin-bottom: 5px">
+        Insurance
+      </div>
+      <label for="file-insurance" style = "height: 300px;"
+        class="tw-flex tw-flex-col tw-items-center tw-justify-center tw-w-full tw-border-2 tw-border-gray-300 tw-border-dashed tw-rounded-lg {{mode != 'view' ? 'tw-cursor-pointer' : ''}} tw-bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
+        <div class="tw-w-full tw-h-full tw-flex tw-flex-col tw-items-center tw-justify-center">
+          <svg id="insuranceSvg" class="tw-w-8 tw-h-8 tw-mb-4 tw-text-gray-500 dark:text-gray-400" aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />
+          </svg>
+          <img id="insurance" class="tw-hidden " style="
+    border-radius: 10px; object-fit: cover; height: 100%;
+    width: 100%;" [src]="insuranceUrl" />
+          <p id="pInsurance" class="tw-mb-2 tw-text-sm tw-text-gray-500 dark:text-gray-400"><span
+              class="tw-font-semibold">Click to upload</span>
+            or drag and drop</p>
+          <p id="pInsurance1" class="tw-text-xs tw-text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX.
+            800x400px)</p>
+        </div>
+        <input #insuranceImg id="file-insurance" [disabled]="mode == 'view'" (change)="changeImage($event, 'insurance')"
+          name="insurance" type="file" class="tw-hidden" />
+      </label>
+    </div>
+
+  </div>
+
+  <div class="tw-grid tw-gap-6 tw-mb-6 md:tw-grid-cols-2" style="margin-bottom: 0px">
+    <div>
+      <h2 style="margin-top: 10px">Auto cancel all pending booking after: <span *ngIf="mode != 'view'"
+          class="required-asterisk">*</span>
+      </h2>
+      <p class="p-normal">This means that all booking in pending status will be cancelled after the time you
+        choose. Please choose from 1 to 48 hours</p>
+      <div class="tw-mb-6 tw-flex tw-items-center">
+        <div class="tw-w-2/3">
+          <input [readOnly]="mode == 'view'" style="margin-bottom: 20px; font-weight: 300" [type]="'number'"
+            [(ngModel)]="cancelPending" id="cancelPending" name="cancelPending" [min]="'1'" [max]="'48'"
+            placeholder="24"
+            class="{{mode == 'view' ? 'tw-bg-gray-200' :'tw-bg-gray-50'}} tw-border tw-border-gray-300 tw-text-gray-900 tw-text-sm tw-rounded-lg focus:tw-ring-blue-500 focus:tw-border-blue-500 tw-block tw-w-full tw-p-2.5 dark:tw-bg-gray-700 dark:tw-border-gray-600 dark:tw-placeholder-gray-400 dark:tw-text-white dark:focus:tw-ring-blue-500 dark:focus:tw-border-blue-500"
+            required />
+        </div>
+        <div style="margin-bottom: 20px;margin-left: 10px">
+          Hour
+        </div>
+      </div>
+    </div>
+    <div>
+      <h2 style="margin-top: 10px">Auto cancel all pending deposit booking after: <span *ngIf="mode != 'view'"
+          class="required-asterisk">*</span></h2>
+      <p class="p-normal">This means that all booking in pending deposit status will be cancelled after the time you. Please choose from 1 to 48 hours
+        choose</p>
+      <div class="tw-mb-6 tw-flex tw-items-center">
+        <div class="tw-w-2/3">
+          <input [readOnly]="mode == 'view'" style="margin-bottom: 20px; font-weight: 300" [type]="'number'"
+            [(ngModel)]="cancelPendingDeposit" id="cancelPendingDeposit" name="cancelPendingDeposit" [min]="'1'"
+            [max]="'48'" placeholder="24"
+            class="{{mode == 'view' ? 'tw-bg-gray-200' :'tw-bg-gray-50'}} tw-border tw-border-gray-300 tw-text-gray-900 tw-text-sm tw-rounded-lg focus:tw-ring-blue-500 focus:tw-border-blue-500 tw-block tw-w-full tw-p-2.5 dark:tw-bg-gray-700 dark:tw-border-gray-600 dark:tw-placeholder-gray-400 dark:tw-text-white dark:focus:tw-ring-blue-500 dark:focus:tw-border-blue-500"
+            required />
+        </div>
+        <div style="margin-bottom: 20px; margin-left: 10px">
+          Hour
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+    <button (click)="previousStep()" style="margin-right: 20px; cursor: pointer" type="submit"
+      class="btn-prev hover:tw-scale-110 tw-cursor-pointer tw-text-white tw-bg-blue-700 tw-w-1/5 hover:tw-bg-blue-800 focus:tw-ring-4 focus:tw-outline-none focus:tw-ring-blue-300 tw-font-medium tw-rounded-lg tw-text-sm tw-px-5 tw-py-2.5 tw-text-center dark:tw-bg-blue-600 dark:hover:tw-bg-blue-700 dark:focus:tw-ring-blue-800">
+      Previous
+    </button>
+    <button type="submit" (click)="submit()"
+      class="btn-next hover:tw-scale-110 tw-right-full tw-text-white tw-bg-blue-700 tw-w-1/5 hover:tw-bg-blue-800 focus:tw-ring-4 focus:tw-outline-none focus:tw-ring-blue-300 tw-font-medium tw-rounded-lg tw-text-sm = tw-px-5 tw-py-2.5 tw-text-center dark:tw-bg-blue-600 dark:hover:tw-bg-blue-700 dark:focus:tw-ring-blue-800">
+      Next
+    </button>
+  </div>
+
+</form>
+<div id="mp" class="fullscreen-overlay">
+  <!-- Nội dung của div sẽ chiếm toàn bộ màn hình -->
+  <div style="height: 100%">
+    <app-map [zoom]="zoom" [lat]="lat" [lng]="lng" [mapMode]="mapMode" (updateData)="closeMap($event)"
+      (notify)="handleMapChange($event)"></app-map>
+
+  </div>
+</div>
+
+<div id="myModal" class="modal">
+  <span class="close">&times;</span>
+  <img class="modal-content" id="img01">
+  <div id="caption"></div>
+</div>

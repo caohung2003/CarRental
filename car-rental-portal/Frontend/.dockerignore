@@ -1,0 +1,12 @@
+# Node
+node_modules/*
+!/node_modules/flowbite/
+!/node_modules/@here/
+
+# Git
+.gitignore
+.gitignore
+
+# Dist
+dist/*
+

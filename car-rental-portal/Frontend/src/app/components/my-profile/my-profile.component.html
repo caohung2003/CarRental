@@ -1,0 +1,479 @@
+<app-header id="topnav" class="header tw-sticky tw-top-0"></app-header>
+
+<div style="min-height: 500px;"
+    class="tw-pb-4 tw-flex tw-items-center tw-justify-center tw-w-full tw-h-fit tw-bg-gray-200">
+    <div class="tw-w-full tw-pl-10 tw-pr-10">
+        <div class="tw-grid tw-grid-cols-1 md:tw-grid-cols-12 tw-transition-[grid-template-columns]
+        md:tw-grid-cols-[120px_1fr] md:[&:has(>*:first-child:hover)]:tw-grid-cols-[250px_1fr]">
+            <div style="margin-top: 5rem"
+                class="menu-option tw-top-20 lg:tw-sticky tw-flex tw-flex-col tw-justify-between tw-rounded-xl md:tw-rounded-e-none tw-border-e tw-bg-white tw-p-8">
+                <ul style="top: 5rem" class="tw-sticky list-option tw-space-y-2">
+                    <li>
+                        <a [routerLink]="['/myprofile']"
+                            class="{{url == '/myprofile'?'tw-text-white tw-bg-gray-800':'tw-text-gray-600'}} tw-flex tw-font-medium tw-p-2 tw-rounded-lg hover:tw-text-white hover:tw-bg-gray-800">
+                            <svg class="tw-mr-3" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M11.76 10.86C13.3782 10.86 14.69 9.54819 14.69 7.93C14.69 6.31181 13.3782 5 11.76 5C10.1418 5 8.83 6.31181 8.83 7.93C8.83 9.54819 10.1418 10.86 11.76 10.86Z"
+                                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                </path>
+                                <path
+                                    d="M5.84 19.0001V17.3301C5.84 15.3801 7.42 13.8101 9.36 13.8101H14.63C16.58 13.8101 18.15 15.3901 18.15 17.3301V19.0001"
+                                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                </path>
+                            </svg>
+                            <span class="account-text tw-truncate">Account</span>
+                        </a>
+                    </li>
+                    <hr class="tw-h-px tw-my-8 tw-bg-gray-200 tw-border-0 dark:tw-bg-gray-700">
+                    <li>
+                        <a [routerLink]="['/my-car']"
+                            class="{{url == '/my-car'?'tw-text-white tw-bg-gray-800':'tw-text-gray-600'}} tw-flex tw-font-medium tw-p-2 tw-rounded-lg hover:tw-text-white hover:tw-bg-gray-800">
+                            <svg class="tw-mr-3" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M17.14 21.2H6.85999C5.71999 21.2 4.79999 20.28 4.79999 19.14V4.74994C4.79999 3.60994 5.71999 2.68994 6.85999 2.68994H17.14C18.28 2.68994 19.2 3.60994 19.2 4.74994V19.14C19.19 20.28 18.27 21.2 17.14 21.2Z"
+                                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                </path>
+                                <path d="M7.89001 6.85999H8.92001" stroke="currentColor" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path d="M12 6.85999H16.11" stroke="currentColor" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path d="M7.89001 12H8.92001" stroke="currentColor" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path d="M12 12H16.11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round"></path>
+                                <path d="M7.89001 17.14H8.92001" stroke="currentColor" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path d="M12 17.14H16.11" stroke="currentColor" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>
+                            <span class="account-text tw-truncate">My Car</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/car-booking']"
+                            class="{{url == '/car-booking'?'tw-text-white tw-bg-gray-800':'tw-text-gray-600'}} tw-flex tw-font-medium tw-p-2 tw-rounded-lg hover:tw-text-white hover:tw-bg-gray-800">
+                            <svg class="tw-mr-3" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M6.50023 8.86914H4.80023C3.66023 8.86914 2.74023 9.78914 2.74023 10.9291V18.1191C2.74023 19.2591 3.66023 20.1791 4.80023 20.1791H19.1902C20.3302 20.1791 21.2502 19.2591 21.2502 18.1191V10.9291"
+                                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                </path>
+                                <path d="M16.1095 8.86914H10.2695" stroke="currentColor" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path
+                                    d="M16.1094 16.0605H19.1894C20.3294 16.0605 21.2494 16.9805 21.2494 18.1205C21.2494 19.2605 20.3294 20.1805 19.1894 20.1805H16.1094"
+                                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                </path>
+                                <path d="M16.1094 5.7793H19.1894C20.3294 5.7793 21.2494 6.6993 21.2494 7.8393"
+                                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                </path>
+                                <path d="M21.25 18.1198V7.83984" stroke="currentColor" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path d="M16.1094 5.7793V16.0593" stroke="currentColor" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path
+                                    d="M2.75 14.0098H6.86C7.43 14.0098 7.89 14.3998 7.89 14.8898C7.89 15.3798 8.35 15.7698 8.92 15.7698H9.95C10.52 15.7698 10.98 16.1598 10.98 16.6498V17.5298V20.1698"
+                                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                </path>
+                                <path
+                                    d="M8.40007 3.83008C6.98007 3.83008 5.83008 4.98008 5.83008 6.40008C5.83008 8.16008 8.13007 10.7401 8.23007 10.8501C8.32007 10.9501 8.48008 10.9501 8.57008 10.8501C8.67008 10.7401 10.9701 8.16008 10.9701 6.40008C10.9701 4.98008 9.82007 3.83008 8.40007 3.83008Z"
+                                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                </path>
+                                <path
+                                    d="M8.39977 7.37961C8.8913 7.37961 9.28976 6.98114 9.28976 6.48961C9.28976 5.99808 8.8913 5.59961 8.39977 5.59961C7.90823 5.59961 7.50977 5.99808 7.50977 6.48961C7.50977 6.98114 7.90823 7.37961 8.39977 7.37961Z"
+                                    fill="currentColor"></path>
+                            </svg>
+                            <span class="account-text tw-truncate">My Car Bookings</span>
+                        </a>
+                    </li>
+                    <hr class="tw-h-px tw-my-8 tw-bg-gray-200 tw-border-0 dark:tw-bg-gray-700">
+                    <li>
+                        <a [routerLink]="['/mybooking']"
+                            class="{{url == '/mybooking'?'tw-text-white tw-bg-gray-800':'tw-text-gray-600'}} tw-flex tw-font-medium tw-p-2 tw-rounded-lg hover:tw-text-white hover:tw-bg-gray-800">
+                            <svg class="tw-mr-3" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M6.50023 8.86914H4.80023C3.66023 8.86914 2.74023 9.78914 2.74023 10.9291V18.1191C2.74023 19.2591 3.66023 20.1791 4.80023 20.1791H19.1902C20.3302 20.1791 21.2502 19.2591 21.2502 18.1191V10.9291"
+                                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                </path>
+                                <path d="M16.1095 8.86914H10.2695" stroke="currentColor" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path
+                                    d="M16.1094 16.0605H19.1894C20.3294 16.0605 21.2494 16.9805 21.2494 18.1205C21.2494 19.2605 20.3294 20.1805 19.1894 20.1805H16.1094"
+                                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                </path>
+                                <path d="M16.1094 5.7793H19.1894C20.3294 5.7793 21.2494 6.6993 21.2494 7.8393"
+                                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                </path>
+                                <path d="M21.25 18.1198V7.83984" stroke="currentColor" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path d="M16.1094 5.7793V16.0593" stroke="currentColor" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path
+                                    d="M2.75 14.0098H6.86C7.43 14.0098 7.89 14.3998 7.89 14.8898C7.89 15.3798 8.35 15.7698 8.92 15.7698H9.95C10.52 15.7698 10.98 16.1598 10.98 16.6498V17.5298V20.1698"
+                                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                </path>
+                                <path
+                                    d="M8.40007 3.83008C6.98007 3.83008 5.83008 4.98008 5.83008 6.40008C5.83008 8.16008 8.13007 10.7401 8.23007 10.8501C8.32007 10.9501 8.48008 10.9501 8.57008 10.8501C8.67008 10.7401 10.9701 8.16008 10.9701 6.40008C10.9701 4.98008 9.82007 3.83008 8.40007 3.83008Z"
+                                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                </path>
+                                <path
+                                    d="M8.39977 7.37961C8.8913 7.37961 9.28976 6.98114 9.28976 6.48961C9.28976 5.99808 8.8913 5.59961 8.39977 5.59961C7.90823 5.59961 7.50977 5.99808 7.50977 6.48961C7.50977 6.98114 7.90823 7.37961 8.39977 7.37961Z"
+                                    fill="currentColor"></path>
+                            </svg>
+                            <span class="account-text tw-truncate">My Bookings</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/mywallet']"
+                            class="{{url == '/mywallet'?'tw-text-white tw-bg-gray-800':'tw-text-gray-600'}} tw-flex tw-font-medium tw-p-2 tw-rounded-lg hover:tw-text-white hover:tw-bg-gray-800">
+                            <svg class="tw-mr-3" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+                                stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" />
+                                <path
+                                    d="M17 8v-3a1 1 0 0 0 -1 -1h-10a2 2 0 0 0 0 4h12a1 1 0 0 1 1 1v3m0 4v3a1 1 0 0 1 -1 1h-12a2 2 0 0 1 -2 -2v-12" />
+                                <path d="M20 12v4h-4a2 2 0 0 1 0 -4h4" />
+                            </svg>
+                            <span class="account-text tw-truncate">My Wallet</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/feedback-report"
+                            class="{{url == '/feedback-report'?'tw-text-white tw-bg-gray-800':'tw-text-gray-600'}} tw-flex tw-font-medium tw-p-2 tw-rounded-lg hover:tw-text-white hover:tw-bg-gray-800">
+                            <svg class="tw-mr-3" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+                                stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" />
+                                <path
+                                    d="M6 4h11a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-11a1 1 0 0 1 -1 -1v-14a1 1 0 0 1 1 -1m3 0v18" />
+                                <line x1="13" y1="8" x2="15" y2="8" />
+                                <line x1="13" y1="12" x2="15" y2="12" />
+                            </svg>
+
+                            <span class="account-text tw-truncate">My Feedback Report</span>
+                        </a>
+                    </li>
+                    <hr class="tw-h-1 tw-my-8 tw-bg-gray-200 tw-border-0 dark:tw-bg-gray-700">
+                    <li class="tw-mt-20">
+                        <a (click)="logout()"
+                            class="tw-flex tw-font-medium tw-text-gray-600 tw-p-2 tw-rounded-lg hover:tw-text-white hover:tw-bg-gray-800">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="tw-mr-3" width="24" height="24">
+                                <path strokeLinecap="round" strokeLinejoin="round"
+                                    d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15m3 0l3-3m0 0l-3-3m3 3H9" />
+                            </svg>
+                            <span class="account-text tw-truncate">Logout</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div style="margin-top: 5rem" class="tw-top-20 tw-overflow-x-hidden tw-grid-cols-12">
+
+                <div
+                    class="tw-px-8 tw-py-3 tw-flex tw-flex-col tw-gap-6 tw-bg-white tw-border-gray-300 tw-rounded-xl tw-min-h-full md:tw-rounded-s-none">
+
+                    <div class="tw-flex tw-align-middle tw-justify-between tw-gap-2">
+                        <div class="tw-text-gray-900 tw-text-xl">
+                            User Information
+                        </div>
+                        <div>
+                            <label class="tw-flex tw-items-center tw-cursor-pointer tw-mt-0 tw-justify-end">
+                                <input type="checkbox" value="" class="tw-sr-only tw-peer" [(ngModel)]="isEditing"
+                                    (ngModelChange)="toggleEditMode($event)" />
+
+                                <span
+                                    class="{{!isEditing?'tw-text-gray-500':'tw-text-gray-900'}} tw-ms-3 tw-text-sm tw-font-medium dark:tw-text-gray-300">Edit
+                                    Mode</span>
+                                <div
+                                    class="tw-relative tw-ml-2 tw-pt-0.5 tw-w-11 tw-h-6 tw-bg-gray-200 peer-focus:tw-outline-none peer-focus:tw-ring-4 peer-focus:tw-ring-blue-300 dark:peer-focus:tw-ring-blue-800 tw-rounded-full tw-peer dark:tw-bg-gray-700 peer-checked:after:tw-translate-x-full rtl:peer-checked:after:-tw-translate-x-full peer-checked:after:tw-border-white after:tw-content-[''] after:tw-absolute after:tw-top-[2px] after:tw-start-[4px] after:tw-bg-white after:tw-border-gray-300 after:tw-border after:tw-rounded-full after:tw-h-5 after:tw-w-5 after:tw-transition-all dark:tw-border-gray-600 peer-checked:tw-bg-blue-600">
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                    <form #f="ngForm">
+                        <div class="tw-flex tw-gap-9">
+                            <div class="tw-flex tw-flex-col tw-align-middle tw-items-center tw-w-1/3 tw-gap-4">
+                                <label for="avatar"
+                                    class="{{isEditing ? 'image-avatar tw-cursor-pointer':''}} xl:tw-w-36 xl:tw-h-36 tw-relative tw-border-solid tw-rounded-full">
+                                    <input id="avatar" type="file" [disabled]="!isEditing" name="avatar"
+                                        (change)="changeAvatarFile($event)" hidden>
+                                    <img 
+                                        class="tw-w-full tw-h-full tw-object-cover tw-rounded-full tw-block"
+                                        [src]="this.avatar?this.avatar:'../../../assets/images/avatar/avatar1.png'">
+                                </label>
+                                <div class="tw-text-gray-400 tw-text-sm tw-text-center">Join date: 01/04/2023</div>
+
+                                <div class="tw-flex tw-gap-1 tw-justify-between tw-items-center">
+                                    <div class="tw-flex tw-gap-1 tw-justify-center tw-items-center tw-p-2">
+                                        <div class="tw-leading-0 tw-flex tw-align-middle">
+                                            <svg class="tw-inline-block tw-w-5 tw-h-5 xl:tw-w-4 xl:tw-h-4 tw-text-gray-800"
+                                                viewBox="0 0 24 24" fill="#F8CE25" stroke="#F8CE25" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round">
+                                                <polygon
+                                                    points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                                            </svg>
+                                        </div>
+                                        <div>{{user.rating}} stars</div>
+                                    </div>
+                                    <div class="tw-flex tw-gap-1 tw-justify-center tw-items-center tw-p-2">
+                                        <div class="tw-leading-0 tw-flex tw-align-middle">
+                                            <svg class="tw-inline-block tw-w-5 tw-h-5 xl:tw-w-4 xl:tw-h-4 tw-text-gray-800"
+                                                viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"
+                                                style="margin-right: 4px;">
+                                                <g clip-path="url(#clip0_1087_41996)">
+                                                    <path
+                                                        d="M10.0625 1.21875C10.0625 1.06369 10.1887 0.9375 10.3438 0.9375H11.9688C12.1238 0.9375 12.25 1.06369 12.25 1.21875V2.89422H13.1875V1.21875C13.1875 0.546719 12.6408 0 11.9688 0H10.3438C9.67172 0 9.125 0.546719 9.125 1.21875V2.89422H10.0625V1.21875Z"
+                                                        fill="#5FCF86"></path>
+                                                    <path
+                                                        d="M5.69806 15.0623C5.49325 14.7441 5.375 14.3673 5.375 13.9686V6.94092H1.09375C0.490656 6.94092 0 7.43157 0 8.03467V13.9686C0 14.5186 0.408156 14.9749 0.9375 15.051V15.5309C0.9375 15.7898 1.14737 15.9997 1.40625 15.9997C1.66513 15.9997 1.875 15.7898 1.875 15.5309V15.0623H5.69806V15.0623ZM1.875 8.65967C1.875 8.40079 2.08487 8.19092 2.34375 8.19092C2.60263 8.19092 2.8125 8.40079 2.8125 8.65967V13.3436C2.8125 13.6024 2.60263 13.8123 2.34375 13.8123C2.08487 13.8123 1.875 13.6024 1.875 13.3436V8.65967Z"
+                                                        fill="#5FCF86"></path>
+                                                    <path
+                                                        d="M4.375 5.26562C4.375 5.11056 4.50119 4.98438 4.65625 4.98438H5.375V4.92547C5.375 4.61094 5.44687 4.31291 5.57506 4.04688H4.65625C3.98422 4.04688 3.4375 4.59359 3.4375 5.26562V6.00359H4.375V5.26562Z"
+                                                        fill="#5FCF86"></path>
+                                                    <path
+                                                        d="M14.9062 3.83154H7.40625C6.80316 3.83154 6.3125 4.3222 6.3125 4.92529V13.9686C6.3125 14.5186 6.72066 14.9749 7.25 15.051V15.5309C7.25 15.7898 7.45987 15.9997 7.71875 15.9997C7.97763 15.9997 8.1875 15.7898 8.1875 15.5309V15.0623H14.125V15.5309C14.125 15.7898 14.3349 15.9997 14.5938 15.9997C14.8526 15.9997 15.0625 15.7898 15.0625 15.5309V15.051C15.5918 14.9749 16 14.5186 16 13.9686V4.92529C16 4.32217 15.5093 3.83154 14.9062 3.83154ZM9.125 13.3436C9.125 13.6024 8.91513 13.8123 8.65625 13.8123C8.39737 13.8123 8.1875 13.6024 8.1875 13.3436V5.55029C8.1875 5.29142 8.39737 5.08154 8.65625 5.08154C8.91513 5.08154 9.125 5.29142 9.125 5.55029V13.3436ZM13.6562 13.8123C13.3974 13.8123 13.1875 13.6024 13.1875 13.3436V5.55029C13.1875 5.29142 13.3974 5.08154 13.6562 5.08154C13.9151 5.08154 14.125 5.29142 14.125 5.55029V13.3436C14.125 13.6024 13.9151 13.8123 13.6562 13.8123Z"
+                                                        fill="#5FCF86"></path>
+                                                </g>
+                                                <defs>
+                                                    <clipPath id="clip0_1087_41996">
+                                                        <rect width="16" height="16" fill="white"></rect>
+                                                    </clipPath>
+                                                </defs>
+                                            </svg>
+                                        </div>
+                                        <div>{{user.noBooking}} bookings</div>
+                                    </div>
+                                </div>
+
+                                <change-password id="change-password" ngSkipHydration class="tw-mt-5"></change-password>
+
+                            </div>
+                            <div class="tw-flex tw-flex-col tw-w-2/3 tw-gap-6">
+
+                                <div class="tw-p-0">
+                                    <div class=" form-group tw-w-full">
+                                        <div class="row tw-mb-5 tw-my-4">
+
+                                            <div class="col tw-relative tw-z-0 tw-w-full ">
+                                                <input type="text" placeholder=" " required
+                                                    class="tw-block tw-px-2.5 tw-pb-2.5 tw-pt-4 tw-w-full tw-text-sm tw-text-gray-900 tw-bg-transparent tw-rounded-lg tw-border-1 tw-border-gray-300 tw-appearance-none dark:tw-text-white dark:tw-border-gray-600 dark:tw-focus focus:tw-outline-none focus:tw-ring-0 focus:tw-border-blue-600 tw-peer"
+                                                    required [(ngModel)]="this.user.firstName" [disabled]="!isEditing"
+                                                    name="firstName" placeholder=" " ngModel
+                                                    #firstNameControl="ngModel" />
+                                                <label for="name"
+                                                    class="tw-absolute tw-text-sm tw-text-gray-500 dark:tw-text-gray-400 tw-duration-300 tw-transform -tw-translate-y-4 tw-scale-75 tw-top-2 tw-z-10 tw-origin-[0] tw-bg-white dark:tw-bg-gray-900 tw-px-2 peer-focus:tw-px-2 tw-mx-4 peer-focus:tw-mx-4 peer-focus:tw-text-blue-600 peer-focus:tw-dark peer-placeholder-shown:tw-scale-100 peer-placeholder-shown:-tw-translate-y-1/2 peer-placeholder-shown:tw-top-1/2 peer-focus:tw-top-2 peer-focus:tw-scale-75 peer-focus:-tw-translate-y-4 rtl:tw-peer-focus rtl:tw-peer-focus tw-start-1">First
+                                                    name</label>
+                                            </div>
+                                            <div class="col tw-relative tw-z-0 tw-w-full">
+                                                <input type="text" placeholder=" " required
+                                                    class="tw-block tw-px-2.5 tw-pb-2.5 tw-pt-4 tw-w-full tw-text-sm tw-text-gray-900 tw-bg-transparent tw-rounded-lg tw-border-1 tw-border-gray-300 tw-appearance-none dark:tw-text-white dark:tw-border-gray-600 dark:tw-focus focus:tw-outline-none focus:tw-ring-0 focus:tw-border-blue-600 tw-peer"
+                                                    required [(ngModel)]="this.user.lastName" [disabled]="!isEditing"
+                                                    name="lastName" placeholder=" " ngModel #lastNameControl="ngModel">
+                                                <label for="name"
+                                                    class="tw-absolute tw-text-sm tw-text-gray-500 dark:tw-text-gray-400 tw-duration-300 tw-transform -tw-translate-y-4 tw-scale-75 tw-top-2 tw-z-10 tw-origin-[0] tw-bg-white dark:tw-bg-gray-900 tw-px-2 peer-focus:tw-px-2 tw-mx-4 peer-focus:tw-mx-4 peer-focus:tw-text-blue-600 peer-focus:tw-dark peer-placeholder-shown:tw-scale-100 peer-placeholder-shown:-tw-translate-y-1/2 peer-placeholder-shown:tw-top-1/2 peer-focus:tw-top-2 peer-focus:tw-scale-75 peer-focus:-tw-translate-y-4 rtl:tw-peer-focus rtl:tw-peer-focus tw-start-1">Last
+                                                    name</label>
+                                            </div>
+                                            <span *ngIf="
+                                                        (lastNameControl.touched || firstNameControl.touched) &&
+                                                        (firstNameControl.value === '' ||
+                                                        lastNameControl.value === '')
+                                                      " class="tw-text-red-500 error-msg" id="error-name">Please fill
+                                                all the name
+                                                fields</span>
+                                        </div>
+
+                                        <div class="tw-mb-5 tw-my-4">
+                                            <div class=" tw-relative tw-z-0 tw-w-full">
+                                                <input type="tel" placeholder=" " id="phoneNumber" required
+                                                    class="tw-block tw-px-2.5 tw-pb-2.5 tw-pt-4 tw-w-full tw-text-sm tw-text-gray-900 tw-bg-transparent tw-rounded-lg tw-border-1 tw-border-gray-300 tw-appearance-none dark:tw-text-white dark:tw-border-gray-600 dark:tw-focus focus:tw-outline-none focus:tw-ring-0 focus:tw-border-blue-600 tw-peer"
+                                                    required [(ngModel)]="this.user.phone" [disabled]="!isEditing"
+                                                    name="phoneNumber" ngModel #phoneNumberControl="ngModel"
+                                                    pattern="^\d{10,11}$" />
+                                                <label for="phoneNumber"
+                                                    class="tw-absolute tw-text-sm tw-text-gray-500 dark:tw-text-gray-400 tw-duration-300 tw-transform -tw-translate-y-4 tw-scale-75 tw-top-2 tw-z-10 tw-origin-[0] tw-bg-white dark:tw-bg-gray-900 tw-px-2 peer-focus:tw-px-2 peer-focus:tw-text-blue-600 peer-focus:tw-dark peer-placeholder-shown:tw-scale-100 peer-placeholder-shown:-tw-translate-y-1/2 peer-placeholder-shown:tw-top-1/2 peer-focus:tw-top-2 peer-focus:tw-scale-75 peer-focus:-tw-translate-y-4 rtl:tw-peer-focus rtl:tw-peer-focus tw-start-1">
+                                                    Phone Number</label>
+
+                                            </div>
+                                            <span *ngIf="
+                                                    phoneNumberControl.touched &&
+                                                    phoneNumberControl.value === ''
+                                                  " class="tw-text-red-500 error-msg" id="error-phone">Please enter
+                                                phone
+                                                number<br /></span>
+                                            <span *ngIf="
+                                                phoneNumberControl.value!==''&&
+                                                phoneNumberControl.invalid
+                                              " class="tw-text-red-500 error-msg" id="error-phone">Please enter the right
+                                                phone number
+                                            </span>
+                                        </div>
+
+                                        <div class="tw-mb-5 tw-my-4">
+                                            <div class=" tw-relative tw-z-0 tw-w-full">
+                                                <input type="text" placeholder=" " id="nationalId" required
+                                                    class="tw-block tw-px-2.5 tw-pb-2.5 tw-pt-4 tw-w-full tw-text-sm tw-text-gray-900 tw-bg-transparent tw-rounded-lg tw-border-1 tw-border-gray-300 tw-appearance-none dark:tw-text-white dark:tw-border-gray-600 dark:tw-focus focus:tw-outline-none focus:tw-ring-0 focus:tw-border-blue-600 tw-peer"
+                                                    required [(ngModel)]="this.user.nationalId" [disabled]="!isEditing"
+                                                    name="nationalId" ngModel #nationalIdControl="ngModel" />
+                                                <label for="nationalId"
+                                                    class="tw-absolute tw-text-sm tw-text-gray-500 dark:tw-text-gray-400 tw-duration-300 tw-transform -tw-translate-y-4 tw-scale-75 tw-top-2 tw-z-10 tw-origin-[0] tw-bg-white dark:tw-bg-gray-900 tw-px-2 peer-focus:tw-px-2 peer-focus:tw-text-blue-600 peer-focus:tw-dark peer-placeholder-shown:tw-scale-100 peer-placeholder-shown:-tw-translate-y-1/2 peer-placeholder-shown:tw-top-1/2 peer-focus:tw-top-2 peer-focus:tw-scale-75 peer-focus:-tw-translate-y-4 rtl:tw-peer-focus rtl:tw-peer-focus tw-start-1">
+                                                    National Id</label>
+
+                                            </div>
+                                            <span *ngIf="
+                                                    nationalIdControl.touched &&
+                                                    nationalIdControl.value === ''
+                                                  " class="tw-text-red-500 error-msg" id="error-nationalId">Please enter
+                                                your National Id
+                                                <br /></span>
+                                        </div>
+
+                                    </div>
+                                    <div class="form-group">
+
+                                        <div class="tw-mb-5 tw-my-4">
+                                            <div class="input-group">
+
+                                                <app-date-picker class="tw-w-full"
+                                                    [defaultDate]="convertToString(dobDateStruct)" name="dob" id="dob"
+                                                    (result)="handleResult($event)" [title]="'Date of Birth'"
+                                                    [disable]="!isEditing"></app-date-picker>
+                                                <span *ngIf="!checkValidDob(dobDateStruct)"
+                                                    class="tw-text-red-500 error-msg" id="error-dob">Please enter
+                                                    exactly your date of
+                                                    birth<br /></span>
+                                            </div>
+
+                                            <div class=" tw-my-4">
+                                                <div class=" tw-relative tw-z-0 tw-w-full">
+                                                    <input type="text" placeholder=" " id="email" required
+                                                        [(ngModel)]="this.user.email" disabled
+                                                        class="tw-block tw-px-2.5 tw-pb-2.5 tw-pt-4 tw-w-full tw-text-sm tw-text-gray-900 tw-bg-gray-200 tw-rounded-lg tw-border-1 tw-border-gray-300 tw-appearance-none dark:tw-text-white dark:tw-border-gray-600 dark:tw-focus focus:tw-outline-none focus:tw-ring-0 focus:tw-border-blue-600 tw-peer"
+                                                        required name="email" ngModel #emailController="ngModel" />
+                                                    <label for="email"
+                                                        class="tw-absolute tw-text-sm tw-text-gray-500 dark:tw-text-gray-400 tw-duration-300 tw-transform -tw-translate-y-4 tw-scale-75 tw-top-2 tw-z-10 tw-origin-[0] tw-bg-white dark:tw-bg-gray-900 tw-px-2 peer-focus:tw-px-2 peer-focus:tw-text-blue-600 peer-focus:tw-dark peer-placeholder-shown:tw-scale-100 peer-placeholder-shown:-tw-translate-y-1/2 peer-placeholder-shown:tw-top-1/2 peer-focus:tw-top-2 peer-focus:tw-scale-75 peer-focus:-tw-translate-y-4 rtl:tw-peer-focus rtl:tw-peer-focus tw-start-1">
+                                                        Email address</label>
+                                                </div>
+                                            </div>
+
+                                            <h4>Driver License</h4>
+                                            <div class=" tw-my-4">
+                                                <div class=" tw-relative tw-z-0 tw-w-full">
+                                                    <input id="driverLicense" type="file" [hidden]="!isEditing"
+                                                        name="driverLicense" (change)="changeDriverLicenseFile($event)"
+                                                        class="tw-block tw-mt-3 tw-w-full tw-text-sm tw-text-gray-900 tw-border tw-border-gray-300 tw-rounded-lg tw-cursor-pointer tw-bg-gray-50 dark:tw-text-gray-400 focus:tw-outline-none dark:tw-bg-gray-700 dark:tw-border-gray-600 dark:tw-placeholder-gray-400">
+                                                    <img *ngIf="this.driverLicenseImage"
+                                                        class="tw-w-full tw-h-auto tw-my-2 tw-rounded-lg tw-object-cover"
+                                                        [src]="this.driverLicenseImage">
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+
+                                    <h4 class="tw-my-4 ">Address</h4>
+                                    <div class="form-group">
+                                        <div class="tw-grid tw-grid-cols-3 tw-gap-2 tw-w-full tw-mb-4">
+                                            <div class="tw-flex tw-col-span-1 tw-items-center">
+                                                <label
+                                                    class="input-group-text input-group-text-fixed-size tw-h-10 tw-rounded-none tw-rounded-tl-lg tw-rounded-bl-lg"
+                                                    for="city">City</label>
+                                                <select #citySelectionControl name="city" id="city"
+                                                    [(ngModel)]="this.address.cityCode" [disabled]="!isEditing"
+                                                    (change)="loadDistricts(citySelectionControl)"
+                                                    class="tw-w-full tw-flex-grow tw-bg-gray-50 tw-border tw-border-gray-300 tw-text-gray-900 tw-text-sm tw-rounded-lg focus:tw-ring-blue-500 focus:tw-border-blue-500 tw-block tw-p-2.5 dark:tw-bg-gray-700 dark:tw-border-gray-600 dark:tw-placeholder-gray-400 dark:tw-text-white dark:tw-focus dark:tw-focus tw-rounded-tl-none tw-rounded-bl-none">
+                                                    <option [value]="0" disabled selected>Choose a city</option>
+                                                    <option [value]="city.code" *ngFor="let city of cities">
+                                                        {{ city.name }}
+                                                    </option>
+                                                </select>
+                                            </div>
+
+                                            <div class="tw-flex tw-col-span-1 tw-items-center">
+                                                <label
+                                                    class="input-group-text input-group-text-fixed-size tw-h-10 tw-rounded-none tw-rounded-tl-lg tw-rounded-bl-lg"
+                                                    for="renterDistrict">District</label>
+                                                <select name="renterDistrict" id="renterDistrict"
+                                                    #districtSelectionControl
+                                                    (change)="loadWards(citySelectionControl, districtSelectionControl)"
+                                                    [(ngModel)]="this.address.districtCode"
+                                                    [disabled]="citySelectionControl.value === '0'|| citySelectionControl.value === ''||!isEditing"
+                                                    class="tw-w-full tw-h-10 tw-flex-grow tw-bg-gray-50 tw-border tw-border-gray-300 tw-text-gray-900 tw-text-sm tw-rounded-lg focus:tw-ring-blue-500 focus:tw-border-blue-500 tw-block tw-p-2.5 dark:tw-bg-gray-700 dark:tw-border-gray-600 dark:tw-placeholder-gray-400 dark:tw-text-white dark:tw-focus dark:tw-focus tw-rounded-tl-none tw-rounded-bl-none">
+                                                    <option [value]="0" disabled selected>Choose city first</option>
+                                                    <option [value]="district.code" *ngFor="let district of districts">
+                                                        {{ district.name }}
+                                                    </option>
+                                                </select>
+                                            </div>
+
+                                            <div class="tw-flex tw-col-span-1 tw-items-center">
+                                                <label
+                                                    class="input-group-text input-group-text-fixed-size tw-h-10 tw-rounded-none tw-rounded-tl-lg tw-rounded-bl-lg"
+                                                    for="renterWard">Ward</label>
+                                                <select name="renterWard" class="form-select tw-flex-grow"
+                                                    id="renterWard" #wardSelectionControl
+                                                    [disabled]="
+                                  districtSelectionControl.value === '' || districtSelectionControl.value === '0'
+                                  || citySelectionControl.value === '0'|| citySelectionControl.value === '' || !isEditing"
+                                                    (change)="saveWard(wardSelectionControl)"
+                                                    [(ngModel)]="address.wardId"
+                                                    class="tw-w-full tw-bg-gray-50 tw-border tw-border-gray-300 tw-text-gray-900 tw-text-sm tw-rounded-lg focus:tw-ring-blue-500 focus:tw-border-blue-500 tw-block tw-p-2.5 dark:tw-bg-gray-700 dark:tw-border-gray-600 dark:tw-placeholder-gray-400 dark:tw-text-white dark:tw-focus dark:tw-focus tw-rounded-tl-none tw-rounded-bl-none">
+                                                    <option [value]="0" disabled selected>Choose city and district first
+                                                    </option>
+                                                    <option [value]="ward.id" *ngFor="let ward of wards">
+                                                        {{ ward.name }}
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="tw-mb-4">
+                                            <div class="col tw-relative tw-z-0 tw-w-full">
+                                                <input [disabled]="
+                                citySelectionControl.value === '0' ||
+                                wardSelectionControl.value === '0' ||
+                                districtSelectionControl.value === '0'|| !isEditing
+                              " type="text" name="address" id="address" [(ngModel)]="this.user.address"
+                                                    #addressControl="ngModel"
+                                                    class="tw-block tw-px-2.5 tw-pb-2.5 tw-pt-4 tw-w-full tw-text-sm tw-text-gray-900 tw-bg-transparent tw-rounded-lg tw-border-1 tw-border-gray-300 tw-appearance-none dark:tw-text-white dark:tw-border-gray-600 dark:tw-focus focus:tw-outline-none focus:tw-ring-0 focus:tw-border-blue-600 tw-peer" />
+                                                <label for="address"
+                                                    class="tw-absolute tw-text-sm tw-text-gray-500 dark:tw-text-gray-400 tw-duration-300 tw-transform -tw-translate-y-4 tw-scale-75 tw-top-2 tw-z-10 tw-origin-[0] tw-bg-white dark:tw-bg-gray-900 tw-px-2 peer-focus:tw-px-2 tw-mx-4 peer-focus:tw-mx-4 peer-focus:tw-text-blue-600 peer-focus:tw-dark peer-placeholder-shown:tw-scale-100 peer-placeholder-shown:-tw-translate-y-1/2 peer-placeholder-shown:tw-top-1/2 peer-focus:tw-top-2 peer-focus:tw-scale-75 peer-focus:-tw-translate-y-4 rtl:tw-peer-focus rtl:tw-peer-focus tw-start-1">
+                                                    Street</label>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+
+                                    <div class="tw-flex tw-justify-end" [hidden]="!isEditing">
+                                        <button type="button" class="btn btn-default tw-mr-3" (click)="cancelEdit()">
+                                            Cancel
+                                        </button>
+                                        <button class="btn btn-primary tw-px-1.5 tw-py-1 tw-rounded-lg" type="button"
+                                            (click)="onSubmit()" [disabled]="f.invalid">Confirm</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

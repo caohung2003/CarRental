@@ -1,0 +1,39 @@
+<div id="default-carousel" class="tw-relative tw-w-full tw-h-full tw-object-center" data-carousel="static">
+    <!-- Carousel wrapper -->
+    <div class="tw-relative tw-w-full tw-min-h-full tw-overflow-hidden tw-rounded-lg">
+        @for (item of images; track item; let i = $index) {
+        <div class="tw-hidden tw-duration-700 tw-ease-in-out" data-carousel-item>
+            <img src="{{item}}"
+                class="tw-absolute tw-block tw-w-full tw-h-full tw-object-cover -tw-translate-x-1/2 -tw-translate-y-1/2 tw-top-1/2 tw-left-1/2"
+                alt="...">
+        </div>
+        }
+    </div>
+    <!-- Slider controls -->
+    <button type="button"
+        class="tw-absolute tw-top-0 tw-start-0 tw-z-30 tw-flex tw-items-center tw-justify-center tw-h-full tw-px-4 tw-cursor-pointer tw-group focus:tw-outline-none"
+        data-carousel-prev>
+        <span
+            class="tw-inline-flex tw-items-center tw-justify-center tw-w-10 tw-h-10 tw-rounded-full tw-bg-white/30 dark:tw-bg-gray-800/30 group-hover:tw-bg-white/50 dark:group-hover:tw-bg-gray-800/60 group-focus:tw-ring-4 group-focus:tw-ring-white dark:group-focus:tw-ring-gray-800/70 group-focus:tw-outline-none">
+            <svg class="tw-w-4 tw-h-4 tw-text-white dark:tw-text-gray-800 rtl:tw-rotate-180" aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M5 1 1 5l4 4" />
+            </svg>
+            <span class="tw-sr-only">Previous</span>
+        </span>
+    </button>
+    <button type="button"
+        class="tw-absolute tw-top-0 tw-end-0 tw-z-30 tw-flex tw-items-center tw-justify-center tw-h-full tw-px-4 tw-cursor-pointer tw-group focus:tw-outline-none"
+        data-carousel-next>
+        <span
+            class="tw-inline-flex tw-items-center tw-justify-center tw-w-10 tw-h-10 tw-rounded-full tw-bg-white/30 dark:tw-bg-gray-800/30 group-hover:tw-bg-white/50 dark:group-hover:tw-bg-gray-800/60 group-focus:tw-ring-4 group-focus:tw-ring-white dark:group-focus:tw-ring-gray-800/70 group-focus:tw-outline-none">
+            <svg class="tw-w-4 tw-h-4 tw-text-white dark:tw-text-gray-800 rtl:tw-rotate-180" aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="m1 9 4-4-4-4" />
+            </svg>
+            <span class="tw-sr-only">Next</span>
+        </span>
+    </button>
+</div>

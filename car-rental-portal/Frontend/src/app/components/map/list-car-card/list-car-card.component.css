@@ -1,0 +1,103 @@
+.fix-img {
+  width: 140px;
+  height: 105px;
+}
+
+.item-box {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid #5fcf86;
+  padding: 15px;
+  border-radius: 10px;
+  width: 425px;
+  height: 138.6px;
+  background-color: white;
+  margin-right: 5px;
+  margin-left: 5px;
+  cursor: pointer;
+}
+.desc-car {
+  margin-left: 20px;
+}
+.fix-img img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px
+}
+.desc-name{
+  color: #000;
+  font-size: 1rem;
+  font-weight: 800;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-bottom: 3px;
+}
+.desc-rating-rides{
+  margin-bottom: 5px;
+}
+
+
+
+.desc-rating-rides{
+  display: flex;
+}
+.info-star{
+  margin-left: 4px;
+  margin-top: 7px;
+  margin-right: 10px;
+}
+
+.star-rating{
+  margin-bottom: 4px;
+}
+
+.price-value{
+  color: #5fcf86;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.item-car{
+  display: flex;
+  flex-direction: row;
+}
+
+.p-carousel-item{
+  flex: 0 !important;
+}
+#pn_id_1 .p-carousel-item{
+  flex: 0 !important;
+
+}
+::ng-deep #pn_id_1 .p-carousel-item {
+  flex: 0 !important;
+}
+
+:host ::ng-deep {
+  #pn_id_1 .p-carousel-item{
+    flex: 0 !important;
+
+  }
+}
+.desc-feature {
+  border: 1px transparent;
+  border-radius: 10px;
+  padding: 3px;
+  padding-left: 4px;
+  padding-right: 4px;
+  width: fit-content;
+  font-size: 10px;
+  margin-right: 5px;
+  margin-bottom: 4px;
+  background-color: #eef7ff;
+
+}
+.card{
+  background: transparent;
+  border: none;
+  max-width: 1365px;
+}
+
+

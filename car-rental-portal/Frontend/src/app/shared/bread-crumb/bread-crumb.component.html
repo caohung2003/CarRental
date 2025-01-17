@@ -1,0 +1,42 @@
+<div class="background-banner" style="display: flex; justify-content: flex-start; align-items: flex-end;">
+  <!-- <div style="display: inline-block;">
+    <button aria-label="Navigate to previous page" (click)='backClicked()' class='btn btn-sm btn-info'><span
+        class='icon-left-big'></span>Back</button>
+  </div> -->
+  <nav aria-label="breadcrumb" class="mx-0 my-0">
+    
+    <ol class="breadcrumb" *ngIf='breadcrumbs.length; else dashboard'>
+      <li class="breadcrumb-item">
+        <a aria-label='Home' routerLinkActive='active' [routerLink]='["/home"]'>Home</a>
+      </li>
+      <ng-template #breadcrumbLi>
+        <li *ngFor="let breadcrumb of breadcrumbs.slice(0,breadcrumbs.length-1); let i = index" class="breadcrumb-item">
+          <a routerLinkActive='active' [routerLink]='["/home"]'
+            *ngIf='breadcrumb.label === "Home"; else nonHomeLink'>Home</a>
+
+          <ng-template #nonHomeLink>
+            <a [routerLink]="[breadcrumb.url]" [queryParams]="breadcrumb.params"> {{ breadcrumb.label }} </a>
+          </ng-template>
+
+        </li>
+        <li class="breadcrumb-item active" aria-current="page"><a class="label-active">
+          {{ breadcrumbs[breadcrumbs.length-1].label }}
+        </a></li>
+      </ng-template>
+
+      <li *ngIf='(showSpinnerAction$ | async); else breadcrumbLi'><span
+          class="breadcrumb-item icon-spin3 animate-spin"></span></li>
+    </ol>
+    <ng-template #dashboard>
+      <ol class="breadcrumb bg-dark">
+        <li class="breadcrumb-item">
+          <button (click)='backClicked()' class='btn btn-sm btn-info'><span class='icon-left-big'></span>Back</button>
+        </li>
+        <li class="breadcrumb-item active">
+          <span class='icon-home'></span>
+        </li>
+        <li *ngIf='(showSpinnerAction$ | async)'><span class="breadcrumb-item icon-spin3 animate-spin"></span></li>
+      </ol>
+    </ng-template>
+  </nav>
+</div>

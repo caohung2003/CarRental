@@ -1,0 +1,293 @@
+<app-header id="topnav" class="header tw-sticky tw-top-0"></app-header>
+
+<div style="min-height: 500px;"
+  class="tw-pb-4 tw-flex tw-items-center tw-justify-center tw-w-full tw-h-fit tw-bg-gray-200">
+  <div class="tw-w-full tw-pl-10 tw-pr-10">
+    <div class="tw-grid tw-grid-cols-1 md:tw-grid-cols-12 tw-transition-[grid-template-columns]
+    md:tw-grid-cols-[120px_1fr] md:[&:has(>*:first-child:hover)]:tw-grid-cols-[250px_1fr]">
+      <div style="margin-top: 5rem"
+        class="menu-option tw-top-20 lg:tw-sticky tw-flex tw-flex-col tw-justify-between tw-rounded-xl md:tw-rounded-e-none tw-border-e tw-bg-white tw-p-8">
+        <ul class="list-option tw-space-y-2">
+          <li>
+            <a [routerLink]="['/myprofile']"
+              class="{{url == '/myprofile'?'tw-text-white tw-bg-gray-800':'tw-text-gray-600'}} tw-flex tw-font-medium tw-p-2 tw-rounded-lg hover:tw-text-white hover:tw-bg-gray-800">
+              <svg class="tw-mr-3" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M11.76 10.86C13.3782 10.86 14.69 9.54819 14.69 7.93C14.69 6.31181 13.3782 5 11.76 5C10.1418 5 8.83 6.31181 8.83 7.93C8.83 9.54819 10.1418 10.86 11.76 10.86Z"
+                  stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                </path>
+                <path
+                  d="M5.84 19.0001V17.3301C5.84 15.3801 7.42 13.8101 9.36 13.8101H14.63C16.58 13.8101 18.15 15.3901 18.15 17.3301V19.0001"
+                  stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                </path>
+              </svg>
+              <span class="account-text tw-truncate">Account</span>
+            </a>
+          </li>
+          <hr class="tw-h-px tw-my-8 tw-bg-gray-200 tw-border-0 dark:tw-bg-gray-700">
+          <li>
+            <a [routerLink]="['/my-car']"
+              class="{{url == '/my-car'?'tw-text-white tw-bg-gray-800':'tw-text-gray-600'}} tw-flex tw-font-medium tw-p-2 tw-rounded-lg hover:tw-text-white hover:tw-bg-gray-800">
+              <svg class="tw-mr-3" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M17.14 21.2H6.85999C5.71999 21.2 4.79999 20.28 4.79999 19.14V4.74994C4.79999 3.60994 5.71999 2.68994 6.85999 2.68994H17.14C18.28 2.68994 19.2 3.60994 19.2 4.74994V19.14C19.19 20.28 18.27 21.2 17.14 21.2Z"
+                  stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                </path>
+                <path d="M7.89001 6.85999H8.92001" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                  stroke-linejoin="round"></path>
+                <path d="M12 6.85999H16.11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                  stroke-linejoin="round"></path>
+                <path d="M7.89001 12H8.92001" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                  stroke-linejoin="round"></path>
+                <path d="M12 12H16.11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                  stroke-linejoin="round"></path>
+                <path d="M7.89001 17.14H8.92001" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                  stroke-linejoin="round"></path>
+                <path d="M12 17.14H16.11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                  stroke-linejoin="round"></path>
+              </svg>
+              <span class="account-text tw-truncate">My Car</span>
+            </a>
+          </li>
+          <li>
+            <a [routerLink]="['/car-booking']"
+              class="{{url == '/car-booking'?'tw-text-white tw-bg-gray-800':'tw-text-gray-600'}} tw-flex tw-font-medium tw-p-2 tw-rounded-lg hover:tw-text-white hover:tw-bg-gray-800">
+              <svg class="tw-mr-3" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M6.50023 8.86914H4.80023C3.66023 8.86914 2.74023 9.78914 2.74023 10.9291V18.1191C2.74023 19.2591 3.66023 20.1791 4.80023 20.1791H19.1902C20.3302 20.1791 21.2502 19.2591 21.2502 18.1191V10.9291"
+                  stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                </path>
+                <path d="M16.1095 8.86914H10.2695" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                  stroke-linejoin="round"></path>
+                <path
+                  d="M16.1094 16.0605H19.1894C20.3294 16.0605 21.2494 16.9805 21.2494 18.1205C21.2494 19.2605 20.3294 20.1805 19.1894 20.1805H16.1094"
+                  stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                </path>
+                <path d="M16.1094 5.7793H19.1894C20.3294 5.7793 21.2494 6.6993 21.2494 7.8393" stroke="currentColor"
+                  stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                </path>
+                <path d="M21.25 18.1198V7.83984" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                  stroke-linejoin="round"></path>
+                <path d="M16.1094 5.7793V16.0593" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                  stroke-linejoin="round"></path>
+                <path
+                  d="M2.75 14.0098H6.86C7.43 14.0098 7.89 14.3998 7.89 14.8898C7.89 15.3798 8.35 15.7698 8.92 15.7698H9.95C10.52 15.7698 10.98 16.1598 10.98 16.6498V17.5298V20.1698"
+                  stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                </path>
+                <path
+                  d="M8.40007 3.83008C6.98007 3.83008 5.83008 4.98008 5.83008 6.40008C5.83008 8.16008 8.13007 10.7401 8.23007 10.8501C8.32007 10.9501 8.48008 10.9501 8.57008 10.8501C8.67008 10.7401 10.9701 8.16008 10.9701 6.40008C10.9701 4.98008 9.82007 3.83008 8.40007 3.83008Z"
+                  stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                </path>
+                <path
+                  d="M8.39977 7.37961C8.8913 7.37961 9.28976 6.98114 9.28976 6.48961C9.28976 5.99808 8.8913 5.59961 8.39977 5.59961C7.90823 5.59961 7.50977 5.99808 7.50977 6.48961C7.50977 6.98114 7.90823 7.37961 8.39977 7.37961Z"
+                  fill="currentColor"></path>
+              </svg>
+              <span class="account-text tw-truncate">My Car Bookings</span>
+            </a>
+          </li>
+          <hr class="tw-h-px tw-my-8 tw-bg-gray-200 tw-border-0 dark:tw-bg-gray-700">
+          <li>
+            <a [routerLink]="['/mybooking']"
+              class="{{url == '/mybooking'?'tw-text-white tw-bg-gray-800':'tw-text-gray-600'}} tw-flex tw-font-medium tw-p-2 tw-rounded-lg hover:tw-text-white hover:tw-bg-gray-800">
+              <svg class="tw-mr-3" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M6.50023 8.86914H4.80023C3.66023 8.86914 2.74023 9.78914 2.74023 10.9291V18.1191C2.74023 19.2591 3.66023 20.1791 4.80023 20.1791H19.1902C20.3302 20.1791 21.2502 19.2591 21.2502 18.1191V10.9291"
+                  stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                </path>
+                <path d="M16.1095 8.86914H10.2695" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                  stroke-linejoin="round"></path>
+                <path
+                  d="M16.1094 16.0605H19.1894C20.3294 16.0605 21.2494 16.9805 21.2494 18.1205C21.2494 19.2605 20.3294 20.1805 19.1894 20.1805H16.1094"
+                  stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                </path>
+                <path d="M16.1094 5.7793H19.1894C20.3294 5.7793 21.2494 6.6993 21.2494 7.8393" stroke="currentColor"
+                  stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                </path>
+                <path d="M21.25 18.1198V7.83984" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                  stroke-linejoin="round"></path>
+                <path d="M16.1094 5.7793V16.0593" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                  stroke-linejoin="round"></path>
+                <path
+                  d="M2.75 14.0098H6.86C7.43 14.0098 7.89 14.3998 7.89 14.8898C7.89 15.3798 8.35 15.7698 8.92 15.7698H9.95C10.52 15.7698 10.98 16.1598 10.98 16.6498V17.5298V20.1698"
+                  stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                </path>
+                <path
+                  d="M8.40007 3.83008C6.98007 3.83008 5.83008 4.98008 5.83008 6.40008C5.83008 8.16008 8.13007 10.7401 8.23007 10.8501C8.32007 10.9501 8.48008 10.9501 8.57008 10.8501C8.67008 10.7401 10.9701 8.16008 10.9701 6.40008C10.9701 4.98008 9.82007 3.83008 8.40007 3.83008Z"
+                  stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                </path>
+                <path
+                  d="M8.39977 7.37961C8.8913 7.37961 9.28976 6.98114 9.28976 6.48961C9.28976 5.99808 8.8913 5.59961 8.39977 5.59961C7.90823 5.59961 7.50977 5.99808 7.50977 6.48961C7.50977 6.98114 7.90823 7.37961 8.39977 7.37961Z"
+                  fill="currentColor"></path>
+              </svg>
+              <span class="account-text tw-truncate">My Bookings</span>
+            </a>
+          </li>
+          <li>
+            <a [routerLink]="['/mywallet']"
+              class="{{url == '/mywallet'?'tw-text-white tw-bg-gray-800':'tw-text-gray-600'}} tw-flex tw-font-medium tw-p-2 tw-rounded-lg hover:tw-text-white hover:tw-bg-gray-800">
+              <svg class="tw-mr-3" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" />
+                <path
+                  d="M17 8v-3a1 1 0 0 0 -1 -1h-10a2 2 0 0 0 0 4h12a1 1 0 0 1 1 1v3m0 4v3a1 1 0 0 1 -1 1h-12a2 2 0 0 1 -2 -2v-12" />
+                <path d="M20 12v4h-4a2 2 0 0 1 0 -4h4" />
+              </svg>
+              <span class="account-text tw-truncate">My Wallet</span>
+            </a>
+          </li>
+          <li>
+            <a [routerLink]="['/feedback-report']"
+              class="{{url == '/feedback-report'?'tw-text-white tw-bg-gray-800':'tw-text-gray-600'}} tw-flex tw-font-medium tw-p-2 tw-rounded-lg hover:tw-text-white hover:tw-bg-gray-800">
+              <svg class="tw-mr-3" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" />
+                <path
+                  d="M17 8v-3a1 1 0 0 0 -1 -1h-10a2 2 0 0 0 0 4h12a1 1 0 0 1 1 1v3m0 4v3a1 1 0 0 1 -1 1h-12a2 2 0 0 1 -2 -2v-12" />
+                <path d="M20 12v4h-4a2 2 0 0 1 0 -4h4" />
+              </svg>
+              <span class="account-text tw-truncate">My Feedback Report</span>
+            </a>
+          </li>
+          <hr class="tw-h-1 tw-my-8 tw-bg-gray-200 tw-border-0 dark:tw-bg-gray-700">
+          <li class="tw-mt-20">
+            <a (click)="logout()"
+              class="tw-flex tw-font-medium tw-text-gray-600 tw-p-2 tw-rounded-lg hover:tw-text-white hover:tw-bg-gray-800">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="tw-mr-3" width="24" height="24">
+                <path strokeLinecap="round" strokeLinejoin="round"
+                  d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15m3 0l3-3m0 0l-3-3m3 3H9" />
+              </svg>
+              <span class="account-text tw-truncate">Logout</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div style="margin-top: 5rem" class="tw-top-20 tw-overflow-x-hidden tw-grid-cols-12">
+
+        <div
+          class="tw-min-h-full tw-px-8 tw-py-3 tw-bg-white tw-rounded-xl md:tw-rounded-s-none tw-flex flex-column tw-justify-center">
+          <div class="tw-w-full">
+              <app-stmtp [steps]="steps" [active]="activeStep">
+              </app-stmtp>
+      
+              <form *ngIf="(mode == 'edit' || mode == 'view') && role == 'USER'" #general=ngForm>
+
+                <label style="margin-top: 10px;"
+                  class="tw-flex tw-items-center tw-cursor-pointer tw-mt-0 tw-justify-end">
+                  <input type="checkbox" id="editMode" class="tw-sr-only tw-peer" [(ngModel)]="isEditing"
+                    (click)="toggleEditMode()" />
+
+                  <span
+                    class="{{!isEditing?'tw-text-gray-500':'tw-text-gray-900'}} tw-ms-3 tw-text-sm tw-font-medium dark:tw-text-gray-300">Edit
+                    Mode</span>
+                  <div
+                    class="tw-relative tw-ml-2 tw-pt-0.5 tw-w-11 tw-h-6 tw-bg-gray-200 peer-focus:tw-outline-none peer-focus:tw-ring-4 peer-focus:tw-ring-blue-300 dark:peer-focus:tw-ring-blue-800 tw-rounded-full tw-peer dark:tw-bg-gray-700 peer-checked:after:tw-translate-x-full rtl:peer-checked:after:-tw-translate-x-full peer-checked:after:tw-border-white after:tw-content-[''] after:tw-absolute after:tw-top-[2px] after:tw-start-[4px] after:tw-bg-white after:tw-border-gray-300 after:tw-border after:tw-rounded-full after:tw-h-5 after:tw-w-5 after:tw-transition-all dark:tw-border-gray-600 peer-checked:tw-bg-blue-600">
+                  </div>
+                </label>
+              </form>
+              <div class="tw-flex tw-justify-end">
+                <div style = "margin-bottom: 10px;" class="tw-flex tw-justify-end tw-text-base">
+                  <div style = "margin-bottom: 10px;" class="tw-flex tw-items-center tw-justify-between">
+                    <div *ngIf="role == 'ADMIN'" class="tw-relative">
+                      <div class="tw-rounded-full tw-w-6 tw-h-6 md:tw-w-8 md:tw-h-8 tw-bg-gray-200">
+                        <img class="tw-h-full tw-w-full tw-rounded-full tw-object-cover"
+                          [src]="ownerAvatar" alt="">
+                      </div>
+                      <span
+                        class="tw-absolute tw-top-0 tw-right-0 tw-inline-block tw-w-3 tw-h-3 tw-bg-primary-red tw-rounded-full">
+                      </span>
+                    </div>
+        
+                    <div *ngIf="role == 'ADMIN'"  class="tw-ml-3 tw-text-gray-800">
+                      <div class="tw-text-base tw-font-medium tw-leading-none tw-text-gray-800">
+                      </div>
+                      <div (click)="redirectToProfile()" class="tw-mt-2 tw-cursor-pointer tw-text-sm tw-font-medium tw-leading-none tw-text-gray-800">
+                        {{ownerEmail}}
+                      </div>
+                      <div class="tw-mt-2 tw-text-sm tw-font-medium tw-leading-none tw-text-gray-800">
+                        Tel: {{ownerTel}}
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+                <!-- <div class="tw-flex tw-justify-end tw-text-base">
+                  <button *ngIf="role == 'ADMIN'" type="button" (click)="approveCar()"
+                    class="tw-flex hover:tw-scale-110 tw-mr-2 tw-items-center tw-cursor-pointer tw-px-0 tw-py-4 tw-mt-0 tw-justify-end">
+                    <svg class="tw-6-8 tw-w-6 tw-mr-1" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+                      stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                      <path stroke="none" d="M0 0h24v24H0z" />
+                      <path d="M5 12l5 5l10 -10" />
+                    </svg>
+                    Approve
+                  </button>
+
+                  <button *ngIf="role == 'ADMIN'" style="background-color: white; color: black" type="button"
+                    (click)="decline()"
+                    class="tw-flex hover:tw-scale-110 tw-bg-white tw-text-black tw-items-center tw-cursor-pointer tw-px-0 tw-py-4 tw-mt-0 tw-justify-end">
+                    <svg class="tw-h-6 tw-w-6 tw-mr-1" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="18" y1="6" x2="6" y2="18" />
+                      <line x1="6" y1="6" x2="18" y2="18" />
+                    </svg>
+                    Declined
+                  </button>
+                </div> -->
+              </div>
+
+
+              <app-form-car-basic [formCarBasic]="formCarBasic"
+                *ngIf="activeStep == 0 && !isLoading && (mode == 'edit' || mode == 'view')"
+                (updateData)="nextStep($event)" [mode]="mode" (sendFormCarBasic)="receiveFormCarBasic($event)">
+
+              </app-form-car-basic>
+              <app-form-car-basic [formCarBasic]="formCarBasic"
+                *ngIf="activeStep == 0 && (mode != 'edit' && mode != 'view')" (updateData)="nextStep($event)"
+                [mode]="mode" (sendFormCarBasic)="receiveFormCarBasic($event)">
+
+              </app-form-car-basic>
+              <app-form-car-detail [formCarDetail]="formCarDetail"
+                *ngIf="activeStep == 1 && !isLoading && (mode == 'edit' || mode == 'view')"
+                (updateData)="nextStep($event)" [mode]="mode" (sendFormCarDetail)="receiveFormCarDetail($event)">
+
+              </app-form-car-detail>
+              <app-form-car-detail [formCarDetail]="formCarDetail"
+                *ngIf="activeStep == 1 && (mode != 'edit' && mode != 'view')" (updateData)="nextStep($event)"
+                [mode]="mode" (sendFormCarDetail)="receiveFormCarDetail($event)">
+
+              </app-form-car-detail>
+              <app-form-car-pricing [formCarPricing]="formCarPricing"
+                *ngIf="activeStep == 2 && !isLoading && (mode == 'edit' || mode == 'view')"
+                (updateData)="nextStep($event)" [mode]="mode" (sendFormCarPricing)="receiveFormCarPricing($event)">
+
+              </app-form-car-pricing>
+              <app-form-car-pricing [formCarPricing]="formCarPricing"
+                *ngIf="activeStep == 2 && (mode != 'edit' && mode != 'view')" (updateData)="nextStep($event)"
+                [mode]="mode" (sendFormCarPricing)="receiveFormCarPricing($event)">
+
+              </app-form-car-pricing>
+              <app-form-car-calendar id="calendar" *ngIf="mode == 'edit' || mode == 'view'"
+                [hidden]="activeStep != 3 && !isLoading" [role]="role" [isApproval]="!isNeededApproval" [carId]="formCarBasic.carId != undefined ? formCarBasic.carId : 0" [view]="mode" [formCarCalendar]="formCarCalendar"
+                (updateData)="nextStep($event)" (sendFormCarCalendar)="receiveFormCarCalendar($event)">
+
+              </app-form-car-calendar>
+              <app-form-car-calendar id="calendar" *ngIf="mode != 'edit' && mode != 'view'" [hidden]="activeStep != 3"
+                [view]="'add'" [formCarCalendar]="formCarCalendar" (updateData)="nextStep($event)"
+                (sendFormCarCalendar)="receiveFormCarCalendar($event)">
+
+              </app-form-car-calendar>
+
+    
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<app-footer></app-footer>

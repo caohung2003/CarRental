@@ -1,0 +1,22 @@
+<!-- <ng-template #datetimePicker> -->
+<div class="tw-relative tw-w-full">
+    <div class="tw-absolute tw-inset-y-0 tw-end-0 tw-flex tw-items-center tw-pe-3 tw-pointer-events-none">
+        <svg class="tw-w-4 tw-h-4 tw-text-gray-500 dark:tw-text-gray-400" aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+            <path
+                d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
+        </svg>
+    </div>
+    <!-- <input id="floating_outlined" datepicker datepicker-autohide type="text" placeholder="Date of Birth" [(ngModel)]="defaultDate"
+        (blur)="changeValue($event)"
+        class="tw-bg-gray-50 tw-border tw-border-gray-300 tw-text-gray-900 tw-text-sm tw-rounded-lg focus:tw-ring-blue-500 focus:tw-border-blue-500 tw-block tw-w-full tw-ps-10 tw-p-2.5 tw- dark:tw-bg-gray-700 dark:tw-border-gray-600 dark:tw-placeholder-gray-400 dark:tw-text-white dark:tw-focus dark:tw-focus"> -->
+    <input type="text" id="floating_outlined" datepicker datepicker-autohide type="text" placeholder="Date of Birth"
+        [(ngModel)]="defaultDate" (blur)="changeValue($event)" [disabled]="disable"
+        class="tw-block tw-px-2.5 tw-pb-2.5 tw-pt-4 tw-w-full tw-text-sm tw-text-gray-900 tw-bg-transparent tw-rounded-lg tw-border-1 tw-border-gray-300 tw-appearance-none dark:tw-text-white dark:tw-border-gray-600 dark:tw-focus focus:tw-outline-none focus:tw-ring-0 focus:tw-border-blue-600 tw-peer"
+        placeholder="" />
+    <label for="floating_outlined"
+        class="tw-absolute tw-text-sm tw-text-gray-500 dark:tw-text-gray-400 tw-duration-300 tw-transform -tw-translate-y-4 tw-scale-75 tw-top-2 tw-z-10 tw-origin-[0] tw-bg-white dark:tw-bg-gray-900 tw-px-2 peer-focus:tw-px-2 peer-focus:tw-text-blue-600 peer-focus:tw-dark peer-placeholder-shown:tw-scale-100 peer-placeholder-shown:-tw-translate-y-1/2 peer-placeholder-shown:tw-top-1/2 peer-focus:tw-top-2 peer-focus:tw-scale-75 peer-focus:-tw-translate-y-4 rtl:tw-peer-focus rtl:tw-peer-focus tw-start-1">
+        {{title}}<span *ngIf="required" style="color: red;">*</span>
+    </label>
+</div>
+<!-- </ng-template> -->

@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.opacity-0{
+    opacity: 0;
+}
+
+.opacity-100{
+    opacity: 100;
+}
+
+.visible{
+    visibility: visible;
+}
+
+.invisible{
+    visibility: hidden;
+}
+
+#calendar{
+    display: none;
+}
+
+.hover-calendar:hover #calendar{
+    display: block;
+}

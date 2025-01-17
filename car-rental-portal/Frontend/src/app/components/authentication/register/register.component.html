@@ -1,0 +1,100 @@
+<link rel="stylesheet" href="../../../../assets/css/login/assets.css">
+<link rel="stylesheet" href="../../../../assets/css/login/typography.css">
+<link rel="stylesheet" href="../../../../assets/css/login/style.css">
+<link class="skin" rel="stylesheet" type="text/css" href="../../../../assets/css/color/color-1.css">
+
+<div class="page-wraper">
+    <div id="loading-icon-bx"></div>
+    <div class="account-form font-defalt">
+        <div class="account-head" style="background-image:url(../../../assets/images/about.jpg); z-index: 1000;">
+            <a href="/home" class="!tw-flex tw-justify-center"><img width="200" src="../../../assets/images/logo/logo3.png" alt=""></a>
+        </div>
+        <div class="account-form-inner">
+            <div class="account-container">
+                <div class="heading-bx left">
+                    <h2 class="title-head font-defalt" style="border-left: 7px solid #007bff;">Sign up <span>Now</span></h2>
+                    <p>Sign in your account <a [routerLink]="['/login']" style="text-decoration: none; color: #007bff;">Click here</a>
+                    </p>
+                </div>
+                <form class="contact-bx" [formGroup]="form" (ngSubmit)="submit()">
+                    <div class="row placeani">
+                        <div class="col-lg-6 col-md-12">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <label for="fname">First name <span style="color: red;">*</span></label>
+                                    <input #fnameInput name="fname" id="fname" type="text" class="form-control"
+                                        formControlName="firstName" required="" (focus)="clearMessage()" maxlength="50">
+                                    <span #fnameMsg class="error-msg" style="color: red;" id="error-fname"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-12">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <label for="lname">Last name <span style="color: red;">*</span></label>
+                                    <input #lnameInput name="lname" id="lname" type="text" class="form-control"
+                                        formControlName="lastName" required="" (focus)="clearMessage()" maxlength="50">
+                                    <span #lnameMsg class="error-msg" style="color: red;" id="error-lname"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <label for="email">Your Email <span style="color: red;">*</span></label>
+                                    <input #emailInput name="email" id="email" type="text" required=""
+                                        formControlName="email" class="form-control" (focus)="clearMessage()">
+                                    <span #emailMsg class="error-msg" style="color: red;" id="error-email"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <div class="input-group" style="position: relative;">
+                                    <label for="password">Your Password <span style="color: red;">*</span></label>
+                                    <input #pwdInput name="password" id="password" type="password" class="form-control"
+                                        formControlName="password" required="" (focus)="clearMessage()">
+                                    <span #pwdMsg class="error-msg" style="color: red;" id="error-password"></span>
+                                    <!-- <i class="fas fa-info-circle"
+                                        style="position: absolute; top: 25%; right: 7%; z-index: 200; color: #5193d9;"
+                                        onmouseover="document.getElementById('info-password').style.display = 'block'"
+                                        onmouseleave="document.getElementById('info-password').style.display = 'none'"></i>
+                                    <div class="info-password" id="info-password">
+                                        <p class="info-content">Password must have at least 8 characters, at least one uppercase letter, one lowercase letter, one number, no space and contain no special characters
+                                        </p>
+                                    </div> -->
+                                    <button disabled class="info-button"
+                                        style="position: absolute; top: 18%; right: 7%; z-index: 200; color: #5193d9; border: none; background: transparent;"
+                                        ngbTooltip="Password must have at least eight characters, at least one uppercase letter, one lowercase letter and one number"
+                                        placement="top" triggers="hover" [autoClose]="'inside'">
+                                        <i class="fas fa-info-circle"></i>
+                                    </button>
+                                    <i class="fas fa-eye" id="togglePassword"
+                                        style="position: absolute; top: 25%; right: 0; cursor: pointer; z-index: 200;"
+                                        (click)="reveal('#togglePassword', '#password')"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <div class="input-group" style="position: relative;">
+                                    <label for="cfpassword">Confirm Password <span style="color: red;">*</span></label>
+                                    <input #cfpwdInput name="ffPassword" id="cfpassword" type="password"
+                                        class="form-control" required="" (focus)="clearMessage()">
+                                    <span #cfpwdMsg class="error-msg" style="color: red;" id="error-cfpassword"></span>
+                                    <i class="fas fa-eye" id="togglecfPassword"
+                                        style="position: absolute; top: 25%; right: 0; cursor: pointer; z-index: 200;"
+                                        (click)="reveal('#togglecfPassword', '#cfpassword')"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 m-b30">
+                            <button name="submit" type="submit" value="Submit" class="btn btn-primary py-2 px-5">Sign
+                                up</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

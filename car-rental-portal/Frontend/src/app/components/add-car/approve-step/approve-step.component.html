@@ -1,0 +1,27 @@
+
+  
+  
+  <div class = "tw-text-center tw-text-black" style="margin-bottom: 10px">
+    Please decide whether this car's information is valid or not. If it does, you can approve for this car to be rented by other peoples. Otherwise, declined it so the owner can update the information
+  </div>
+  <div class = "tw-flex tw-justify-center">
+    <button (click)="carId != 0 ? approveCar() : ''" class = "tw-mr-3 tw-text-green-500 tw-flex hover:tw-scale-110">
+      <svg class="tw-h-6 tw-w-6 tw-text-green-500"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+      </svg>
+      
+      Approve
+    </button>
+    <button (click)="carId != 0 ? decline() : ''"  class = "tw-text-red-500 tw-flex hover:tw-scale-110">
+      <svg class="tw-h-6 tw-w-6 tw-text-red-500"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round">  <line x1="18" y1="6" x2="6" y2="18" />  <line x1="6" y1="6" x2="18" y2="18" /></svg>
+      Decline
+    </button>
+  </div>
+ 
+  <div style="display: flex; justify-content: space-between; margin-bottom: 20px; margin-top: 30px">
+    <button (click)="previousPage()" style="margin-right: 20px; cursor: pointer" type="submit"
+      class="btn-prev hover:tw-scale-110 tw-cursor-pointer tw-text-white tw-bg-blue-700 tw-w-1/5 hover:tw-bg-blue-800 focus:tw-ring-4 focus:tw-outline-none focus:tw-ring-blue-300 tw-font-medium tw-rounded-lg tw-text-sm tw-px-5 tw-py-2.5 tw-text-center dark:tw-bg-blue-600 dark:hover:tw-bg-blue-700 dark:focus:tw-ring-blue-800">
+      Previous
+    </button>
+
+  </div>

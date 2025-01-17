@@ -1,0 +1,78 @@
+
+h2{
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.p-warning{
+  font-size: 12px;
+  color: red;
+  margin-bottom: 20px;
+}
+
+.p-normal{
+  font-size: 12px;
+  margin-bottom: 20px;
+}
+
+.thumbnail{
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #e0e0e0;
+  box-sizing: border-box;
+  border-radius: 10px;
+  cursor: pointer;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.p-normal{
+  font-size: 12px;
+  margin-bottom: 20px;
+}
+.img-fluid{
+  width: 30px;
+}
+
+.btn-prev{
+  color: black !important;
+  background-color: white;
+  border: 1px solid;
+}
+.btn-next{
+  color: white !important;
+  background-color: black;
+}
+
+.squareThree{
+  width: calc(33.33333% - 10px);
+}
+
+.squareOut{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  height: 80px;
+}
+
+.required-asterisk{
+  color: red;
+  width: 1px;
+  margin-left: 3px;
+  font-weight: 500;
+}
+.fullscreen-overlay {
+  display: none;
+  overflow-y: hidden;
+  position: fixed; /* Giữ nguyên vị trí trong khi cuộn trang */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color:white; /* Màu nền với độ mờ 50% */
+  z-index: 1000000000;
+}
+

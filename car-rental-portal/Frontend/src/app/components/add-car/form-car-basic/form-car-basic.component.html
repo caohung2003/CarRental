@@ -1,0 +1,178 @@
+
+<form #basicForm = ngForm>
+<!--      style="margin-left: 25%; margin-right: 25%; margin-top: 20px; margin-bottom: 20px !important;"-->
+
+  <h2>License plate <span *ngIf="mode != 'view'" class = "required-asterisk">*</span></h2>
+  <p *ngIf="mode != 'view'" class="p-warning">Note: you can't change your license plate after register</p>
+  <input style="margin-bottom: 20px; font-weight: 300" [readOnly]="mode == 'edit' || mode == 'view'"  type="text" [(ngModel)]="licensePlate" name = "licensePlate"
+         class="{{mode == 'view' || mode == 'edit' ? 'tw-bg-gray-200' : 'tw-bg-gray-50'}} tw-border tw-border-gray-300 tw-text-gray-900 tw-text-sm tw-rounded-lg focus:tw-ring-blue-500 focus:tw-border-blue-500 tw-block tw-w-1/2 tw-p-2.5 dark:tw-bg-gray-700 dark:tw-border-gray-600 dark:tw-placeholder-gray-400 dark:tw-text-white dark:focus:tw-ring-blue-500 dark:focus:tw-border-blue-500"
+         placeholder="88S1 8888" required/>
+
+  <h2>Basic information <span *ngIf="mode != 'view'" class = "required-asterisk">*</span></h2>
+  <p *ngIf="mode != 'view'" class="p-warning">Note: you can't change these information after register</p>
+  <div class="tw-grid tw-gap-6 tw-mb-6 md:tw-grid-cols-2">
+    <div>
+      <label for="chooseBrand" class="tw-block tw-mb-2 tw-text-sm tw-text-gray-900 dark:tw-text-white">Brand <span *ngIf="mode != 'view'" class = "required-asterisk">*</span> </label>
+      <select  (change)="loadModel()"  [disabled]="mode == 'edit' || mode == 'view'" [(ngModel)]="chooseBrand" name = "chooseBrand" id = "chooseBrand"
+              class="{{mode == 'view' || mode == 'edit' ? 'tw-bg-gray-200' : 'tw-bg-gray-50'}} tw-border tw-border-gray-300 tw-text-gray-900 tw-text-sm tw-rounded-lg focus:tw-ring-blue-500 focus:tw-border-blue-500 tw-block tw-w-full tw-p-2.5 dark:tw-bg-gray-700 dark:tw-border-gray-600 dark:tw-placeholder-gray-400 dark:tw-text-white dark:focus:tw-ring-blue-500 dark:focus:tw-border-blue-500">
+        <option [value]="0" [disabled]="true">Choose a brand</option>
+        <option *ngFor="let brand of brands" [value]="brand.id">{{brand.name}}</option>
+
+      </select>
+    </div>
+    <div>
+      <label for="chooseModel"  class="tw-block tw-mb-2 tw-text-sm tw-text-gray-900 dark:tw-text-white">Model <span *ngIf="mode != 'view'" class = "required-asterisk">*</span></label>
+      <select  [(ngModel)]="chooseModel" [disabled]="mode == 'edit' || mode == 'view'"  #model name = "chooseModel" id = "chooseModel"
+              class="{{mode == 'view' || mode == 'edit' ? 'tw-bg-gray-200' : 'tw-bg-gray-50'}} tw-border tw-border-gray-300 tw-text-gray-900 tw-text-sm tw-rounded-lg focus:tw-ring-blue-500 focus:tw-border-blue-500 tw-block tw-w-full tw-p-2.5 dark:tw-bg-gray-700 dark:tw-border-gray-600 dark:tw-placeholder-gray-400 dark:tw-text-white dark:focus:tw-ring-blue-500 dark:focus:tw-border-blue-500">
+        <option #modelChoose [value]="0" [disabled]="true">Choose a brand first</option>
+        <option *ngFor="let model of brandModels" [value]="model.id">{{model.name}}</option>
+      </select>
+    </div>
+    <div>
+      <label for="seat" class="tw-block tw-mb-2 tw-text-sm tw-text-gray-900 dark:tw-text-white">Number of seats <span *ngIf="mode != 'view'" class = "required-asterisk">*</span></label>
+      <select  id="seat" [(ngModel)]="seat" [disabled]="mode == 'edit' || mode == 'view'" name = "seat"
+              class="{{mode == 'view' || mode == 'edit' ? 'tw-bg-gray-200' : 'tw-bg-gray-50'}} tw-border tw-border-gray-300 tw-text-gray-900 tw-text-4xl tw-text-sm tw-rounded-lg focus:tw-ring-blue-500 focus:tw-border-blue-500 tw-block tw-w-full tw-p-2.5 dark:tw-bg-gray-700 dark:tw-border-gray-600 dark:tw-placeholder-gray-400 dark:tw-text-white dark:focus:tw-ring-blue-500 dark:focus:tw-border-blue-500">
+        <option [value]="'2'">2</option>
+        <option [selected] [value]="'4'">4</option>
+        <option [value]="'6'">6</option>
+        <option [value]="'8'">8</option>
+        <option [value]="'10'">10</option>
+        <option [value]="'12'">12</option>
+        <option [value]="'14'">14</option>
+      </select>
+    </div>
+    <div>
+      <label for="yearProduction" class="tw-block tw-mb-2 tw-text-sm tw-text-gray-900 dark:tw-text-white">Year of production <span *ngIf="mode != 'view'" class = "required-asterisk">*</span></label>
+      <select id="yearProduction" [disabled]="mode == 'edit' || mode == 'view'"  [(ngModel)]="yearProduction" name = "yearProduction"
+              class="{{mode == 'view' || mode == 'edit' ? 'tw-bg-gray-200' : 'tw-bg-gray-50'}} tw-border tw-border-gray-300 tw-text-gray-900 tw-text-sm tw-rounded-lg focus:tw-ring-blue-500 focus:tw-border-blue-500 tw-block tw-w-full tw-p-2.5 dark:tw-bg-gray-700 dark:tw-border-gray-600 dark:tw-placeholder-gray-400 dark:tw-text-white dark:focus:tw-ring-blue-500 dark:focus:tw-border-blue-500">
+        <option [value]="'2000'">2000</option>
+        <option [value]="'2001'">2001</option>
+        <option [value]="'2002'">2002</option>
+        <option [value]="'2003'">2003</option>
+        <option [value]="'2004'">2004</option>
+        <option [value]="'2005'">2005</option>
+        <option [value]="'2006'">2006</option>
+        <option [value]="'2007'">2007</option>
+        <option [value]="'2008'">2008</option>
+        <option [value]="'2009'">2009</option>
+        <option [value]="'2010'">2010</option>
+        <option [value]="'2011'">2011</option>
+        <option [value]="'2012'">2012</option>
+        <option [value]="'2013'">2013</option>
+        <option [value]="'2014'">2014</option>
+        <option [value]="'2015'">2015</option>
+        <option [value]="'2016'">2016</option>
+        <option [value]="'2017'">2017</option>
+        <option [value]="'2018'">2018</option>
+        <option [value]="'2019'">2019</option>
+        <option [value]="'2020'">2020</option>
+        <option [value]="'2021'">2021</option>
+        <option [value]="'2022'">2022</option>
+        <option [value]="'2023'">2023</option>
+        <option [value]="'2024'">2024</option>
+      </select>
+    </div>
+    <div>
+      <label for="transmission"  class="tw-block tw-mb-2 tw-text-sm tw-text-gray-900 dark:tw-text-white">Transmission <span *ngIf="mode != 'view'" class = "required-asterisk">*</span></label>
+      <select id="transmission" [disabled]="mode == 'edit' || mode == 'view'" [(ngModel)]="transmission" name = "transmission"
+              class="{{mode == 'view' || mode == 'edit' ? 'tw-bg-gray-200' : 'tw-bg-gray-50'}} tw-border tw-border-gray-300 tw-text-gray-900 tw-text-sm tw-rounded-lg focus:tw-ring-blue-500 focus:tw-border-blue-500 tw-block tw-w-full tw-p-2.5 dark:tw-bg-gray-700 dark:tw-border-gray-600 dark:tw-placeholder-gray-400 dark:tw-text-white dark:focus:tw-ring-blue-500 dark:focus:tw-border-blue-500">
+        <option [value]="'Automation'">Automation</option>
+        <option [value]="'Manual'">Manual</option>
+
+      </select>
+    </div>
+    <div>
+      <label for="fuel" class="tw-block tw-mb-2 tw-text-sm tw-text-gray-900 dark:tw-text-white">Fuel <span *ngIf="mode != 'view'" class = "required-asterisk">*</span></label>
+      <select id="fuel" [disabled]="mode == 'edit' || mode == 'view'"  [(ngModel)]="fuel" name = "fuel"
+              class="{{mode == 'view' || mode == 'edit' ? 'tw-bg-gray-200' : 'tw-bg-gray-50'}} tw-border tw-border-gray-300 tw-text-gray-900 tw-text-sm tw-rounded-lg focus:tw-ring-blue-500 focus:tw-border-blue-500 tw-block tw-w-full tw-p-2.5 dark:tw-bg-gray-700 dark:tw-border-gray-600 dark:tw-placeholder-gray-400 dark:tw-text-white dark:focus:tw-ring-blue-500 dark:focus:tw-border-blue-500">
+        <option [value]="'Gas'">Gas</option>
+        <option [value]="'Diesel'">Diesel</option>
+      </select>
+    </div>
+  </div>
+  <h2>Fuel consumption <span *ngIf="mode != 'view'" class = "required-asterisk">*</span></h2>
+  <p *ngIf="mode != 'view'" class="p-normal">Note: this is how much fuel your vehicle consump per km</p>
+  <div class="mb-6">
+    <input [readOnly]="mode == 'view'" style="margin-bottom: 15px; font-weight: 300" type="number" [(ngModel)]="consumption" name = "consumption" min = "10"
+           class="{{mode == 'view' ? 'tw-bg-gray-200' : 'tw-bg-gray-50'}} tw-border tw-border-gray-300 tw-text-gray-900 tw-text-sm tw-rounded-lg focus:tw-ring-blue-500 focus:tw-border-blue-500 tw-block tw-w-1/2 tw-p-2.5 dark:tw-bg-gray-700 dark:tw-border-gray-600 dark:tw-placeholder-gray-400 dark:tw-text-white dark:focus:tw-ring-blue-500 dark:focus:tw-border-blue-500"
+           placeholder="100" required/>
+  </div>
+  <h2>Description </h2>
+  <div class="tw-mb-6">
+    <textarea [readOnly]="mode == 'view'" id="message" rows="4" style="font-weight: 300" [(ngModel)]="description" name = "description"
+              class="tw-block tw-p-2.5 tw-w-full tw-text-sm tw-text-gray-900 {{mode == 'view' ? 'tw-bg-gray-200' : 'tw-bg-gray-50'}} tw-rounded-lg tw-border tw-border-gray-300 focus:tw-ring-blue-500 focus:tw-border-blue-500 dark:tw-bg-gray-700 dark:tw-border-gray-600 dark:tw-placeholder-gray-400 dark:tw-text-white dark:focus:tw-ring-blue-500 dark:focus:tw-border-blue-500"
+              placeholder="Write your car description here..."></textarea>
+  </div>
+  <h2>Function </h2>
+  <div style="display: flex; flex-wrap: wrap; flex-direction: column">
+    <div class = "squareOut">
+      <div class="squareThree">
+        <div id = "usb1" (click)="mode != 'view' ? choose('usb1') : ''" class="thumbnail">
+          <img id = "usb1img" loading="lazy" class="img-fluid"
+               src="https://n1-cstg.mioto.vn/v4/p/m/icons/features/usb-v2.png"
+               alt="Màn hình DVD"/><span style="font-size: 0.875rem;">USB</span>
+        </div>
+      </div>
+      <div class="squareThree">
+        <div id = "bluetooth1"  (click)="mode != 'view' ? choose('bluetooth1'): ''" class="thumbnail"><img id = "bluetooth1img" loading="lazy"  class="img-fluid"
+                                                                   src="https://n1-cstg.mioto.vn/v4/p/m/icons/features/bluetooth-v2.png"
+                                                                   alt="Định vị GPS"><span style="font-size: 0.875rem;">Bluetooth</span></div>
+      </div>
+      <div class="squareThree">
+        <div id = "map1" (click)="mode != 'view' ? choose('map1') : ''" class="thumbnail"><img id = "map1img" loading="lazy" class="img-fluid"
+                                                            src="https://n1-cstg.mioto.vn/v4/p/m/icons/features/map-v2.png"
+                                                            alt="Ghế trẻ em"><span
+          style="font-size: 0.875rem;">Map</span></div>
+      </div>
+    </div>
+
+
+    <div class = "squareOut">
+      <div class="squareThree">
+        <div id = "dvd" (click)="mode != 'view' ? choose('dvd'): ''" class="thumbnail"><img loading="lazy" id = "dvdimg" class="img-fluid"
+                                    src="https://n1-cstg.mioto.vn/v4/p/m/icons/features/dvd-v2.png"
+                                    alt="Màn hình DVD"><span style="font-size: 0.875rem;">DVD</span></div>
+      </div>
+      <div class="squareThree">
+        <div id = "gps" (click)="mode != 'view' ? choose('gps') : ''" class="thumbnail"><img loading="lazy" id = "gpsimg" class="img-fluid"
+                                    src="https://n1-cstg.mioto.vn/v4/p/m/icons/features/gps-v2.png"
+                                    alt="Định vị GPS"><span style="font-size: 0.875rem;">GPS</span></div>
+      </div>
+      <div class="squareThree">
+        <div id = "childseat" (click)="mode != 'view' ? choose('childseat'): ''" class="thumbnail"><img id = "childseatimg" loading="lazy" class="img-fluid"
+                                    src="https://n1-cstg.mioto.vn/v4/p/m/icons/features/babyseat-v2.png"
+                                    alt="Ghế trẻ em"><span
+          style="font-size: 0.875rem;">Child Seat</span></div>
+      </div>
+    </div>
+    <div class = "squareOut">
+      <div class="squareThree">
+        <div id = "camera360" (click)="mode != 'view' ? choose('camera360') : ''" class="thumbnail"><img id = "camera360img" loading="lazy" class="img-fluid"
+                                    src="https://n1-cstg.mioto.vn/v4/p/m/icons/features/360_camera-v2.png"
+                                    alt="Camera 360"><span style="font-size: 0.875rem;">Camera 360</span></div>
+      </div>
+      <div class="squareThree">
+        <div id = "cameraj" (click)="mode != 'view' ? choose('cameraj') : ''" class="thumbnail"><img id = "camerajimg" loading="lazy" class="img-fluid"
+                                    src="https://n1-cstg.mioto.vn/v4/p/m/icons/features/dash_camera-v2.png"
+                                    alt="Camera hành trình"><span style="font-size: 0.875rem;">Camera Journey</span>
+        </div>
+      </div>
+      <div class="squareThree">
+        <div id = "etc" (click)="mode != 'view' ? choose('etc') : ''" class="thumbnail"><img id = "etcimg" loading="lazy" class="img-fluid"
+                                    src="https://n1-cstg.mioto.vn/v4/p/m/icons/features/etc-v2.png" alt="ETC"><span
+          style="font-size: 0.875rem;">ETC</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div style="display: flex; justify-content: end; margin-bottom: 20px; margin-top: 10px">
+<!--    <button style="margin-right: 20px; cursor: not-allowed" type="submit"-->
+<!--            class="btn-prev tw-opacity-50 tw-cursor-not-allowed tw-text-white tw-bg-blue-700 tw-w-1/5 hover:tw-bg-blue-800 focus:tw-ring-4 focus:tw-outline-none focus:tw-ring-blue-300 tw-font-medium tw-rounded-lg tw-text-sm tw-px-5 tw-py-2.5 tw-text-center dark:tw-bg-blue-600 dark:hover:tw-bg-blue-700 dark:focus:tw-ring-blue-800">-->
+<!--      Previous-->
+<!--    </button>-->
+    <button  type="submit" (click)="submit()"
+            class="btn-next hover:tw-scale-110 tw-right-full tw-text-white tw-bg-blue-700 tw-w-1/5 hover:tw-bg-blue-800 focus:tw-ring-4 focus:tw-outline-none focus:tw-ring-blue-300 tw-font-medium tw-rounded-lg tw-text-sm = tw-px-5 tw-py-2.5 tw-text-center dark:tw-bg-blue-600 dark:hover:tw-bg-blue-700 dark:focus:tw-ring-blue-800">
+      Next
+    </button>
+  </div>
+</form>

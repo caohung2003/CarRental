@@ -1,0 +1,1043 @@
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="../../../assets/css/owl.carousel.min.css"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
+<div #header_hide>
+    <app-header id="topnav" class="custom-header"></app-header>
+</div>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <!-- Modal -->
+            <div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg tw-flex tw-items-center" role="document"
+                    style="margin: 1.75rem auto; max-width: none; height: 100vh; margin-top:0">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="carousel-testimony owl-carousel ftco-owl">
+                                        <div class="item">
+                                            <div class="testimony-wrap rounded text-center">
+                                                <div class="text" style="width: fit-content;">
+                                                    <img style="width: 950px;" loading="lazy" #img alt="img">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal" data-backdrop="static" id="dateModal" role="dialog">
+    <div class="modal-dialog modal-lg" role="document" style="margin: 1.75rem auto; height: 100%;">
+        <form id="dateForm" [formGroup]="dateRangeForm" (ngSubmit)="onSubmit()">
+            <div class="modal-content" id="content-date" role="document">
+                <div class="modal-header" style="padding: 24px 24px 0 24px;">
+                    <button #closeModal type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <h5>Choose Time</h5>
+                </div>
+                <div class="modal-body">
+                    <div class="time-choose row">
+                        <div class="time-choose__item col-md-5">
+                            <div>
+                                <p class="title-time">Pick up time</p>
+                                <p class="active-time">
+                                    <input #startDate type="datetime-local" formControlName="startDate"
+                                        (change)="changePickDate()" [min]="todayDate" />
+                                </p>
+                            </div>
+                        </div>
+                        <div class="wrap-svg col-md-2"
+                            style="display: flex;justify-content: center;align-items: center;">
+                            <svg width="25" height="24" viewBox="0 0 25 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M12.63 21.2498H12.38C7.34001 21.2498 3.26001 17.1598 3.26001 12.1298V11.8798C3.26001 6.83977 7.35001 2.75977 12.38 2.75977H12.63C17.67 2.75977 21.75 6.84977 21.75 11.8798V12.1298C21.75 17.1598 17.66 21.2498 12.63 21.2498Z"
+                                    stroke="#AAAAAA" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                </path>
+                                <path d="M9.40991 12H15.5699" stroke="#AAAAAA" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round"></path>
+                                <path d="M15.5899 11.9993L13.1299 9.5293" stroke="#AAAAAA" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path d="M15.5899 12L13.1299 14.47" stroke="#AAAAAA" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>
+                        </div>
+                        <div class="time-choose__item col-md-5">
+                            <div>
+                                <p class="title-time">Drop off time</p>
+                                <p class="active-time">
+                                    <input type="datetime-local" formControlName="endDate" #endDate
+                                        (change)="changeDropDate()" [min]="todayDate" />
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="time-avail marginBottom-m" *ngIf="message">
+                        <div class="time-avail__item">
+                            <p style="color: #007bff;">Choose pick-up time first.</p>
+                        </div>
+                    </div>
+                    <div class="time-avail marginBottom-m" *ngIf="errorDate">
+                        <div class="time-avail__item">
+                            <p style="color: red;">The drop off time of the car must be after the time of picking up the car.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="info-time">
+                        <div class="info-time__item">
+                            <p class="time">{{(start != "…") ? (getTime(start) + ", " + getDate(start) + "/" +
+                                getMonth(start)) : "…"}} - {{(end != "…") ? (getTime(end) + ", " + getDate(end) + "/" +
+                                getMonth(end)) : "…"}} </p>
+                            <p class="df-align-center total">
+                                Số ngày thuê:
+                                <span class="fontWeight-6" style="margin: 0px 2px;">
+                                    {{countDate}}
+                                </span>
+                                ngày
+                                <span class="tooltip">
+                                    <span class="wrap-svg">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
+                                                stroke="black" stroke-width="1.5" stroke-linecap="round"
+                                                stroke-linejoin="round">
+                                            </path>
+                                            <path
+                                                d="M9.08984 9.00008C9.32495 8.33175 9.789 7.76819 10.3998 7.40921C11.0106 7.05024 11.7287 6.91902 12.427 7.03879C13.1253 7.15857 13.7587 7.52161 14.2149 8.06361C14.6712 8.60561 14.9209 9.2916 14.9198 10.0001C14.9198 12.0001 11.9198 13.0001 11.9198 13.0001"
+                                                stroke="black" stroke-width="1.5" stroke-linecap="round"
+                                                stroke-linejoin="round">
+                                            </path>
+                                            <path d="M12 17H12.01" stroke="black" stroke-width="1.5"
+                                                stroke-linecap="round" stroke-linejoin="round">
+                                            </path>
+                                        </svg>
+                                    </span>
+                                    <span class="tooltip-text">
+                                        Car rental price is calculated by day. If you rent a car for less than 24 hours,
+                                        it will be counted as 1 day
+                                    </span>
+                                </span>
+                            </p>
+                        </div>
+                        <div class="wrap-btn">
+                            <button class="btn btn--s btn-primary" type="submit"
+                                [disabled]="dateRangeForm.invalid || !checkDate()">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- loading -->
+<app-loading *ngIf="isLoading"></app-loading>
+
+<div canvas="container" id="root" *ngIf="(filtersLoaded | async) && !isLoading">
+    <div class="car-layout">
+        <section style="position: relative;height: 84px; background: #fff;">
+        </section>
+        <section class="body">
+            <div class="header-car" [ngClass]="{'scrolled-header-car': isScrolled}">
+                <div class="m-container">
+                    <p (click)="scrollToTarget('car-info')">Detail</p>
+                    <p (click)="scrollToTarget('owner')">Owner</p>
+                </div>
+            </div>
+            <div class="cover-car">
+                <div class="m-container">
+                    <div class="cover-car-container">
+                        <div class="main-img">
+                            <div class="cover-car-item" data-target="#exampleModal" data-toggle="modal">
+                                <img loading="lazy" alt={{car.model}} (click)="zoomImg($event.target)"
+                                    src="{{car.front}}">
+                            </div>
+                        </div>
+                        <div class="sub-img" data-target="#exampleModal" data-toggle="modal">
+                            <div class="cover-car-item"><img loading="lazy" (click)="zoomImg($event.target)"
+                                    src="{{car.left}}" alt="{{car.model}}"></div>
+                            <div class="cover-car-item"><img loading="lazy" (click)="zoomImg($event.target)"
+                                    src="{{car.right}}" alt="{{car.model}}"></div>
+                            <div class="cover-car-item"><img loading="lazy" (click)="zoomImg($event.target)"
+                                    src="{{car.back}}" alt="{{car.model}}"></div>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="swiper swiper-cover-car swiper-initialized swiper-horizontal swiper-pointer-events cover-car-swiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide" data-target="#exampleModal" data-toggle="modal">
+                            <div class="fix-img"><img loading="lazy" (click)="zoomImg($event.target)"
+                                    src="{{car.front}}" alt="{{car.model}}"></div>
+                        </div>
+                    </div>
+                    <div class="swiper-wrapper row">
+                        <div class="swiper-slide col-4" data-target="#exampleModal" data-toggle="modal"
+                            style="max-width: calc(100% * 4 / 12);">
+                            <div class="fix-img"><img loading="lazy" (click)="zoomImg($event.target)"
+                                    src=".{{car.left}}" alt="{{car.model}}"></div>
+                        </div>
+                        <div class="swiper-slide col-4" data-target="#exampleModal" data-toggle="modal"
+                            style="max-width: calc(100% * 4 / 12);">
+                            <div class="fix-img"><img loading="lazy" (click)="zoomImg($event.target)"
+                                    src="{{car.right}}" alt="{{car.model}}"></div>
+                        </div>
+                        <div class="swiper-slide col-4" data-target="#exampleModal" data-toggle="modal"
+                            style="max-width: calc(100% * 4 / 12);">
+                            <div class="fix-img"><img loading="lazy" (click)="zoomImg($event.target)" src="{{car.back}}"
+                                    alt="{{car.model}}"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="detail-car" id="car-info">
+                <div class="m-container">
+                    <div class="detail-container">
+                        <div class="content-detail">
+                            <div class="info-car-basic">
+                                <div class="group-name">
+                                    <h3>
+                                        {{car.brand}} {{car.model}}
+                                    </h3>
+                                </div>
+                                <div class="group-total">
+                                    <div class="wrap-svg">
+                                        <svg class="star-rating" width="16" height="17" viewBox="0 0 16 17" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M14.6667 7.23331C14.7333 6.89998 14.4667 6.49998 14.1333 6.49998L10.3333 5.96665L8.59999 2.49998C8.53333 2.36665 8.46666 2.29998 8.33333 2.23331C7.99999 2.03331 7.59999 2.16665 7.39999 2.49998L5.73333 5.96665L1.93333 6.49998C1.73333 6.49998 1.59999 6.56665 1.53333 6.69998C1.26666 6.96665 1.26666 7.36665 1.53333 7.63331L4.26666 10.3L3.59999 14.1C3.59999 14.2333 3.59999 14.3666 3.66666 14.5C3.86666 14.8333 4.26666 14.9666 4.59999 14.7666L7.99999 12.9666L11.4 14.7666C11.4667 14.8333 11.6 14.8333 11.7333 14.8333C11.8 14.8333 11.8 14.8333 11.8667 14.8333C12.2 14.7666 12.4667 14.4333 12.4 14.0333L11.7333 10.2333L14.4667 7.56665C14.6 7.49998 14.6667 7.36665 14.6667 7.23331Z"
+                                                fill="#FFC634"></path>
+                                        </svg>
+                                    </div>
+                                    <span class="info">{{car.rating.toFixed(1)}}</span>
+                                    <span class="dot"> • </span>
+                                    <div class="wrap-svg">
+                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg" style="margin-right: 4px;">
+                                            <g clip-path="url(#clip0_1087_41996)">
+                                                <path
+                                                    d="M10.0625 1.21875C10.0625 1.06369 10.1887 0.9375 10.3438 0.9375H11.9688C12.1238 0.9375 12.25 1.06369 12.25 1.21875V2.89422H13.1875V1.21875C13.1875 0.546719 12.6408 0 11.9688 0H10.3438C9.67172 0 9.125 0.546719 9.125 1.21875V2.89422H10.0625V1.21875Z"
+                                                    fill="#5fcf86"></path>
+                                                <path
+                                                    d="M5.69806 15.0623C5.49325 14.7441 5.375 14.3673 5.375 13.9686V6.94092H1.09375C0.490656 6.94092 0 7.43157 0 8.03467V13.9686C0 14.5186 0.408156 14.9749 0.9375 15.051V15.5309C0.9375 15.7898 1.14737 15.9997 1.40625 15.9997C1.66513 15.9997 1.875 15.7898 1.875 15.5309V15.0623H5.69806V15.0623ZM1.875 8.65967C1.875 8.40079 2.08487 8.19092 2.34375 8.19092C2.60263 8.19092 2.8125 8.40079 2.8125 8.65967V13.3436C2.8125 13.6024 2.60263 13.8123 2.34375 13.8123C2.08487 13.8123 1.875 13.6024 1.875 13.3436V8.65967Z"
+                                                    fill="#5fcf86"></path>
+                                                <path
+                                                    d="M4.375 5.26562C4.375 5.11056 4.50119 4.98438 4.65625 4.98438H5.375V4.92547C5.375 4.61094 5.44687 4.31291 5.57506 4.04688H4.65625C3.98422 4.04688 3.4375 4.59359 3.4375 5.26562V6.00359H4.375V5.26562Z"
+                                                    fill="#5fcf86"></path>
+                                                <path
+                                                    d="M14.9062 3.83154H7.40625C6.80316 3.83154 6.3125 4.3222 6.3125 4.92529V13.9686C6.3125 14.5186 6.72066 14.9749 7.25 15.051V15.5309C7.25 15.7898 7.45987 15.9997 7.71875 15.9997C7.97763 15.9997 8.1875 15.7898 8.1875 15.5309V15.0623H14.125V15.5309C14.125 15.7898 14.3349 15.9997 14.5938 15.9997C14.8526 15.9997 15.0625 15.7898 15.0625 15.5309V15.051C15.5918 14.9749 16 14.5186 16 13.9686V4.92529C16 4.32217 15.5093 3.83154 14.9062 3.83154ZM9.125 13.3436C9.125 13.6024 8.91513 13.8123 8.65625 13.8123C8.39737 13.8123 8.1875 13.6024 8.1875 13.3436V5.55029C8.1875 5.29142 8.39737 5.08154 8.65625 5.08154C8.91513 5.08154 9.125 5.29142 9.125 5.55029V13.3436ZM13.6562 13.8123C13.3974 13.8123 13.1875 13.6024 13.1875 13.3436V5.55029C13.1875 5.29142 13.3974 5.08154 13.6562 5.08154C13.9151 5.08154 14.125 5.29142 14.125 5.55029V13.3436C14.125 13.6024 13.9151 13.8123 13.6562 13.8123Z"
+                                                    fill="#5fcf86"></path>
+                                            </g>
+                                            <defs>
+                                                <clipPath id="clip0_1087_41996">
+                                                    <rect width="16" height="16" fill="white"></rect>
+                                                </clipPath>
+                                            </defs>
+                                        </svg>
+                                    </div>
+                                    <span class="info">
+                                        {{car.rides}} rides</span>
+                                    <span class="dot">•</span>
+                                    <span class="info">{{car.location[0].name}}</span>
+                                </div>
+                                <div class="group-tag">
+                                    <span class="tag-item transmission">{{car.transmission}}</span>
+                                    <span class="tag-item fuel">{{car.fuel}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sidebar-detail">
+                            <div class="insurance success cardetail" *ngIf="car.insurance_status">
+                                <img loading="lazy"
+                                    src="https://www.mioto.vn/static/media/insurance-polish.f54e308a.svg" alt="ins">
+                                <div class="content">
+                                    <p>Rental Car Insurance</p>
+                                    <p class="note">The trip includes insurance. The renter compensates up to a maximum
+                                        of 2,000,000 VND in case of unforeseen incidents.</p>
+                                </div>
+                            </div>
+                            <div class="rent-box" id="cardetail" style="position: relative;">
+                                <div class="price">
+                                    <h4>{{convertMoney(car.price)}} VND/ day</h4>
+                                </div>
+                                <div class="date-time-form ">
+                                    <div class="form-item" data-toggle="modal" data-target="#dateModal"><label>Pick
+                                            up</label>
+                                        <div class="wrap-date-time">
+                                            <div class="wrap-date">
+                                                <span class="value">{{showStart != '' ?
+                                                    getDate(showStart)+"/"+getMonth(showStart)+"/"+getYear(showStart) :
+                                                    "02/03/2024"}}</span>
+                                            </div>
+                                            <div class="wrap-time">
+                                                <span class="value">{{showStart != '' ?
+                                                    getTime(showStart) :
+                                                    "21:00"}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="line"></div>
+                                    <div class="form-item" data-toggle="modal" data-target="#dateModal"><label>Drop
+                                            off</label>
+                                        <div class="wrap-date-time">
+                                            <div class="wrap-date"><span class="value">{{showEnd != '' ?
+                                                    getDate(showEnd)+"/"+getMonth(showEnd)+"/"+getYear(showEnd) :
+                                                    "03/03/2024"}}</span></div>
+                                            <div class="wrap-time"><span class="value">{{showEnd != '' ?
+                                                    getTime(showEnd) :
+                                                    "21:00"}}</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="messageError" *ngIf="errorBusy" style="font-size: 0.7rem;">{{messageBusy}}
+                                </div>
+                                <div class="dc-week-month">
+                                    <p>Weekly rental <strong>5% </strong> off - Monthly rental <strong>10%</strong> off
+                                    </p>
+                                </div>
+                                <div class="dropdown-form">
+                                    <label for="location-s">Location of Delivery</label>
+                                    <span class="wrap-select">
+                                        <select id="location-s" #selectLoc (change)="changeLoc()" style="padding-right: 32px;">
+                                            <option value="{{l.id}}" *ngFor="let l of car.location" title="{{l.name}}">
+                                                {{l.name}}</option>
+                                        </select>
+                                    </span>
+                                </div>
+                                <div class="line-page"></div>
+                                <div class="price-container">
+                                    <div class="price-item">
+                                        <p class="df-align-center">
+                                            Price
+                                        </p>
+                                        <p class="cost"><span>{{convertMoney(car.price)}} VND/ day</span></p>
+                                    </div>
+                                    <div class="price-item">
+                                        <p class="df-align-center">
+                                            Days
+                                        </p>
+                                        <p class="cost">
+                                            <span>x &nbsp;{{countDate}}</span>
+                                        </p>
+                                    </div>
+                                    <div class="line-page"></div>
+                                    <div class="price-item total">
+                                        <p>Total amount</p>
+                                        <p class="cost"><span>{{convertMoney(totalMoney)}} VND</span></p>
+                                    </div>
+                                    <div class="line-page"></div>
+                                    <div class="price-item total">
+                                        <p>Deposit</p>
+                                        <p class="cost"><span>{{convertMoney(car.deposit)}} VND </span></p>
+                                    </div>
+                                </div>
+                                <button type="button" class="btn btn-primary btn--m width-100"
+                                    [disabled]="errorBusy || countDate == '…' || disable"
+                                    (click)="redirectToBooking(car.id)">
+                                    <div class="wrap-svg">
+                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M12.9733 7.70015L8.46667 14.2668C8.29334 14.5268 8.01335 14.6668 7.71335 14.6668C7.62002 14.6668 7.52667 14.6535 7.43334 14.6268C7.05334 14.5068 6.79335 14.1668 6.79335 13.7735V10.0135C6.79335 9.86015 6.64667 9.72682 6.46667 9.72682L3.78001 9.6935C3.44001 9.6935 3.12668 9.50016 2.97335 9.20682C2.82668 8.92016 2.84668 8.5735 3.03335 8.30017L7.53335 1.7335C7.76001 1.40016 8.18001 1.25349 8.56668 1.37349C8.94668 1.49349 9.20668 1.83349 9.20668 2.22682V5.98683C9.20668 6.14017 9.35335 6.2735 9.53335 6.2735L12.22 6.30682C12.56 6.30682 12.8733 6.49349 13.0267 6.79349C13.1733 7.08016 13.1533 7.42682 12.9733 7.70015Z"
+                                                fill="#FFC634"></path>
+                                        </svg>
+                                    </div>
+                                    BOOKING NOW
+                                </button>
+                                <div style="margin-top: 10px;" *ngIf="disable">
+                                    <p style="color: #f64949;">You can not rent your own car</p>
+                                </div>
+                            </div>
+                            <div class="surcharge">
+                                <p class="title text-primary">Additional fees that may apply</p>
+                                <div class="surcharge-container hide">
+                                    <div class="surcharge-item">
+                                        <div class="wrap-svg"><svg width="16" height="16" viewBox="0 0 16 16"
+                                                fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M8 7.33398V10.4407" stroke="#666666" stroke-linecap="round"
+                                                    stroke-linejoin="round"></path>
+                                                <path
+                                                    d="M8 6.05469C8.27614 6.05469 8.5 5.83083 8.5 5.55469C8.5 5.27855 8.27614 5.05469 8 5.05469C7.72386 5.05469 7.5 5.27855 7.5 5.55469C7.5 5.83083 7.72386 6.05469 8 6.05469Z"
+                                                    fill="#666666"></path>
+                                                <path
+                                                    d="M7.99967 14.1673C11.4054 14.1673 14.1663 11.4064 14.1663 8.00065C14.1663 4.5949 11.4054 1.83398 7.99967 1.83398C4.59392 1.83398 1.83301 4.5949 1.83301 8.00065C1.83301 11.4064 4.59392 14.1673 7.99967 14.1673Z"
+                                                    stroke="#666666" stroke-linecap="round" stroke-linejoin="round">
+                                                </path>
+                                            </svg></div>
+                                        <div class="content">
+                                            <div class="content-item">
+                                                <p class="title">Excess mileage fee</p>
+                                                <p class="cost"><span>4 000 VND/km</span></p>
+                                            </div>
+                                            <div class="content-item">
+                                                <p>Additional fee incurred if the travel distance exceeds
+                                                    <span>300km</span> when renting a car for<span> 1 day</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="surcharge-item">
+                                        <div class="wrap-svg"><svg width="16" height="16" viewBox="0 0 16 16"
+                                                fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M8 7.33398V10.4407" stroke="#666666" stroke-linecap="round"
+                                                    stroke-linejoin="round"></path>
+                                                <path
+                                                    d="M8 6.05469C8.27614 6.05469 8.5 5.83083 8.5 5.55469C8.5 5.27855 8.27614 5.05469 8 5.05469C7.72386 5.05469 7.5 5.27855 7.5 5.55469C7.5 5.83083 7.72386 6.05469 8 6.05469Z"
+                                                    fill="#666666"></path>
+                                                <path
+                                                    d="M7.99967 14.1673C11.4054 14.1673 14.1663 11.4064 14.1663 8.00065C14.1663 4.5949 11.4054 1.83398 7.99967 1.83398C4.59392 1.83398 1.83301 4.5949 1.83301 8.00065C1.83301 11.4064 4.59392 14.1673 7.99967 14.1673Z"
+                                                    stroke="#666666" stroke-linecap="round" stroke-linejoin="round">
+                                                </path>
+                                            </svg></div>
+                                        <div class="content">
+                                            <div class="content-item">
+                                                <p class="title">Overtime fee</p>
+                                                <p class="cost"><span>80 000 VND/h</span></p>
+                                            </div>
+                                            <div class="content-item">
+                                                <p>Additional fee incurred for late return of the vehicle. In the case
+                                                    of being late by more than<span> 5 hours</span>, an extra day's
+                                                    rental fee will be charged.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="surcharge-item">
+                                        <div class="wrap-svg"><svg width="16" height="16" viewBox="0 0 16 16"
+                                                fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M8 7.33398V10.4407" stroke="#666666" stroke-linecap="round"
+                                                    stroke-linejoin="round"></path>
+                                                <path
+                                                    d="M8 6.05469C8.27614 6.05469 8.5 5.83083 8.5 5.55469C8.5 5.27855 8.27614 5.05469 8 5.05469C7.72386 5.05469 7.5 5.27855 7.5 5.55469C7.5 5.83083 7.72386 6.05469 8 6.05469Z"
+                                                    fill="#666666"></path>
+                                                <path
+                                                    d="M7.99967 14.1673C11.4054 14.1673 14.1663 11.4064 14.1663 8.00065C14.1663 4.5949 11.4054 1.83398 7.99967 1.83398C4.59392 1.83398 1.83301 4.5949 1.83301 8.00065C1.83301 11.4064 4.59392 14.1673 7.99967 14.1673Z"
+                                                    stroke="#666666" stroke-linecap="round" stroke-linejoin="round">
+                                                </path>
+                                            </svg></div>
+                                        <div class="content">
+                                            <div class="content-item">
+                                                <p class="title">Cleaning fee</p>
+                                                <p class="cost"><span>120 000 VND</span></p>
+                                            </div>
+                                            <div class="content-item">
+                                                <p>Additional fee incurred when the vehicle is returned unclean (with
+                                                    excessive dirt, mud, stains...)</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="surcharge-item">
+                                        <div class="wrap-svg"><svg width="16" height="16" viewBox="0 0 16 16"
+                                                fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M8 7.33398V10.4407" stroke="#666666" stroke-linecap="round"
+                                                    stroke-linejoin="round"></path>
+                                                <path
+                                                    d="M8 6.05469C8.27614 6.05469 8.5 5.83083 8.5 5.55469C8.5 5.27855 8.27614 5.05469 8 5.05469C7.72386 5.05469 7.5 5.27855 7.5 5.55469C7.5 5.83083 7.72386 6.05469 8 6.05469Z"
+                                                    fill="#666666"></path>
+                                                <path
+                                                    d="M7.99967 14.1673C11.4054 14.1673 14.1663 11.4064 14.1663 8.00065C14.1663 4.5949 11.4054 1.83398 7.99967 1.83398C4.59392 1.83398 1.83301 4.5949 1.83301 8.00065C1.83301 11.4064 4.59392 14.1673 7.99967 14.1673Z"
+                                                    stroke="#666666" stroke-linecap="round" stroke-linejoin="round">
+                                                </path>
+                                            </svg></div>
+                                        <div class="content">
+                                            <div class="content-item">
+                                                <p class="title">Deodorizing fee</p>
+                                                <p class="cost"><span>300 000 VND</span></p>
+                                            </div>
+                                            <div class="content-item">
+                                                <p>Additional fee incurred when the returned vehicle has unpleasant
+                                                    odors (such as cigarette smoke, strong food smells...)</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="read-more" (click)="showMore($event.target)">Show more</p>
+                            </div>
+                        </div>
+                        <div class="content-detail">
+                            <div class="line-page"></div>
+                            <div class="info-car-desc" id="outsfeatures">
+                                <h6>Features</h6>
+                                <div class="outstanding-features">
+                                    <div class="outstanding-features__item">
+                                        <div class="wrap-svg"><svg width="32" height="32" viewBox="0 0 32 32"
+                                                fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M10.914 23.3289C10.9148 23.3284 10.9156 23.3279 10.9163 23.3274C10.9155 23.3279 10.9148 23.3284 10.914 23.3289ZM10.914 23.3289C10.914 23.3289 10.914 23.3289 10.914 23.3289L11.3128 23.9114M10.914 23.3289L11.3128 23.9114M11.3128 23.9114L10.9807 23.2882L20.6697 23.9458C20.6682 23.9484 20.6656 23.9496 20.6631 23.9479C20.655 23.9424 20.6343 23.9284 20.6014 23.9074C20.6014 23.9073 20.6014 23.9073 20.6013 23.9073C20.5141 23.8516 20.3413 23.7468 20.0921 23.6208C20.0919 23.6207 20.0918 23.6206 20.0917 23.6206C19.3397 23.2404 17.8926 22.6674 16.0003 22.6674C14.1715 22.6674 12.7584 23.2026 11.9869 23.5817L11.9929 23.5929M11.3128 23.9114L11.331 23.9456C11.3324 23.9483 11.3352 23.9495 11.3377 23.9478C11.3444 23.9432 11.3592 23.9332 11.3821 23.9184L11.9929 23.5929L11.9929 23.5929M11.9929 23.5929C11.9909 23.5892 11.9889 23.5855 11.9868 23.5818C11.6767 23.7342 11.4702 23.8614 11.3821 23.9184L11.9929 23.5929ZM10.6691 24.2983L10.6691 24.2983C10.7406 24.4324 10.8728 24.5792 11.0793 24.6538C11.3072 24.7361 11.5609 24.7039 11.7614 24.5667L11.7614 24.5667C11.7978 24.5418 13.4597 23.4174 16.0003 23.4174C18.5426 23.4174 20.205 24.5432 20.2393 24.5667L20.2393 24.5667C20.4389 24.7034 20.6938 24.7372 20.9245 24.6528C21.1293 24.5779 21.2557 24.4338 21.3233 24.3136L22.4886 22.2427L24.3242 23.0447L21.6934 28.584H9.99882L7.65051 23.0635L9.57427 22.2435L10.6691 24.2983ZM24.4348 22.8117L24.4345 22.8124L24.4348 22.8117Z"
+                                                    stroke="#007bff" stroke-width="1.5"></path>
+                                                <path
+                                                    d="M12.75 4.66675C12.75 3.97639 13.3096 3.41675 14 3.41675H18C18.6904 3.41675 19.25 3.97639 19.25 4.66675V7.00008C19.25 7.13815 19.1381 7.25008 19 7.25008H13C12.8619 7.25008 12.75 7.13815 12.75 7.00008V4.66675Z"
+                                                    stroke="#007bff" stroke-width="1.5"></path>
+                                                <path
+                                                    d="M9.33398 22.6668L9.90564 11.2336C9.95887 10.1692 10.8374 9.3335 11.9031 9.3335H20.0982C21.1639 9.3335 22.0424 10.1692 22.0957 11.2336L22.6673 22.6668"
+                                                    stroke="#007bff" stroke-width="1.5"></path>
+                                                <path d="M14.667 7.35815V9.8901" stroke="#007bff" stroke-width="1.5">
+                                                </path>
+                                                <path d="M17.334 7.35815V9.8901" stroke="#007bff" stroke-width="1.5">
+                                                </path>
+                                            </svg></div>
+                                        <div class="title">
+                                            <p class="sub">Number of Seat</p>
+                                            <p class="main">{{car.seat}} SEATS</p>
+                                        </div>
+                                    </div>
+                                    <div class="outstanding-features__item">
+                                        <div class="wrap-svg"><svg width="32" height="32" viewBox="0 0 32 32"
+                                                fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M25.9163 7.99992C25.9163 9.05846 25.0582 9.91659 23.9997 9.91659C22.9411 9.91659 22.083 9.05846 22.083 7.99992C22.083 6.94137 22.9411 6.08325 23.9997 6.08325C25.0582 6.08325 25.9163 6.94137 25.9163 7.99992Z"
+                                                    stroke="#007bff" stroke-width="1.5"></path>
+                                                <circle cx="23.9997" cy="23.9999" r="1.91667" stroke="#007bff"
+                                                    stroke-width="1.5"></circle>
+                                                <path
+                                                    d="M17.9163 7.99992C17.9163 9.05846 17.0582 9.91659 15.9997 9.91659C14.9411 9.91659 14.083 9.05846 14.083 7.99992C14.083 6.94137 14.9411 6.08325 15.9997 6.08325C17.0582 6.08325 17.9163 6.94137 17.9163 7.99992Z"
+                                                    stroke="#007bff" stroke-width="1.5"></path>
+                                                <path
+                                                    d="M17.9163 23.9999C17.9163 25.0585 17.0582 25.9166 15.9997 25.9166C14.9411 25.9166 14.083 25.0585 14.083 23.9999C14.083 22.9414 14.9411 22.0833 15.9997 22.0833C17.0582 22.0833 17.9163 22.9414 17.9163 23.9999Z"
+                                                    stroke="#007bff" stroke-width="1.5"></path>
+                                                <circle cx="7.99967" cy="7.99992" r="1.91667" stroke="#007bff"
+                                                    stroke-width="1.5"></circle>
+                                                <path
+                                                    d="M10.1025 26.6666V21.3333H7.99837C7.59559 21.3333 7.25184 21.4053 6.96712 21.5494C6.68066 21.6918 6.46278 21.894 6.31348 22.1562C6.16244 22.4166 6.08691 22.723 6.08691 23.0754C6.08691 23.4296 6.1633 23.7343 6.31608 23.9895C6.46886 24.243 6.69021 24.4374 6.98014 24.5728C7.26834 24.7083 7.6173 24.776 8.02702 24.776H9.43587V23.8697H8.20931C7.99403 23.8697 7.81521 23.8402 7.67285 23.7812C7.53049 23.7221 7.42459 23.6336 7.35514 23.5155C7.28396 23.3975 7.24837 23.2508 7.24837 23.0754C7.24837 22.8984 7.28396 22.7491 7.35514 22.6275C7.42459 22.506 7.53136 22.414 7.67546 22.3515C7.81782 22.2872 7.9975 22.2551 8.21452 22.2551H8.97493V26.6666H10.1025ZM7.22233 24.2395L5.89681 26.6666H7.1416L8.43848 24.2395H7.22233Z"
+                                                    fill="#007bff"></path>
+                                                <path
+                                                    d="M24 10.6665V15.9998M24 21.3332V15.9998M16 10.6665V21.3332M8 10.6665V15.4998C8 15.776 8.22386 15.9998 8.5 15.9998H24"
+                                                    stroke="#007bff" stroke-width="1.5" stroke-linecap="round">
+                                                </path>
+                                            </svg></div>
+                                        <div class="title">
+                                            <p class="sub">Transmission</p>
+                                            <p class="main">{{car.transmission}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="outstanding-features__item">
+                                        <div class="wrap-svg"><svg width="32" height="32" viewBox="0 0 32 32"
+                                                fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M24.3337 27.2499H7.66699C7.52892 27.2499 7.41699 27.138 7.41699 26.9999V12.4599C7.41699 12.3869 7.44888 12.3175 7.5043 12.27L14.652 6.14344L14.1639 5.574L14.652 6.14344C14.6973 6.1046 14.755 6.08325 14.8147 6.08325H24.3337C24.4717 6.08325 24.5837 6.19518 24.5837 6.33325V26.9999C24.5837 27.138 24.4717 27.2499 24.3337 27.2499Z"
+                                                    stroke="#007bff" stroke-width="1.5" stroke-linecap="round">
+                                                </path>
+                                                <path d="M12.0001 5.33325L7.42285 9.46712" stroke="#007bff"
+                                                    stroke-width="1.5" stroke-linecap="round"></path>
+                                                <path
+                                                    d="M17.888 19.5212L16.7708 15.93C16.5378 15.1812 15.4785 15.1798 15.2436 15.928L14.1172 19.5164C13.7178 20.7889 14.6682 22.0833 16.0019 22.0833C17.3335 22.0833 18.2836 20.7927 17.888 19.5212Z"
+                                                    stroke="#007bff" stroke-width="1.5" stroke-linecap="round">
+                                                </path>
+                                                <path
+                                                    d="M23.2503 3.66675V5.66675C23.2503 5.80482 23.1384 5.91675 23.0003 5.91675H14.667C14.5827 5.91675 14.5365 5.8916 14.5072 5.86702C14.4721 5.83755 14.44 5.78953 14.4245 5.72738C14.4089 5.66524 14.4147 5.60775 14.4318 5.56523C14.4461 5.52975 14.4749 5.48584 14.5493 5.44616L18.2993 3.44616C18.3356 3.42685 18.376 3.41675 18.417 3.41675H23.0003C23.1384 3.41675 23.2503 3.52868 23.2503 3.66675Z"
+                                                    stroke="#007bff" stroke-width="1.5" stroke-linecap="round">
+                                                </path>
+                                            </svg></div>
+                                        <div class="title">
+                                            <p class="sub">Fuel</p>
+                                            <p class="main">{{car.fuel}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="line-page"></div>
+                            <div class="info-car-desc">
+                                <h6>Description</h6>
+                                <pre class="">{{car.description}}
+                                </pre>
+                                <!-- <p class="read-more" (click)="showMore($event.target)">Show more</p> -->
+                            </div>
+                            <div class="line-page"></div>
+                            <div class="info-car-desc">
+                                <h6>Other functions</h6>
+                                <div class="features-car">
+                                    <ul>
+                                        <li *ngFor="let fea of car.features">
+                                            <img *ngIf="fea == 'Map'" loading="lazy"
+                                                src="https://n1-cstg.mioto.vn/v4/p/m/icons/features/map-v2.png"
+                                                alt="CarRental - Thuê xe tự lái">
+                                            <img *ngIf="fea == 'Bluetooth'" loading="lazy"
+                                                src="https://n1-cstg.mioto.vn/v4/p/m/icons/features/bluetooth-v2.png"
+                                                alt="CarRental - Thuê xe tự lái">
+                                            <img *ngIf="fea == 'Child seat'" loading="lazy"
+                                                src="../../../assets/images/features/baby-car-seat.png"
+                                                alt="CarRental - Thuê xe tự lái">
+                                            <img *ngIf="fea == 'GPS'" loading="lazy"
+                                                src="https://n1-cstg.mioto.vn/v4/p/m/icons/features/gps-v2.png"
+                                                alt="CarRental - Thuê xe tự lái">
+                                            <img *ngIf="fea == 'DVD'" loading="lazy"
+                                                src="https://n1-cstg.mioto.vn/v4/p/m/icons/features/dvd-v2.png"
+                                                alt="CarRental - Thuê xe tự lái">
+                                            <img *ngIf="fea == 'Camera journey'" loading="lazy"
+                                                src="https://n1-cstg.mioto.vn/v4/p/m/icons/features/dash_camera-v2.png"
+                                                alt="CarRental - Thuê xe tự lái">
+                                            <img *ngIf="fea == 'ETC'" loading="lazy"
+                                                src="https://n1-cstg.mioto.vn/v4/p/m/icons/features/etc-v2.png"
+                                                alt="CarRental - Thuê xe tự lái">
+                                            <img *ngIf="fea == 'USB'" loading="lazy"
+                                                src="https://n1-cstg.mioto.vn/v4/p/m/icons/features/usb-v2.png"
+                                                alt="CarRental - Thuê xe tự lái">
+                                            <img *ngIf="fea == 'Camera 360'" loading="lazy"
+                                                src="https://n1-cstg.mioto.vn/v4/p/m/icons/features/reverse_camera-v2.png"
+                                                alt="CarRental - Thuê xe tự lái"> {{fea}}
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="line-page"></div>
+                            <div class="info-car-desc" *ngIf="car.deposit > 0">
+                                <h6 class="df-align-center">Require Deposit<span
+                                        class="tooltip tooltip--m  icon--m"><span class="wrap-svg"><svg width="24"
+                                                height="24" viewBox="0 0 24 24" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
+                                                    stroke="black" stroke-width="1.5" stroke-linecap="round"
+                                                    stroke-linejoin="round"></path>
+                                                <path
+                                                    d="M9.08984 9.00008C9.32495 8.33175 9.789 7.76819 10.3998 7.40921C11.0106 7.05024 11.7287 6.91902 12.427 7.03879C13.1253 7.15857 13.7587 7.52161 14.2149 8.06361C14.6712 8.60561 14.9209 9.2916 14.9198 10.0001C14.9198 12.0001 11.9198 13.0001 11.9198 13.0001"
+                                                    stroke="black" stroke-width="1.5" stroke-linecap="round"
+                                                    stroke-linejoin="round"></path>
+                                                <path d="M12 17H12.01" stroke="black" stroke-width="1.5"
+                                                    stroke-linecap="round" stroke-linejoin="round"></path>
+                                            </svg>
+                                        </span>
+                                        <span class="tooltip-text">You will leave collateral (cash/transfer or motorbike
+                                            with original sticker) to the vehicle owner when completing procedures to
+                                            receive the vehicle. <br>The car owner will return the collateral when you
+                                            return the car in its
+                                            original condition when receiving the car
+                                        </span>
+                                    </span>
+                                </h6>
+                                <div class="required-papers">
+                                    <p><strong>{{convertMoney(car.deposit)}}VND</strong> (cash/bank transfer to
+                                        the
+                                        owner upon receiving the vehicle) or Motorcycle (with original registration
+                                        papers) valued at <strong>{{convertMoney(car.deposit)}}VND</strong></p>
+                                </div>
+                            </div>
+                            <div class="info-car-desc">
+                                <h6>Terms</h6>
+                                <pre class="hide">Other rule:
+                                    <p *ngFor="let s of car.terms">◦ {{s}}</p>Sincerely thank you, and wish our valued customers wonderful journeys!
+                                </pre>
+                                <p class="read-more" (click)="showMore($event.target)">Show more</p>
+                            </div>
+                            <div class="info-car-desc">
+                                <h6>Cancellation policy<br>
+                                    <p class="font-16 fontWeight-4 text-gray">
+                                        Free cancellation within 1 hour after booking and deposit.
+                                    </p>
+                                </h6>
+                                <div class="cancel-policy">
+                                    <div class="column title">
+                                        <div class="column__item case">The time of cancellation</div>
+                                        <div class="column__item">Renter cancels the trip.</div>
+                                        <div class="column__item">Owner/driver cancels the trip.</div>
+                                    </div>
+                                    <div class="column">
+                                        <div class="column__item case">Within 1 hour after booking.</div>
+                                        <div class="column__item">
+                                            <div class="wrap-svg tw-flex tw-justify-center"><svg width="24" height="24" viewBox="0 0 24 24"
+                                                    fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="M12.25 2C6.74 2 2.25 6.49 2.25 12C2.25 17.51 6.74 22 12.25 22C17.76 22 22.25 17.51 22.25 12C22.25 6.49 17.76 2 12.25 2ZM15.84 10.59L12.32 14.11C12.17 14.26 11.98 14.33 11.79 14.33C11.6 14.33 11.4 14.26 11.26 14.11L9.5 12.35C9.2 12.06 9.2 11.58 9.5 11.29C9.79 11 10.27 11 10.56 11.29L11.79 12.52L14.78 9.53C15.07 9.24 15.54 9.24 15.84 9.53C16.13 9.82 16.13 10.3 15.84 10.59Z"
+                                                        fill="#12B76A"></path>
+                                                </svg></div>100% refund for booking.
+                                        </div>
+                                        <div class="column__item">
+                                            <div class="wrap-svg tw-flex tw-justify-center"><svg width="24" height="24"
+                                                    viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="M12.25 2C6.74 2 2.25 6.49 2.25 12C2.25 17.51 6.74 22 12.25 22C17.76 22 22.25 17.51 22.25 12C22.25 6.49 17.76 2 12.25 2ZM15.84 10.59L12.32 14.11C12.17 14.26 11.98 14.33 11.79 14.33C11.6 14.33 11.4 14.26 11.26 14.11L9.5 12.35C9.2 12.06 9.2 11.58 9.5 11.29C9.79 11 10.27 11 10.56 11.29L11.79 12.52L14.78 9.53C15.07 9.24 15.54 9.24 15.84 9.53C16.13 9.82 16.13 10.3 15.84 10.59Z"
+                                                        fill="#12B76A"></path>
+                                                </svg></div>No fee<span>(Automatic system rating 3*)</span>
+                                        </div>
+                                    </div>
+                                    <div class="column">
+                                        <div class="column__item case">Before the trip &gt;7 days</div>
+                                        <div class="column__item">
+                                            <div class="wrap-svg tw-flex tw-justify-center">
+                                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="M12.25 2C6.74 2 2.25 6.49 2.25 12C2.25 17.51 6.74 22 12.25 22C17.76 22 22.25 17.51 22.25 12C22.25 6.49 17.76 2 12.25 2ZM15.84 10.59L12.32 14.11C12.17 14.26 11.98 14.33 11.79 14.33C11.6 14.33 11.4 14.26 11.26 14.11L9.5 12.35C9.2 12.06 9.2 11.58 9.5 11.29C9.79 11 10.27 11 10.56 11.29L11.79 12.52L14.78 9.53C15.07 9.24 15.54 9.24 15.84 9.53C16.13 9.82 16.13 10.3 15.84 10.59Z"
+                                                        fill="#12B76A"></path>
+                                                </svg>
+                                            </div>70% refund for booking.
+                                        </div>
+                                        <div class="column__item">
+                                            <div class="wrap-svg tw-flex tw-justify-center"><svg width="24" height="24"
+                                                    viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="M12.25 2C6.74 2 2.25 6.49 2.25 12C2.25 17.51 6.74 22 12.25 22C17.76 22 22.25 17.51 22.25 12C22.25 6.49 17.76 2 12.25 2ZM15.84 10.59L12.32 14.11C12.17 14.26 11.98 14.33 11.79 14.33C11.6 14.33 11.4 14.26 11.26 14.11L9.5 12.35C9.2 12.06 9.2 11.58 9.5 11.29C9.79 11 10.27 11 10.56 11.29L11.79 12.52L14.78 9.53C15.07 9.24 15.54 9.24 15.84 9.53C16.13 9.82 16.13 10.3 15.84 10.59Z"
+                                                        fill="#12B76A"></path>
+                                                </svg></div>30% penalty fee<span>(Automatic system rating 3*)</span>
+                                        </div>
+                                    </div>
+                                    <div class="column">
+                                        <div class="column__item case">Within 7 days before the trip</div>
+                                        <div class="column__item">
+                                            <div class="wrap-svg tw-flex tw-justify-center"><svg width="24" height="24"
+                                                    viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="M12.25 2C6.74 2 2.25 6.49 2.25 12C2.25 17.51 6.74 22 12.25 22C17.76 22 22.25 17.51 22.25 12C22.25 6.49 17.76 2 12.25 2ZM14.67 13.39C14.97 13.69 14.96 14.16 14.67 14.45C14.52 14.59 14.33 14.67 14.14 14.67C13.95 14.67 13.75 14.59 13.61 14.44L12.25 13.07L10.9 14.44C10.75 14.59 10.56 14.67 10.36 14.67C10.17 14.67 9.98 14.59 9.84 14.45C9.54 14.16 9.53999 13.69 9.82999 13.39L11.2 12L9.82999 10.61C9.53999 10.31 9.54 9.84 9.84 9.55C10.13 9.26 10.61 9.26 10.9 9.56L12.25 10.93L13.61 9.56C13.9 9.26 14.37 9.26 14.67 9.55C14.96 9.84 14.97 10.31 14.67 10.61L13.3 12L14.67 13.39Z"
+                                                        fill="#F04438"></path>
+                                                </svg></div>No refund
+                                        </div>
+                                        <div class="column__item">
+                                            <div class="wrap-svg tw-flex tw-justify-center"><svg width="24" height="24"
+                                                    viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="M12.25 2C6.74 2 2.25 6.49 2.25 12C2.25 17.51 6.74 22 12.25 22C17.76 22 22.25 17.51 22.25 12C22.25 6.49 17.76 2 12.25 2ZM14.67 13.39C14.97 13.69 14.96 14.16 14.67 14.45C14.52 14.59 14.33 14.67 14.14 14.67C13.95 14.67 13.75 14.59 13.61 14.44L12.25 13.07L10.9 14.44C10.75 14.59 10.56 14.67 10.36 14.67C10.17 14.67 9.98 14.59 9.84 14.45C9.54 14.16 9.53999 13.69 9.82999 13.39L11.2 12L9.82999 10.61C9.53999 10.31 9.54 9.84 9.84 9.55C10.13 9.26 10.61 9.26 10.9 9.56L12.25 10.93L13.61 9.56C13.9 9.26 14.37 9.26 14.67 9.55C14.96 9.84 14.97 10.31 14.67 10.61L13.3 12L14.67 13.39Z"
+                                                        fill="#F04438"></path>
+                                                </svg></div>100% penalty fee<span>(Automatic system rating 2*)</span>
+                                        </div>
+                                    </div>
+                                    <div class="desc-note">
+                                        <p>
+                                            * The renter will not receive a refund for not accepting the car
+                                            reservation.
+                                        </p>
+                                        <p>
+                                            * If the owner does not deliver the car, you will be fully refunded &amp;
+                                            compensated 100% of the reservation fee.
+                                        </p>
+                                        <p class="df-align-center">
+                                            * The reservation fee &amp; compensation for
+                                            cancellations by the owner (if any) will be refunded to you via
+                                            bank transfer within 1-3 business days.
+                                            <span class="tooltip tooltip--m ">
+                                                <span class="wrap-svg">
+                                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                            d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
+                                                            stroke="black" stroke-width="1.5" stroke-linecap="round"
+                                                            stroke-linejoin="round"></path>
+                                                        <path
+                                                            d="M9.08984 9.00008C9.32495 8.33175 9.789 7.76819 10.3998 7.40921C11.0106 7.05024 11.7287 6.91902 12.427 7.03879C13.1253 7.15857 13.7587 7.52161 14.2149 8.06361C14.6712 8.60561 14.9209 9.2916 14.9198 10.0001C14.9198 12.0001 11.9198 13.0001 11.9198 13.0001"
+                                                            stroke="black" stroke-width="1.5" stroke-linecap="round"
+                                                            stroke-linejoin="round"></path>
+                                                        <path d="M12 17H12.01" stroke="black" stroke-width="1.5"
+                                                            stroke-linecap="round" stroke-linejoin="round"></path>
+                                                    </svg>
+                                                </span>
+                                                <span class="tooltip-text">
+                                                    <b>Refund &amp; deposit compensation procedures</b>We will refund
+                                                    the deposit (&amp; deposit compensation due to trip cancellation by
+                                                    the
+                                                    owner (if any) according to the cancellation policy) to the renter's
+                                                    bank account within 1-3 business days from the time of
+                                                    cancellation.<i>*Our staff will contact the renter (via the phone
+                                                        number registered on the website) to request bank account
+                                                        information, or the renter can proactively send information to
+                                                        our system via email at contact&#64;gmail.com or message on the
+                                                        Fanpage.</i></span></span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="line-page"></div>
+                            <div class="line-page"></div>
+                            <div class="info-car-desc" id="owner">
+                                <h6>Owner</h6>
+                                <div class="profile-info"><a href="/profile/{{user.id}}" class="profile-desc">
+                                        <div class="avatar avatar--m"><img loading="lazy"
+                                                src="{{user.avatar}}"
+                                                alt="{{user.firstName}} {{user.lastName}}">
+                                        </div>
+                                        <div class="info">
+                                            <h5>{{user.firstName}} {{user.lastName}}</h5>
+                                            <div class="verifi">
+                                                <div class="wrap-svg"><svg class="star-rating" width="16" height="17"
+                                                        viewBox="0 0 16 17" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                            d="M14.6667 7.23331C14.7333 6.89998 14.4667 6.49998 14.1333 6.49998L10.3333 5.96665L8.59999 2.49998C8.53333 2.36665 8.46666 2.29998 8.33333 2.23331C7.99999 2.03331 7.59999 2.16665 7.39999 2.49998L5.73333 5.96665L1.93333 6.49998C1.73333 6.49998 1.59999 6.56665 1.53333 6.69998C1.26666 6.96665 1.26666 7.36665 1.53333 7.63331L4.26666 10.3L3.59999 14.1C3.59999 14.2333 3.59999 14.3666 3.66666 14.5C3.86666 14.8333 4.26666 14.9666 4.59999 14.7666L7.99999 12.9666L11.4 14.7666C11.4667 14.8333 11.6 14.8333 11.7333 14.8333C11.8 14.8333 11.8 14.8333 11.8667 14.8333C12.2 14.7666 12.4667 14.4333 12.4 14.0333L11.7333 10.2333L14.4667 7.56665C14.6 7.49998 14.6667 7.36665 14.6667 7.23331Z"
+                                                            fill="#FFC634"></path>
+                                                    </svg></div>
+                                                <p class="info">{{user.rating.toFixed(1)}}</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <div class="owner-response">
+                                        <div class="response-desc">
+                                            <p class="title">Tỉ lệ phản hồi</p>
+                                            <p class="rate">100%</p>
+                                        </div>
+                                        <div class="response-desc">
+                                            <p class="title">Thời gian phản hồi</p>
+                                            <p class="rate">5 phút</p>
+                                        </div>
+                                        <div class="response-desc">
+                                            <p class="title">Tỉ lệ đồng ý</p>
+                                            <p class="rate">90%</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="info-car-desc">
+                                <div class="reviews">
+                                    <div class="rate-review">
+                                        <div class="wrap-svg">
+                                            <svg class="star-rating" width="16" height="17" viewBox="0 0 16 17"
+                                                fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M14.6667 7.23331C14.7333 6.89998 14.4667 6.49998 14.1333 6.49998L10.3333 5.96665L8.59999 2.49998C8.53333 2.36665 8.46666 2.29998 8.33333 2.23331C7.99999 2.03331 7.59999 2.16665 7.39999 2.49998L5.73333 5.96665L1.93333 6.49998C1.73333 6.49998 1.59999 6.56665 1.53333 6.69998C1.26666 6.96665 1.26666 7.36665 1.53333 7.63331L4.26666 10.3L3.59999 14.1C3.59999 14.2333 3.59999 14.3666 3.66666 14.5C3.86666 14.8333 4.26666 14.9666 4.59999 14.7666L7.99999 12.9666L11.4 14.7666C11.4667 14.8333 11.6 14.8333 11.7333 14.8333C11.8 14.8333 11.8 14.8333 11.8667 14.8333C12.2 14.7666 12.4667 14.4333 12.4 14.0333L11.7333 10.2333L14.4667 7.56665C14.6 7.49998 14.6667 7.36665 14.6667 7.23331Z"
+                                                    fill="#FFC634"></path>
+                                            </svg>
+                                        </div>
+                                        <p class="rate">{{carRateAvg.toFixed(1)}}</p>
+                                    </div><span class="dot">•</span>
+                                    <p class="total-review">{{totalRate}} Rates</p>
+                                </div>
+                                <div class="list-reviews">
+                                    <div class="item-review" *ngFor="let r of rates">
+                                        <div class="profile">
+                                            <div class="desc">
+                                                <a href="/profile/{{r.senderId}}" class="avatar avatar--m">
+                                                    <img loading="lazy"
+                                                        src="{{r.senderAvatar}}"
+                                                        alt="{{r.senderLastName}}">
+                                                </a>
+                                                <div class="info"><a href="/profile/{{r.senderId}}">
+                                                        <h6>{{r.senderFirstName}} {{r.senderLastName}}</h6>
+                                                    </a>
+                                                    <div class="rate">
+                                                        <div class="star-ratings" title="5 Stars"
+                                                            style="position: relative; box-sizing: border-box; display: inline-block;">
+                                                            <svg class="star-grad"
+                                                                style="position: absolute; z-index: 0; width: 0px; height: 0px; visibility: hidden;">
+                                                                <defs>
+                                                                    <linearGradient id="starGrad078528009180899" x1="0%"
+                                                                        y1="0%" x2="100%" y2="0%">
+                                                                        <stop offset="0%" class="stop-color-first"
+                                                                            style="stop-color: rgb(255, 198, 52); stop-opacity: 1;">
+                                                                        </stop>
+                                                                        <stop offset="0%" class="stop-color-first"
+                                                                            style="stop-color: rgb(255, 198, 52); stop-opacity: 1;">
+                                                                        </stop>
+                                                                        <stop offset="0%" class="stop-color-final"
+                                                                            style="stop-color: rgb(203, 211, 227); stop-opacity: 1;">
+                                                                        </stop>
+                                                                        <stop offset="100%" class="stop-color-final"
+                                                                            style="stop-color: rgb(203, 211, 227); stop-opacity: 1;">
+                                                                        </stop>
+                                                                    </linearGradient>
+                                                                </defs>
+                                                            </svg>
+                                                            <div class="star-container"
+                                                                *ngFor="let i of [].constructor(roundStars(r.stars))"
+                                                                style="position: relative; display: inline-block; vertical-align: middle; padding-right: 1px;">
+                                                                <svg viewBox="0 0 51 48" class="widget-svg"
+                                                                    style="width: 17px; height: 17px; transition: transform 0.2s ease-in-out 0s;">
+                                                                    <path class="star"
+                                                                        d="m25,1 6,17h18l-14,11 5,17-15-10-15,10 5-17-14-11h18z"
+                                                                        style="fill: rgb(255, 198, 52); transition: fill 0.2s ease-in-out 0s;">
+                                                                    </path>
+                                                                </svg>
+                                                            </div>
+                                                        </div>
+                                                        <p class="time">{{getDate(r.dateTime)}}/{{getMonth(r.dateTime)}}
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <pre class="main-review">{{r.comment}}</pre>
+                                    </div>
+                                </div>
+                                <div class="btn-see-more" *ngIf="moreRate" (click)="getMoreComment()">
+                                    <a class="btn btn--s btn-secondary">More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="related-car space sec" *ngIf="relateCars.length > 0">
+                    <div class="m-container">
+                        <h6 style="display: inline;">Related cars</h6><span><small> (Drag to view the
+                                cars)</small></span>
+                    </div>
+                    <div class="m-container">
+                        <!-- loading -->
+                        <app-loading *ngIf="isLoadingRelated"></app-loading>
+                        <div *ngIf="!isLoadingRelated"
+                            class="swiper swiper-related-car swiper-initialized swiper-horizontal swiper-pointer-events swiper-backface-hidden">
+                            <div class="swiper-wrapper" id="dragItem" #dragItem (mousedown)="onMouseDown($event)"
+                                (mouseup)="onMouseUp()" (mouseleave)="onMouseLeave()" (mousemove)="onMouseMove($event)">
+                                <div *ngFor="let c of relateCars" class="swiper-slide swiper-slide-active"
+                                    style="width: 300px; margin-right: 20px;">
+                                    <a href="car/detail/{{c.id}}" class=" item-car">
+                                        <div class="item-box">
+                                            <div class="img-car">
+                                                <div class="fix-img"><img loading="lazy" src="{{c.front}}"
+                                                        style="height: 100%;" alt="{{c.brand}} {{c.model}}">
+                                                </div>
+                                                <!-- <div class="fav-item wrap-svg" name="favIcon">
+                                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                            d="M17.7083 7.26666C17.7083 8.23333 17.3417 9.20833 16.6 9.95L15.3667 11.1833L10.0583 16.4917C10.0333 16.5167 10.025 16.525 10 16.5417C9.97501 16.525 9.96667 16.5167 9.94167 16.4917L3.40001 9.95C2.65834 9.20833 2.29167 8.24166 2.29167 7.26666C2.29167 6.29166 2.65834 5.31667 3.40001 4.575C4.88334 3.1 7.28334 3.1 8.76667 4.575L9.99167 5.80833L11.225 4.575C12.7083 3.1 15.1 3.1 16.5833 4.575C17.3417 5.31667 17.7083 6.28333 17.7083 7.26666Z"
+                                                            stroke="white" stroke-width="1.5" stroke-linecap="round"
+                                                            stroke-linejoin="round"></path>
+                                                    </svg>
+                                                </div> -->
+                                                <!-- <span class="label-pos">
+                                                    <span class="rent">
+                                                        Đặt xe nhanh
+                                                        <svg width="16" height="16" viewBox="0 0 16 16"
+                                                            fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <path
+                                                                d="M12.9733 7.70015L8.46667 14.2668C8.29334 14.5268 8.01335 14.6668 7.71335 14.6668C7.62002 14.6668 7.52667 14.6535 7.43334 14.6268C7.05334 14.5068 6.79335 14.1668 6.79335 13.7735V10.0135C6.79335 9.86015 6.64667 9.72682 6.46667 9.72682L3.78001 9.6935C3.44001 9.6935 3.12668 9.50016 2.97335 9.20682C2.82668 8.92016 2.84668 8.5735 3.03335 8.30017L7.53335 1.7335C7.76001 1.40016 8.18001 1.25349 8.56668 1.37349C8.94668 1.49349 9.20668 1.83349 9.20668 2.22682V5.98683C9.20668 6.14017 9.35335 6.2735 9.53335 6.2735L12.22 6.30682C12.56 6.30682 12.8733 6.49349 13.0267 6.79349C13.1733 7.08016 13.1533 7.42682 12.9733 7.70015Z"
+                                                                fill="#FFC634"></path>
+                                                        </svg>
+                                                    </span>
+                                                    <span class="rent">
+                                                        Miễn thế chấp
+                                                        <svg width="16"
+                                                            height="16" viewBox="0 0 16 16" fill="none"
+                                                            xmlns="http://www.w3.org/2000/svg">
+                                                            <path
+                                                                d="M2.06654 3.41201L3.30916 4.68289C3.50222 4.88033 3.81878 4.88389 4.01622 4.69084C4.21367 4.49778 4.21723 4.18122 4.02417 3.98378L2.73171 2.66192C4.08658 1.32458 5.9467 0.5 7.99999 0.5C12.1421 0.5 15.5 3.8579 15.5 8.00004C15.5 10.0709 14.6612 11.9454 13.3035 13.3031L11.9871 11.9806C11.7923 11.7849 11.4757 11.7842 11.28 11.979C11.0843 12.1738 11.0836 12.4904 11.2784 12.6861L12.5495 13.9631C11.2875 14.9276 9.71111 15.5001 7.99999 15.5001C3.85785 15.5001 0.5 12.1422 0.5 8.00004C0.5 6.27151 1.08422 4.68039 2.06654 3.41201Z"
+                                                                stroke="#007bff" stroke-linecap="round"
+                                                                stroke-linejoin="round"></path>
+                                                            <path
+                                                                d="M10.3364 5.92398H10.1909C10.0678 5.21142 9.48584 4.66675 8.78821 4.66675H5.12098C4.65092 4.66675 4.26666 5.07712 4.26666 5.57703C4.26666 5.6106 4.27412 5.64045 4.27785 5.67402C4.27412 5.68895 4.26666 5.70387 4.26666 5.72252V9.93815C4.26666 10.7067 4.89341 11.3334 5.65819 11.3334H10.3364C11.1012 11.3334 11.728 10.7067 11.728 9.93815V7.31551C11.728 6.547 11.1012 5.92398 10.3364 5.92398ZM10.1275 9.09876C9.87009 9.09876 9.65745 8.88984 9.65745 8.6287C9.65745 8.36755 9.87009 8.1549 10.1275 8.1549C10.3887 8.1549 10.6013 8.36755 10.6013 8.6287C10.6013 8.88984 10.3887 9.09876 10.1275 9.09876ZM5.12098 5.22635H8.78821C9.17992 5.22635 9.50822 5.52107 9.61641 5.92398H5.12098C4.95683 5.92398 4.82626 5.76729 4.82626 5.57703C4.82626 5.38303 4.95683 5.22635 5.12098 5.22635Z"
+                                                                fill="#007bff"></path>
+                                                        </svg>
+                                                    </span>
+                                                </span> -->
+                                                <!-- <div class="avatar avatar--s has-five-star">
+                                                    <img loading="lazy"
+                                                        src="../../../assets/images/icons8-user-64.png">
+                                                </div> -->
+                                            </div>
+                                            <div class="desc-car">
+                                                <div class="desc-tag">
+                                                    <span class="tag-item transmission"
+                                                        *ngIf="c.transmission == 'AUTOMATION'">
+                                                        Automation
+                                                    </span>
+                                                    <span class="tag-item transmission"
+                                                        *ngIf="c.transmission != 'AUTOMATION'">
+                                                        Manual
+                                                    </span>
+                                                    <!-- <span class="tag-item non-mortgage">
+                                                        Giao xe tận nơi
+                                                    </span> -->
+                                                </div>
+                                                <div class="desc-name">
+                                                    <p>{{c.brand}} {{c.model}}</p>
+                                                    <!-- <div class="wrap-svg">
+                                                        <svg width="24" height="24"
+                                                            viewBox="0 0 24 24" fill="none"
+                                                            xmlns="http://www.w3.org/2000/svg">
+                                                            <path
+                                                                d="M8.65372 3.63C9.89372 3.29813 11.2114 3 12 3C12.7886 3 14.1063 3.29813 15.3463 3.63C16.6149 3.9675 17.8937 4.36687 18.6457 4.60875C18.9601 4.71096 19.2389 4.8984 19.4499 5.14954C19.661 5.40068 19.7958 5.70533 19.8389 6.0285C20.52 11.0651 18.9394 14.7979 17.0217 17.2672C16.2085 18.3236 15.2388 19.2538 14.1451 20.0269C13.767 20.2944 13.3663 20.5296 12.9474 20.73C12.6274 20.8785 12.2834 21 12 21C11.7166 21 11.3737 20.8785 11.0526 20.73C10.6337 20.5296 10.233 20.2944 9.85486 20.0269C8.76118 19.2538 7.79153 18.3236 6.97829 17.2672C5.06058 14.7979 3.48001 11.0651 4.16115 6.0285C4.20422 5.70533 4.33903 5.40068 4.55008 5.14954C4.76114 4.8984 5.03988 4.71096 5.35429 4.60875C6.44594 4.25641 7.54607 3.93007 8.65372 3.63Z"
+                                                                stroke="#5fcf86" stroke-width="1.5"></path>
+                                                            <path d="M11.3333 12.6668L9.5 10.8335" stroke="#5fcf86"
+                                                                stroke-width="1.5" stroke-linecap="round"
+                                                                stroke-linejoin="round"></path>
+                                                            <path d="M14.9997 9L11.333 12.6667" stroke="#5fcf86"
+                                                                stroke-width="1.5" stroke-linecap="round"
+                                                                stroke-linejoin="round"></path>
+                                                        </svg>
+                                                    </div> -->
+                                                </div>
+                                                <div class="desc-address-price">
+                                                    <div class="address">
+                                                        <div class="wrap-svg">
+                                                            <!-- <svg xmlns="http://www.w3.org/2000/svg"
+                                                                width="16" height="17" viewBox="0 0 16 17" fill="none">
+                                                                <path
+                                                                    d="M7.99999 1.83331C5.25999 1.83331 3.03333 4.05998 3.03333 6.79998C3.03333 10.06 7.15333 14.6733 7.32666 14.8666C7.49999 15.06 7.74666 15.1666 7.99999 15.1666C8.25332 15.1666 8.49999 15.06 8.67332 14.8666C9.11332 14.38 12.9667 9.98664 12.9667 6.79998C12.9667 4.05998 10.74 1.83331 7.99999 1.83331ZM7.99999 14.12C7.45999 13.4933 4.03333 9.46664 4.03333 6.79998C4.03333 4.61331 5.81332 2.83331 7.99999 2.83331C10.1867 2.83331 11.9667 4.61331 11.9667 6.79998C11.9667 9.05331 9.41332 12.52 7.99999 14.12Z"
+                                                                    fill="#101840"></path>
+                                                                <path
+                                                                    d="M7.99999 1.83331C5.25999 1.83331 3.03333 4.05998 3.03333 6.79998C3.03333 10.06 7.15333 14.6733 7.32666 14.8666C7.49999 15.06 7.74666 15.1666 7.99999 15.1666C8.25332 15.1666 8.49999 15.06 8.67332 14.8666C9.11332 14.38 12.9667 9.98664 12.9667 6.79998C12.9667 4.05998 10.74 1.83331 7.99999 1.83331ZM5.91999 6.79998C5.91999 5.65331 6.85332 4.71998 7.99999 4.71998C9.14666 4.71998 10.08 5.65331 10.08 6.79998C10.08 7.94664 9.14666 8.87998 7.99999 8.87998C6.85332 8.87998 5.91999 7.94664 5.91999 6.79998Z"
+                                                                    fill="#101840"></path>
+                                                            </svg> -->
+                                                            <img _ngcontent-ng-c3832043520=""
+                                                                src="../../../assets/images/icon/location.png"
+                                                                style="width: 20px;" class="ng-tns-c3832043520-3"
+                                                                alt="{{c.location[0].name}}">
+                                                        </div>
+                                                        <p>{{c.location[0].name}}</p>
+                                                    </div>
+                                                </div>
+                                                <div class="line-page"></div>
+                                                <div class="desc-info-price">
+                                                    <div class="info">
+                                                        <div class="wrap-svg"><svg class="star-rating" width="16"
+                                                                height="17" viewBox="0 0 16 17" fill="none"
+                                                                xmlns="http://www.w3.org/2000/svg">
+                                                                <path
+                                                                    d="M14.6667 7.23331C14.7333 6.89998 14.4667 6.49998 14.1333 6.49998L10.3333 5.96665L8.59999 2.49998C8.53333 2.36665 8.46666 2.29998 8.33333 2.23331C7.99999 2.03331 7.59999 2.16665 7.39999 2.49998L5.73333 5.96665L1.93333 6.49998C1.73333 6.49998 1.59999 6.56665 1.53333 6.69998C1.26666 6.96665 1.26666 7.36665 1.53333 7.63331L4.26666 10.3L3.59999 14.1C3.59999 14.2333 3.59999 14.3666 3.66666 14.5C3.86666 14.8333 4.26666 14.9666 4.59999 14.7666L7.99999 12.9666L11.4 14.7666C11.4667 14.8333 11.6 14.8333 11.7333 14.8333C11.8 14.8333 11.8 14.8333 11.8667 14.8333C12.2 14.7666 12.4667 14.4333 12.4 14.0333L11.7333 10.2333L14.4667 7.56665C14.6 7.49998 14.6667 7.36665 14.6667 7.23331Z"
+                                                                    fill="#FFC634"></path>
+                                                            </svg></div><span
+                                                            class="info">{{c.rating.toFixed(1)}}</span><span
+                                                            class="dot">•</span>
+                                                        <div class="wrap-svg"><svg width="16" height="16"
+                                                                viewBox="0 0 16 16" fill="none"
+                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                style="margin-right: 4px;">
+                                                                <g clip-path="url(#clip0_1087_41996)">
+                                                                    <path
+                                                                        d="M10.0625 1.21875C10.0625 1.06369 10.1887 0.9375 10.3438 0.9375H11.9688C12.1238 0.9375 12.25 1.06369 12.25 1.21875V2.89422H13.1875V1.21875C13.1875 0.546719 12.6408 0 11.9688 0H10.3438C9.67172 0 9.125 0.546719 9.125 1.21875V2.89422H10.0625V1.21875Z"
+                                                                        fill="#5fcf86"></path>
+                                                                    <path
+                                                                        d="M5.69806 15.0623C5.49325 14.7441 5.375 14.3673 5.375 13.9686V6.94092H1.09375C0.490656 6.94092 0 7.43157 0 8.03467V13.9686C0 14.5186 0.408156 14.9749 0.9375 15.051V15.5309C0.9375 15.7898 1.14737 15.9997 1.40625 15.9997C1.66513 15.9997 1.875 15.7898 1.875 15.5309V15.0623H5.69806V15.0623ZM1.875 8.65967C1.875 8.40079 2.08487 8.19092 2.34375 8.19092C2.60263 8.19092 2.8125 8.40079 2.8125 8.65967V13.3436C2.8125 13.6024 2.60263 13.8123 2.34375 13.8123C2.08487 13.8123 1.875 13.6024 1.875 13.3436V8.65967Z"
+                                                                        fill="#5fcf86"></path>
+                                                                    <path
+                                                                        d="M4.375 5.26562C4.375 5.11056 4.50119 4.98438 4.65625 4.98438H5.375V4.92547C5.375 4.61094 5.44687 4.31291 5.57506 4.04688H4.65625C3.98422 4.04688 3.4375 4.59359 3.4375 5.26562V6.00359H4.375V5.26562Z"
+                                                                        fill="#5fcf86"></path>
+                                                                    <path
+                                                                        d="M14.9062 3.83154H7.40625C6.80316 3.83154 6.3125 4.3222 6.3125 4.92529V13.9686C6.3125 14.5186 6.72066 14.9749 7.25 15.051V15.5309C7.25 15.7898 7.45987 15.9997 7.71875 15.9997C7.97763 15.9997 8.1875 15.7898 8.1875 15.5309V15.0623H14.125V15.5309C14.125 15.7898 14.3349 15.9997 14.5938 15.9997C14.8526 15.9997 15.0625 15.7898 15.0625 15.5309V15.051C15.5918 14.9749 16 14.5186 16 13.9686V4.92529C16 4.32217 15.5093 3.83154 14.9062 3.83154ZM9.125 13.3436C9.125 13.6024 8.91513 13.8123 8.65625 13.8123C8.39737 13.8123 8.1875 13.6024 8.1875 13.3436V5.55029C8.1875 5.29142 8.39737 5.08154 8.65625 5.08154C8.91513 5.08154 9.125 5.29142 9.125 5.55029V13.3436ZM13.6562 13.8123C13.3974 13.8123 13.1875 13.6024 13.1875 13.3436V5.55029C13.1875 5.29142 13.3974 5.08154 13.6562 5.08154C13.9151 5.08154 14.125 5.29142 14.125 5.55029V13.3436C14.125 13.6024 13.9151 13.8123 13.6562 13.8123Z"
+                                                                        fill="#5fcf86"></path>
+                                                                </g>
+                                                                <defs>
+                                                                    <clipPath id="clip0_1087_41996">
+                                                                        <rect width="16" height="16" fill="white">
+                                                                        </rect>
+                                                                    </clipPath>
+                                                                </defs>
+                                                            </svg></div><span class="info">{{c.rides}} rides</span>
+                                                    </div>
+                                                    <div class="wrap-price">
+                                                        <div class="price"><span
+                                                                class="price-special">{{c.price}}K</span>/&nbsp;day
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="swiper-button-next related-car-next"></div>
+                        <div class="swiper-button-prev related-car-prev swiper-button-disabled"></div> -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+<app-footer></app-footer>

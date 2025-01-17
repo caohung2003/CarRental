@@ -1,0 +1,37 @@
+<div class="tw-text-sm tw-font-medium tw-text-center tw-text-gray-500 tw-border-b tw-border-gray-200 tw-dark:text-gray-400 tw-dark:border-gray-700">
+  <ul class="tw-flex tw-flex-wrap tw--mb-px">
+    <li class="me-2">
+      <a *ngIf="activeTab == 'Profile'" style = "border-bottom: 3px solid black; color: black; font-weight: bold"  class="tw-cursor-pointer tw-inline-flex tw-items-center tw-justify-center tw-p-4 tw-text-blue-600 tw-border-b-2 tw-border-blue-600 tw-rounded-t-lg tw-active tw-dark:text-blue-500 tw-dark:border-blue-500 tw-group" >
+        Profile
+      </a>
+      <a *ngIf="activeTab != 'Profile'" (click)="changeActiveTab('Profile')" class="tw-cursor-pointer tw-inline-block p-4 tw-border-b-2 tw-border-transparent tw-rounded-t-lg tw-hover:text-gray-600 tw-hover:border-gray-300 tw-dark:hover:text-gray-300">
+        Profile
+      </a>    </li>
+    <li class="me-2">
+      <a *ngIf="activeTab == 'Dashboard'" style = "border-bottom: 3px solid black; color: black; font-weight: bold" class="tw-cursor-pointer tw-inline-flex tw-items-center tw-justify-center p-4 tw-text-blue-600 tw-border-b-2 tw-border-blue-600 tw-rounded-t-lg tw-active dark:text-blue-500 dark:border-blue-500 group" >
+       Dashboard
+      </a>
+      <a *ngIf="activeTab != 'Dashboard'" (click)="changeActiveTab('Dashboard')" class="tw-cursor-pointer tw-inline-block p-4 tw-border-b-2 tw-border-transparent tw-rounded-t-lg tw-hover:text-gray-600 tw-hover:border-gray-300 tw-dark:hover:text-gray-300">
+        Dashboard
+      </a>
+    </li>
+    <li class="me-2">
+      <a *ngIf="activeTab == 'Settings'" style = "border-bottom: 3px solid black; color: black; font-weight: bold" class="tw-cursor-pointer tw-inline-flex tw-items-center tw-justify-center p-4 tw-text-blue-600 tw-border-b-2 tw-border-blue-600 tw-rounded-t-lg tw-active dark:text-blue-500 dark:border-blue-500 group" >
+        Settings
+      </a>
+      <a *ngIf="activeTab != 'Settings'" (click)="changeActiveTab('Settings')" class="tw-cursor-pointer tw-inline-block p-4 tw-border-b-2 tw-border-transparent tw-rounded-t-lg tw-hover:text-gray-600 tw-hover:border-gray-300 tw-dark:hover:text-gray-300">
+        Settings
+      </a>    </li>
+    <li class="me-2">
+      <a *ngIf="activeTab == 'Contacts'" style = "border-bottom: 3px solid black; color: black; font-weight: bold" class="tw-cursor-pointer tw-inline-flex tw-items-center tw-justify-center p-4 tw-text-blue-600 tw-border-b-2 tw-border-blue-600 tw-rounded-t-lg tw-active dark:text-blue-500 dark:border-blue-500 group" >
+        Contacts
+      </a>
+      <a *ngIf="activeTab != 'Contacts'" (click)="changeActiveTab('Contacts')" class="tw-cursor-pointer tw-inline-block p-4 tw-border-b-2 tw-border-transparent tw-rounded-t-lg tw-hover:text-gray-600 tw-hover:border-gray-300 tw-dark:hover:text-gray-300">
+        Contacts
+      </a>
+    </li>
+    <li>
+      <a class="inline-block p-4 text-gray-400 rounded-t-lg cursor-not-allowed dark:text-gray-500">Disabled</a>
+    </li>
+  </ul>
+</div>

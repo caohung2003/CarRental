@@ -1,0 +1,440 @@
+<div *ngIf="!mapMode">
+  <app-header style="
+  position: fixed;
+  inset-inline-start: 0px;
+  inset-inline-end: 0px;
+  top: 0;
+  z-index: 999;"></app-header>
+</div>
+<div class="hero-wrap ftco-degree-bg" style="background-image: url('./assets/images/car-4.jpg'); position: absolute;
+top: 0;" data-stellar-background-ratio="0.5">
+  <div class="overlay" style="background: none;"></div>
+  <div class="container">
+    <div class="row no-gutters slider-text justify-content-start align-items-center justify-content-center">
+      <div class="col-lg-8">
+        <div class="text w-100 text-center mb-md-5 pb-md-5">
+          <h1 class="mb-4" style="font-size: 70px;">Car <span class="green-text" style="font-size: 70px;">Rental</span>
+          </h1>
+          <p class="mb-4 tw-text-lg">Embark on your journey with our premier car rental services. Whether you're planning
+            a weekend getaway or a cross-country adventure, we have a fleet of top-notch vehicles to suit
+            your needs. Our commitment to quality ensures a seamless and comfortable experience, allowing
+            you to focus on the open road ahead.</p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--search form-->
+<div class="container" style="padding-top: 900px;">
+  <div #targetDiv id="target" class="row no-gutters">
+    <div class="col-md-5 d-flex align-items-center">
+      <form #searchForm="ngForm" style="z-index: 0 !important;" (submit)="search(searchForm)"
+        class="request-form animate bg-primary">
+        <h2 style="margin-bottom: 15px;">Make your trip</h2>
+        <div class="outpickdrop">
+          <div class="pickloc">
+            <label for="" class="label">Pick-up location</label>
+            <br />
+            <div class="outloc">
+              <div class="location">
+                <div class="form-group">
+                  <select id="city" [(ngModel)]="chooseCity" [disabled]="true" name="city" #city
+                    (change)="loadDistricts(city)" class="lslt">
+                    <option [value]="0">All city</option>
+                    <option [value]="city.code" *ngFor="let city of cities">{{city.name}}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="location">
+
+                <div class="form-group">
+                  <select #district [disabled]="true" [(ngModel)]="chooseDistrict" id="district" name="district"
+                    (change)="loadWards(city, district)" class="lslt">
+                    <option [value]="0" [selected]="true">All district</option>
+                    <option [value]="district.code" *ngFor="let district of districts">{{district.name}}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="location">
+                <div class="form-group">
+                  <select [(ngModel)]="chooseWard" id="ward" name="ward" #ward [disabled]="true" class="lslt">
+                    <option [value]="0" [selected]="true">All ward</option>
+                    <option [value]="ward.id" *ngFor="let ward of wards">{{ward.name}}</option>
+                  </select>
+                </div>
+              </div>
+              <div id="roadMap" style="" class="form-group">
+                <input required="true" [(ngModel)]="road" name="road" type="text" class="form-control" id="road1"
+                  placeholder="Road">
+              </div>
+            </div>
+            <div class="tw-flex tw-flex-col tw-items-center" style="text-align: center; margin-top: 10px; color: white">
+              Choose from Map:
+              <img (click)="openMap()"
+                style="margin-left: 10px; margin-bottom: 8px;width: 40px; text-align:center; cursor: pointer"
+                src="assets/images/map.png" alt="map">
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group mr-2">
+          <label for="" class="label">Pick-up date</label>
+          <input ngModel="{{(firstPick)}}" value="{{firstPick}}" required="true" type="datetime-local" name="pick1"
+            #pick1 style="border-radius: 10px" class="form-control date-input" (change)="alertErrorTime(pick1, drop1)"
+            id="book_pick_date" placeholder="Date" />
+        </div>
+        <div class="form-group mr-2">
+          <label for="" class="label">Drop-off date</label>
+          <input ngModel="{{firstDrop}}" value="{{firstDrop}}" required="true" type="datetime-local" name="drop1" #drop1
+            style="border-radius: 10px" (change)="alertErrorTime(pick1, drop1)" class="form-control date-input"
+            id="book_pick_date" placeholder="Date" />
+        </div>
+
+        <div id="ms">
+
+        </div>
+        <div class="form-group">
+          <input id="btnSubmit" [disabled]="searchForm.invalid" type="submit" value="{{searchForm.invalid ? 'Let\'s choose location' :'Search'}}"
+            class="btn btn-secondary py-3 px-4" style="margin-top: 25px;">
+        </div>
+      </form>
+    </div>
+    <div class="col-md-7 d-flex align-items-center">
+      <div class="tw-rounded-md tw-shadow-xl services-wrap rounded-right w-100">
+        <h3 class="heading-section mb-4">Better Way to Rent Your Perfect Cars</h3>
+        <div class="row d-flex mb-4">
+          <div class="col-md-4 d-flex align-self-stretch ">
+            <div class="services w-100 text-center">
+              <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-route"></span>
+              </div>
+              <div class="text w-100">
+                <h3 class="heading mb-2">Choose Your Pickup Location</h3>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 d-flex align-self-stretch ">
+            <div class="services w-100 text-center">
+              <div class="icon d-flex align-items-center justify-content-center"><span
+                  class="flaticon-handshake"></span>
+              </div>
+              <div class="text w-100">
+                <h3 class="heading mb-2">Select the Best Deal</h3>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 d-flex align-self-stretch ">
+            <div class="services w-100 text-center">
+              <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-rent"></span>
+              </div>
+              <div class="text w-100">
+                <h3 class="heading mb-2">Reserve Your Rental Car</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p><a class="tw-cursor-default btn btn-primary py-3 px-4">Reserve Your Perfect Car</a></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<br>
+<!--Featured car-->
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-12 heading-section text-center">
+      <span class="subheading">What we offer</span>
+      <h2 class="mb-2">Featured Vehicles</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="tw-w-full" style="overflow-x: hidden;">
+        <div class="tw-grid tw-grid-cols-3 tw-gap-8 tw-my-8">
+          <div *ngFor="let car of cars, let i = index"
+          class="tw-duration-300 tw-ease-in-out tw-transition-transform tw-transform hover:tw--translate-y-2 tw-shadow tw-p-4 tw-rounded-lg">
+          <div class="tw-relative tw-mx-auto tw-w-full">
+            <div
+              class="tw-relative tw-inline-block tw-duration-300 tw-ease-in-out tw-transition-transform tw-transform tw-w-full">
+              <div class="tw-rounded-lg tw-bg-white">
+                <div class="tw-flex tw-justify-center tw-relative tw-rounded-lg tw-overflow-hidden tw-h-52">
+                  <div class="tw-transition-transform tw-duration-500 tw-transform tw-ease-in-out tw-w-full">
+                    <div class="tw-absolute tw-inset-0">
+                      <!-- <app-carousel [images]="[car.front, car.back, car.left, car.right]">
+                      </app-carousel> -->
+                      <div id="default-carousel" class="tw-relative tw-w-full tw-h-full tw-object-center">
+                        <div class="tw-relative tw-w-full tw-min-h-full tw-overflow-hidden tw-rounded-lg">
+                          <div class="tw-duration-700 tw-ease-in-out">
+                            <img src="{{car.front}}"
+                              class="tw-absolute tw-block tw-w-full tw-h-full tw-object-cover -tw-translate-x-1/2 -tw-translate-y-1/2 tw-top-1/2 tw-left-1/2"
+                              alt="...">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="tw-absolute tw-top-0 tw-left-0 tw-inline-flex tw-z-10 tw-mt-2 tw-ml-3">
+                    <span
+                      
+                      class="tw-cursor-pointer tw-px-3 tw-py-2 tw-rounded-lg tw-bg-sky-500 tw-text-sm tw-font-medium tw-text-white tw-select-none">
+                      {{car.transmission.substring(0,1).toUpperCase()+car.transmission.toLocaleLowerCase().substring(1)}}
+                    </span>
+                    <span
+                      
+                      class="tw-cursor-pointer tw-ml-3 tw-px-3 tw-py-2 tw-rounded-lg tw-bg-red-500 tw-text-sm tw-font-medium tw-text-white tw-select-none">
+                      {{car.fuel.toString().substring(0,1).toUpperCase()+car.fuel.toString().toLocaleLowerCase().substring(1)}}
+                    </span>
+                    <span 
+                      class="tw-cursor-pointer tw-ml-3 tw-px-3 tw-py-2 tw-rounded-lg tw-bg-green-500 tw-text-sm tw-font-medium tw-text-white tw-select-none">
+                      {{car.seat}} Seats
+                    </span>
+                  </div>
+                </div>
+
+                <div class="tw-cursor-pointer" [routerLink]="'/car/detail/'+car.id">
+                  <div class="tw-mt-4">
+                    <div class="tw-flex tw-justify-between">
+                      <h2 class="tw-font-medium tw-text-base md:tw-text-lg tw-text-gray-800 tw-line-clamp-1"
+                        title="{{car.brand + ' ' + car.model}}">
+                        {{car.brand + ' ' + car.model}}
+                      </h2>
+                    </div>
+
+                    <p class="tw-mt-2 tw-text-sm tw-text-gray-800 tw-line-clamp-1 tw-flex tw-items-center"
+                      title="{{convertLocation(car.location)}}">
+                      <svg _ngcontent-ng-c2663416677="" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+                        stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"
+                        class="tw-h-5 tw-w-5 tw-mr-1.5 tw-mt-1">
+                        <path _ngcontent-ng-c2663416677="" stroke="none" d="M0 0h24v24H0z"></path>
+                        <circle _ngcontent-ng-c2663416677="" cx="12" cy="11" r="3"></circle>
+                        <path _ngcontent-ng-c2663416677=""
+                          d="M17.657 16.657L13.414 20.9a1.998 1.998 0 0 1 -2.827 0l-4.244-4.243a8 8 0 1 1 11.314 0z">
+                        </path>
+                      </svg>
+                      <span class="tw-mt-1 tw-truncate">{{convertLocation(car.location)}}</span>
+                    </p>
+                  </div>
+                  <hr class="tw-h-px tw-my-4 tw-mx-5 tw-bg-gray-400 tw-border-0 dark:tw-bg-gray-700">
+                  <div>
+                    <ul class="tw-flex tw-justify-between tw-items-center tw-list-none">
+
+                      <li>
+                        <span class="tw-text-gray-800">Rating</span>
+                        <ul class="tw-text-lg tw-font-medium tw-flex tw-text-amber-400 tw-list-none">
+                          <li class="tw-inline tw-mr-2 tw-flex tw-justify-between tw-items-center">
+                            <svg class="tw-w-4 tw-h-4 tw-text-yellow-300" aria-hidden="true"
+                              xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+                              <path
+                                d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                            </svg>
+                          </li>
+                          <li class="tw-inline tw-mr-2 tw-flex tw-justify-between tw-items-center">
+                            <p class="tw-text-sm tw-font-bold tw-text-gray-900 dark:tw-text-white">
+                              {{car.rating.toFixed(1)}}
+                            </p>
+                          </li>
+                        </ul>
+                      </li>
+
+                      <li>
+                        <span class="tw-text-gray-800">Total rides</span>
+                        <ul class="tw-text-lg tw-font-medium tw-flex tw-text-amber-400 tw-list-none">
+                          <li class="tw-inline tw-mr-2 tw-flex tw-justify-between tw-items-center">
+                            <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"
+                              class="tw-inline-block tw-w-4 tw-h-4 tw-mr-2 xl:tw-w-4 xl:tw-h-4 tw-text-gray-800"
+                              style="margin-right: 4px;">
+                              <g _ngcontent-ng-c3017780776="" clip-path="url(#clip0_1087_41996)">
+                                <path _ngcontent-ng-c3017780776=""
+                                  d="M10.0625 1.21875C10.0625 1.06369 10.1887 0.9375 10.3438 0.9375H11.9688C12.1238 0.9375 12.25 1.06369 12.25 1.21875V2.89422H13.1875V1.21875C13.1875 0.546719 12.6408 0 11.9688 0H10.3438C9.67172 0 9.125 0.546719 9.125 1.21875V2.89422H10.0625V1.21875Z"
+                                  fill="#5FCF86"></path>
+                                <path _ngcontent-ng-c3017780776=""
+                                  d="M5.69806 15.0623C5.49325 14.7441 5.375 14.3673 5.375 13.9686V6.94092H1.09375C0.490656 6.94092 0 7.43157 0 8.03467V13.9686C0 14.5186 0.408156 14.9749 0.9375 15.051V15.5309C0.9375 15.7898 1.14737 15.9997 1.40625 15.9997C1.66513 15.9997 1.875 15.7898 1.875 15.5309V15.0623H5.69806V15.0623ZM1.875 8.65967C1.875 8.40079 2.08487 8.19092 2.34375 8.19092C2.60263 8.19092 2.8125 8.40079 2.8125 8.65967V13.3436C2.8125 13.6024 2.60263 13.8123 2.34375 13.8123C2.08487 13.8123 1.875 13.6024 1.875 13.3436V8.65967Z"
+                                  fill="#5FCF86"></path>
+                                <path _ngcontent-ng-c3017780776=""
+                                  d="M4.375 5.26562C4.375 5.11056 4.50119 4.98438 4.65625 4.98438H5.375V4.92547C5.375 4.61094 5.44687 4.31291 5.57506 4.04688H4.65625C3.98422 4.04688 3.4375 4.59359 3.4375 5.26562V6.00359H4.375V5.26562Z"
+                                  fill="#5FCF86"></path>
+                                <path _ngcontent-ng-c3017780776=""
+                                  d="M14.9062 3.83154H7.40625C6.80316 3.83154 6.3125 4.3222 6.3125 4.92529V13.9686C6.3125 14.5186 6.72066 14.9749 7.25 15.051V15.5309C7.25 15.7898 7.45987 15.9997 7.71875 15.9997C7.97763 15.9997 8.1875 15.7898 8.1875 15.5309V15.0623H14.125V15.5309C14.125 15.7898 14.3349 15.9997 14.5938 15.9997C14.8526 15.9997 15.0625 15.7898 15.0625 15.5309V15.051C15.5918 14.9749 16 14.5186 16 13.9686V4.92529C16 4.32217 15.5093 3.83154 14.9062 3.83154ZM9.125 13.3436C9.125 13.6024 8.91513 13.8123 8.65625 13.8123C8.39737 13.8123 8.1875 13.6024 8.1875 13.3436V5.55029C8.1875 5.29142 8.39737 5.08154 8.65625 5.08154C8.91513 5.08154 9.125 5.29142 9.125 5.55029V13.3436ZM13.6562 13.8123C13.3974 13.8123 13.1875 13.6024 13.1875 13.3436V5.55029C13.1875 5.29142 13.3974 5.08154 13.6562 5.08154C13.9151 5.08154 14.125 5.29142 14.125 5.55029V13.3436C14.125 13.6024 13.9151 13.8123 13.6562 13.8123Z"
+                                  fill="#5FCF86"></path>
+                              </g>
+                              <defs _ngcontent-ng-c3017780776="">
+                                <clipPath _ngcontent-ng-c3017780776="" id="clip0_1087_41996">
+                                  <rect _ngcontent-ng-c3017780776="" width="16" height="16" fill="white"></rect>
+                                </clipPath>
+                              </defs>
+                            </svg>
+                          </li>
+                          <li class="tw-inline tw-mr-2 tw-flex tw-justify-between tw-items-center">
+                            <p class="tw-text-sm tw-font-bold tw-text-gray-900 dark:tw-text-white">
+                              {{car.rides}}
+                            </p>
+                          </li>
+                        </ul>
+                      </li>
+                      <li>
+                        <span class="tw-text-gray-800">Price</span>
+                        <p class="tw-text-lg tw-font-bold tw-text-green-400">{{car.price.toLocaleString('vi-VN')}} VND
+                          <span class="tw-text-xs tw-text-gray-600">/day</span>
+                        </p>
+                      </li>
+
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<br>
+<!--About us-->
+<div class="container">
+  <section class="ftco-section ftco-about">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 p-md-5 img img-2 d-flex justify-content-center align-items-center"
+          style="background-image: url(assets/images/about.jpg);">
+        </div>
+        <div class="col-md-6 wrap-about">
+          <div class="heading-section heading-section-white pl-md-5">
+            <span class="subheading">About us</span>
+            <h2 class="mb-4">Welcome to Car Rental</h2>
+
+            <p>Welcome to the world of CarRental, where your travel experiences are
+              elevated to new heights. At CarRental, we understand the significance
+              of seamless and reliable car rental services in enhancing your
+              journeys. Our commitment revolves around providing you with a
+              user-friendly platform that transforms the often daunting task of
+              car rentals into a simple and enjoyable experience.</p>
+            <p>Distinguished by our diverse fleet, we offer a wide range
+              of vehicles tailored to meet your specific needs.
+              Whether you're embarking on a quick city escape, a family adventure,
+              or a business trip, CarRental ensures that you have access to
+              well-maintained and reliable vehicles that prioritize your comfort
+              and safety.</p>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<br>
+<!--Register car-->
+<div class="container">
+  <section class="ftco-section ftco-intro" style="background-image: url(assets/images/bg_3.jpg);">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row justify-content-end">
+        <div class="col-md-6 heading-section heading-section-white ">
+          <h2 class="mb-3">Do You Want To Earn With Us? So Don't Be Late.</h2>
+          <a href="/add-car" class="btn btn-primary btn-lg">Register your car now</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<br>
+<!--Cars in city-->
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-12 heading-section text-center mb-5">
+      <h2 class="mb-2">Where to find us?</h2>
+      <span class="subheading">We have plenty of cars in all of country</span>
+    </div>
+  </div>
+  <section class="tw-p-4 tw-py-8 ftco-counter ftco-section img bg-light" id="section-counter">
+    <div class="container tw-p-0">
+      <div class="city-container">
+        <div class="justify-content-center counter-wrap" *ngFor="let city of carCount | keyvalue">
+          <div *ngIf="city.key === 'Thành phố Hà Nội'" class="image-container">
+              <img src="assets/images/location/Hanoi-Image.jpg" alt="Hanoi" class="image">
+              <div class="block-18" style="padding-top: 50px;">
+                <div class="text text-border align-items-center text-img">
+                  <strong style="font-size: 20px;">{{city.value}} Cars</strong>
+                  <span style="font-size: 20px; color: #f6f6f6; padding-left: 0 !important;">{{city.key}}</span>
+                </div>
+              </div>
+            
+          </div>
+          <div *ngIf="city.key === 'Thành phố Hồ Chí Minh'" class="image-container">
+              <img src="assets/images/location/HCM-Image.jpg" alt="HCM" class="image">
+              <div class="block-18">
+                <div class="text text-border align-items-center text-img">
+                  <strong style="font-size: 20px;">{{city.value}} Cars</strong>
+                  <span style="font-size: 20px; color: #f6f6f6; padding-left: 0 !important;">{{city.key}}</span>
+                </div>
+              </div>
+            
+          </div>
+          <div *ngIf="city.key === 'Thành phố Đà Nẵng'" class="image-container">
+              <img src="assets/images/location/Danang-Image.jpg" alt="Danang" class="image">
+              <div class="block-18">
+                <div class="text text-border align-items-center text-img">
+                  <strong style="font-size: 20px;">{{city.value}} Cars</strong>
+                  <span style="font-size: 20px; color: #f6f6f6; padding-left: 0 !important;">{{city.key}}</span>
+                </div>
+              </div>
+          </div>
+          <div *ngIf="city.key === 'Thành phố Hải Phòng'" class="image-container">
+              <img src="assets/images/location/Haiphong-Image.jpg" alt="Haiphong" class="image">
+              <div class="block-18">
+                <div class="text text-border align-items-center text-img">
+                  <strong style="font-size: 20px;">{{city.value}} Cars</strong>
+                  <span style="font-size: 20px; color: #f6f6f6; padding-left: 0 !important;">{{city.key}}</span>
+                </div>
+              </div>
+          </div>
+          <div *ngIf="city.key === 'Thành phố Cần Thơ'" class="image-container">
+              <img src="assets/images/location/Cantho-Image.jpg" alt="Cantho" class="image">
+              <div class="block-18">
+                <div class="text text-border align-items-center text-img">
+                  <strong style="font-size: 20px;">{{city.value}} Cars</strong>
+                  <span style="font-size: 20px; color: #f6f6f6; padding-left: 0 !important;">{{city.key}}</span>
+                </div>
+              </div>
+          </div>
+          <div *ngIf="city.key === 'Tỉnh Quảng Ninh'" class="image-container">
+              <img src="assets/images/location/Quangninh-Image.jpg" alt="Quangninh" class="image">
+              <div class="block-18">
+                <div class="text text-border align-items-center text-img">
+                  <strong style="font-size: 20px;">{{city.value}} Cars</strong>
+                  <span style="font-size: 20px; color: #f6f6f6; padding-left: 0 !important;">{{city.key}}</span>
+                </div>
+              </div>
+          </div>
+          <div *ngIf="city.key === 'Tỉnh Khánh Hòa'" class="image-container">
+              <img src="assets/images/location/Khanhhoa-Image.jpg" alt="Khanhhoa" class="image">
+              <div class="block-18">
+                <div class="text text-border align-items-center text-img">
+                  <strong style="font-size: 20px;">{{city.value}} Cars</strong>
+                  <span style="font-size: 20px; color: #f6f6f6; padding-left: 0 !important;">{{city.key}}</span>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+<div id="mp" class="fullscreen-overlay">
+  <!-- Nội dung của div sẽ chiếm toàn bộ màn hình -->
+  <div style="height: 100%">
+    <app-map [zoom]="zoom" [lat]="lat" [lng]="lng" [mapMode]="mapMode" (updateData)="closeMap($event)"
+      (notify)="handleMapChange($event)"></app-map>
+
+  </div>
+</div>
+<div *ngIf="!mapMode">
+  <app-footer></app-footer>
+</div>

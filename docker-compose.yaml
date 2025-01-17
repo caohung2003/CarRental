@@ -1,0 +1,65 @@
+version: "3"
+
+networks:
+  car-rental-network:
+    driver: bridge
+
+services:
+  car-rental-api:
+    networks:
+      - car-rental-network
+    build:
+      context: ./car-rental-api/CarRental
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - "8080:8080"
+    env_file:
+      - .env
+    environment:
+      - SPRING_MAIL_BASE_URL=http://localhost:8888
+      - APPLICATION_URL_BASE=http://localhost:8888
+
+  car-rental-portal:
+    networks:
+      - car-rental-network
+    build:
+      context: ./car-rental-portal/Frontend
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - "4200:4200"
+    environment:
+      - apiBaseUrl=http://localhost:8880/api/v1
+      - baseAPIUrlImage=http://localhost:8880/api/v1/image
+      - basePortalUrl=http://localhost:4200
+      - baseAPIUrlNotification=http://localhost:8880/api/v1/notification
+    
+  database:
+    networks:
+      - car-rental-network
+    image:
+      mysql:latest
+    restart: always
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./Create_database.sql:/docker-entrypoint-initdb.d/Create_database.sql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+  
+  nginx:
+    networks:
+      - car-rental-network  
+    image: nginx:latest
+    restart: always
+    ports:
+      - "8888:80"
+    depends_on:
+      - car-rental-api
+      - car-rental-portal
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+
+
+

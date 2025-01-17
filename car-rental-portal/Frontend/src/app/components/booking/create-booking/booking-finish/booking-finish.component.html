@@ -1,0 +1,77 @@
+<!-- *ngIf="createBookingResp" -->
+<app-header></app-header>
+<div class="container mb-3 tw-mt-8" *ngIf="createBookingResp">
+    <h2 class="text-center">Thank you for using our service, this is your booking summary:</h2>
+    <div class="card">
+        <div class="card-body">
+
+            <!-- <h5 class="card-title">Renter's infomation</h5>
+
+            <p class="card-text d-flex justify-content-between align-items-center">Full name
+                <span>{{createBookingResp.renterFirstName +' '+ createBookingResp.renterLastName}}</span>
+            </p>
+            <p class="card-text d-flex justify-content-between align-items-center">Email
+                <span>{{createBookingResp.renterEmail}}</span>
+            </p>
+            <p class="card-text d-flex justify-content-between align-items-center">Phone number
+                <span>{{createBookingResp.renterPhone}}</span>
+            </p> -->
+
+            <h2 class="card-title">Booking infomation</h2>
+            <hr/>
+            <div class="card-text d-flex justify-content-between align-items-center">
+                <h5>Booking ID</h5>
+                <span>{{createBookingResp.id}}</span>
+            </div>
+            <!-- <p class="card-text">User ID: </p> -->
+            <!-- <p class="card-text">Car ID:</p> -->
+            <div class="card-text d-flex justify-content-between align-items-center">Pick-up Date Time
+                <span>{{createBookingResp.pickUpDateTime | date:'HH:mm, dd/MM/yyyy'}}</span>
+            </div>
+            <div class="card-text d-flex justify-content-between align-items-center">Return Date Time
+                <span>{{createBookingResp.returnDateTime | date:'HH:mm, dd/MM/yyyy'}}</span>
+            </div>
+
+            <hr/>
+            <div class="card-text d-flex justify-content-between align-items-center">Number of Days
+                <span>{{createBookingResp.numberOfDays}}</span>
+            </div>
+            <div class="card-text d-flex justify-content-between align-items-center">
+                <h5>Base Price</h5>
+                <div>
+                    <span style="color: #01d28e;">{{(createBookingResp.basePrice).toLocaleString('vi-VN')}}
+                        VND</span> / day
+                </div>
+            </div>
+
+            <div class="card-text d-flex justify-content-between align-items-center">
+                <h5>Total</h5>
+                <div>
+                    <span style="color: #01d28e;">{{(createBookingResp.total).toLocaleString('vi-VN')}}
+                        VND</span>
+                </div>
+            </div>
+            
+            <div class="card-text d-flex justify-content-between align-items-center">
+                <h5>Deposit</h5>
+                <div>
+                    <span style="color: #01d28e;">{{(createBookingResp.deposit).toLocaleString('vi-VN')}}
+                        VND</span>
+                </div>
+            </div>
+
+            <hr/>
+            <div class="card-text d-flex justify-content-between align-items-center">Status
+                <span>{{createBookingResp.status}}</span>
+            </div>
+
+            <div class="card-text d-flex justify-content-between align-items-center">Created At
+                <span>{{createBookingResp.createdAt | date:'HH:mm, dd/MM/yyyy'}}</span>
+            </div>
+        </div>
+        
+    </div>
+    <a href="/home" class="back-to-home-btn">Back to Home</a>
+    
+</div>
+<app-footer></app-footer>

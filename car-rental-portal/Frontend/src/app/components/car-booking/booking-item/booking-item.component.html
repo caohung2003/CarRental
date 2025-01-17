@@ -1,0 +1,1096 @@
+<div class="tw-relative tw-mx-auto tw-w-full">
+  <div
+    class="tw-relative tw-inline-block tw-duration-300 tw-ease-in-out tw-transition-transform tw-transform hover:-tw-translate-y-2 tw-w-full">
+    <div [id]="'booking' + booking.id" class="tw-shadow tw-p-5 tw-rounded-lg tw-bg-white">
+      <div class="tw-flex tw-justify-center tw-relative tw-rounded-lg tw-overflow-hidden tw-h-52">
+        <div class="tw-cursor-pointer tw-transition-transform tw-duration-500 tw-transform tw-ease-in-out tw-w-full">
+          <div class="tw-absolute tw-inset-0">
+            <div id="default-carousel" class="tw-relative tw-w-auto tw-h-full tw-object-center">
+              <div class="tw-relative tw-w-full tw-min-h-full tw-overflow-hidden tw-rounded-lg">
+                <div class="tw-duration-700 tw-ease-in-out">
+                  <img [src]="booking.carImage"
+                    class="tw-absolute tw-block tw-w-full tw-h-full tw-object-cover -tw-translate-x-1/2 -tw-translate-y-1/2 tw-top-1/2 tw-left-1/2"
+                    alt="...">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <span
+          class="tw-absolute tw-top-0 tw-left-0 tw-inline-flex tw-mt-2 tw-ml-3 tw-px-3 tw-py-2 tw-rounded-lg tw-z-10 tw-bg-red-500 tw-text-sm tw-font-medium tw-text-white tw-select-none">
+          {{booking.numberOfDays}} Days
+        </span>
+        <span
+          class="tw-absolute tw-top-0 tw-right-0 tw-inline-flex tw-px-3 tw-py-2 tw-rounded-lg tw-z-10 tw-text-sm tw-font-medium tw-text-white tw-select-none">
+          <button type="button"
+            *ngIf="booking.status != 'CANCELLED' && booking.status != 'PENDING_DEPOSIT' && booking.status != 'PENDING_PAYMENT'  && ( booking.status != 'COMPLETED' || (booking.status == 'COMPLETED' && !(checkDateExpired(booking.returnDateTime))) || (booking.status == 'COMPLETED' && booking.isRating))"
+            (click)="showOption()"
+            class="tw-ml-1 tw-inline-flex tw-w-full tw-justify-center tw-rounded-full tw-bg-white tw-p-2 tw-text-sm tw-font-semibold tw-text-gray-900 hover:tw-bg-gray-50 "
+            [id]="'menu-button' + item" aria-expanded="true" aria-haspopup="true">
+            <svg class="tw-h-5 tw-w-5 tw-text-black" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="1" />
+              <circle cx="12" cy="5" r="1" />
+              <circle cx="12" cy="19" r="1" />
+            </svg>
+            <div *ngIf="booking.status == 'COMPLETED' && !booking.isRating && !checkDateExpired(booking.returnDateTime)"
+              class="tw-absolute tw-inline-flex tw-items-center tw-justify-center tw-w-6 tw-h-6 tw-text-xs tw-font-bold tw-text-white tw-bg-red-500 tw-border-2 tw-mr-3 tw-mt-3 tw-border-white tw-rounded-full -tw-top-2 -tw-end-2 dark:border-gray-900">
+              1</div>
+          </button>
+          <!-- <button type="button"
+              class="tw-ml-1 tw-nline-flex tw-w-full tw-justify-center tw-rounded-full tw-bg-white tw-p-2 tw-text-sm tw-font-semibold tw-text-gray-900 hover:tw-bg-gray-50 hover:tw-scale-110"
+              id="menu-button" aria-expanded="true" aria-haspopup="true">
+              <svg class="tw-h-5 tw-w-5 tw-text-sky-500" fill="none" viewBox="0 0 24 24"
+                  stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+          </button> -->
+
+        </span>
+      </div>
+      <div [id]="'action' + item" style="position: absolute;
+    text-align: center;
+    display: flex;
+    width: fit-content;
+    justify-content: center;
+    /*inset: 70px auto auto 135px;*/
+    right: 20px;
+    top: 13%;
+    margin: 0px;  transform: translate3d(1235.2px, 225.6px, 0px);"
+        class="tw-z-10 tw-hidden tw-bg-white tw-divide-y tw-divide-gray-100 tw-rounded tw-shadow  dark:tw-bg-gray-700 dark:tw-divide-gray-600">
+        <ul class="tw-text-sm tw-text-gray-700 dark:tw-text-gray-200" aria-labelledby="actionsDropdownButton1">
+
+          <li>
+            <div
+              *ngIf="booking.status != 'COMPLETED' && booking.status != 'CANCELLED' && !(booking.status == 'PENDING_DEPOSIT')"
+              class="tw-cursor-pointer tw-object-fit tw-flex tw-px-4 tw-py-2 hover:tw-bg-gray-100 hover:tw-text-green-400 dark:hover:tw-bg-gray-600 dark:hover:tw-text-white">
+              <svg class="tw-h-5 tw-w-5 tw-mr-1 tw-text-green-500" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              <span (click)="toggleConfirm()" *ngIf="booking.status == 'PENDING'">Confirm</span>
+              <span (click)="toggleConfirmPickUp()" *ngIf="booking.status == 'PENDING_PICK_UP'">Confirm pick up</span>
+              <span (click)="toggleConfirmReturn()" *ngIf="booking.status == 'IN_PROGRESS'">Confirm return</span>
+              <span *ngIf="booking.status == 'PENDING_PAYMENT'">Confirm return</span>
+            </div>
+            <!--            <div *ngIf="booking.status == 'PENDING_DEPOSIT' && booking.paymentType == 'WALLET'"-->
+            <!--            class = "tw-object-fit tw-flex tw-px-4 tw-py-2 ">-->
+            <!--              <span style="color: #c4bfbf" *ngIf="booking.status == 'PENDING_DEPOSIT' && booking.paymentType == 'WALLET'">Confirm pick up</span>-->
+            <!--            </div>-->
+          </li>
+          <li>
+            <div (click)="toggleDecline()"
+              *ngIf="booking.status == 'PENDING' || booking.status == 'PENDING_DEPOSIT' || booking.status == 'PENDING_PICK_UP'"
+              class="tw-cursor-pointer tw-flex tw-px-4 tw-py-2 hover:tw-bg-gray-100 hover:tw-text-red-600 dark:hover:tw-bg-gray-600 dark:hover:tw-text-white">
+              <svg class="tw-h-5 tw-w-5 tw-mr-1 tw-text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+              Decline
+            </div>
+          </li>
+          <li>
+
+            <div
+              *ngIf="booking.status == 'COMPLETED' && (booking.isRating == true || (!checkDateExpired(booking.returnDateTime)))"
+              class="tw-cursor-pointer tw-flex tw-px-4 tw-py-2 hover:tw-bg-gray-100 hover:tw-text-red-600 dark:hover:tw-bg-gray-600 dark:hover:tw-text-white">
+              <button style="border: none !important;
+    background-color: white !important;
+    color: black !important;" (click)="toggleRate()" cButton>
+                <span *ngIf="!booking.isRating && !checkDateExpired(booking.returnDateTime)">Rate</span>
+                <span *ngIf="booking.isRating">View rate</span>
+              </button>
+            </div>
+
+          </li>
+        </ul>
+      </div>
+      <div class="tw-mt-4">
+        <h2 class="tw-cursor-pointer tw-font-medium tw-text-base md:tw-text-lg tw-text-gray-800 tw-line-clamp-1"
+          title="{{booking.carName}}" (click)="redirectToMyBooking(booking.id)">
+          {{booking.carName}}
+        </h2>
+        <p class="tw-mt-2 tw-text-sm tw-text-gray-800 tw-line-clamp-1" [title]="booking.road">
+          {{booking.road}}
+        </p>
+      </div>
+      <span class="tw-relative tw-flex tw-justify-center tw-my-2">
+        <div
+          class="tw-absolute tw-inset-x-0 tw-top-1/2 tw-h-px -tw-translate-y-1/2 tw-bg-transparent tw-bg-gradient-to-r tw-from-transparent tw-via-gray-500 tw-to-transparent tw-opacity-75">
+        </div>
+
+        <span [id]="'detail' + booking.id"
+          class="tw-relative tw-text-xs tw-z-10 tw-bg-white tw-px-3 tw-text-gray-700">Detail</span>
+      </span>
+      <span style="padding-bottom: 4px;" *ngIf="booking.status == 'PENDING_PAYMENT'"
+        class="tw-bg-gray-400 tw-mb-3  tw-text-white tw-text-sm tw-font-medium tw-me-2 tw-px-2.5 tw-py-0.5 tw-rounded dark:tw-bg-green-900 dark:tw-text-green-300">Pending
+        payment</span>
+      <span style="padding-bottom: 4px;" *ngIf="booking.status == 'PENDING_PICK_UP'"
+        class="tw-bg-gray-400 tw-mb-3  tw-text-white tw-text-sm tw-font-medium tw-me-2 tw-px-2.5 tw-py-0.5 tw-rounded dark:tw-bg-green-900 dark:tw-text-green-300">Pending
+        pick up</span>
+      <span style="padding-bottom: 4px;" *ngIf="booking.status == 'PENDING_DEPOSIT' "
+        class="tw-bg-gray-400 tw-mb-3  tw-text-white tw-text-sm tw-font-medium tw-me-2 tw-px-2.5 tw-py-0.5 tw-rounded dark:tw-bg-green-900 dark:tw-text-green-300">Pending
+        deposit</span>
+      <span style="padding-bottom: 4px;" *ngIf="booking.status == 'IN_PROGRESS'"
+        class="tw-bg-gray-400 tw-mb-3  tw-text-white tw-text-sm tw-font-medium tw-me-2 tw-px-2.5 tw-py-0.5 tw-rounded dark:tw-bg-green-900 dark:tw-text-green-300">In
+        progress</span>
+      <span style="padding-bottom: 4px;" *ngIf="booking.status == 'CANCELLED'"
+        class="tw-bg-red-600 tw-mb-3  tw-text-white tw-text-sm tw-font-medium tw-me-2 tw-px-2.5 tw-py-0.5 tw-rounded dark:tw-bg-green-900 dark:tw-text-green-300">Cancelled</span>
+      <span style="padding-bottom: 4px;" *ngIf="booking.status == 'COMPLETED'"
+        class="tw-bg-green-400 tw-mb-3  tw-text-white tw-text-sm tw-font-medium tw-me-2 tw-px-2.5 tw-py-0.5 tw-rounded dark:tw-bg-green-900 dark:tw-text-green-300">Completed</span>
+
+      <span style="padding-bottom: 4px;" *ngIf="booking.paymentType == 'BANK'"
+        class="tw-bg-gray-400 tw-mb-3 tw-ml-2  tw-text-white tw-text-sm tw-font-medium tw-me-2 tw-px-2.5 tw-py-0.5 tw-rounded dark:tw-bg-green-900 dark:tw-text-green-300">Bank</span>
+      <span style="padding-bottom: 4px;" *ngIf="booking.paymentType == 'WALLET' "
+        class="tw-bg-gray-400 tw-mb-3 tw-ml-2  tw-text-white tw-text-sm tw-font-medium tw-me-2 tw-px-2.5 tw-py-0.5 tw-rounded dark:tw-bg-green-900 dark:tw-text-green-300">Wallet</span>
+      <span style="padding-bottom: 4px;" *ngIf="booking.paymentType == 'CASH' "
+        class="tw-bg-gray-400 tw-mb-3 tw-ml-2  tw-text-white tw-text-sm tw-font-medium tw-me-2 tw-px-2.5 tw-py-0.5 tw-rounded dark:tw-bg-green-900 dark:tw-text-green-300">Cash</span>
+      <div class="tw-grid tw-mt-2 tw-grid-cols-1 tw-gap-2">
+        <p class="tw-inline-flex tw-flex-col xl:tw-flex-row xl:tw-items-center tw-text-gray-800">
+          <svg class="tw-inline-block tw-w-5 tw-h-5 xl:tw-w-4 xl:tw-h-4 tw-mr-3 tw-fill-current tw-text-gray-800"
+            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+            <path
+              d="M532.01 386.17C559.48 359.05 576 325.04 576 288c0-80.02-76.45-146.13-176.18-157.94 0 .01.01.02.01.03C368.37 72.47 294.34 32 208 32 93.12 32 0 103.63 0 192c0 37.04 16.52 71.05 43.99 98.17-15.3 30.74-37.34 54.53-37.7 54.89-6.31 6.69-8.05 16.53-4.42 24.99A23.085 23.085 0 0 0 23.06 384c53.54 0 96.67-20.24 125.17-38.78 9.08 2.09 18.45 3.68 28 4.82C207.74 407.59 281.73 448 368 448c20.79 0 40.83-2.41 59.77-6.78C456.27 459.76 499.4 480 552.94 480c9.22 0 17.55-5.5 21.18-13.96 3.64-8.46 1.89-18.3-4.42-24.99-.35-.36-22.39-24.14-37.69-54.88zm-376.59-72.13l-13.24-3.05-11.39 7.41c-20.07 13.06-50.49 28.25-87.68 32.47 8.77-11.3 20.17-27.61 29.54-46.44l10.32-20.75-16.49-16.28C50.75 251.87 32 226.19 32 192c0-70.58 78.95-128 176-128s176 57.42 176 128-78.95 128-176 128c-17.73 0-35.42-2.01-52.58-5.96zm289.8 100.35l-11.39-7.41-13.24 3.05A234.318 234.318 0 0 1 368 416c-65.14 0-122-25.94-152.43-64.29C326.91 348.62 416 278.4 416 192c0-9.45-1.27-18.66-3.32-27.66C488.12 178.78 544 228.67 544 288c0 34.19-18.75 59.87-34.47 75.39l-16.49 16.28 10.32 20.75c9.38 18.86 20.81 35.19 29.53 46.44-37.19-4.22-67.6-19.41-87.67-32.47zM233.38 182.91l-41.56-12.47c-4.22-1.27-7.19-5.62-7.19-10.58 0-6.03 4.34-10.94 9.66-10.94h25.94c3.9 0 7.65 1.08 10.96 3.1 3.17 1.93 7.31 1.15 10-1.4l11.44-10.87c3.53-3.36 3.38-9.22-.54-12.11-8.18-6.03-17.97-9.58-28.08-10.32V104c0-4.42-3.58-8-8-8h-16c-4.42 0-8 3.58-8 8v13.4c-21.85 1.29-39.38 19.62-39.38 42.46 0 18.98 12.34 35.94 30 41.23l41.56 12.47c4.22 1.27 7.19 5.62 7.19 10.58 0 6.03-4.34 10.94-9.66 10.94h-25.94c-3.9 0-7.65-1.08-10.96-3.1-3.17-1.94-7.31-1.15-10 1.4l-11.44 10.87c-3.53 3.36-3.38 9.22.54 12.11 8.18 6.03 17.97 9.58 28.08 10.32V280c0 4.42 3.58 8 8 8h16c4.42 0 8-3.58 8-8v-13.4c21.85-1.29 39.38-19.62 39.38-42.46 0-18.98-12.35-35.94-30-41.23z">
+            </path>
+          </svg>
+
+          <span class="tw-mt-2 xl:tw-mt-0">
+            <div class="price" style = "font-size: 16px;"> <span>Total:</span> <span class="price-special" >{{convertMoney(booking.total)}}</span>VND</div>
+
+          </span>
+        </p>
+        <p class="tw-inline-flex tw-flex-col xl:tw-flex-row xl:tw-items-center tw-text-gray-800">
+          <svg class="tw-inline-block tw-w-5 tw-h-5 text-green-500 tw-mr-3" width="24" height="24" viewBox="0 0 24 24"
+            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+            <line x1="16" y1="2" x2="16" y2="6" />
+            <line x1="8" y1="2" x2="8" y2="6" />
+            <line x1="3" y1="10" x2="21" y2="10" />
+          </svg>
+          <span class="tw-mt-2 xl:tw-mt-0">
+            Pick up:
+            <span class="tw-font-bold">{{getDate(booking.pickUpDateTime)}}</span>
+          </span>
+        </p>
+        <p class="tw-inline-flex tw-flex-col xl:tw-flex-row xl:tw-items-center tw-text-gray-800">
+          <svg class="tw-inline-block tw-w-5 tw-h-5 text-green-500 tw-mr-3" width="24" height="24" viewBox="0 0 24 24"
+            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+            <line x1="16" y1="2" x2="16" y2="6" />
+            <line x1="8" y1="2" x2="8" y2="6" />
+            <line x1="3" y1="10" x2="21" y2="10" />
+          </svg>
+          <span class="tw-mt-2 xl:tw-mt-0">
+            Drop off:
+            <span *ngIf="booking.status != 'COMPLETED'" class="tw-font-bold">{{getDate(booking.returnDateTime)}}</span>
+            <span *ngIf="booking.status == 'COMPLETED'" class="tw-font-bold">{{booking.actualReturn != undefined ?
+              getDate(booking.actualReturn) : getDate(booking.returnDateTime)}}</span>
+
+          </span>
+        </p>
+        <p class="tw-inline-flex tw-flex-col xl:tw-flex-row xl:tw-items-center tw-text-gray-800">
+
+          <svg *ngIf="booking.status != 'COMPLETED' && booking.status != 'CANCELLED'"
+            class="tw-inline-block tw-w-5 tw-h-5 text-green-500 tw-mr-3" width="24" height="24" viewBox="0 0 24 24"
+            stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" />
+            <path d="M12 20l-3 -3h-2a3 3 0 0 1 -3 -3v-6a3 3 0 0 1 3 -3h10a3 3 0 0 1 3 3v6a3 3 0 0 1 -3 3h-2l-3 3" />
+            <line x1="8" y1="9" x2="16" y2="9" />
+            <line x1="8" y1="13" x2="14" y2="13" />
+          </svg>
+          <span *ngIf="booking.status == 'PENDING_DEPOSIT'" class="tw-mt-2 xl:tw-mt-0">
+            <span class="tw-font-semibold">Wait for renter to pay deposit</span>
+          </span>
+          <span *ngIf="booking.status == 'PENDING'" class="tw-mt-2 xl:tw-mt-0">
+            <span class="tw-font-semibold">Wait for confirm</span>
+          </span>
+          <span
+            *ngIf="!(booking.status == 'PENDING_DEPOSIT' || booking.status == 'PENDING_PAYMENT'  || booking.status == 'PENDING' || booking.status == 'COMPLETED' || booking.status == 'CANCELLED')"
+            class="tw-mt-2 xl:tw-mt-0">
+            <span class="tw-font-semibold">Enjoy your trip</span>
+          </span>
+
+          <span *ngIf="booking.status == 'PENDING_PAYMENT'" class="tw-mt-2 xl:tw-mt-0">
+            <span class="tw-font-semibold">Wait for renter to pay payment</span>
+          </span>
+
+        </p>
+      </div>
+      <span class="tw-relative tw-flex tw-justify-center tw-my-2">
+        <div
+          class="tw-absolute tw-inset-x-0 tw-top-1/2 tw-h-px -tw-translate-y-1/2 tw-bg-transparent tw-bg-gradient-to-r tw-from-transparent tw-via-gray-500 tw-to-transparent tw-opacity-75">
+        </div>
+
+        <span [id]="'renter' + booking.id"
+          class="tw-relative tw-text-xs tw-z-10 tw-bg-white tw-px-3 tw-text-gray-700">Renter</span>
+      </span>
+      <div class="tw-grid tw-grid-cols-3 tw-cursor-pointer">
+        <div class="tw-flex tw-col-span-2 tw-items-center">
+          <div class="tw-relative">
+            <div class="tw-rounded-full tw-w-6 tw-h-6 md:tw-w-8 md:tw-h-8 tw-bg-gray-200">
+              <img *ngIf="booking.user?.avatar != null && booking.user?.avatar != undefined && booking.user?.avatar != ''" class="tw-h-full tw-w-full tw-rounded-full tw-object-cover"
+                [src]=" booking.user?.avatar" alt="">
+                <img *ngIf="booking.user?.avatar == null || booking.user?.avatar == undefined || booking.user?.avatar == ''" class="tw-h-full tw-w-full tw-rounded-full tw-object-cover"
+                  src="assets/images/avatar/avatar1.png" alt="">
+            </div>
+            <span
+              class="tw-absolute tw-top-0 tw-right-0 tw-inline-block tw-w-3 tw-h-3 tw-bg-primary-red tw-rounded-full">
+            </span>
+          </div>
+
+          <div class="tw-ml-2 tw-text-gray-800">
+
+            <div (click)="redirectToProfile(booking.userId)" class="tw-text-base tw-font-medium tw-leading-none tw-text-gray-800">
+              {{booking.user?.firstName + ' ' + booking.user?.lastName}}
+            </div>
+            <div class="tw-mt-1 tw-text-sm tw-font-medium tw-leading-none tw-text-gray-400">
+              Tel: <a [href]="'tel:' + booking.user?.phone" target="_blank"><span
+                  class="tw-text-blue-600">{{booking.user?.phone}}</span></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="tw-flex tw-col-span-1 tw-justify-end tw-items-center">
+          <p
+            class="tw-flex tw-items-center tw-inline-block tw-font-semibold tw-text-primary tw-whitespace-nowrap tw-leading-tight tw-rounded-xl">
+            <svg class="tw-inline-block tw-w-5 tw-h-5 xl:tw-w-4 xl:tw-h-4 tw-text-gray-800" viewBox="0 0 24 24"
+              fill="#F8CE25" stroke="#F8CE25" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon
+                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+            </svg>
+            <span class="xl:tw-mt-0 tw-ml-1">
+              {{booking.user?.rating}}
+            </span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="booking.status == 'COMPLETED' ">
+  <c-modal alignment="center" [id]="'s' + item" [visible]="visibleRate" (visibleChange)="handleRateChange($event)">
+    <div *ngIf="!booking.isRating && !checkDateExpired(booking.returnDateTime)">
+      <c-modal-header>
+        <h5 cModalTitle>Feedback</h5>
+        <button (click)="toggleRate()" cButtonClose></button>
+      </c-modal-header>
+      <form #rateForm="ngForm" class = "tw-text-black">
+        <c-modal-body>
+          <div class="car-detail" style="margin-bottom: 15px; cursor: pointer;">
+            <div style="margin-right: 10px;">
+              <div class="item-car row">
+                <div class="row">
+                  <div class="img-car col-md-4" 
+                  style="display: flex; justify-content: center; margin-top: 10px; margin-bottom: 10px">
+                  
+                    <div class="avatar avatar--m">
+                      <img loading="lazy" [src]=" booking.user?.avatar == null || booking.user?.avatar == undefined || booking.user?.avatar == '' ? ('assets/images/avatar/avatar1.png') : (booking.user?.avatar)"
+                        alt="Đây là ảnh đấy">
+                        <!-- <img loading="lazy" src="assets/images/avatar/avatar1.png"
+                        alt="Đây là ảnh đấy"> -->
+                    </div>
+                  </div>
+                  <div class="desc-car col-md-8">
+                    <div class="desc-name">
+                      <p>{{booking.user?.firstName + ' ' + booking.user?.lastName}}</p>
+                    </div>
+                    <div class="desc-info-price">
+                      <div class="info">
+                        <div class="wrap-svg">
+                          <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg"
+                            class="star-rating">
+                            <path
+                              d="M14.6667 7.23331C14.7333 6.89998 14.4667 6.49998 14.1333 6.49998L10.3333 5.96665L8.59999 2.49998C8.53333 2.36665 8.46666 2.29998 8.33333 2.23331C7.99999 2.03331 7.59999 2.16665 7.39999 2.49998L5.73333 5.96665L1.93333 6.49998C1.73333 6.49998 1.59999 6.56665 1.53333 6.69998C1.26666 6.96665 1.26666 7.36665 1.53333 7.63331L4.26666 10.3L3.59999 14.1C3.59999 14.2333 3.59999 14.3666 3.66666 14.5C3.86666 14.8333 4.26666 14.9666 4.59999 14.7666L7.99999 12.9666L11.4 14.7666C11.4667 14.8333 11.6 14.8333 11.7333 14.8333C11.8 14.8333 11.8 14.8333 11.8667 14.8333C12.2 14.7666 12.4667 14.4333 12.4 14.0333L11.7333 10.2333L14.4667 7.56665C14.6 7.49998 14.6667 7.36665 14.6667 7.23331Z"
+                              fill="#FFC634"></path>
+                          </svg>
+                        </div>
+                        <span style="margin-top: 3px" class="info">{{booking.user?.rating}}</span><span
+                          style="margin-top: 3px" class="dot">•</span>
+                        <div class="wrap-svg">
+                          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"
+                            style="margin-right: 4px;">
+                            <g clip-path="url(#clip0_1087_41996)">
+                              <path
+                                d="M10.0625 1.21875C10.0625 1.06369 10.1887 0.9375 10.3438 0.9375H11.9688C12.1238 0.9375 12.25 1.06369 12.25 1.21875V2.89422H13.1875V1.21875C13.1875 0.546719 12.6408 0 11.9688 0H10.3438C9.67172 0 9.125 0.546719 9.125 1.21875V2.89422H10.0625V1.21875Z"
+                                fill="#5fcf86"></path>
+                              <path
+                                d="M5.69806 15.0623C5.49325 14.7441 5.375 14.3673 5.375 13.9686V6.94092H1.09375C0.490656 6.94092 0 7.43157 0 8.03467V13.9686C0 14.5186 0.408156 14.9749 0.9375 15.051V15.5309C0.9375 15.7898 1.14737 15.9997 1.40625 15.9997C1.66513 15.9997 1.875 15.7898 1.875 15.5309V15.0623H5.69806V15.0623ZM1.875 8.65967C1.875 8.40079 2.08487 8.19092 2.34375 8.19092C2.60263 8.19092 2.8125 8.40079 2.8125 8.65967V13.3436C2.8125 13.6024 2.60263 13.8123 2.34375 13.8123C2.08487 13.8123 1.875 13.6024 1.875 13.3436V8.65967Z"
+                                fill="#5fcf86"></path>
+                              <path
+                                d="M4.375 5.26562C4.375 5.11056 4.50119 4.98438 4.65625 4.98438H5.375V4.92547C5.375 4.61094 5.44687 4.31291 5.57506 4.04688H4.65625C3.98422 4.04688 3.4375 4.59359 3.4375 5.26562V6.00359H4.375V5.26562Z"
+                                fill="#5fcf86"></path>
+                              <path
+                                d="M14.9062 3.83154H7.40625C6.80316 3.83154 6.3125 4.3222 6.3125 4.92529V13.9686C6.3125 14.5186 6.72066 14.9749 7.25 15.051V15.5309C7.25 15.7898 7.45987 15.9997 7.71875 15.9997C7.97763 15.9997 8.1875 15.7898 8.1875 15.5309V15.0623H14.125V15.5309C14.125 15.7898 14.3349 15.9997 14.5938 15.9997C14.8526 15.9997 15.0625 15.7898 15.0625 15.5309V15.051C15.5918 14.9749 16 14.5186 16 13.9686V4.92529C16 4.32217 15.5093 3.83154 14.9062 3.83154ZM9.125 13.3436C9.125 13.6024 8.91513 13.8123 8.65625 13.8123C8.39737 13.8123 8.1875 13.6024 8.1875 13.3436V5.55029C8.1875 5.29142 8.39737 5.08154 8.65625 5.08154C8.91513 5.08154 9.125 5.29142 9.125 5.55029V13.3436ZM13.6562 13.8123C13.3974 13.8123 13.1875 13.6024 13.1875 13.3436V5.55029C13.1875 5.29142 13.3974 5.08154 13.6562 5.08154C13.9151 5.08154 14.125 5.29142 14.125 5.55029V13.3436C14.125 13.6024 13.9151 13.8123 13.6562 13.8123Z"
+                                fill="#5fcf86"></path>
+                            </g>
+                            <defs>
+                              <clipPath id="clip0_1087_41996">
+                                <rect width="16" height="16" fill="white"></rect>
+                              </clipPath>
+                            </defs>
+                          </svg>
+                        </div>
+                        <span style="margin-top: 3px" class="info">{{booking.user?.noBooking}}
+                          rides</span>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="line-page">
+          </div>
+          <div class="car-detail tw-text-black" *ngFor="let rating of ratings" style="margin-bottom: 15px; cursor: pointer;">
+            <div style="margin-right: 10px;">
+  
+              <div class="item-car row">
+                <div class="row">
+  
+                  <div class="img-car col-md-4"
+                    style="display: flex; justify-content: center; margin-top: 10px; margin-bottom: 10px">
+                    <div class="avatar avatar--m">
+                      <img loading="lazy" [src]=" rating.senderAvatar"
+                        alt="Đây là ảnh đấy">
+                        <!-- <img loading="lazy" src="assets/images/avatar/avatar1.png"
+                        alt="Đây là ảnh đấy"> -->
+                    </div>
+                  </div>
+                  <div class="desc-car col-md-8" style="margin-top: 10px">
+                    <div class="desc-name" style="display: flex;justify-content: space-between; height: 10px">
+                      <div>
+                        <p>
+                          {{rating.senderFirstName + ' ' + rating.senderLastName}}
+                          <span  *ngIf="!rating.isRenterFeedback"> (Car owner)</span>
+                          <span *ngIf="rating.isRenterFeedback"> (Renter)</span>
+                        </p>
+                      </div>
+                      <div style="font-size: 14px; margin-top: 2px">{{convertDateTime(rating.dateTime)}}</div>
+                    </div>
+                    <div style="margin-top: 6px;">
+                      <div class="star-ratings" title="5 Stars"
+                        style="position: relative; box-sizing: border-box; display: inline-block;">
+                        <svg class="star-grad"
+                          style="position: absolute; z-index: 0; width: 0px; height: 0px; visibility: hidden;">
+                          <defs>
+                            <linearGradient id="starGrad078528009180899" x1="0%" y1="0%" x2="100%" y2="0%">
+                              <stop offset="0%" class="stop-color-first"
+                                style="stop-color: rgb(255, 198, 52); stop-opacity: 1;">
+                              </stop>
+                              <stop offset="0%" class="stop-color-first"
+                                style="stop-color: rgb(255, 198, 52); stop-opacity: 1;">
+                              </stop>
+                              <stop offset="0%" class="stop-color-final"
+                                style="stop-color: rgb(203, 211, 227); stop-opacity: 1;">
+                              </stop>
+                              <stop offset="100%" class="stop-color-final"
+                                style="stop-color: rgb(203, 211, 227); stop-opacity: 1;">
+                              </stop>
+                            </linearGradient>
+                          </defs>
+                        </svg>
+                        <div class="star-container" *ngFor="let i of createArray(rating.stars)"
+                          style="position: relative; display: inline-block; vertical-align: middle; padding-right: 1px;">
+                          <svg viewBox="0 0 51 48" class="widget-svg"
+                            style="width: 17px; height: 17px; transition: transform 0.2s ease-in-out 0s;">
+                            <path class="star" d="m25,1 6,17h18l-14,11 5,17-15-10-15,10 5-17-14-11h18z"
+                              style="fill: rgb(255, 198, 52); transition: fill 0.2s ease-in-out 0s;">
+                            </path>
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
+  
+  
+                    <div style="margin-bottom: 10px;height: 35px;">
+  
+                      <p>{{rating.comment}}</p>
+                    </div>
+                  </div>
+                </div>
+  
+              </div>
+            </div>
+          </div>
+          <div class="line-page">
+          </div>
+          <div class="label-rating">Rate:</div>
+          <div class="container">
+            <div class="container__items">
+              <input type="radio" (click)="fillStar('s5')" name="stars" id="st5">
+              <label for="st5">
+                <div class="star-stroke">
+                  <div class="star-fill"></div>
+                </div>
+                <div class="label-description" data-content="Excellent"></div>
+              </label>
+              <input type="radio" (click)="fillStar('s4')" name="stars" id="st4">
+              <label for="st4">
+                <div class="star-stroke">
+                  <div class="star-fill"></div>
+                </div>
+                <div class="label-description" data-content="Good"></div>
+              </label>
+              <input type="radio" (click)="fillStar('s3')" name="stars" id="st3">
+              <label for="st3">
+                <div class="star-stroke">
+                  <div class="star-fill"></div>
+                </div>
+                <div class="label-description" data-content="OK"></div>
+              </label>
+              <input type="radio" (click)="fillStar('s2')" name="stars" id="st2">
+              <label for="st2">
+                <div class="star-stroke">
+                  <div class="star-fill"></div>
+                </div>
+                <div class="label-description" data-content="Bad"></div>
+              </label>
+              <input type="radio" (click)="fillStar('s1')" name="stars" id="st1">
+              <label for="st1">
+                <div class="star-stroke">
+                  <div class="star-fill"></div>
+                </div>
+
+                <div class="label-description" data-content="Terrible"></div>
+              </label>
+            </div>
+          </div>
+          <div class="comment-field">
+            <div class="form-outline">
+              <label class="form-label" for="textAreaExample">Comment:</label>
+              <textarea [required]="true" [(ngModel)]="comment" name="comment" class="form-control" id="textAreaExample"
+                rows="4"></textarea>
+            </div>
+          </div>
+          <!--          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"-->
+          <!--                  style="border: none !important; background-color: transparent !important; color: #007bff !important;">-->
+          <!--            Close-->
+          <!--          </button>-->
+          <!--          <button type="submit" data-bs-dismiss="modal" [disabled]="rateForm.invalid || star == 0"-->
+          <!--                  class="btn btn-primary">Send-->
+          <!--          </button>-->
+        </c-modal-body>
+        <c-modal-footer>
+          <button cButton color="secondary"
+            style="border: none !important; background-color: transparent !important; color: black !important;">
+
+            Close
+          </button>
+          <!--        <button cButton type="submit" data-bs-dismiss="modal" [disabled]="rateForm.invalid || star == 0"-->
+          <!--                class="btn btn-primary">Send-->
+          <!--        </button>-->
+          <button cButton style="border-radius: 0.25rem" type="submit" (click)="sendFeedback(rateForm.value)"
+            data-bs-dismiss="modal" [disabled]="rateForm.invalid || star == 0"
+            class="tw-flex tw-items-center tw-inline-block tw-rounded tw-px-3 tw-py-1 tw-text-sm tw-font-medium tw-text-white tw-transition hover:tw-scale-110 hover:tw-shadow-xl focus:tw-outline-none focus:tw-ring "
+            href="#" style="background-color: black !important; color: white !important; border-color: black !important;">
+            <span style="margin-right: 3px">Send</span>
+
+          </button>
+        </c-modal-footer>
+      </form>
+    </div>
+
+    <!-- View rate -->
+    <div class = "tw-text-black" [id]="'viewR' + item" *ngIf="booking.isRating">
+      <c-modal-header>
+        <h5 cModalTitle>Feedback</h5>
+        <button (click)="toggleRate()" cButtonClose></button>
+      </c-modal-header>
+      <c-modal-body>
+        <div class="car-detail" style="margin-bottom: 15px; cursor: pointer;">
+          <div style="margin-right: 10px;">
+            <div class="item-car row">
+              <div class="row">
+                <div class="img-car col-md-4">
+                  <div class="fix-img">
+                    <img loading="lazy" [src]=" booking.carImage" alt="Đây là ảnh đấy">
+                  </div>
+                </div>
+                <div class="desc-car col-md-8">
+                  <div class="desc-name">
+                    <p>{{booking.carName}}</p>
+                  </div>
+                  <div class="desc-address-price desc-info">
+                    <div class="address">
+                      <div class="wrap-svg"
+                        style="margin-top: 5px; margin-bottom: 5px; display: flex; align-items: center">
+                        <div>
+                          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6.86 4.81V2.75" stroke="#767676" stroke-width="1.5" stroke-linecap="round"
+                              stroke-linejoin="round"></path>
+                            <path d="M17.14 4.81V2.75" stroke="#767676" stroke-width="1.5" stroke-linecap="round"
+                              stroke-linejoin="round"></path>
+                            <path
+                              d="M18.05 3.78003H5.95C4.18 3.78003 2.75 5.21003 2.75 6.98003V18.06C2.75 19.83 4.18 21.26 5.95 21.26H18.06C19.83 21.26 21.26 19.83 21.26 18.06V6.98003C21.25 5.21003 19.82 3.78003 18.05 3.78003Z"
+                              stroke="#767676" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            </path>
+                            <path d="M2.75 7.8999H21.25" stroke="#767676" stroke-width="1.5" stroke-linecap="round"
+                              stroke-linejoin="round"></path>
+                            <path
+                              d="M18 12C18.5523 12 19 11.5523 19 11C19 10.4477 18.5523 10 18 10C17.4477 10 17 10.4477 17 11C17 11.5523 17.4477 12 18 12Z"
+                              fill="#767676"></path>
+                            <path
+                              d="M14 12C14.5523 12 15 11.5523 15 11C15 10.4477 14.5523 10 14 10C13.4477 10 13 10.4477 13 11C13 11.5523 13.4477 12 14 12Z"
+                              fill="#767676"></path>
+                            <path
+                              d="M10 12C10.5523 12 11 11.5523 11 11C11 10.4477 10.5523 10 10 10C9.44772 10 9 10.4477 9 11C9 11.5523 9.44772 12 10 12Z"
+                              fill="#767676"></path>
+                            <path
+                              d="M6 12C6.55228 12 7 11.5523 7 11C7 10.4477 6.55228 10 6 10C5.44772 10 5 10.4477 5 11C5 11.5523 5.44772 12 6 12Z"
+                              fill="#767676"></path>
+                            <path
+                              d="M18 15.49C18.5523 15.49 19 15.0423 19 14.49C19 13.9377 18.5523 13.49 18 13.49C17.4477 13.49 17 13.9377 17 14.49C17 15.0423 17.4477 15.49 18 15.49Z"
+                              fill="#767676"></path>
+                            <path
+                              d="M14 15.49C14.5523 15.49 15 15.0423 15 14.49C15 13.9377 14.5523 13.49 14 13.49C13.4477 13.49 13 13.9377 13 14.49C13 15.0423 13.4477 15.49 14 15.49Z"
+                              fill="#767676"></path>
+                            <path
+                              d="M10 15.49C10.5523 15.49 11 15.0423 11 14.49C11 13.9377 10.5523 13.49 10 13.49C9.44772 13.49 9 13.9377 9 14.49C9 15.0423 9.44772 15.49 10 15.49Z"
+                              fill="#767676"></path>
+                            <path
+                              d="M6 15.49C6.55228 15.49 7 15.0423 7 14.49C7 13.9377 6.55228 13.49 6 13.49C5.44772 13.49 5 13.9377 5 14.49C5 15.0423 5.44772 15.49 6 15.49Z"
+                              fill="#767676"></path>
+                            <path
+                              d="M14 18.97C14.5523 18.97 15 18.5223 15 17.97C15 17.4177 14.5523 16.97 14 16.97C13.4477 16.97 13 17.4177 13 17.97C13 18.5223 13.4477 18.97 14 18.97Z"
+                              fill="#767676"></path>
+                            <path
+                              d="M10 18.97C10.5523 18.97 11 18.5223 11 17.97C11 17.4177 10.5523 16.97 10 16.97C9.44772 16.97 9 17.4177 9 17.97C9 18.5223 9.44772 18.97 10 18.97Z"
+                              fill="#767676"></path>
+                            <path
+                              d="M6 18.97C6.55228 18.97 7 18.5223 7 17.97C7 17.4177 6.55228 16.97 6 16.97C5.44772 16.97 5 17.4177 5 17.97C5 18.5223 5.44772 18.97 6 18.97Z"
+                              fill="#767676"></path>
+                          </svg>
+                        </div>
+                        <div>
+                          <span style="font-size: 14px; margin-left: 5px">{{getDate(booking.pickUpDateTime) + " to " +
+                            getDate(booking.returnDateTime)}}</span>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <div class="desc-address" style="margin-top: 6px;">
+                    <div class="wrap-price">
+              
+                      <div class="price">Total: <span class="price-special" style = "font-size: 14px;">{{convertMoney(booking.total )}}</span>VND</div>
+
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="line-page"></div>
+        <div class="car-detail" *ngFor="let rating of ratings" style="margin-bottom: 15px; cursor: pointer;">
+          <div style="margin-right: 10px;">
+
+            <div class="item-car row">
+              <div class="row">
+
+                <div class="img-car col-md-4"
+                  style="display: flex; justify-content: center; margin-top: 10px; margin-bottom: 10px">
+                  <div class="avatar avatar--m">
+                    <img loading="lazy" [src]=" rating.senderAvatar"
+                      alt="Đây là ảnh đấy">
+                  </div>
+                </div>
+                <div class="desc-car col-md-8" style="margin-top: 10px">
+                  <div class="desc-name" style="display: flex;justify-content: space-between; height: 10px">
+                    <div>
+                      <p>
+                        {{rating.senderFirstName + ' ' + rating.senderLastName}}
+                        <span  *ngIf="!rating.isRenterFeedback"> (Car Owner)</span>
+                        <span  *ngIf="rating.isRenterFeedback"> (Renter)</span>
+                      </p>
+                    </div>
+                    <div style="font-size: 14px; margin-top: 2px">{{convertDateTime(rating.dateTime)}}</div>
+                  </div>
+                  <div style="margin-top: 6px;">
+                    <div class="star-ratings" title="5 Stars"
+                      style="position: relative; box-sizing: border-box; display: inline-block;">
+                      <svg class="star-grad"
+                        style="position: absolute; z-index: 0; width: 0px; height: 0px; visibility: hidden;">
+                        <defs>
+                          <linearGradient id="starGrad078528009180899" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" class="stop-color-first"
+                              style="stop-color: rgb(255, 198, 52); stop-opacity: 1;">
+                            </stop>
+                            <stop offset="0%" class="stop-color-first"
+                              style="stop-color: rgb(255, 198, 52); stop-opacity: 1;">
+                            </stop>
+                            <stop offset="0%" class="stop-color-final"
+                              style="stop-color: rgb(203, 211, 227); stop-opacity: 1;">
+                            </stop>
+                            <stop offset="100%" class="stop-color-final"
+                              style="stop-color: rgb(203, 211, 227); stop-opacity: 1;">
+                            </stop>
+                          </linearGradient>
+                        </defs>
+                      </svg>
+                      <div class="star-container" *ngFor="let i of createArray(rating.stars)"
+                        style="position: relative; display: inline-block; vertical-align: middle; padding-right: 1px;">
+                        <svg viewBox="0 0 51 48" class="widget-svg"
+                          style="width: 17px; height: 17px; transition: transform 0.2s ease-in-out 0s;">
+                          <path class="star" d="m25,1 6,17h18l-14,11 5,17-15-10-15,10 5-17-14-11h18z"
+                            style="fill: rgb(255, 198, 52); transition: fill 0.2s ease-in-out 0s;">
+                          </path>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <div style="margin-bottom: 10px;height: 35px;">
+
+                    <p>{{rating.comment}}</p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer" style="padding-bottom: 0px">
+          <button type="button" (click)="toggleRate()" class="btn btn-secondary" data-bs-dismiss="modal"
+            style="border: none !important; background-color: transparent !important; color: black !important;">
+            Close
+          </button>
+
+          <button cButton style="border-radius: 0.25rem" type="submit"
+            *ngIf="renterRating.canFixed && !checkDateExpired(booking.returnDateTime)"
+            (click)="toggleRate(); swalConfirm(); modalMode = 'rating'" data-bs-dismiss="modal"
+            class="tw-ml-2 tw-flex tw-items-center tw-inline-block tw-rounded tw-bg-sky-600 tw-px-3 tw-py-1 tw-text-sm tw-font-medium tw-text-white tw-transition hover:tw-scale-110 hover:tw-shadow-xl focus:tw-outline-none focus:tw-ring active:tw-bg-indigo-500"
+            href="#" style="background-color: black !important; color: white !important">
+            <span style="margin-right: 3px">Edit</span>
+
+          </button>
+
+        </div>
+      </c-modal-body>
+      <c-modal-footer>
+        <!--            <button (click)="toggleLiveDemo()" cButton color="secondary"-->
+        <!--                    style="border: none !important; background-color: transparent !important; color: #007bff !important;">-->
+
+        <!--                Close-->
+        <!--            </button>-->
+        <!--            <button cButton style="border-radius: 0.25rem" type="submit" (click)="sendFeedback(rateForm.value)"-->
+        <!--                    data-bs-dismiss="modal"-->
+        <!--                    [disabled]="rateForm.invalid || star == 0"-->
+        <!--                    class="tw-flex tw-items-center tw-inline-block tw-rounded tw-bg-sky-600 tw-px-3 tw-py-1 tw-text-sm tw-font-medium tw-text-white tw-transition hover:tw-scale-110 hover:tw-shadow-xl focus:tw-outline-none focus:tw-ring active:tw-bg-indigo-500"-->
+        <!--                    href="#" style="background-color: lightgrey">-->
+        <!--                <span style="margin-right: 3px">Send</span>-->
+
+        <!--            </button>-->
+      </c-modal-footer>
+    </div>
+    <div class = "tw-text-black" [id]="'changeR' + item" *ngIf="booking.isRating" style="display: none">
+      <c-modal-header>
+        <h5 cModalTitle>Feedback</h5>
+        <button (click)="toggleRate()" cButtonClose></button>
+      </c-modal-header>
+      <form #rateForm="ngForm">
+        <c-modal-body>
+          <div class="car-detail" style="margin-bottom: 15px; cursor: pointer;">
+            <div style="margin-right: 10px;">
+              <div class="item-car row">
+                <div class="row">
+                  <div class="img-car col-md-3">
+                    <div class="avatar avatar--m">
+                      <img loading="lazy" [src]=" booking.user?.avatar == null || booking.user?.avatar == undefined || booking.user?.avatar == '' ? ('assets/images/avatar/avatar1.png') : (booking.user?.avatar)"
+                        alt="Đây là ảnh đấy">
+                    </div>
+                  </div>
+                  <div class="desc-car col-md-9">
+                    <div class="desc-name">
+                      <p>{{booking.user?.firstName + ' ' + booking.user?.lastName}}</p>
+                    </div>
+                    <div class="desc-info-price">
+                      <div class="info">
+                        <div class="wrap-svg">
+                          <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg"
+                            class="star-rating">
+                            <path
+                              d="M14.6667 7.23331C14.7333 6.89998 14.4667 6.49998 14.1333 6.49998L10.3333 5.96665L8.59999 2.49998C8.53333 2.36665 8.46666 2.29998 8.33333 2.23331C7.99999 2.03331 7.59999 2.16665 7.39999 2.49998L5.73333 5.96665L1.93333 6.49998C1.73333 6.49998 1.59999 6.56665 1.53333 6.69998C1.26666 6.96665 1.26666 7.36665 1.53333 7.63331L4.26666 10.3L3.59999 14.1C3.59999 14.2333 3.59999 14.3666 3.66666 14.5C3.86666 14.8333 4.26666 14.9666 4.59999 14.7666L7.99999 12.9666L11.4 14.7666C11.4667 14.8333 11.6 14.8333 11.7333 14.8333C11.8 14.8333 11.8 14.8333 11.8667 14.8333C12.2 14.7666 12.4667 14.4333 12.4 14.0333L11.7333 10.2333L14.4667 7.56665C14.6 7.49998 14.6667 7.36665 14.6667 7.23331Z"
+                              fill="#FFC634"></path>
+                          </svg>
+                        </div>
+                        <span style="margin-top: 3px" class="info">{{booking.user?.rating}}</span><span
+                          style="margin-top: 3px" class="dot">•</span>
+                        <div class="wrap-svg">
+                          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"
+                            style="margin-right: 4px;">
+                            <g clip-path="url(#clip0_1087_41996)">
+                              <path
+                                d="M10.0625 1.21875C10.0625 1.06369 10.1887 0.9375 10.3438 0.9375H11.9688C12.1238 0.9375 12.25 1.06369 12.25 1.21875V2.89422H13.1875V1.21875C13.1875 0.546719 12.6408 0 11.9688 0H10.3438C9.67172 0 9.125 0.546719 9.125 1.21875V2.89422H10.0625V1.21875Z"
+                                fill="#5fcf86"></path>
+                              <path
+                                d="M5.69806 15.0623C5.49325 14.7441 5.375 14.3673 5.375 13.9686V6.94092H1.09375C0.490656 6.94092 0 7.43157 0 8.03467V13.9686C0 14.5186 0.408156 14.9749 0.9375 15.051V15.5309C0.9375 15.7898 1.14737 15.9997 1.40625 15.9997C1.66513 15.9997 1.875 15.7898 1.875 15.5309V15.0623H5.69806V15.0623ZM1.875 8.65967C1.875 8.40079 2.08487 8.19092 2.34375 8.19092C2.60263 8.19092 2.8125 8.40079 2.8125 8.65967V13.3436C2.8125 13.6024 2.60263 13.8123 2.34375 13.8123C2.08487 13.8123 1.875 13.6024 1.875 13.3436V8.65967Z"
+                                fill="#5fcf86"></path>
+                              <path
+                                d="M4.375 5.26562C4.375 5.11056 4.50119 4.98438 4.65625 4.98438H5.375V4.92547C5.375 4.61094 5.44687 4.31291 5.57506 4.04688H4.65625C3.98422 4.04688 3.4375 4.59359 3.4375 5.26562V6.00359H4.375V5.26562Z"
+                                fill="#5fcf86"></path>
+                              <path
+                                d="M14.9062 3.83154H7.40625C6.80316 3.83154 6.3125 4.3222 6.3125 4.92529V13.9686C6.3125 14.5186 6.72066 14.9749 7.25 15.051V15.5309C7.25 15.7898 7.45987 15.9997 7.71875 15.9997C7.97763 15.9997 8.1875 15.7898 8.1875 15.5309V15.0623H14.125V15.5309C14.125 15.7898 14.3349 15.9997 14.5938 15.9997C14.8526 15.9997 15.0625 15.7898 15.0625 15.5309V15.051C15.5918 14.9749 16 14.5186 16 13.9686V4.92529C16 4.32217 15.5093 3.83154 14.9062 3.83154ZM9.125 13.3436C9.125 13.6024 8.91513 13.8123 8.65625 13.8123C8.39737 13.8123 8.1875 13.6024 8.1875 13.3436V5.55029C8.1875 5.29142 8.39737 5.08154 8.65625 5.08154C8.91513 5.08154 9.125 5.29142 9.125 5.55029V13.3436ZM13.6562 13.8123C13.3974 13.8123 13.1875 13.6024 13.1875 13.3436V5.55029C13.1875 5.29142 13.3974 5.08154 13.6562 5.08154C13.9151 5.08154 14.125 5.29142 14.125 5.55029V13.3436C14.125 13.6024 13.9151 13.8123 13.6562 13.8123Z"
+                                fill="#5fcf86"></path>
+                            </g>
+                            <defs>
+                              <clipPath id="clip0_1087_41996">
+                                <rect width="16" height="16" fill="white"></rect>
+                              </clipPath>
+                            </defs>
+                          </svg>
+                        </div>
+                        <span style="margin-top: 3px" class="info">{{booking.user?.noBooking}}
+                          rides</span>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="line-page"></div>
+          <div class="label-rating">Rate:</div>
+          <div class="container">
+            <div class="container__items">
+              <input type="radio" (click)="fillStar('s51' + item)" name="stars" [id]="'s51' + item">
+              <label id="l5" [for]="'s51' + item">
+                <div class="star-stroke">
+                  <div class="star-fill"></div>
+                </div>
+                <div class="label-description" data-content="Excellent"></div>
+              </label>
+              <input type="radio" (click)="fillStar('s41' + item)" name="stars" [id]="'s41' + item">
+              <label id="l4" [for]="'s41' + item">
+                <div class="star-stroke">
+                  <div class="star-fill"></div>
+                </div>
+                <div class="label-description" data-content="Good"></div>
+              </label>
+              <input type="radio" (click)="fillStar('s31' + item)" name="stars" [id]="'s31' + item">
+              <label id="l3" [for]="'s31' + item">
+                <div class="star-stroke">
+                  <div class="star-fill"></div>
+                </div>
+                <div class="label-description" data-content="OK"></div>
+              </label>
+              <input type="radio" (click)="fillStar('s21' + item)" name="stars" [id]="'s21' + item">
+              <label id="l2" [for]="'s21' + item">
+                <div class="star-stroke">
+                  <div class="star-fill"></div>
+                </div>
+                <div class="label-description" data-content="Bad"></div>
+              </label>
+              <input type="radio" (click)="fillStar('s11' + item)" name="stars" [id]="'s11' + item">
+              <label id="l1" [for]="'s11' + item">
+                <div class="star-stroke">
+                  <div class="star-fill"></div>
+                </div>
+
+                <div class="label-description" data-content="Terrible"></div>
+              </label>
+            </div>
+          </div>
+          <div class="comment-field">
+            <div class="form-outline">
+              <label class="form-label" for="textAreaExample">Comment:</label>
+              <textarea [required]="true" [(ngModel)]="comment" name="comment" class="form-control" id="textAreaExample"
+                rows="4"></textarea>
+            </div>
+          </div>
+          <!--          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"-->
+          <!--                  style="border: none !important; background-color: transparent !important; color: #007bff !important;">-->
+          <!--            Close-->
+          <!--          </button>-->
+          <!--          <button type="submit" data-bs-dismiss="modal" [disabled]="rateForm.invalid || star == 0"-->
+          <!--                  class="btn btn-primary">Send-->
+          <!--          </button>-->
+        </c-modal-body>
+        <c-modal-footer>
+          <button type="button" (click)="toggleRate(); closeEditMode()" class="btn btn-secondary" data-bs-dismiss="modal"
+            style="border: none !important; background-color: transparent !important; color: black !important;">
+            Close
+          </button>
+
+          <button cButton style="border-radius: 0.25rem" type="submit"
+            *ngIf="renterRating.canFixed && !checkDateExpired(booking.returnDateTime)" [disabled]="rateForm.invalid || star == 0"
+            (click)="sendFeedback(rateForm.value)" data-bs-dismiss="modal"
+            class="tw-ml-2 tw-flex tw-items-center tw-inline-block tw-rounded tw-bg-sky-600 tw-px-3 tw-py-1 tw-text-sm tw-font-medium tw-text-white tw-transition hover:tw-scale-110 hover:tw-shadow-xl focus:tw-outline-none focus:tw-ring active:tw-bg-indigo-500"
+            href="#" style="background-color: black !important; color: white !important">
+            <span style="margin-right: 3px">Send</span>
+
+          </button>
+
+        
+        </c-modal-footer>
+      </form>
+    </div>
+  </c-modal>
+</div>
+<div class = "tw-text-black">
+  <c-modal alignment="center" [id]="'s1' + item" [visible]="visibleConfirmModal"
+    (visibleChange)="handleVisibleConfirmModal($event)">
+    <div *ngIf="modalMode == 'rating'">
+      <c-modal-header>
+        <h1 cModalTitle style="font-size: 20px; font-weight: 400">
+          <div class="tw-flex tw-items-center">
+            <div style="margin-right: 10px">
+              <svg class="tw-h-5 tw-w-5 text-red-500" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
+                <line x1="12" y1="9" x2="12" y2="13" />
+                <line x1="12" y1="17" x2="12.01" y2="17" />
+              </svg>
+            </div>
+            <div>
+              Confirm
+            </div>
+          </div>
+        </h1>
+        <button cButtonClose></button>
+      </c-modal-header>
+      <c-modal-body>
+        For each booking, you only have one time to edit your feedback. Do you wish to continue ?
+      </c-modal-body>
+      <c-modal-footer>
+
+        <button color="secondary"
+          style="border: none !important; background-color: transparent !important; color: #007bff !important;"
+          (click)="toggleVisibleConfirmModal()">
+
+          Close
+        </button>
+        <!--        <button cButton type="submit" data-bs-dismiss="modal" [disabled]="rateForm.invalid || star == 0"-->
+        <!--                class="btn btn-primary">Send-->
+        <!--        </button>-->
+        <button cButton style="border-radius: 0.25rem" type="submit" data-bs-dismiss="modal"
+          (click)="toggleVisibleConfirmModal(); switchMode('open'); toggleRate()"
+          class="tw-flex tw-items-center tw-inline-block tw-bg-400 tw-rounded tw-bg-sky-600 tw-px-3 tw-py-1 tw-text-sm tw-font-medium tw-text-white tw-transition hover:tw-scale-110 hover:tw-shadow-xl focus:tw-outline-none focus:tw-ring active:tw-bg-indigo-500"
+          href="#" style="background-color: lightgrey">
+          <span style="margin-right: 3px">Continue</span>
+
+        </button>
+      </c-modal-footer>
+    </div>
+    <div *ngIf="modalMode == 'confirm_pending'">
+      <c-modal-header>
+        <h1 cModalTitle style="font-size: 20px; font-weight: 400">
+          <div class="tw-flex tw-items-center">
+            <div style="margin-right: 10px">
+              <svg class="tw-h-5 tw-w-5 text-red-500" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
+                <line x1="12" y1="9" x2="12" y2="13" />
+                <line x1="12" y1="17" x2="12.01" y2="17" />
+              </svg>
+            </div>
+            <div>
+              Confirm
+            </div>
+          </div>
+        </h1>
+        <button cButtonClose></button>
+      </c-modal-header>
+      <c-modal-body>
+        This action will confirm this booking and cancel all other bookings and it cannot be undo. Do you wish to
+        continue ?
+      </c-modal-body>
+      <c-modal-footer>
+
+        <button color="secondary"
+          style="border: none !important; background-color: transparent !important; color: #007bff !important;"
+          (click)="toggleVisibleConfirmModal()">
+
+          Close
+        </button>
+        <!--        <button cButton type="submit" data-bs-dismiss="modal" [disabled]="rateForm.invalid || star == 0"-->
+        <!--                class="btn btn-primary">Send-->
+        <!--        </button>-->
+        <button cButton style="border-radius: 0.25rem" type="submit" data-bs-dismiss="modal"
+          (click)="toggleVisibleConfirmModal(); confirmBooking('ACCEPTED')"
+          class="tw-flex tw-items-center tw-inline-block tw-bg-400 tw-rounded tw-bg-sky-600 tw-px-3 tw-py-1 tw-text-sm tw-font-medium tw-text-white tw-transition hover:tw-scale-110 hover:tw-shadow-xl focus:tw-outline-none focus:tw-ring active:tw-bg-indigo-500"
+          href="#" style="background-color: lightgrey">
+          <span style="margin-right: 3px">Continue</span>
+
+        </button>
+      </c-modal-footer>
+    </div>
+    <div *ngIf="modalMode == 'decline'">
+      <c-modal-header>
+        <h1 cModalTitle style="font-size: 20px; font-weight: 400">
+          <div class="tw-flex tw-items-center">
+            <div style="margin-right: 10px">
+              <svg class="tw-h-5 tw-w-5 text-red-500" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
+                <line x1="12" y1="9" x2="12" y2="13" />
+                <line x1="12" y1="17" x2="12.01" y2="17" />
+              </svg>
+            </div>
+            <div>
+              Cancel
+            </div>
+          </div>
+        </h1>
+        <button cButtonClose></button>
+      </c-modal-header>
+      <c-modal-body>
+        This action will cancel this booking. Do you wish to continue ?
+      </c-modal-body>
+      <c-modal-footer>
+
+        <button style="border: none !important; background-color: transparent !important"
+          (click)="toggleVisibleConfirmModal()">
+
+          Close
+        </button>
+        <!--        <button cButton type="submit" data-bs-dismiss="modal" [disabled]="rateForm.invalid || star == 0"-->
+        <!--                class="btn btn-primary">Send-->
+        <!--        </button>-->
+        <button cButton style="border-radius: 0.25rem" type="submit" data-bs-dismiss="modal" disabled
+          [id]="'decline' + item" (click)="toggleVisibleConfirmModal(); confirmBooking('DECLINED')"
+          class="tw-flex tw-items-center tw-inline-block tw-bg-red-600 tw-rounded  tw-px-3 tw-py-1 tw-text-sm tw-font-medium tw-text-white tw-transition hover:tw-scale-110 hover:tw-shadow-xl focus:tw-outline-none focus:tw-ring active:tw-bg-indigo-500"
+          href="#" style="background-color: #f52323 !important;">
+          <span style="margin-right: 3px">Continue <span [id]="'ct' + item">({{cancelCountdown}})</span></span>
+
+        </button>
+      </c-modal-footer>
+    </div>
+    <div *ngIf="modalMode == 'confirm_pick_up'">
+      <c-modal-header>
+        <h1 cModalTitle style="font-size: 20px; font-weight: 400">
+          <div class="tw-flex tw-items-center">
+            <div style="margin-right: 10px">
+              <svg class="tw-h-5 tw-w-5 text-red-500" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
+                <line x1="12" y1="9" x2="12" y2="13" />
+                <line x1="12" y1="17" x2="12.01" y2="17" />
+              </svg>
+            </div>
+            <div>
+              Confirm
+            </div>
+          </div>
+        </h1>
+        <button cButtonClose></button>
+      </c-modal-header>
+      <c-modal-body>
+        This action means that you have received the deposit and agree with renter's pick up. Also, after this action,
+        this trip's status is in progress and you can't cancel this trip anymore. Do you wish to continue ?
+      </c-modal-body>
+      <c-modal-footer>
+
+        <button color="secondary"
+          style="border: none !important; background-color: transparent !important; color: #007bff !important;"
+          (click)="toggleVisibleConfirmModal()">
+
+          Close
+        </button>
+        <!--        <button cButton type="submit" data-bs-dismiss="modal" [disabled]="rateForm.invalid || star == 0"-->
+        <!--                class="btn btn-primary">Send-->
+        <!--        </button>-->
+        <button cButton style="border-radius: 0.25rem" type="submit" data-bs-dismiss="modal"
+          (click)="toggleVisibleConfirmModal(); confirmPickUp()"
+          class="tw-flex tw-items-center tw-inline-block tw-bg-400 tw-rounded tw-bg-sky-600 tw-px-3 tw-py-1 tw-text-sm tw-font-medium tw-text-white tw-transition hover:tw-scale-110 hover:tw-shadow-xl focus:tw-outline-none focus:tw-ring active:tw-bg-indigo-500"
+          href="#" style="background-color: lightgrey">
+          <span style="margin-right: 3px">Continue</span>
+
+        </button>
+      </c-modal-footer>
+    </div>
+    <div *ngIf="modalMode == 'confirm_return'">
+      <c-modal-header>
+        <h1 cModalTitle style="font-size: 20px; font-weight: 400">
+          <div class="tw-flex tw-items-center">
+            <div style="margin-right: 10px">
+              <svg class="tw-h-5 tw-w-5 text-red-500" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
+                <line x1="12" y1="9" x2="12" y2="13" />
+                <line x1="12" y1="17" x2="12.01" y2="17" />
+              </svg>
+            </div>
+            <div>
+              Confirm
+            </div>
+          </div>
+        </h1>
+        <button cButtonClose></button>
+      </c-modal-header>
+      <c-modal-body>
+        This action means that you have received the payment and received the car. Also, after this action, this trip
+        will be ended. Do you wish to continue ?
+      </c-modal-body>
+      <c-modal-footer>
+
+        <button color="secondary"
+          style="border: none !important; background-color: transparent !important; color: #007bff !important;"
+          (click)="toggleVisibleConfirmModal()">
+
+          Close
+        </button>
+        <!--        <button cButton type="submit" data-bs-dismiss="modal" [disabled]="rateForm.invalid || star == 0"-->
+        <!--                class="btn btn-primary">Send-->
+        <!--        </button>-->
+        <button cButton style="border-radius: 0.25rem" type="submit" data-bs-dismiss="modal"
+          (click)="toggleVisibleConfirmModal(); confirmReturn()"
+          class="tw-flex tw-items-center tw-inline-block tw-bg-400 tw-rounded tw-bg-sky-600 tw-px-3 tw-py-1 tw-text-sm tw-font-medium tw-text-white tw-transition hover:tw-scale-110 hover:tw-shadow-xl focus:tw-outline-none focus:tw-ring active:tw-bg-indigo-500"
+          href="#" style="background-color: lightgrey">
+          <span style="margin-right: 3px">Continue</span>
+
+        </button>
+      </c-modal-footer>
+    </div>
+
+    <div *ngIf="modalMode == 'wait_for_deposit'">
+      <c-modal-header>
+        <h1 cModalTitle style="font-size: 20px; font-weight: 400">
+          <div class="tw-flex tw-items-center">
+            <div style="margin-right: 10px">
+              <svg class="tw-h-5 tw-w-5 text-red-500" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
+                <line x1="12" y1="9" x2="12" y2="13" />
+                <line x1="12" y1="17" x2="12.01" y2="17" />
+              </svg>
+            </div>
+            <div>
+              Message
+            </div>
+          </div>
+        </h1>
+        <button cButtonClose></button>
+      </c-modal-header>
+      <c-modal-body>
+        Please wait for renter to pay this booking's deposit
+      </c-modal-body>
+      <c-modal-footer>
+
+        <button color="secondary"
+          style="border: none !important; background-color: transparent !important; color: #007bff !important;"
+          (click)="toggleNotifyWaitForDeposit()">
+
+          Close
+        </button>
+        <!--        <button cButton type="submit" data-bs-dismiss="modal" [disabled]="rateForm.invalid || star == 0"-->
+        <!--                class="btn btn-primary">Send-->
+        <!--        </button>-->
+        <button cButton style="border-radius: 0.25rem" type="submit" data-bs-dismiss="modal"
+          (click)="toggleNotifyWaitForDeposit();"
+          class="tw-flex tw-items-center tw-inline-block tw-bg-400 tw-rounded tw-bg-sky-600 tw-px-3 tw-py-1 tw-text-sm tw-font-medium tw-text-white tw-transition hover:tw-scale-110 hover:tw-shadow-xl focus:tw-outline-none focus:tw-ring active:tw-bg-indigo-500"
+          href="#" style="background-color: lightgrey">
+          <span style="margin-right: 3px">Continue</span>
+
+        </button>
+      </c-modal-footer>
+    </div>
+  </c-modal>
+</div>

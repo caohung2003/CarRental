@@ -1,0 +1,232 @@
+/* wallet.component.css */
+
+:host {
+    display: block;
+}
+
+.wallet-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #ddd;
+    background-color: #f2f2f2;
+    border-radius: 10px;
+    margin-bottom: 50px;
+}
+
+.wallet-balance {
+    font-size: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 30px;
+}
+
+.wallet-actions {
+    display: flex;
+    margin-right: 30px;
+}
+
+.top-up-btn {
+    margin-left: 10px;
+    padding: 10px;
+    background-color: white;
+    color: #4CAF50;
+    border: 1px solid #4CAF50;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.top-up-btn:hover {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.withdraw-btn {
+    margin-left: 10px;
+    padding: 10px;
+    background-color: white;
+    color: red;
+    border: 1px solid red;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.withdraw-btn:hover {
+    background-color: red;
+    color: white;
+}
+
+.pagination-button {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: white;
+    color: #007bff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.pagination-button:hover {
+    background-color: #007bff;
+    color: white;
+}
+
+.transaction-history {
+    margin-top: 20px;
+}
+
+.transaction-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.transaction-table th,
+.transaction-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+.transaction-table th {
+    background-color: #007bff;
+    color: white;
+}
+
+.transaction-date {
+    color: #888;
+}
+
+.transaction-history .debit-amount {
+    color: #FF0000;
+}
+
+.transaction-history .credit-amount {
+    color: #008000;
+}
+
+.filter-dropdown {
+    display: flex;
+    align-items: center;
+}
+
+.pagination {
+    display: flex;
+    align-items: center;
+}
+
+/*@tailwind base;*/
+/*@tailwind components;*/
+/*@tailwind utilities;*/
+
+#topnav {
+    position: fixed;
+    inset-inline-start: 0px;
+    inset-inline-end: 0px;
+    top: 0;
+    z-index: 999;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+.dark [role=tab].active,
+.dark [role=tab].active:hover,
+[role=tab].active,
+[role=tab].active:hover {
+    border-color: rgb(31 41 55);
+    color: rgb(31 41 55);
+}
+
+button {
+    border: 1px solid black;
+    padding: 10px;
+    border-radius: 0.25rem;
+    background-color: black;
+    color: white;
+
+}
+
+
+.az-10 {
+    background-color: black;
+    color: white !important;
+    font-weight: bold;
+}
+
+/* test css */
+
+.menu-option a {
+    width: fit-content;
+}
+
+.menu-option:hover a {
+    width: 100%;
+}
+
+.menu-option li {
+    width: fit-content;
+}
+
+.menu-option:hover li {
+    width: 100%;
+}
+
+.menu-option .list {
+    width: fit-content;
+}
+
+.menu-option:hover .list {
+    width: 100%;
+}
+
+.menu-option svg {
+    margin-right: 0;
+}
+
+.menu-option:hover svg {
+    margin-right: 0.75rem;
+}
+
+.account-text {
+    /* display: none; */
+    display: none;
+    /* Revert to using display: none; */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s, visibility 0.5s;
+}
+
+@media (max-width: 767px) {
+    .account-text {
+        opacity: 1;
+        visibility: visible;
+        display: block;
+    }
+
+    .menu-option svg {
+        margin-right: 0.75rem;
+    }
+
+    .menu-option a {
+        width: 100%;
+    }
+
+    .menu-option li {
+        width: 100%;
+    }
+}
+
+
+.menu-option:hover .account-text {
+    /* display: block; */
+    /* Use display: block; on hover */
+    opacity: 1;
+    visibility: visible;
+    display: block;
+}

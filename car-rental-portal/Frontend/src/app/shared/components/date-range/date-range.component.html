@@ -1,0 +1,86 @@
+<div date-rangepicker class="tw-flex tw-items-center">
+  <div class = "tw-w-3/4 tw-flex">
+    <div class="tw-relative tw-flex">
+      <div class="tw-absolute tw-inset-y-0 tw-start-0 tw-flex tw-items-center tw-ps-3 tw-pointer-events-none">
+        <svg class="tw-w-4 tw-h-4 tw-text-gray-500 dark:tw-text-gray-400" aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+          <path
+            d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
+        </svg>
+      </div>
+      <input #startHtml *ngIf="!addMode" [disabled]="disabled" (blur)="getDateInput()" id="start" name="start"
+        [(ngModel)]="start" [value]="start" type="text"
+        class="{{disabled ? 'tw-bg-gray-200' : 'tw-bg-gray-50'}} tw-border tw-border-gray-300 tw-text-gray-900 tw-text-sm tw-rounded-lg focus:tw-ring-blue-500 focus:tw-border-blue-500 tw-block tw-w-full tw-ps-10 tw-p-2.5  dark:tw-bg-gray-700 dark:tw-border-gray-600 dark:tw-placeholder-gray-400 dark:tw-text-white dark:focus:tw-ring-blue-500 dark:focus:tw-border-blue-500 tw-datepicker-input "
+        placeholder="Select date start">
+      <input #startHtml *ngIf="addMode" [disabled]="disabled" [(ngModel)]="start" id="start" name="start" type="text"
+        data-date-format="DD MMMM YYYY" datepicker-format="dd/mm/yyyy"
+        class="{{disabled ? 'tw-bg-gray-200' : 'tw-bg-gray-50'}} tw-border tw-border-gray-300 tw-text-gray-900 tw-text-sm tw-rounded-lg focus:tw-ring-blue-500 focus:tw-border-blue-500 tw-block tw-w-full tw-ps-10 tw-p-2.5  dark:tw-bg-gray-700 dark:tw-border-gray-600 dark:tw-placeholder-gray-400 dark:tw-text-white dark:focus:tw-ring-blue-500 dark:focus:tw-border-blue-500 tw-datepicker-input "
+        placeholder="Select date start">
+
+    </div>
+    <div class="tw-relative tw-max-w-sm tw-ml-1" *ngIf="hasTime">
+      <div class="tw-absolute tw-inset-y-0 tw-start-0 tw-flex tw-items-center tw-ps-3 tw-pointer-events-none">
+        <svg class="tw-w-4 tw-h-4 tw-text-gray-500 dark:tw-text-gray-400" aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+          <path
+            d="M12 7V12H15M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z"
+            stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </div>
+      <select id="startTime" *ngIf="addMode" [disabled]="disabled" name="selectedTimeStartShow"
+        [(ngModel)]="selectedTimeStartShow"
+        class="{{disabled ? 'tw-bg-gray-200' : 'tw-bg-gray-50'}} tw-border tw-border-gray-300 tw-text-gray-900 tw-text-sm tw-rounded-lg focus:tw-ring-blue-500 focus:tw-border-blue-500 tw-block tw-w-full tw-ps-10 tw-p-2.5 dark:tw-bg-gray-700 dark:tw-border-gray-600 dark:tw-placeholder-gray-400 dark:tw-text-white dark:focus:tw-ring-blue-500 dark:focus:tw-border-blue-500">
+        <option *ngFor="let option of timeOptions" [value]="option.value">{{ option.label }}</option>
+      </select>
+      <select id="startTime" *ngIf="!addMode" [disabled]="disabled" (blur)="getDateInput()" name="selectedTimeStartShow"
+        [(ngModel)]="selectedTimeStartShow"
+        class="{{disabled ? 'tw-bg-gray-200' : 'tw-bg-gray-50'}} tw-border tw-border-gray-300 tw-text-gray-900 tw-text-sm tw-rounded-lg focus:tw-ring-blue-500 focus:tw-border-blue-500 tw-block tw-w-full tw-ps-10 tw-p-2.5 dark:tw-bg-gray-700 dark:tw-border-gray-600 dark:tw-placeholder-gray-400 dark:tw-text-white dark:focus:tw-ring-blue-500 dark:focus:tw-border-blue-500">
+        <option *ngFor="let option of timeOptions" [value]="option.value">{{ option.label }}</option>
+      </select>
+
+    </div>
+    <span class="tw-mx-4 tw-mt-2 tw-text-gray-500">to</span>
+    <div class="tw-relative">
+      <div class="tw-absolute tw-inset-y-0 tw-start-0 tw-flex tw-items-center tw-ps-3 tw-pointer-events-none">
+        <svg class="tw-w-4 tw-h-4 tw-text-gray-500 dark:tw-text-gray-400" aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+          <path
+            d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
+        </svg>
+      </div>
+      <input #endHtml *ngIf="addMode" [disabled]="disabled" id="end" name="end" type="text" [(ngModel)]="end"
+        data-date-format="DD MMMM YYYY" datepicker-format="dd/mm/yyyy"
+        class="{{disabled ? 'tw-bg-gray-200' : 'tw-bg-gray-50'}} tw-border tw-border-gray-300 tw-text-gray-900 tw-text-sm tw-rounded-lg focus:tw-ring-blue-500 focus:tw-border-blue-500 tw-block tw-w-full tw-ps-10 tw-p-2.5  dark:tw-bg-gray-700 dark:tw-border-gray-600 dark:tw-placeholder-gray-400 dark:tw-text-white dark:focus:tw-ring-blue-500 dark:focus:tw-border-blue-500 datepicker-input "
+        placeholder="Select date end">
+      <input #endHtml *ngIf="!addMode" [disabled]="disabled" (blur)="getDateInput()" id="end" name="end" type="text"
+        [(ngModel)]="end" [value]="end"
+        class="{{disabled ? 'tw-bg-gray-200' : 'tw-bg-gray-50'}} tw-border tw-border-gray-300 tw-text-gray-900 tw-text-sm tw-rounded-lg focus:tw-ring-blue-500 focus:tw-border-blue-500 tw-block tw-w-full tw-ps-10 tw-p-2.5  dark:tw-bg-gray-700 dark:tw-border-gray-600 dark:tw-placeholder-gray-400 dark:tw-text-white dark:focus:tw-ring-blue-500 dark:focus:tw-border-blue-500 datepicker-input "
+        placeholder="Select date end">
+    </div>
+    <div class="tw-relative tw-max-w-sm tw-ml-1" *ngIf="hasTime">
+      <div class="tw-absolute tw-inset-y-0 tw-start-0 tw-flex tw-items-center tw-ps-3 tw-pointer-events-none">
+        <svg class="tw-w-4 tw-h-4 tw-text-gray-500 dark:tw-text-gray-400" aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+          <path
+            d="M12 7V12H15M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z"
+            stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </div>
+      <select id="endTime" *ngIf="!addMode" [disabled]="disabled" (blur)="getDateInput()" name="selectedTimeEndShow"
+        [(ngModel)]="selectedTimeEndShow"
+        class="{{disabled ? 'tw-bg-gray-200' : 'tw-bg-gray-50'}} tw-border tw-border-gray-300 tw-text-gray-900 tw-text-sm tw-rounded-lg focus:tw-ring-blue-500 focus:tw-border-blue-500 tw-block tw-w-full tw-ps-10 tw-p-2.5 dark:tw-bg-gray-700 dark:tw-border-gray-600 dark:tw-placeholder-gray-400 dark:tw-text-white dark:focus:tw-ring-blue-500 dark:focus:tw-border-blue-500">
+        <option *ngFor="let option of timeOptions" [value]="option.value">{{ option.label }}</option>
+      </select>
+      <select id="endTime" *ngIf="addMode" [disabled]="disabled" name="selectedTimeEndShow"
+        [(ngModel)]="selectedTimeEndShow"
+        class="{{disabled ? 'tw-bg-gray-200' : 'tw-bg-gray-50'}} tw-border tw-border-gray-300 tw-text-gray-900 tw-text-sm tw-rounded-lg focus:tw-ring-blue-500 focus:tw-border-blue-500 tw-block tw-w-full tw-ps-10 tw-p-2.5 dark:tw-bg-gray-700 dark:tw-border-gray-600 dark:tw-placeholder-gray-400 dark:tw-text-white dark:focus:tw-ring-blue-500 dark:focus:tw-border-blue-500">
+        <option *ngFor="let option of timeOptions" [value]="option.value">{{ option.label }}</option>
+      </select>
+    </div>
+  </div>
+  <div *ngIf="addMode" style="margin-left: 30px; width: 30%" class="tw-flex tw-justify-end">
+    <button [hidden]="disabled" (click)="getDateInput()"
+      class="tw-text-white tw-flex tw-justify-center tw-bg-black tw-rounded tw-px-5 tw-py-2">Add
+    </button>
+  </div>
+</div>

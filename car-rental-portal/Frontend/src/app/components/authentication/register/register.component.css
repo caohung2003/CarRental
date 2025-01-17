@@ -1,0 +1,36 @@
+.input-group label {
+    z-index: 100;
+}
+
+.font-defalt{
+    font-family: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+}
+
+.info-password {
+    border-radius: 10px !important;
+    padding: 10px;
+    color: #4a697e;
+    background: #dcdcdc;
+    position: absolute;
+    top: 21%;
+    right: 12%;
+    z-index: 200;
+    display: none;
+}
+
+.info-content {
+    margin-bottom: 0;
+    width: 390px;
+}
+
+::ng-deep .tooltip-inner {
+    width: 400px;
+    background-color: #5193d9;
+    color: #ffffff;
+    z-index: 100;
+    opacity: 1;
+}
+
+::ng-deep .tooltip.show {
+    opacity: 1;
+}
